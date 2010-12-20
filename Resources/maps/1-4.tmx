@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="100" height="100" tilewidth="32" tileheight="32">
+ <tileset firstgid="1" name="texture" tilewidth="32" tileheight="32">
+  <image source="texture.png"/>
+ </tileset>
+ <layer name="Border" width="100" height="100">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAA+1d68qjMBC1hY/9v7B9gQXf/xEXWYR8+TLJXM5cbD1Q2qqJOidzyZjEx7Ztj/tT6iPBb8Gx0ro/HS0fv5hlbj78cOtHLdx8YIC6z0/mYx/877dJgLjXk4+/jM8Jbz727vdKRqP9+/a9LFfOFj4QqKQf2bKogCp8XIkLTxtM8fEHWD8HXD6+QMeMjkO0CStXGv2Q1s+BRRZc+Uvr9Kj3wGuy7+p8eMmMqhshq9dGc1ItF9PDU94aoPiY1V+hjxDpz2fyWAElq5V+vCsssvfCq/tu8e58tKDus9VNb/5mvuMAlw8vzir6cU+s+M7UDw4XlNwz+ZjJSyJLq71C5jCl5+bCytOj+/ZEpv9oz7ET2xHg8IHKwx6w+JtIPjj1fkocIcFMbhpfy+0Hcrk42/uTeTwqPsqKk7340JanwOVDCoTctXV42Kssm9T7ieN/ZJtGxVijsqPy2rbdx06PwT4KvYy5OiGJqfr7qtZ/R/rzHVwfAig71/KW8TyqIlbXOWvrXv4HDY29kj6rieJbGoshgLZ3Uv2onDfSyMbDf3D9ZLX87qodX8XG9JDGLX3Zq/iPFTx0N1o2Uv9xpXE5J6hrrhbrHuDyoW17rc2J0MWr2rgTFhk9u+9MRLd1RP9c4s8z7JKF19G9eea8LPy/iz+voIcHrHzMUEE/OHKmjmnlEtU34oxJ0GKlHwcv7X16tdGZvPt7fxHbUch6VnueO1s/elhkbc1LI1Ap3341ZNznFfw5wvb0sqVsYGZcsMrFcvSjcg4xAxnPP6xzG6XXEAXuubLmdUrHM6D7bMhnkx7QXB9VprUznzq+fYasmMXqP6yIyC1prpdTRjvmSQuufng9C72ibnqOccrmwxuesaGHvfPyHxIbheR4JP92W6Y+csd6S/RDC68xkNS+TD3m3Csqvoq4Twt30vVKpOivTXIeZLxboY++ykNztmnOJ20fFnm+U//DIzZd7R+dMyK+4iJjbvdV2hPSn/fgPK+LwnH9KH+RHc9X0g8pJHMZNHVyILFXd/5KD0pPOLLi8DEri4yvpPpx3rfnHK0DFeLDSv1BDSL1lvNs4ZxvpIWnPz8w0ukMf87x5f21ju6534b27ZX1gzrnykd7+HALRjoTmS/RnofCTOYV5K1BZL59BS971eelkH0ONCL0A2WvNDa5Xx959Lv/X3X9H07ZaHv13H7OC9km/0eYrUmthTeH1eOrma6019Ve30ze5z7t3F8UH1n6IeFDYqciYnwNkHYEnW9H5xMzYv0eFeK5Sv3z7NxqC8v7EK7mz9GokJtqMZInd00LCx9e+i3REw0XnPrR7wsZrQ81wogPS8xo0Y/2vJVs1wlU/3O2VheXj4g5ax6IWt8SVV+Gflj4rOArPPM02f48e76Y9J0SsxwNAho+Zu1bwofkuYVGL6RlULJdyRMxf7CvgyrjEe9q7NvoeiX19NxQ9xvR/8iKr0byQsYOVrscYVs9+KByt5WeV6x8CAdXmm+AQIVYisKMCw97teqDaM4jRZ9jiO73ZOgzOl/imb+azdHy9j0UpG10tY422n8g63hHrPjT6keFZ5sRoMa/UHKzjGVo6+ZiZAPQulCFixU84qAq8ZXm/aQV8poeuUhJ37PdN3ofwSyPzIVE37w4acd5zTDbr31mLM2fea2FYIFlrE907OERX6HW583yFcj1eyzzPUZ1c22JRzuK5MM6X0AKjU/k8iF5d6OkT5gxbmWUU4viSfN+Tstcbk1/NTO+rdZv5fChueZZO/hqvrlceKy7YInjvOI6yl7t2zhmka7ZfvLipQMrnqq0f64Nr9IfvPEfiHzJjZ/Q5rmj9aPiO1AqIdtevYjf7bZ+/XDquNF/6ntWpj83Zz+qnWXzceM7Hven3OcfRXLNMkCcAAA=
+  </data>
+ </layer>
+ <layer name="Extras" width="100" height="100">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAA+3BMQEAAADCoPVP7WULoAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgBt5RKnmQJwAAA==
+  </data>
+ </layer>
+</map>
