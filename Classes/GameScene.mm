@@ -155,13 +155,6 @@
 		[ball.texture setAliasTexParameters];
 		[self addChild:ball z:2];
 		
-		// Get current level from game data singleton
-		if (![GameData sharedGameData].currentWorld || ![GameData sharedGameData].currentLevel)
-		{
-			[GameData sharedGameData].currentWorld = 1;
-			[GameData sharedGameData].currentLevel = 1;
-		}
-		
 		// Create string to reference background image
 		NSMutableString *backgroundFile = [NSMutableString stringWithFormat:@"background-%i", [GameData sharedGameData].currentWorld];
 		
@@ -493,8 +486,10 @@
 					case kUpperRightTriangle:
 					case kLowerLeftTriangle:
 					case kLowerRightTriangle:
-					case kToggleBlockRed:
-					case kToggleBlockGreen:
+					case kToggleBlockRedOn:
+					case kToggleBlockRedOff:
+					case kToggleBlockGreenOn:
+					case kToggleBlockGreenOff:
 						// Regular blocks - do nothing
 						break;
 					case kToggleSwitchGreen:
@@ -507,9 +502,18 @@
 							{
 								b2Body *body = *position;
 								if (body->IsActive())
+								{
 									body->SetActive(false);
+									// Turn red blocks off
+									[border setTileGID:kToggleBlockRedOff at:ccp(body->GetPosition().x - 0.5, body->GetPosition().y - 0.5)];
+									NSLog(@"Tryin' to swap tiles at %f, %f", body->GetPosition().x - 0.5, body->GetPosition().y - 0.5);
+								}
 								else
+								{
 									body->SetActive(true);
+									// Turn green blocks on
+									[border setTileGID:kToggleBlockGreenOn at:ccp(body->GetPosition().x - 0.5, body->GetPosition().y - 0.5)];
+								}
 							}
 							
 							// Swap the tile for the switch
@@ -529,12 +533,20 @@
 							{
 								b2Body *body = *position;
 								if (body->IsActive())
+								{
 									body->SetActive(false);
+									// Turn green blocks off
+									[border setTileGID:kToggleBlockGreenOff at:ccp(body->GetPosition().x - 0.5, body->GetPosition().y - 0.5)];
+								}
 								else
+								{
 									body->SetActive(true);
+									// Turn red blocks on
+									[border setTileGID:kToggleBlockRedOn at:ccp(body->GetPosition().x - 0.5, body->GetPosition().y - 0.5)];
+								}
 							}
 							
-							// Swap the tile for the switch
+							// Swap the tile for the switch - green are passable
 							[border setTileGID:kToggleSwitchGreen at:ccp(s.position.x / ptmRatio, map.mapSize.height - (s.position.y / ptmRatio) - 1)];
 							
 							// Do pause effect
