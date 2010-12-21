@@ -505,19 +505,20 @@
 								{
 									body->SetActive(false);
 									// Turn red blocks off
-									[border setTileGID:kToggleBlockRedOff at:ccp(body->GetPosition().x - 0.5, body->GetPosition().y - 0.5)];
-									NSLog(@"Tryin' to swap tiles at %f, %f", body->GetPosition().x - 0.5, body->GetPosition().y - 0.5);
+									[border setTileGID:kToggleBlockRedOff at:ccp(body->GetPosition().x - 0.5, map.mapSize.height - body->GetPosition().y - 0.5)];
+									//NSLog(@"Tryin' to swap tiles at %f, %f", body->GetPosition().x - 0.5, map.mapSize.height - body->GetPosition().y - 0.5);
 								}
 								else
 								{
 									body->SetActive(true);
 									// Turn green blocks on
-									[border setTileGID:kToggleBlockGreenOn at:ccp(body->GetPosition().x - 0.5, body->GetPosition().y - 0.5)];
+									[border setTileGID:kToggleBlockGreenOn at:ccp(body->GetPosition().x - 0.5, map.mapSize.height - body->GetPosition().y - 0.5)];
 								}
 							}
 							
 							// Swap the tile for the switch
 							[border setTileGID:kToggleSwitchRed at:ccp(s.position.x / ptmRatio, map.mapSize.height - (s.position.y / ptmRatio) - 1)];
+							//NSLog(@"Toggling switch at %f, %f", s.position.x / ptmRatio, map.mapSize.height - (s.position.y / ptmRatio) - 1);
 							
 							// Do pause effect
 							[self togglePause:0];
@@ -536,13 +537,13 @@
 								{
 									body->SetActive(false);
 									// Turn green blocks off
-									[border setTileGID:kToggleBlockGreenOff at:ccp(body->GetPosition().x - 0.5, body->GetPosition().y - 0.5)];
+									[border setTileGID:kToggleBlockGreenOff at:ccp(body->GetPosition().x - 0.5, map.mapSize.height - body->GetPosition().y - 0.5)];
 								}
 								else
 								{
 									body->SetActive(true);
 									// Turn red blocks on
-									[border setTileGID:kToggleBlockRedOn at:ccp(body->GetPosition().x - 0.5, body->GetPosition().y - 0.5)];
+									[border setTileGID:kToggleBlockRedOn at:ccp(body->GetPosition().x - 0.5, map.mapSize.height - body->GetPosition().y - 0.5)];
 								}
 							}
 							

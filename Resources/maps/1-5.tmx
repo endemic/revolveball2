@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="100" height="100" tilewidth="32" tileheight="32">
+ <tileset firstgid="1" name="texture" tilewidth="32" tileheight="32">
+  <image source="texture.png"/>
+ </tileset>
+ <layer name="Border" width="100" height="100">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAA+3cTUvDQBQF0NTPvaDgWhD8/3+wSAwNpenUyQzcpOfA29jceRem1ZU9DMNwKMy50vO1Y884L1dm6dyPxmPPuvv4ajz2rLuP1uw53UfNPbdmz/LfnbXn1rjHPe8XXj9/5rXi3Bbs8flI29PrPh5nZ0/zYM/N9/G98PrPlXNl+mR6fD5ksn5fybiPvWSSushkdZHJ6iKT1UUmq4tMVheZrC4yWV1ksrrIZHWRyeoik9VFZpy3v5mbfrZ0rkyfTNJ7Qyari0xWF5msLjJZXWSyushkdZHJ6iKT1UUmq4tMVheZrC4yWV1ksrrIZHWRGSflfx9kynf2NHtumudCpua9Yc9t91Gjpr897iNxz9b7723P1vvvbc/W++9tz+8kfLeNPaf7+Gw8S/3tKe/pNZf62/P/PQAAAAAAAAAAAAAAAAAAAAAAAMD9OAJq37CwQJwAAA==
+  </data>
+ </layer>
+ <layer name="Extras" width="100" height="100">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAA+3BMQEAAADCoPVP7WULoAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgBt5RKnmQJwAAA==
+  </data>
+ </layer>
+</map>
