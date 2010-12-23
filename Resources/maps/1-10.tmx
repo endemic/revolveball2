@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="100" height="100" tilewidth="32" tileheight="32">
+ <tileset firstgid="1" name="texture" tilewidth="32" tileheight="32">
+  <image source="texture.png"/>
+ </tileset>
+ <layer name="Border" width="100" height="100">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAA+3YQU7CUBRA0XbkAnDg2In736EhsQnGIPVb/RdyTvJmhCZc+uF1XZZlNamhQY8WPVr0aNGjRY8WPVr0aNl6nExith6vJjHOqxY9WvRo0aNFjxY9WvRo0aPFft4a+3lrnFcterTo0aJHix4terTo0aJHi/28Nfbz1jivWvRo0aNFjxY9WvRo0aNFjxb7eWvs561xXrXo0aJHix4terTo0aJHix4t9vPW2M9b47xq0aNFjxY9WvRo0aNFjxY9WuznrbGft8Z51aJHix4terTo0aJHix4terTYz1tjP2+N86pFjxY9WvRo0aNFjxY9WvRosQ+2xvOS1hx1Xp0OeA8+93j+xfvocQz3R4seLXq06NGiR4seLXv3wVt75ew96lHG85LW7L0/jnC+zsvHdX/i7R+vNdue34/ZPerXOsL2bOS7HttrZva4vJf/+loF9ftj9HPV47aR77oeX83cLUY/19FzbrbLHk9XXnOPPe7Vo94fZyP/k2dbTW7eAeFFOOVAnAAA
+  </data>
+ </layer>
+ <layer name="Extras" width="100" height="100">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAA+3BMQEAAADCoPVP7WULoAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgBt5RKnmQJwAAA==
+  </data>
+ </layer>
+</map>

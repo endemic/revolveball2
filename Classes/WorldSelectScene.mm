@@ -43,7 +43,7 @@
 		CCMenuItemLabel *worldFiveButton = [CCMenuItemLabel itemWithLabel:[CCLabelBMFont labelWithString:@"World 5" fntFile:@"yoster-32.fnt"] target:self selector:@selector(playWorldFive)];
 		
 		// Temporarily disable these buttons, because we don't have levels go with 'em
-		[worldTwoButton setIsEnabled:NO];
+		//[worldTwoButton setIsEnabled:NO];
 		[worldThreeButton setIsEnabled:NO];
 		[worldFourButton setIsEnabled:NO];
 		[worldFiveButton setIsEnabled:NO];
