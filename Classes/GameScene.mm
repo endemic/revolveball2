@@ -183,11 +183,12 @@
 		map = [CCTMXTiledMap tiledMapWithTMXFile:mapFile];
 		[map setPosition:ccp(winSize.width / 2, winSize.height / 2)];
 		[self addChild:map z:1];
-		
+
 		border = [[map layerNamed:@"Border"] retain];
 				
 		// Create Box2D world
-		b2Vec2 gravity = b2Vec2(0.0f, -10.0f);
+		//b2Vec2 gravity = b2Vec2(0.0f, 0.0f);
+		b2Vec2 gravity(sin(CC_DEGREES_TO_RADIANS(map.rotation)) * 15, -cos(CC_DEGREES_TO_RADIANS(map.rotation)) * 15);
 		bool doSleep = false;
 		world = new b2World(gravity, doSleep);
 		
