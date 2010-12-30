@@ -44,7 +44,7 @@
 		
 		// Temporarily disable these buttons, because we don't have levels go with 'em
 		//[worldTwoButton setIsEnabled:NO];
-		[worldThreeButton setIsEnabled:NO];
+		//[worldThreeButton setIsEnabled:NO];
 		[worldFourButton setIsEnabled:NO];
 		[worldFiveButton setIsEnabled:NO];
 		

@@ -210,6 +210,9 @@
 		7D55E4B212C165F7005D97A6 /* task-list.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 7D55E4B112C165F7005D97A6 /* task-list.rtf */; };
 		7DBED19A12C3CC9100932EE0 /* 2-2.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 7DBED19812C3CC9100932EE0 /* 2-2.tmx */; };
 		7DBED19B12C3CC9100932EE0 /* world-2-tileset.png in Resources */ = {isa = PBXBuildFile; fileRef = 7DBED19912C3CC9100932EE0 /* world-2-tileset.png */; };
+		7DC41EBE12CC4E6500D45992 /* 2-3.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 7DC41EBB12CC4E6500D45992 /* 2-3.tmx */; };
+		7DC41EBF12CC4E6500D45992 /* 3-1.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 7DC41EBC12CC4E6500D45992 /* 3-1.tmx */; };
+		7DC41EC012CC4E6500D45992 /* world-3-tileset.png in Resources */ = {isa = PBXBuildFile; fileRef = 7DC41EBD12CC4E6500D45992 /* world-3-tileset.png */; };
 		7DE41D6012C30AA700F9B4DE /* 1-9.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 7DE41D5D12C30AA700F9B4DE /* 1-9.tmx */; };
 		7DE41D6112C30AA700F9B4DE /* 1-10.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 7DE41D5E12C30AA700F9B4DE /* 1-10.tmx */; };
 		7DE41D6212C30AA700F9B4DE /* 2-1.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 7DE41D5F12C30AA700F9B4DE /* 2-1.tmx */; };
@@ -618,6 +621,9 @@
 		7D55E4B112C165F7005D97A6 /* task-list.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = "task-list.rtf"; sourceTree = "<group>"; };
 		7DBED19812C3CC9100932EE0 /* 2-2.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = "2-2.tmx"; path = "maps/2-2.tmx"; sourceTree = "<group>"; };
 		7DBED19912C3CC9100932EE0 /* world-2-tileset.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "world-2-tileset.png"; path = "maps/world-2-tileset.png"; sourceTree = "<group>"; };
+		7DC41EBB12CC4E6500D45992 /* 2-3.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = "2-3.tmx"; path = "maps/2-3.tmx"; sourceTree = "<group>"; };
+		7DC41EBC12CC4E6500D45992 /* 3-1.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = "3-1.tmx"; path = "maps/3-1.tmx"; sourceTree = "<group>"; };
+		7DC41EBD12CC4E6500D45992 /* world-3-tileset.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "world-3-tileset.png"; path = "maps/world-3-tileset.png"; sourceTree = "<group>"; };
 		7DE41D5D12C30AA700F9B4DE /* 1-9.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = "1-9.tmx"; path = "maps/1-9.tmx"; sourceTree = "<group>"; };
 		7DE41D5E12C30AA700F9B4DE /* 1-10.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = "1-10.tmx"; path = "maps/1-10.tmx"; sourceTree = "<group>"; };
 		7DE41D5F12C30AA700F9B4DE /* 2-1.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = "2-1.tmx"; path = "maps/2-1.tmx"; sourceTree = "<group>"; };
@@ -1242,6 +1248,9 @@
 		7D50A1F812BBF8EF0039A691 /* maps */ = {
 			isa = PBXGroup;
 			children = (
+				7DC41EBB12CC4E6500D45992 /* 2-3.tmx */,
+				7DC41EBC12CC4E6500D45992 /* 3-1.tmx */,
+				7DC41EBD12CC4E6500D45992 /* world-3-tileset.png */,
 				7DBED19812C3CC9100932EE0 /* 2-2.tmx */,
 				7DBED19912C3CC9100932EE0 /* world-2-tileset.png */,
 				7D50A26712BBF97A0039A691 /* 1-1.tmx */,
@@ -1791,6 +1800,9 @@
 				7DE41D6212C30AA700F9B4DE /* 2-1.tmx in Resources */,
 				7DBED19A12C3CC9100932EE0 /* 2-2.tmx in Resources */,
 				7DBED19B12C3CC9100932EE0 /* world-2-tileset.png in Resources */,
+				7DC41EBE12CC4E6500D45992 /* 2-3.tmx in Resources */,
+				7DC41EBF12CC4E6500D45992 /* 3-1.tmx in Resources */,
+				7DC41EC012CC4E6500D45992 /* world-3-tileset.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
