@@ -42,7 +42,9 @@
 #define kToggleSwitchRed 20
 #define kToggleSwitchGreen 21
 
-#define kBumper 101
+#define kPeg 33
+#define kClock 36
+#define kBumper 100
 
 #define COCOS2D_DEBUG 1
 
@@ -295,8 +297,33 @@
 							polygonShape.SetAsBox(0.5f, 0.5f);
 							break;
 						case kBumper:
-							polygonShape.SetAsBox(0.33f, 0.33f);
+							// CURRENTLY UNIMPLEMENTED
+							//polygonShape.SetAsBox(0.33f, 0.33f);
 							//boxShapeDef.restitution = 1; // Make more bouncy?
+							break;
+						case kPeg:
+							{
+//								b2Vec2 verts[] = 
+//								{
+//									b2Vec2(-3.0f / ptmRatio, -6.0f / ptmRatio),
+//									b2Vec2(-6.0f / ptmRatio, -3.0f / ptmRatio),
+//									b2Vec2(-6.0f / ptmRatio, 3.0f / ptmRatio),
+//									b2Vec2(-3.0f / ptmRatio, 6.0f / ptmRatio),
+//									b2Vec2(3.0f / ptmRatio, 6.0f / ptmRatio),
+//									b2Vec2(6.0f / ptmRatio, 3.0f / ptmRatio),
+//									b2Vec2(6.0f / ptmRatio, -3.0f / ptmRatio),
+//									b2Vec2(3.0f / ptmRatio, -6.0f / ptmRatio)
+//								};
+//								
+//								polygonShape.Set(verts, 8);
+								polygonShape.SetAsBox(0.25f, 0.25f);
+							}	
+							break;
+						case kClock:
+							{
+							polygonShape.SetAsBox(0.25f, 0.25f);
+							sensorFlag = YES;
+							}	
 							break;
 						case kToggleBlockGreenOn:
 						case kToggleBlockRedOn:
@@ -491,6 +518,7 @@
 					case kToggleBlockRedOff:
 					case kToggleBlockGreenOn:
 					case kToggleBlockGreenOff:
+					case kPeg:
 						// Regular blocks - do nothing
 						break;
 					case kToggleSwitchGreen:
@@ -595,6 +623,13 @@
 							}
 						}
 						break;
+					case kClock:
+							// Remove the clock sensor
+							discardedItems.push_back(b);
+						
+							// Add time to time limit
+							[self gainTime:5];
+						break;
 					case kGoal:
 						{
 							[self unschedule:@selector(update:)];		// Need a better way of determining the end of a level
@@ -698,6 +733,28 @@
 	id removeAction = [CCCallFuncN actionWithTarget:self selector:@selector(removeSpriteFromParent:)];
 	
 	//[deductedTimeLabel runAction:[CCSequence actions:[CCSpawn actions:moveAction, fadeAction, nil], removeAction, nil]];
+	[label runAction:[CCSequence actions:[CCSpawn actions:moveAction, fadeAction, nil], removeAction, nil]];
+}
+
+/**
+ Add time to countdown timer and display label
+ */
+- (void)gainTime:(int)seconds
+{
+	// Add time to "secondsLeft" time limit variable
+	secondsLeft += seconds;
+	
+	// Create a label that shows how much time you got
+	NSString *s = [NSString stringWithFormat:@"+%i seconds", seconds];
+	CCLabelBMFont *label = [CCLabelBMFont labelWithString:s fntFile:@"yoster-16.fnt"];
+	[label setPosition:ccp(ball.position.x, ball.position.y + 16)];
+	[self addChild:label z:5];
+	
+	// Move and fade actions
+	id moveAction = [CCMoveTo actionWithDuration:1 position:ccp(ball.position.x, ball.position.y + 64)];
+	id fadeAction = [CCFadeOut actionWithDuration:1];
+	id removeAction = [CCCallFuncN actionWithTarget:self selector:@selector(removeSpriteFromParent:)];
+	
 	[label runAction:[CCSequence actions:[CCSpawn actions:moveAction, fadeAction, nil], removeAction, nil]];
 }
 

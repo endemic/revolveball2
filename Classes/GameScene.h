@@ -57,5 +57,6 @@
 }
 
 - (void)loseTime:(int)seconds;	// Method to subtract from countdown timer & display a label w/ lost time
+- (void)gainTime:(int)seconds;
 
 @end
