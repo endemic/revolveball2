@@ -117,7 +117,7 @@
 	if ((self = [super init]))
 	{
 		// Pre-load some SFX
-		[[SimpleAudioEngine sharedEngine] preloadEffect:@"toggle.wav"];
+		//[[SimpleAudioEngine sharedEngine] preloadEffect:@"toggle.wav"];
 		
 		// Set pixel-to-Box2D ratio
 		ptmRatio = 32;
@@ -303,20 +303,20 @@
 							break;
 						case kPeg:
 							{
-//								b2Vec2 verts[] = 
-//								{
-//									b2Vec2(-3.0f / ptmRatio, -6.0f / ptmRatio),
-//									b2Vec2(-6.0f / ptmRatio, -3.0f / ptmRatio),
-//									b2Vec2(-6.0f / ptmRatio, 3.0f / ptmRatio),
-//									b2Vec2(-3.0f / ptmRatio, 6.0f / ptmRatio),
-//									b2Vec2(3.0f / ptmRatio, 6.0f / ptmRatio),
-//									b2Vec2(6.0f / ptmRatio, 3.0f / ptmRatio),
-//									b2Vec2(6.0f / ptmRatio, -3.0f / ptmRatio),
-//									b2Vec2(3.0f / ptmRatio, -6.0f / ptmRatio)
-//								};
-//								
-//								polygonShape.Set(verts, 8);
-								polygonShape.SetAsBox(0.25f, 0.25f);
+								b2Vec2 verts[] = 
+								{
+									b2Vec2(-0.17f, 0.17f),
+									b2Vec2(-0.25f, 0.0f),
+									b2Vec2(-0.17f, -0.17f),
+									b2Vec2(0.0f, -0.25f),
+									b2Vec2(0.17f, -0.17f),
+									b2Vec2(0.25f, 0.0f),
+									b2Vec2(0.17f, 0.17f),
+									b2Vec2(0.0f, 0.25f)
+								};
+								
+								polygonShape.Set(verts, 8);
+								//polygonShape.SetAsBox(0.25f, 0.25f);
 							}	
 							break;
 						case kClock:
@@ -451,7 +451,7 @@
 	{
 		[self schedule:@selector(togglePause:) interval:0.25];	// Call this method again in 0.5 seconds
 		[self unschedule:@selector(update:)];			// Pause the fizziks
-		[[SimpleAudioEngine sharedEngine] playEffect:@"toggle.wav"];
+		//[[SimpleAudioEngine sharedEngine] playEffect:@"toggle.wav"];
 		functionCalled = true;
 	}
 }
