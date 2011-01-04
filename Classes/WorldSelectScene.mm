@@ -61,7 +61,7 @@
 {
 	// Set world/level
 	[GameData sharedGameData].currentWorld = 1;
-	[GameData sharedGameData].currentLevel = 1;
+	[GameData sharedGameData].currentLevel = 8;
 	
 	// Transition to gameplay scene
 	CCTransitionRotoZoom *transition = [CCTransitionRotoZoom transitionWithDuration:1.0 scene:[GameScene node]];
