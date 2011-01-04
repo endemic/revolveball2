@@ -205,6 +205,8 @@
 		7D50A27B12BBF97A0039A691 /* texture-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 7D50A27012BBF97A0039A691 /* texture-hd.png */; };
 		7D50A27C12BBF97A0039A691 /* texture.png in Resources */ = {isa = PBXBuildFile; fileRef = 7D50A27112BBF97A0039A691 /* texture.png */; };
 		7D50A27E12BBF9860039A691 /* toggle.wav in Resources */ = {isa = PBXBuildFile; fileRef = 7D50A27D12BBF9860039A691 /* toggle.wav */; };
+		7D52A49212D367270046E86C /* title-background-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 7D52A49012D367270046E86C /* title-background-hd.png */; };
+		7D52A49312D367270046E86C /* title-background.png in Resources */ = {isa = PBXBuildFile; fileRef = 7D52A49112D367270046E86C /* title-background.png */; };
 		7D55E4B212C165F7005D97A6 /* task-list.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 7D55E4B112C165F7005D97A6 /* task-list.rtf */; };
 		7DBED19A12C3CC9100932EE0 /* 2-2.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 7DBED19812C3CC9100932EE0 /* 2-2.tmx */; };
 		7DBED19B12C3CC9100932EE0 /* world-2-tileset.png in Resources */ = {isa = PBXBuildFile; fileRef = 7DBED19912C3CC9100932EE0 /* world-2-tileset.png */; };
@@ -614,6 +616,8 @@
 		7D50A27012BBF97A0039A691 /* texture-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "texture-hd.png"; path = "maps/texture-hd.png"; sourceTree = "<group>"; };
 		7D50A27112BBF97A0039A691 /* texture.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = texture.png; path = maps/texture.png; sourceTree = "<group>"; };
 		7D50A27D12BBF9860039A691 /* toggle.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = toggle.wav; path = sounds/toggle.wav; sourceTree = "<group>"; };
+		7D52A49012D367270046E86C /* title-background-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "title-background-hd.png"; path = "images/title-background-hd.png"; sourceTree = "<group>"; };
+		7D52A49112D367270046E86C /* title-background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "title-background.png"; path = "images/title-background.png"; sourceTree = "<group>"; };
 		7D55E4B112C165F7005D97A6 /* task-list.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = "task-list.rtf"; sourceTree = "<group>"; };
 		7DBED19812C3CC9100932EE0 /* 2-2.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = "2-2.tmx"; path = "maps/2-2.tmx"; sourceTree = "<group>"; };
 		7DBED19912C3CC9100932EE0 /* world-2-tileset.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "world-2-tileset.png"; path = "maps/world-2-tileset.png"; sourceTree = "<group>"; };
@@ -1191,6 +1195,8 @@
 		7D50A1F712BBF8EA0039A691 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				7D52A49012D367270046E86C /* title-background-hd.png */,
+				7D52A49112D367270046E86C /* title-background.png */,
 				7D50A1FD12BBF9590039A691 /* background-1-hd.png */,
 				7D50A1FE12BBF9590039A691 /* background-1.png */,
 				7D50A1FF12BBF9590039A691 /* background-2-hd.png */,
@@ -1795,6 +1801,8 @@
 				7DC41EBE12CC4E6500D45992 /* 2-3.tmx in Resources */,
 				7DC41EBF12CC4E6500D45992 /* 3-1.tmx in Resources */,
 				7DC41EC012CC4E6500D45992 /* world-3-tileset.png in Resources */,
+				7D52A49212D367270046E86C /* title-background-hd.png in Resources */,
+				7D52A49312D367270046E86C /* title-background.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
