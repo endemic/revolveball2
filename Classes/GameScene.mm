@@ -591,35 +591,15 @@
 							
 							// Push block onto the "destroy" stack if ball is moving fast enough
 							if (sqrt(pow(ballSpeed.x, 2) + pow(ballSpeed.y, 2)) > 4)	// At this point, 4 is an arbitrary number; need to derive it from gravity somehow
+							{	
 								discardedItems.push_back(b);
-							
-							// Plan for breakable blocks:
-							// 1. Create 4 quarter-sized blocks in the same space as the broken block
-							// 2. Set them to animate/disappear based on current Box2D world gravity
-							// 3. Breakable block is then automatically removed
-							
-							// Since the ball stays at the same position, even though it is techncially moving, we need to find the
-							// correct spot to place the shards on the layer
-							int diffX = (winSize.width / 2) - (ballBody->GetPosition().x * ptmRatio - s.position.x);
-							int diffY = (winSize.height / 2) - (ballBody->GetPosition().y * ptmRatio - s.position.y);
-							
-							for (int i = 0; i < 4; i++)
-							{
-								CCSprite *shard = [CCSprite spriteWithFile:@"blue-block-breakable-shard.png"];
-								[shard setPosition:ccp(diffX, diffY)];
-								[self addChild:shard z:5];
 								
-								// Create destination points for block shards - somewhere between -50 and 50 away
-								// from the original block point
-								int destinationX = shard.position.x + (((float)(rand() % 100) / 100) - 1) * 100;
-								int destinationY = shard.position.y + (((float)(rand() % 100) / 100) - 1) * 100;
+								// Since the ball stays at the same position, even though it is techncially moving, we need to find the
+								// correct spot to place the shards on the layer
+								//int diffX = (winSize.width / 2) - (ballBody->GetPosition().x * ptmRatio - s.position.x);
+								//int diffY = (winSize.height / 2) - (ballBody->GetPosition().y * ptmRatio - s.position.y);
 								
-								// Create movement animations
-								id action = [CCMoveTo actionWithDuration:3 position:ccp(destinationX, destinationY)];
-								id removeAction = [CCCallFuncN actionWithTarget:self selector:@selector(removeSpriteFromParent:)];
-								
-								// Run movement animations
-								[shard runAction:[CCSequence actions: action, removeAction, nil]];
+								// Create particle effect here
 							}
 						}
 						break;
