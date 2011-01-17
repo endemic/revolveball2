@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="100" height="100" tilewidth="32" tileheight="32">
+ <properties>
+  <property name="name" value="The Spiral"/>
+  <property name="time" value=""/>
+ </properties>
+ <tileset firstgid="1" name="texture" tilewidth="32" tileheight="32">
+  <image source="texture.png"/>
+ </tileset>
+ <layer name="Border" width="100" height="100">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAA+3XwU7DMBBFUdjA//8xyyIkwmSSsV/LOZI3jFLsXkSStzcAAAAAAGCnd+vXtcOu35tOjyx6ZNEjix5Z9MiiR5bUHrvfAXa9XyT3eEWp507d17TUc6fua1rquVP3NS313Kn7mpZ67tR9TUs995V97X5evfJM+6o9kumRRY8semTRI4sej58nPEfpUfvMu+lxPNOjT4/efIoevfmUVT0m7916HM/OfGdn6XF+pkefHr35lF09uvcLPc7Pqj0q9KjP9bhfQo+j/1F61Od39vj4tvTozfW4nx69+ZSUHt/vG3r05lPPV3r05nrcb2ePo3V03ZV9VGaV+ZRdPar0qM/1uJ8evfmUlT26q/LZd+29Op+yqsdd9Dg/06NPj958ih69+ZSpHpPrzD7O7r06nzLRYzU9ateuokft2lX0qF27ih61a1fR4zFLWZ29H3nGHun0yKJHFj2y6JFFjyyv2uOZ15Vz7/DMf/9X6JFFjyx6ZPl57s8/5qvo0ZtP0aM3n6JHbz5l9/tB8gIAAAAA4H/5AgDj4RJAnAAA
+  </data>
+ </layer>
+ <layer name="Extras" width="100" height="100">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAA+3BMQEAAADCoPVP7WULoAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgBt5RKnmQJwAAA==
+  </data>
+ </layer>
+</map>

@@ -137,6 +137,9 @@
 		50F4144910692EE7002A0D5E /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 50F4144410692EE7002A0D5E /* Default.png */; };
 		50F4144A10692EE7002A0D5E /* fps_images.png in Resources */ = {isa = PBXBuildFile; fileRef = 50F4144510692EE7002A0D5E /* fps_images.png */; };
 		50F4144B10692EE7002A0D5E /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 50F4144610692EE7002A0D5E /* Icon.png */; };
+		7D0BFDA912E3EB57006BF429 /* 2-4.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 7D0BFDA612E3EB57006BF429 /* 2-4.tmx */; };
+		7D0BFDAA12E3EB57006BF429 /* 2-5.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 7D0BFDA712E3EB57006BF429 /* 2-5.tmx */; };
+		7D0BFDAB12E3EB57006BF429 /* 2-6.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 7D0BFDA812E3EB57006BF429 /* 2-6.tmx */; };
 		7D50A1F112BBF8CA0039A691 /* GameData.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7D50A1E712BBF8CA0039A691 /* GameData.mm */; };
 		7D50A1F212BBF8CA0039A691 /* GameScene.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7D50A1E912BBF8CA0039A691 /* GameScene.mm */; };
 		7D50A1F312BBF8CA0039A691 /* MyContactListener.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7D50A1EB12BBF8CA0039A691 /* MyContactListener.mm */; };
@@ -542,6 +545,9 @@
 		50F4144510692EE7002A0D5E /* fps_images.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fps_images.png; sourceTree = "<group>"; };
 		50F4144610692EE7002A0D5E /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
 		50F4144710692EE7002A0D5E /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7D0BFDA612E3EB57006BF429 /* 2-4.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = "2-4.tmx"; path = "maps/2-4.tmx"; sourceTree = "<group>"; };
+		7D0BFDA712E3EB57006BF429 /* 2-5.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = "2-5.tmx"; path = "maps/2-5.tmx"; sourceTree = "<group>"; };
+		7D0BFDA812E3EB57006BF429 /* 2-6.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = "2-6.tmx"; path = "maps/2-6.tmx"; sourceTree = "<group>"; };
 		7D50A1E612BBF8CA0039A691 /* GameData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameData.h; sourceTree = "<group>"; };
 		7D50A1E712BBF8CA0039A691 /* GameData.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = GameData.mm; sourceTree = "<group>"; };
 		7D50A1E812BBF8CA0039A691 /* GameScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameScene.h; sourceTree = "<group>"; };
@@ -1248,6 +1254,9 @@
 		7D50A1F812BBF8EF0039A691 /* maps */ = {
 			isa = PBXGroup;
 			children = (
+				7D0BFDA612E3EB57006BF429 /* 2-4.tmx */,
+				7D0BFDA712E3EB57006BF429 /* 2-5.tmx */,
+				7D0BFDA812E3EB57006BF429 /* 2-6.tmx */,
 				7DC41EBB12CC4E6500D45992 /* 2-3.tmx */,
 				7DC41EBC12CC4E6500D45992 /* 3-1.tmx */,
 				7DC41EBD12CC4E6500D45992 /* world-3-tileset.png */,
@@ -1803,6 +1812,9 @@
 				7DC41EC012CC4E6500D45992 /* world-3-tileset.png in Resources */,
 				7D52A49212D367270046E86C /* title-background-hd.png in Resources */,
 				7D52A49312D367270046E86C /* title-background.png in Resources */,
+				7D0BFDA912E3EB57006BF429 /* 2-4.tmx in Resources */,
+				7D0BFDAA12E3EB57006BF429 /* 2-5.tmx in Resources */,
+				7D0BFDAB12E3EB57006BF429 /* 2-6.tmx in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

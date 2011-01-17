@@ -138,16 +138,6 @@
 		// Get window size
 		CGSize winSize = [CCDirector sharedDirector].winSize;
 		
-		// Set up timer
-		secondsLeft = 3 * 60;	// Three minutes?!
-		
-		if (![GameData sharedGameData].bestTime)
-			[GameData sharedGameData].bestTime = 0;
-		
-		timerLabel = [CCLabelBMFont labelWithString:@"3:00" fntFile:@"yoster-16.fnt"];
-		[timerLabel setPosition:ccp(winSize.width - 30, winSize.height - 20)];
-		[self addChild:timerLabel z:2];
-		
 		// Create/add ball
 		if ([GameData sharedGameData].isTablet)
 			ball = [CCSprite spriteWithFile:@"ball-hd.png"];
@@ -185,7 +175,21 @@
 		map = [CCTMXTiledMap tiledMapWithTMXFile:mapFile];
 		[map setPosition:ccp(winSize.width / 2, winSize.height / 2)];
 		[self addChild:map z:1];
-
+		
+		// Set up timer
+		if ([map propertyNamed:@"time"])
+			secondsLeft = (int)[map propertyNamed:@"time"];
+		else
+			secondsLeft = 180;
+		
+		if (![GameData sharedGameData].bestTime)
+			[GameData sharedGameData].bestTime = 0;
+		
+		timerLabel = [CCLabelBMFont labelWithString:@"3:00" fntFile:@"yoster-16.fnt"];
+		[timerLabel setPosition:ccp(winSize.width - timerLabel.contentSize.width, winSize.height - timerLabel.contentSize.height)];
+		[self addChild:timerLabel z:2];
+		
+		// Store the collidable tiles
 		border = [[map layerNamed:@"Border"] retain];
 				
 		// Create Box2D world
