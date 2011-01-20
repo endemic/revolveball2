@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" orientation="orthogonal" width="100" height="100" tilewidth="32" tileheight="32">
+ <properties>
+  <property name="name" value=""/>
+  <property name="time" value="180"/>
+ </properties>
  <tileset firstgid="1" name="texture" tilewidth="32" tileheight="32">
   <image source="texture.png"/>
  </tileset>
  <layer name="Border" width="100" height="100">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAA+2aQW7DMAwE00v7hPaa/3+y6CFIUFgOKZHUypoBAgRbm7S1YrIx+nG73T4aL6inte74MYfHun++vF51qAU/tMAPLfj+0KKVqcha82FWtMAPLfBDC/zQAj+0IGvpwqxogR9a4IcW+KEFfsyHfKUFM6EFfmiBH1rghxb4MZ/sTNX63y48PiZ7Jpg5H/ihBX5oUenHPaH+1WA+tLDmK09GOqsZUX8XvHt5lr4LauuOH2vou6Cw7mSwJwp+WPRdsOai1vHenOatvzNqM4EfdbrlOwM/1tB3QW3d8WMNfRcis1PUuZbXDqjNxO4zpLa++LG2fjWyf0Nk/3a5Gmr7fcf56MlLrfdRucvStzdrqWe2ir38M6FvC/WZy/5Mxw8fzEdfnSx29kMxs+3sx0idSLKzUE+vqGO81zBSp3dNjupG6F4qZnEFvapuVd/V9aq6VX1X16vqVvVV0O9O/Qz8mKs//paZYSyM5Jye64+6X8s1W+6lddwtQfdSsTdn/O6x6sp+WD5z8cOne2E+cvt5wY/cfl7wIy5vRGDpa73+1vvo+z07d2QNZ81EFCvP0PeBfiU/7g29dfx/HT/GYT60UPbj3bzixxrzMZIrZpOVkV6P8dZpnfvu+KN7i9BnobT3e/SqulXghxYZfoxmaI9eVbcK5kOLK/rRmzEUiMqKWZltZN1WmYkW2bMeNXOefhl1q8APLfBDCwU/LFnZ08+jq6Hgx0j9o/OjssEMorJWT/3W+9XWMAvPnj165hpZ/0zfBfzQAj+0wA8t8EMLaxbqzT/eZ1ZkrSez9iyzcgx+aKHgx1dhX3UU/Kjsqw5+aDHrudzqzwMBAP74BSDk+glAnAAA
+   H4sIAAAAAAAAA+2azW6DMBCEk0v7BrQ98v4vWeWAalGb7Nr7M8bzSSjRBNbgYZ0hyvPxeDwbG4mnNe/0I4dj3j+KrdRJLPQDC/qBBb8/sGhlKmatfMp534qNfuTAtQsL+oEF/cCCfmDBrIULsxYWXLuwoB9Y0A8s6Ec+zFdYvOa6zFKlTuLhGoUF/cCCfmBBP/LxzlSt/3bR4zremYo9p8N7vuiHDvqBRaQfu0P9u8H+wEKarzQZ6aqmRf1V0N7LWfoqoM07/ZhDXwWEeWcG+wPBD4m+CtJc1Npfm9O09VdGes9uDV1bp1dfBbTvDPoxh74KaPNOP/z1n8pGP+pYZierYyXbChzXuVX0rbJxTfMFbX4PfT+90o859Lvh/Qzh/exyN9Du9xX7oycvtd5b5S7JuL1ZCz2zXWWqq/01+rdRHY3eAr3nvNd0+qEjYq2nH3JW9gMxs63sx0gdS7yzUM9YVvtoz2GkTu+c1Oq+GM1UWiJ6cQY9qm7UuLPrUXWjxp1dj6obNS6Cviv1K+hHrn585plhJIzknJ7zt7peyTlLruX82ehzwNfF/loi7s2M5x6pjuyHZM2lH/9hf9jpqH7sp1f6Ia/L/rDTLfOGBZJxpeffem99vVfHjsyh1T2Vxcw9VFtj7uTH3tBb+591+jEO+wMLy2xm7ce7fr2zHxY6Sn+M5IpsvDJSuY+2TuvYd/vXrs1CzwLp3u/Ro+pGQT+w8PBjNENr9Ki6UbA/sLijH70ZAwGrrOiV2UbmbZaeaOHd61Y9pxnPo24U9AML+oEFgh+SrKwZT6OjgeDHSP3a8VbZIAOrrNVTv/V+tjn0QnPP9vwvYPbntmjoBxb0Awv6gQX9wEKahXrzj/Y3K2atP7LuWfZKHfqBBYIfn4HjooPgR+S46NAPLLJ+l5v990BCCHnxC7BJg7tAnAAA
   </data>
  </layer>
  <layer name="Extras" width="100" height="100">
