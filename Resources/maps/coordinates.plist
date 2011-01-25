@@ -7,7 +7,7 @@
 		<key>width</key>
 		<integer>512</integer>
 		<key>height</key>
-		<integer>256</integer>
+		<integer>512</integer>
 	</dict>
 	<key>frames</key>
 	<dict>
@@ -618,6 +618,82 @@
 			<integer>16</integer>
 			<key>originalHeight</key>
 			<integer>16</integer>
+		</dict>
+		<key>test.png</key>
+		<dict>
+			<key>x</key>
+			<integer>0</integer>
+			<key>y</key>
+			<integer>96</integer>
+			<key>width</key>
+			<integer>128</integer>
+			<key>height</key>
+			<integer>192</integer>
+			<key>offsetX</key>
+			<real>0</real>
+			<key>offsetY</key>
+			<real>0</real>
+			<key>originalWidth</key>
+			<integer>128</integer>
+			<key>originalHeight</key>
+			<integer>192</integer>
+		</dict>
+		<key>test2.png</key>
+		<dict>
+			<key>x</key>
+			<integer>128</integer>
+			<key>y</key>
+			<integer>96</integer>
+			<key>width</key>
+			<integer>128</integer>
+			<key>height</key>
+			<integer>192</integer>
+			<key>offsetX</key>
+			<real>0</real>
+			<key>offsetY</key>
+			<real>0</real>
+			<key>originalWidth</key>
+			<integer>128</integer>
+			<key>originalHeight</key>
+			<integer>192</integer>
+		</dict>
+		<key>test3.png</key>
+		<dict>
+			<key>x</key>
+			<integer>256</integer>
+			<key>y</key>
+			<integer>96</integer>
+			<key>width</key>
+			<integer>128</integer>
+			<key>height</key>
+			<integer>192</integer>
+			<key>offsetX</key>
+			<real>0</real>
+			<key>offsetY</key>
+			<real>0</real>
+			<key>originalWidth</key>
+			<integer>128</integer>
+			<key>originalHeight</key>
+			<integer>192</integer>
+		</dict>
+		<key>test4.png</key>
+		<dict>
+			<key>x</key>
+			<integer>384</integer>
+			<key>y</key>
+			<integer>96</integer>
+			<key>width</key>
+			<integer>128</integer>
+			<key>height</key>
+			<integer>192</integer>
+			<key>offsetX</key>
+			<real>0</real>
+			<key>offsetY</key>
+			<real>0</real>
+			<key>originalWidth</key>
+			<integer>128</integer>
+			<key>originalHeight</key>
+			<integer>192</integer>
 		</dict>
 	</dict>
 </dict>
