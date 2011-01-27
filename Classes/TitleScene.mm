@@ -7,7 +7,7 @@
 //
 
 #import "TitleScene.h"
-#import "WorldSelectScene.h"
+#import "GameScene.h"
 #import "GameData.h"
 
 @implementation TitleScene
@@ -66,7 +66,11 @@
 
 - (void)startGame:(id)sender
 {
-	CCTransitionRotoZoom *transition = [CCTransitionRotoZoom transitionWithDuration:1.0 scene:[WorldSelectScene node]];
+	// Load "hub" level
+	[GameData sharedGameData].currentWorld = 0;
+	[GameData sharedGameData].currentLevel = 0;
+	
+	CCTransitionRotoZoom *transition = [CCTransitionRotoZoom transitionWithDuration:1.0 scene:[GameScene node]];
 	[[CCDirector sharedDirector] replaceScene:transition];
 }
 @end

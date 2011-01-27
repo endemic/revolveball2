@@ -46,6 +46,9 @@
 #define kClock 36
 #define kBumper 100
 
+#define kSkyLevelWarp 145
+#define kForestLevelWarp 149
+
 #define COCOS2D_DEBUG 1
 
 @implementation GameScene
@@ -191,7 +194,10 @@
 		
 		// Store the collidable tiles
 		border = [[map layerNamed:@"Border"] retain];
-				
+		
+		if ([GameData sharedGameData].currentLevel == 0 && [GameData sharedGameData].currentWorld == 0)
+			[self blockHubEntrances];
+		
 		// Create Box2D world
 		//b2Vec2 gravity = b2Vec2(0.0f, 0.0f);
 		b2Vec2 gravity(sin(CC_DEGREES_TO_RADIANS(map.rotation)) * 15, -cos(CC_DEGREES_TO_RADIANS(map.rotation)) * 15);
@@ -675,6 +681,22 @@
 						// Find the contact point and apply a linear inpulse at that point
 						// contact object is 'b'
 						break;
+					case kSkyLevelWarp:
+						// Set world/level
+						[GameData sharedGameData].currentWorld = 1;
+						[GameData sharedGameData].currentLevel = 1;
+						
+						// Transition to gameplay scene
+						[[CCDirector sharedDirector] replaceScene:[CCTransitionRotoZoom transitionWithDuration:1.0 scene:[GameScene node]]];
+						break;
+					case kForestLevelWarp:
+						// Set world/level
+						[GameData sharedGameData].currentWorld = 2;
+						[GameData sharedGameData].currentLevel = 1;
+						
+						// Transition to gameplay scene
+						[[CCDirector sharedDirector] replaceScene:[CCTransitionRotoZoom transitionWithDuration:1.0 scene:[GameScene node]]];
+						break;
 					default:
 						NSLog(@"Touching unrecognized tile GID: %i", tileGID);
 						break;
@@ -862,6 +884,26 @@
 	
 	if (abs(difference) <= inertialDeccelleration)
 		[self unschedule:@selector(inertialRotation:)];
+}
+
+- (void)blockHubEntrances
+{
+	// Check player progress here - probably by checking to see if a particular level has a "best time"
+	
+	// Block Forest world
+//	[border setTileGID:kPeg at:ccp(49, 54)];
+//	[border setTileGID:kPeg at:ccp(50, 54)];
+//	[border setTileGID:kPeg at:ccp(51, 54)];
+	
+	// Block Mountain world
+	[border setTileGID:kPeg at:ccp(54, 49)];
+	[border setTileGID:kPeg at:ccp(54, 50)];
+	[border setTileGID:kPeg at:ccp(54, 51)];
+	
+	// Block Cave world
+	[border setTileGID:kPeg at:ccp(49, 46)];
+	[border setTileGID:kPeg at:ccp(50, 46)];
+	[border setTileGID:kPeg at:ccp(51, 46)];
 }
 
 - (void)removeSpriteFromParent:(CCNode *)sprite
