@@ -48,6 +48,8 @@
 
 #define kSkyLevelWarp 145
 #define kForestLevelWarp 149
+#define kMountainLevelWarp 153
+#define kCaveLevelWarp 157
 
 #define COCOS2D_DEBUG 1
 
@@ -697,6 +699,22 @@
 						// Transition to gameplay scene
 						[[CCDirector sharedDirector] replaceScene:[CCTransitionRotoZoom transitionWithDuration:1.0 scene:[GameScene node]]];
 						break;
+					case kMountainLevelWarp:
+						// Set world/level
+						[GameData sharedGameData].currentWorld = 3;
+						[GameData sharedGameData].currentLevel = 1;
+						
+						// Transition to gameplay scene
+						[[CCDirector sharedDirector] replaceScene:[CCTransitionRotoZoom transitionWithDuration:1.0 scene:[GameScene node]]];
+						break;
+					case kCaveLevelWarp:
+						// Set world/level
+						[GameData sharedGameData].currentWorld = 4;
+						[GameData sharedGameData].currentLevel = 1;
+						
+						// Transition to gameplay scene
+						[[CCDirector sharedDirector] replaceScene:[CCTransitionRotoZoom transitionWithDuration:1.0 scene:[GameScene node]]];
+						break;
 					default:
 						NSLog(@"Touching unrecognized tile GID: %i", tileGID);
 						break;
@@ -896,14 +914,14 @@
 //	[border setTileGID:kPeg at:ccp(51, 54)];
 	
 	// Block Mountain world
-	[border setTileGID:kPeg at:ccp(54, 49)];
-	[border setTileGID:kPeg at:ccp(54, 50)];
-	[border setTileGID:kPeg at:ccp(54, 51)];
+//	[border setTileGID:kPeg at:ccp(54, 49)];
+//	[border setTileGID:kPeg at:ccp(54, 50)];
+//	[border setTileGID:kPeg at:ccp(54, 51)];
 	
 	// Block Cave world
-	[border setTileGID:kPeg at:ccp(49, 46)];
-	[border setTileGID:kPeg at:ccp(50, 46)];
-	[border setTileGID:kPeg at:ccp(51, 46)];
+//	[border setTileGID:kPeg at:ccp(49, 46)];
+//	[border setTileGID:kPeg at:ccp(50, 46)];
+//	[border setTileGID:kPeg at:ccp(51, 46)];
 }
 
 - (void)removeSpriteFromParent:(CCNode *)sprite
