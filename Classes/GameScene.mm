@@ -7,6 +7,7 @@
 //
 
 #import "GameScene.h"
+#import "LevelSelectScene.h"
 #import "GameData.h"
 #import "math.h"
 #import <vector>	// Easy data structure to store Box2D bodies
@@ -681,39 +682,38 @@
 						break;
 					case kBumper:
 						// Find the contact point and apply a linear inpulse at that point
-						// contact object is 'b'
 						break;
 					case kSkyLevelWarp:
 						// Set world/level
 						[GameData sharedGameData].currentWorld = 1;
 						[GameData sharedGameData].currentLevel = 1;
 						
-						// Transition to gameplay scene
-						[[CCDirector sharedDirector] replaceScene:[CCTransitionRotoZoom transitionWithDuration:1.0 scene:[GameScene node]]];
+						// Transition to level select scene
+						[[CCDirector sharedDirector] replaceScene:[CCTransitionRotoZoom transitionWithDuration:1.0 scene:[LevelSelectScene node]]];
 						break;
 					case kForestLevelWarp:
 						// Set world/level
 						[GameData sharedGameData].currentWorld = 2;
 						[GameData sharedGameData].currentLevel = 1;
 						
-						// Transition to gameplay scene
-						[[CCDirector sharedDirector] replaceScene:[CCTransitionRotoZoom transitionWithDuration:1.0 scene:[GameScene node]]];
+						// Transition to level select scene
+						[[CCDirector sharedDirector] replaceScene:[CCTransitionRotoZoom transitionWithDuration:1.0 scene:[LevelSelectScene node]]];
 						break;
 					case kMountainLevelWarp:
 						// Set world/level
 						[GameData sharedGameData].currentWorld = 3;
 						[GameData sharedGameData].currentLevel = 1;
 						
-						// Transition to gameplay scene
-						[[CCDirector sharedDirector] replaceScene:[CCTransitionRotoZoom transitionWithDuration:1.0 scene:[GameScene node]]];
+						// Transition to level select scene
+						[[CCDirector sharedDirector] replaceScene:[CCTransitionRotoZoom transitionWithDuration:1.0 scene:[LevelSelectScene node]]];
 						break;
 					case kCaveLevelWarp:
 						// Set world/level
 						[GameData sharedGameData].currentWorld = 4;
 						[GameData sharedGameData].currentLevel = 1;
 						
-						// Transition to gameplay scene
-						[[CCDirector sharedDirector] replaceScene:[CCTransitionRotoZoom transitionWithDuration:1.0 scene:[GameScene node]]];
+						// Transition to level select scene
+						[[CCDirector sharedDirector] replaceScene:[CCTransitionRotoZoom transitionWithDuration:1.0 scene:[LevelSelectScene node]]];
 						break;
 					default:
 						NSLog(@"Touching unrecognized tile GID: %i", tileGID);

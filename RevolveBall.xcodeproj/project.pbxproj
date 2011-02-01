@@ -140,11 +140,16 @@
 		7D0BFDA912E3EB57006BF429 /* 2-4.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 7D0BFDA612E3EB57006BF429 /* 2-4.tmx */; };
 		7D0BFDAA12E3EB57006BF429 /* 2-5.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 7D0BFDA712E3EB57006BF429 /* 2-5.tmx */; };
 		7D0BFDAB12E3EB57006BF429 /* 2-6.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 7D0BFDA812E3EB57006BF429 /* 2-6.tmx */; };
+		7D2BD5FF12F8A85000D0DA53 /* back-button-selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 7D2BD5FA12F8A85000D0DA53 /* back-button-selected.png */; };
+		7D2BD60012F8A85000D0DA53 /* back-button.png in Resources */ = {isa = PBXBuildFile; fileRef = 7D2BD5FB12F8A85000D0DA53 /* back-button.png */; };
+		7D2BD60112F8A85000D0DA53 /* start-button-disabled.png in Resources */ = {isa = PBXBuildFile; fileRef = 7D2BD5FC12F8A85000D0DA53 /* start-button-disabled.png */; };
+		7D2BD60212F8A85000D0DA53 /* start-button-selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 7D2BD5FD12F8A85000D0DA53 /* start-button-selected.png */; };
+		7D2BD60312F8A85000D0DA53 /* start-button.png in Resources */ = {isa = PBXBuildFile; fileRef = 7D2BD5FE12F8A85000D0DA53 /* start-button.png */; };
 		7D50A1F112BBF8CA0039A691 /* GameData.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7D50A1E712BBF8CA0039A691 /* GameData.mm */; };
 		7D50A1F212BBF8CA0039A691 /* GameScene.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7D50A1E912BBF8CA0039A691 /* GameScene.mm */; };
 		7D50A1F312BBF8CA0039A691 /* MyContactListener.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7D50A1EB12BBF8CA0039A691 /* MyContactListener.mm */; };
 		7D50A1F412BBF8CA0039A691 /* TitleScene.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7D50A1EE12BBF8CA0039A691 /* TitleScene.mm */; };
-		7D50A1F512BBF8CA0039A691 /* WorldSelectScene.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7D50A1F012BBF8CA0039A691 /* WorldSelectScene.mm */; };
+		7D50A1F512BBF8CA0039A691 /* LevelSelectScene.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7D50A1F012BBF8CA0039A691 /* LevelSelectScene.mm */; };
 		7D50A22B12BBF9590039A691 /* background-1-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 7D50A1FD12BBF9590039A691 /* background-1-hd.png */; };
 		7D50A22C12BBF9590039A691 /* background-1.png in Resources */ = {isa = PBXBuildFile; fileRef = 7D50A1FE12BBF9590039A691 /* background-1.png */; };
 		7D50A22D12BBF9590039A691 /* background-2-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 7D50A1FF12BBF9590039A691 /* background-2-hd.png */; };
@@ -553,6 +558,11 @@
 		7D0BFDA612E3EB57006BF429 /* 2-4.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = "2-4.tmx"; path = "maps/2-4.tmx"; sourceTree = "<group>"; };
 		7D0BFDA712E3EB57006BF429 /* 2-5.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = "2-5.tmx"; path = "maps/2-5.tmx"; sourceTree = "<group>"; };
 		7D0BFDA812E3EB57006BF429 /* 2-6.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = "2-6.tmx"; path = "maps/2-6.tmx"; sourceTree = "<group>"; };
+		7D2BD5FA12F8A85000D0DA53 /* back-button-selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "back-button-selected.png"; path = "images/buttons/back-button-selected.png"; sourceTree = "<group>"; };
+		7D2BD5FB12F8A85000D0DA53 /* back-button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "back-button.png"; path = "images/buttons/back-button.png"; sourceTree = "<group>"; };
+		7D2BD5FC12F8A85000D0DA53 /* start-button-disabled.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "start-button-disabled.png"; path = "images/buttons/start-button-disabled.png"; sourceTree = "<group>"; };
+		7D2BD5FD12F8A85000D0DA53 /* start-button-selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "start-button-selected.png"; path = "images/buttons/start-button-selected.png"; sourceTree = "<group>"; };
+		7D2BD5FE12F8A85000D0DA53 /* start-button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "start-button.png"; path = "images/buttons/start-button.png"; sourceTree = "<group>"; };
 		7D50A1E612BBF8CA0039A691 /* GameData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameData.h; sourceTree = "<group>"; };
 		7D50A1E712BBF8CA0039A691 /* GameData.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = GameData.mm; sourceTree = "<group>"; };
 		7D50A1E812BBF8CA0039A691 /* GameScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameScene.h; sourceTree = "<group>"; };
@@ -562,8 +572,8 @@
 		7D50A1EC12BBF8CA0039A691 /* SynthesizeSingleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SynthesizeSingleton.h; sourceTree = "<group>"; };
 		7D50A1ED12BBF8CA0039A691 /* TitleScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TitleScene.h; sourceTree = "<group>"; };
 		7D50A1EE12BBF8CA0039A691 /* TitleScene.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = TitleScene.mm; sourceTree = "<group>"; };
-		7D50A1EF12BBF8CA0039A691 /* WorldSelectScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorldSelectScene.h; sourceTree = "<group>"; };
-		7D50A1F012BBF8CA0039A691 /* WorldSelectScene.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = WorldSelectScene.mm; sourceTree = "<group>"; };
+		7D50A1EF12BBF8CA0039A691 /* LevelSelectScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LevelSelectScene.h; sourceTree = "<group>"; };
+		7D50A1F012BBF8CA0039A691 /* LevelSelectScene.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = LevelSelectScene.mm; sourceTree = "<group>"; };
 		7D50A1FD12BBF9590039A691 /* background-1-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "background-1-hd.png"; path = "images/background-1-hd.png"; sourceTree = "<group>"; };
 		7D50A1FE12BBF9590039A691 /* background-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "background-1.png"; path = "images/background-1.png"; sourceTree = "<group>"; };
 		7D50A1FF12BBF9590039A691 /* background-2-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "background-2-hd.png"; path = "images/background-2-hd.png"; sourceTree = "<group>"; };
@@ -929,8 +939,8 @@
 				7D50A1EC12BBF8CA0039A691 /* SynthesizeSingleton.h */,
 				7D50A1ED12BBF8CA0039A691 /* TitleScene.h */,
 				7D50A1EE12BBF8CA0039A691 /* TitleScene.mm */,
-				7D50A1EF12BBF8CA0039A691 /* WorldSelectScene.h */,
-				7D50A1F012BBF8CA0039A691 /* WorldSelectScene.mm */,
+				7D50A1EF12BBF8CA0039A691 /* LevelSelectScene.h */,
+				7D50A1F012BBF8CA0039A691 /* LevelSelectScene.mm */,
 				E0F81061120A17DF005866B8 /* GameConfig.h */,
 				E0F81062120A17DF005866B8 /* RootViewController.h */,
 				E0F81063120A17DF005866B8 /* RootViewController.m */,
@@ -1194,6 +1204,18 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
+		7D2BD5F912F8A83E00D0DA53 /* buttons */ = {
+			isa = PBXGroup;
+			children = (
+				7D2BD5FA12F8A85000D0DA53 /* back-button-selected.png */,
+				7D2BD5FB12F8A85000D0DA53 /* back-button.png */,
+				7D2BD5FC12F8A85000D0DA53 /* start-button-disabled.png */,
+				7D2BD5FD12F8A85000D0DA53 /* start-button-selected.png */,
+				7D2BD5FE12F8A85000D0DA53 /* start-button.png */,
+			);
+			name = buttons;
+			sourceTree = "<group>";
+		};
 		7D50A1F612BBF8E20039A691 /* fonts */ = {
 			isa = PBXGroup;
 			children = (
@@ -1211,6 +1233,7 @@
 		7D50A1F712BBF8EA0039A691 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				7D2BD5F912F8A83E00D0DA53 /* buttons */,
 				7D52A49012D367270046E86C /* title-background-hd.png */,
 				7D52A49112D367270046E86C /* title-background.png */,
 				7D50A1FD12BBF9590039A691 /* background-1-hd.png */,
@@ -1835,6 +1858,11 @@
 				7DECBF6F12F13334002D2DFC /* 2-8.tmx in Resources */,
 				7DECBF7012F13334002D2DFC /* 2-9.tmx in Resources */,
 				7DECBF7112F13334002D2DFC /* 2-10.tmx in Resources */,
+				7D2BD5FF12F8A85000D0DA53 /* back-button-selected.png in Resources */,
+				7D2BD60012F8A85000D0DA53 /* back-button.png in Resources */,
+				7D2BD60112F8A85000D0DA53 /* start-button-disabled.png in Resources */,
+				7D2BD60212F8A85000D0DA53 /* start-button-selected.png in Resources */,
+				7D2BD60312F8A85000D0DA53 /* start-button.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1852,7 +1880,7 @@
 				7D50A1F212BBF8CA0039A691 /* GameScene.mm in Sources */,
 				7D50A1F312BBF8CA0039A691 /* MyContactListener.mm in Sources */,
 				7D50A1F412BBF8CA0039A691 /* TitleScene.mm in Sources */,
-				7D50A1F512BBF8CA0039A691 /* WorldSelectScene.mm in Sources */,
+				7D50A1F512BBF8CA0039A691 /* LevelSelectScene.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

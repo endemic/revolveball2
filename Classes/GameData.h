@@ -1,6 +1,6 @@
 //
 //  GameData.h
-//  Ballgame
+//  Revolve Ball
 //
 //  Created by Nathan Demick on 10/15/10.
 //  Copyright 2010 Ganbaru Games. All rights reserved.
