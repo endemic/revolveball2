@@ -21,8 +21,12 @@
 	
 	// Time remaining
 	int secondsLeft;
-
+	
+	// Placeholder
 	int bestTime;
+	
+	// Stores info about level completion
+	NSMutableArray *levelData;
 	
 	bool paused;
 	
@@ -37,6 +41,7 @@
 @property (readwrite, nonatomic) int secondsLeft;
 @property (nonatomic) bool paused;
 @property (nonatomic) bool isTablet;
+@property (readwrite, nonatomic, retain) NSMutableArray *levelData;
 
 SYNTHESIZE_SINGLETON_FOR_CLASS_HEADER(GameData);
 

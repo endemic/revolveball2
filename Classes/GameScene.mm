@@ -628,13 +628,31 @@
 							[self unschedule:@selector(update:)];		// Need a better way of determining the end of a level
 							[self unschedule:@selector(timer:)];
 							
-							// Figure out best time (for prototype only)
-							int bestTime = [GameData sharedGameData].bestTime;
-							NSLog(@"Best time is %i", bestTime);
+							int currentLevelIndex = (([GameData sharedGameData].currentWorld - 1) * 10) + [GameData sharedGameData].currentLevel - 1;
 							
-							// Overwrite the best time value
-							if (secondsLeft > bestTime)
-								[GameData sharedGameData].bestTime = secondsLeft;
+							NSArray *levelData = [GameData sharedGameData].levelData;
+							NSDictionary *d = [levelData objectAtIndex:currentLevelIndex];
+							
+							int minutes = floor(secondsLeft / 60);
+							int seconds = secondsLeft % 60;
+							
+							NSString *time = [NSString stringWithFormat:@"%i:%02d", minutes, seconds];
+							
+							// Figgur out the best time
+							if ([[d objectForKey:@"bestTime"] isEqualToString:@"--:--"] || [[d objectForKey:@"bestTime"] compare:time options:NSNumericSearch] == NSOrderedAscending)
+							{
+								NSDictionary *d = [NSDictionary dictionaryWithObjectsAndKeys:time, @"bestTime", nil];
+								[[GameData sharedGameData].levelData replaceObjectAtIndex:currentLevelIndex withObject:d];
+								NSLog(@"Best time is %@!", time);
+							}
+							
+//							// Figure out best time (for prototype only)
+//							int bestTime = [GameData sharedGameData].bestTime;
+//							NSLog(@"Best time is %i", bestTime);
+//							
+//							// Overwrite the best time value
+//							if (secondsLeft > bestTime)
+//								[GameData sharedGameData].bestTime = secondsLeft;
 							
 							// Add "Game Over" layer
 							[self addChild:[GameOverLayer node] z:4];
@@ -919,21 +937,58 @@
 - (void)blockHubEntrances
 {
 	// Check player progress here - probably by checking to see if a particular level has a "best time"
+	NSArray *levelData = [GameData sharedGameData].levelData;
+	Boolean block = NO;
 	
 	// Block Forest world
-//	[border setTileGID:kPeg at:ccp(49, 54)];
-//	[border setTileGID:kPeg at:ccp(50, 54)];
-//	[border setTileGID:kPeg at:ccp(51, 54)];
+	for (int i = 10; i < 20; i++)
+	{
+		NSDictionary *d = [levelData objectAtIndex:i];
+		if ([[d objectForKey:@"bestTime"] isEqualToString:@"--:--"])
+			block = YES;
+		NSLog(@"%@", [d objectForKey:@"--:--"]);
+	}
+	
+	if (block)
+	{
+		[border setTileGID:kPeg at:ccp(49, 54)];
+		[border setTileGID:kPeg at:ccp(50, 54)];
+		[border setTileGID:kPeg at:ccp(51, 54)];
+	}
+	
+	block = NO;
 	
 	// Block Mountain world
-//	[border setTileGID:kPeg at:ccp(54, 49)];
-//	[border setTileGID:kPeg at:ccp(54, 50)];
-//	[border setTileGID:kPeg at:ccp(54, 51)];
+	for (int i = 20; i < 30; i++)
+	{
+		NSDictionary *d = [levelData objectAtIndex:i];
+		if ([[d objectForKey:@"bestTime"] isEqualToString:@"--:--"])
+			block = YES;
+	}
 	
+	if (block)
+	{
+		[border setTileGID:kPeg at:ccp(54, 49)];
+		[border setTileGID:kPeg at:ccp(54, 50)];
+		[border setTileGID:kPeg at:ccp(54, 51)];
+	}
+	
+	block = NO;
+
 	// Block Cave world
-//	[border setTileGID:kPeg at:ccp(49, 46)];
-//	[border setTileGID:kPeg at:ccp(50, 46)];
-//	[border setTileGID:kPeg at:ccp(51, 46)];
+	for (int i = 30; i < 40; i++)
+	{
+		NSDictionary *d = [levelData objectAtIndex:i];
+		if ([[d objectForKey:@"bestTime"] isEqualToString:@"--:--"])
+			block = YES;
+	}
+	
+	if (block)
+	{
+		[border setTileGID:kPeg at:ccp(49, 46)];
+		[border setTileGID:kPeg at:ccp(50, 46)];
+		[border setTileGID:kPeg at:ccp(51, 46)];
+	}
 }
 
 - (void)removeSpriteFromParent:(CCNode *)sprite

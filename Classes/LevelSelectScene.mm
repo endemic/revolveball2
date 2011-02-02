@@ -243,11 +243,20 @@
 			
 			if (CGRectContainsPoint(iconRect, touchPoint))
 			{
-				// Move ball icon over the appropriate icon
-				[self moveLevelSelectCursor:i];
+				int currentWorld = [GameData sharedGameData].currentWorld;
 				
-				// Set level
-				[GameData sharedGameData].currentLevel = i + 1;
+				// Check to see if the player has completed the previous level
+				NSArray *levelData = [GameData sharedGameData].levelData;
+				NSDictionary *d = [levelData objectAtIndex:((currentWorld - 1) * 10) + i];
+				
+				if ([[d objectForKey:@"bestTime"] isEqualToString:@"--:--"])
+				{
+					// Move ball icon over the appropriate icon
+					[self moveLevelSelectCursor:i];
+					
+					// Set level
+					[GameData sharedGameData].currentLevel = i + 1;
+				}
 			}
 		}
 	}

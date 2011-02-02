@@ -11,7 +11,7 @@
 
 @implementation GameData
 
-@synthesize currentWorld, currentLevel, restoreLevel, bestTime, secondsLeft, paused, isTablet;
+@synthesize currentWorld, currentLevel, restoreLevel, bestTime, secondsLeft, paused, isTablet, levelData;
 
 SYNTHESIZE_SINGLETON_FOR_CLASS(GameData);
 
@@ -20,6 +20,14 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(GameData);
 	if ((self = [super init]))
 	{
 		// Initialize any variables here
+		
+		// Init level completion status
+		levelData = [[NSMutableArray arrayWithCapacity:40] retain];
+		for (uint i = 0; i < 40; i++)
+		{
+			NSDictionary *d = [NSDictionary dictionaryWithObjectsAndKeys:@"--:--", @"bestTime", nil];
+			[levelData addObject:d];
+		}
 	}
 	return self;
 }
@@ -73,6 +81,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(GameData);
 	[coder encodeInt:self.bestTime forKey:@"bestTime"];
 	[coder encodeInt:self.secondsLeft forKey:@"secondsLeft"];
 	[coder encodeBool:self.paused forKey:@"paused"];
+	[coder encodeObject:self.levelData forKey:@"levelData"];
 }
 
 - (id)initWithCoder:(NSCoder *)coder
@@ -85,6 +94,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(GameData);
 		self.bestTime = [coder decodeIntForKey:@"bestTime"];
 		self.secondsLeft = [coder decodeIntForKey:@"secondsLeft"];
 		self.paused = [coder decodeBoolForKey:@"paused"];
+		self.levelData = [coder decodeObjectForKey:@"levelData"];
 	}
 	return self;
 }
