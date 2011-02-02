@@ -11,12 +11,15 @@
 @interface LevelSelectScene : CCScene {}
 @end
 
-@interface LevelSelectLayer : CCLayer {}
+@interface LevelSelectLayer : CCLayer 
+{
+	// A collection of icons that represent levels
+	NSMutableArray *levelIcons;
+	
+	// Rotating ball icon which represents current level selection
+	CCSprite *ball;
+}
 
-- (void)playWorldOne;
-- (void)playWorldTwo;
-- (void)playWorldThree;
-- (void)playWorldFour;
 
 - (void)backButtonAction:(id)sender;
 - (void)playButtonAction:(id)sender;

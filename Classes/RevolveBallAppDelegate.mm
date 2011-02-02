@@ -11,6 +11,7 @@
 #import "RevolveBallAppDelegate.h"
 #import "GameConfig.h"
 #import "TitleScene.h"
+#import "LevelSelectScene.h"
 #import "RootViewController.h"
 
 @implementation RevolveBallAppDelegate
@@ -113,7 +114,7 @@
 	[self removeStartupFlicker];
 	
 	// Run the intro Scene
-	[[CCDirector sharedDirector] runWithScene: [TitleScene node]];		
+	[[CCDirector sharedDirector] runWithScene: [LevelSelectScene node]];		
 }
 
 

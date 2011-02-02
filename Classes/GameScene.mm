@@ -139,7 +139,7 @@
 		
 		// Enable touches/accelerometer
 		[self setIsTouchEnabled:YES];
-		[self setIsAccelerometerEnabled:YES];
+		//[self setIsAccelerometerEnabled:YES];		// Currently gravity is not set up to use accelerometer
 		
 		// Get window size
 		CGSize winSize = [CCDirector sharedDirector].winSize;
@@ -684,6 +684,9 @@
 						// Find the contact point and apply a linear inpulse at that point
 						break;
 					case kSkyLevelWarp:
+						// Stop update method
+						[self unschedule:@selector(update:)];
+						
 						// Set world/level
 						[GameData sharedGameData].currentWorld = 1;
 						[GameData sharedGameData].currentLevel = 1;
@@ -692,6 +695,9 @@
 						[[CCDirector sharedDirector] replaceScene:[CCTransitionRotoZoom transitionWithDuration:1.0 scene:[LevelSelectScene node]]];
 						break;
 					case kForestLevelWarp:
+						// Stop update method
+						[self unschedule:@selector(update:)];
+						
 						// Set world/level
 						[GameData sharedGameData].currentWorld = 2;
 						[GameData sharedGameData].currentLevel = 1;
@@ -700,6 +706,9 @@
 						[[CCDirector sharedDirector] replaceScene:[CCTransitionRotoZoom transitionWithDuration:1.0 scene:[LevelSelectScene node]]];
 						break;
 					case kMountainLevelWarp:
+						// Stop update method
+						[self unschedule:@selector(update:)];
+						
 						// Set world/level
 						[GameData sharedGameData].currentWorld = 3;
 						[GameData sharedGameData].currentLevel = 1;
@@ -708,6 +717,9 @@
 						[[CCDirector sharedDirector] replaceScene:[CCTransitionRotoZoom transitionWithDuration:1.0 scene:[LevelSelectScene node]]];
 						break;
 					case kCaveLevelWarp:
+						// Stop update method
+						[self unschedule:@selector(update:)];
+						
 						// Set world/level
 						[GameData sharedGameData].currentWorld = 4;
 						[GameData sharedGameData].currentLevel = 1;
