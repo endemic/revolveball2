@@ -80,7 +80,8 @@
 		[self addChild:backButtonMenu];
 		
 		// Add "play" button
-		CCMenu *playButtonMenu = [CCMenu menuWithItems:[CCMenuItemImage itemFromNormalImage:@"start-button.png" selectedImage:@"start-button-selected.png" disabledImage:@"start-button-disabled.png" target:self selector:@selector(playButtonAction:)], nil];
+		CCMenuItemImage *playButton = [CCMenuItemImage itemFromNormalImage:@"start-button.png" selectedImage:@"start-button-selected.png" disabledImage:@"start-button-disabled.png" target:self selector:@selector(playButtonAction:)];
+		CCMenu *playButtonMenu = [CCMenu menuWithItems:playButton, nil];
 		[playButtonMenu setPosition:ccp(windowSize.width / 2, windowSize.height / 10)];
 		[self addChild:playButtonMenu];
 		
@@ -114,12 +115,16 @@
 			{
 				case 0: [s setPosition:ccp(s.contentSize.width, 290)]; break;
 				case 1: [s setPosition:ccp(s.contentSize.width, 226)]; break;
-				case 2: [s setPosition:ccp(s.contentSize.width * 3, 290)]; break;
-				case 3: [s setPosition:ccp(s.contentSize.width * 3, 226)]; break;
+				
+				case 2: [s setPosition:ccp(s.contentSize.width * 3, 226)]; break;
+				case 3: [s setPosition:ccp(s.contentSize.width * 3, 290)]; break;
+				
 				case 4: [s setPosition:ccp(s.contentSize.width * 5, 290)]; break;
 				case 5: [s setPosition:ccp(s.contentSize.width * 5, 226)]; break;
-				case 6: [s setPosition:ccp(s.contentSize.width * 7, 290)]; break;
-				case 7: [s setPosition:ccp(s.contentSize.width * 7, 226)]; break;
+				
+				case 6: [s setPosition:ccp(s.contentSize.width * 7, 226)]; break;
+				case 7: [s setPosition:ccp(s.contentSize.width * 7, 290)]; break;
+				
 				case 8: [s setPosition:ccp(s.contentSize.width * 9, 290)]; break;
 				case 9: [s setPosition:ccp(s.contentSize.width * 9, 226)]; break;
 			}
@@ -161,6 +166,61 @@
 	[[CCDirector sharedDirector] replaceScene:transition];
 }
 
+- (void)moveLevelSelectCursor:(int)destination
+{
+	/* Holy shit, this is crufty */
+	
+	int currentLevelIndex = [GameData sharedGameData].currentLevel - 1;
+	
+	CCSprite *one = [levelIcons objectAtIndex:0];
+	CCSprite *two = [levelIcons objectAtIndex:1];
+	CCSprite *three = [levelIcons objectAtIndex:2];
+	CCSprite *four = [levelIcons objectAtIndex:3];
+	CCSprite *five = [levelIcons objectAtIndex:4];
+	CCSprite *six = [levelIcons objectAtIndex:5];
+	CCSprite *seven = [levelIcons objectAtIndex:6];
+	CCSprite *eight = [levelIcons objectAtIndex:7];
+	CCSprite *nine = [levelIcons objectAtIndex:8];
+	CCSprite *ten = [levelIcons objectAtIndex:9];
+	
+	NSArray *actions = [NSArray arrayWithObjects:
+						[CCMoveTo actionWithDuration:0.3 position:one.position],
+						[CCMoveTo actionWithDuration:0.3 position:two.position],
+						[CCMoveTo actionWithDuration:0.3 position:three.position],
+						[CCMoveTo actionWithDuration:0.3 position:four.position],
+						[CCMoveTo actionWithDuration:0.3 position:five.position],
+						[CCMoveTo actionWithDuration:0.3 position:six.position],
+						[CCMoveTo actionWithDuration:0.3 position:seven.position],
+						[CCMoveTo actionWithDuration:0.3 position:eight.position],
+						[CCMoveTo actionWithDuration:0.3 position:nine.position],
+						[CCMoveTo actionWithDuration:0.3 position:ten.position],
+						nil];
+	
+	CCSequence *seq = nil;
+	
+	if (currentLevelIndex < destination)
+		for (int i = currentLevelIndex + 1; i <= destination; i++)
+		{
+			if (!seq) 
+				seq = [actions objectAtIndex:i];
+			else 
+				seq = [CCSequence actionOne:seq two:[actions objectAtIndex:i]];
+				
+		}
+	else if (currentLevelIndex > destination)
+		for (int i = currentLevelIndex - 1; i >= destination; i--)
+		{
+			if (!seq) 
+				seq = [actions objectAtIndex:i];
+			else 
+				seq = [CCSequence actionOne:seq two:[actions objectAtIndex:i]];
+			
+		}
+	
+	if (seq)
+		[ball runAction:seq];
+}
+
 - (void)ccTouchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
 	UITouch *touch = [touches anyObject];
@@ -177,14 +237,14 @@
 		for (uint i = 0; i < [levelIcons count]; i++)
 		{
 			CCSprite *icon = [levelIcons objectAtIndex:i];
-			CGRect iconRect = CGRectMake(icon.position.x, icon.position.y, icon.contentSize.width, icon.contentSize.height);
+			
+			// CGRect origin is upper left, so offset the center
+			CGRect iconRect = CGRectMake(icon.position.x - icon.contentSize.width / 2, windowSize.height - icon.position.y - icon.contentSize.height / 2, icon.contentSize.width, icon.contentSize.height);
 			
 			if (CGRectContainsPoint(iconRect, touchPoint))
 			{
-				NSLog(@"Checking if (%f, %f) is near (%f, %f)", touchPoint.x, touchPoint.y, icon.position.x, icon.position.y);
-				
 				// Move ball icon over the appropriate icon
-				[ball setPosition:icon.position];
+				[self moveLevelSelectCursor:i];
 				
 				// Set level
 				[GameData sharedGameData].currentLevel = i + 1;

@@ -329,7 +329,7 @@
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>7DAE6EED12F980CF0025901B</string>
+										<string>7D738A0812F9EE990014113D</string>
 										<key>history</key>
 										<array>
 											<string>7D50A2AC12BBFCFC0039A691</string>
@@ -387,7 +387,6 @@
 											<string>7D2BD60712F8AD5A00D0DA53</string>
 											<string>7D2BD60812F8AD5A00D0DA53</string>
 											<string>7D2BD60A12F8AD5A00D0DA53</string>
-											<string>7DAE6E8212F8D16B0025901B</string>
 											<string>7DAE6E8712F8D1C80025901B</string>
 											<string>7DAE6E8812F8D1C80025901B</string>
 											<string>7DAE6E8912F8D1C80025901B</string>
@@ -395,13 +394,16 @@
 											<string>7DAE6E8B12F8D1C80025901B</string>
 											<string>7DAE6E9712F8D37D0025901B</string>
 											<string>7DAE6EAC12F973270025901B</string>
-											<string>7DAE6EB812F977490025901B</string>
 											<string>7DAE6EB912F977490025901B</string>
-											<string>7DAE6EBA12F977490025901B</string>
 											<string>7DAE6EBB12F977490025901B</string>
 											<string>7DAE6EC212F977D00025901B</string>
 											<string>7DAE6EDA12F97CF70025901B</string>
-											<string>7DAE6EDB12F97CF70025901B</string>
+											<string>7D7389CC12F9E1820014113D</string>
+											<string>7D7389CD12F9E1820014113D</string>
+											<string>7D7389CE12F9E1820014113D</string>
+											<string>7D7389DB12F9E80F0014113D</string>
+											<string>7D7389DC12F9E80F0014113D</string>
+											<string>7D7389EC12F9EA990014113D</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -459,9 +461,9 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>7DAE6E6E12F8D0540025901B</string>
+				<string>7D7389A812F9DEAC0014113D</string>
 				<string>1CE0B1FE06471DED0097A5F4</string>
-				<string>7DAE6E6F12F8D0540025901B</string>
+				<string>7D7389A912F9DEAC0014113D</string>
 				<string>1CE0B20306471E060097A5F4</string>
 				<string>1CE0B20506471E060097A5F4</string>
 			</array>
@@ -599,9 +601,9 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
-		<string>1C78EAAD065D492600B07095</string>
 		<string>1CD10A99069EF8BA00B06720</string>
 		<string>7D50A1CB12BBF8100039A691</string>
+		<string>1C78EAAD065D492600B07095</string>
 		<string>/Users/ndemick/iPhone/RevolveBall/RevolveBall.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
@@ -626,7 +628,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>1CD0528F0623707200166675</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>LevelSelectScene.mm</string>
+								<string></string>
 								<key>StatusBarVisibility</key>
 								<true/>
 							</dict>
@@ -643,8 +645,6 @@
 							<string>219pt</string>
 						</dict>
 						<dict>
-							<key>BecomeActive</key>
-							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
@@ -684,7 +684,7 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>7D50A1CB12BBF8100039A691</string>
-				<string>7DAE6E7012F8D0540025901B</string>
+				<string>7D7389AA12F9DEAC0014113D</string>
 				<string>1CD0528F0623707200166675</string>
 				<string>XCMainBuildResultsModuleGUID</string>
 			</array>
@@ -806,13 +806,13 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>1CD10A99069EF8BA00B06720</string>
-				<string>7DAE6E7612F8D07F0025901B</string>
+				<string>7D7389AE12F9DF820014113D</string>
 				<string>1C162984064C10D400B95A72</string>
-				<string>7DAE6E7712F8D07F0025901B</string>
-				<string>7DAE6E7812F8D07F0025901B</string>
-				<string>7DAE6E7912F8D07F0025901B</string>
-				<string>7DAE6E7A12F8D07F0025901B</string>
-				<string>7DAE6E7B12F8D07F0025901B</string>
+				<string>7D7389AF12F9DF820014113D</string>
+				<string>7D7389B012F9DF820014113D</string>
+				<string>7D7389B112F9DF820014113D</string>
+				<string>7D7389B212F9DF820014113D</string>
+				<string>7D7389B312F9DF820014113D</string>
 			</array>
 			<key>ToolbarConfiguration</key>
 			<string>xcode.toolbar.config.debugV3</string>
@@ -968,7 +968,7 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>1C78EAAD065D492600B07095</string>
-				<string>7DAE6E7C12F8D07F0025901B</string>
+				<string>7D7389B412F9DF820014113D</string>
 				<string>1C78EAAC065D492600B07095</string>
 			</array>
 			<key>ToolbarConfiguration</key>
@@ -978,7 +978,7 @@
 			<key>WindowToolGUID</key>
 			<string>1C78EAAD065D492600B07095</string>
 			<key>WindowToolIsVisible</key>
-			<false/>
+			<true/>
 		</dict>
 		<dict>
 			<key>Identifier</key>
