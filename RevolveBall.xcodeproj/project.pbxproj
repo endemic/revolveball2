@@ -233,6 +233,7 @@
 		7DECBF6F12F13334002D2DFC /* 2-8.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 7DECBF6A12F13334002D2DFC /* 2-8.tmx */; };
 		7DECBF7012F13334002D2DFC /* 2-9.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 7DECBF6B12F13334002D2DFC /* 2-9.tmx */; };
 		7DECBF7112F13334002D2DFC /* 2-10.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 7DECBF6C12F13334002D2DFC /* 2-10.tmx */; };
+		7DF2A78212FAC47C007023B0 /* UserDefaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7DF2A78112FAC47C007023B0 /* UserDefaults.plist */; };
 		DC6640030F83B3EA000B3E49 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC6640020F83B3EA000B3E49 /* AudioToolbox.framework */; };
 		DC6640050F83B3EA000B3E49 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC6640040F83B3EA000B3E49 /* OpenAL.framework */; };
 		DCCBF1B70F6022AE0040855A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCCBF1B60F6022AE0040855A /* CoreGraphics.framework */; };
@@ -657,6 +658,7 @@
 		7DECBF6A12F13334002D2DFC /* 2-8.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = "2-8.tmx"; path = "maps/2-8.tmx"; sourceTree = "<group>"; };
 		7DECBF6B12F13334002D2DFC /* 2-9.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = "2-9.tmx"; path = "maps/2-9.tmx"; sourceTree = "<group>"; };
 		7DECBF6C12F13334002D2DFC /* 2-10.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = "2-10.tmx"; path = "maps/2-10.tmx"; sourceTree = "<group>"; };
+		7DF2A78112FAC47C007023B0 /* UserDefaults.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = UserDefaults.plist; sourceTree = "<group>"; };
 		DC6640020F83B3EA000B3E49 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		DC6640040F83B3EA000B3E49 /* OpenAL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenAL.framework; path = System/Library/Frameworks/OpenAL.framework; sourceTree = SDKROOT; };
 		DCCBF1B60F6022AE0040855A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -1200,6 +1202,7 @@
 				50F4144510692EE7002A0D5E /* fps_images.png */,
 				50F4144610692EE7002A0D5E /* Icon.png */,
 				50F4144710692EE7002A0D5E /* Info.plist */,
+				7DF2A78112FAC47C007023B0 /* UserDefaults.plist */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -1863,6 +1866,7 @@
 				7D2BD60212F8A85000D0DA53 /* start-button-selected.png in Resources */,
 				7D2BD60312F8A85000D0DA53 /* start-button.png in Resources */,
 				7DAE6EA812F96E150025901B /* level-icon.png in Resources */,
+				7DF2A78212FAC47C007023B0 /* UserDefaults.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

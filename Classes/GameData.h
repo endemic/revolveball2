@@ -25,9 +25,6 @@
 	// Placeholder
 	int bestTime;
 	
-	// Stores info about level completion
-	NSMutableArray *levelData;
-	
 	bool paused;
 	
 	// Boolean that's set to "true" if game is running on iPad!
@@ -41,7 +38,6 @@
 @property (readwrite, nonatomic) int secondsLeft;
 @property (nonatomic) bool paused;
 @property (nonatomic) bool isTablet;
-@property (readwrite, nonatomic, retain) NSMutableArray *levelData;
 
 SYNTHESIZE_SINGLETON_FOR_CLASS_HEADER(GameData);
 

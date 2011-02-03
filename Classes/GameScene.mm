@@ -630,29 +630,18 @@
 							
 							int currentLevelIndex = (([GameData sharedGameData].currentWorld - 1) * 10) + [GameData sharedGameData].currentLevel - 1;
 							
-							NSArray *levelData = [GameData sharedGameData].levelData;
+							// Get best time from user defaults
+							NSMutableArray *levelData = [NSMutableArray arrayWithArray:[[NSUserDefaults standardUserDefaults] arrayForKey:@"levelData"]];
 							NSDictionary *d = [levelData objectAtIndex:currentLevelIndex];
-							
-							int minutes = floor(secondsLeft / 60);
-							int seconds = secondsLeft % 60;
-							
-							NSString *time = [NSString stringWithFormat:@"%i:%02d", minutes, seconds];
-							
-							// Figgur out the best time
-							if ([[d objectForKey:@"bestTime"] isEqualToString:@"--:--"] || [[d objectForKey:@"bestTime"] compare:time options:NSNumericSearch] == NSOrderedAscending)
+
+							// Determine if current time is faster than saved
+							if (secondsLeft < [[d objectForKey:@"bestTime"] intValue])
 							{
-								NSDictionary *d = [NSDictionary dictionaryWithObjectsAndKeys:time, @"bestTime", nil];
-								[[GameData sharedGameData].levelData replaceObjectAtIndex:currentLevelIndex withObject:d];
-								NSLog(@"Best time is %@!", time);
+								NSDictionary *d = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInt:secondsLeft], @"bestTime", YES, @"complete", nil];
+								[levelData replaceObjectAtIndex:currentLevelIndex withObject:d];
+								[[NSUserDefaults standardUserDefaults] setObject:levelData forKey:@"levelData"];
+								NSLog(@"Setting new best time as %@", [[[NSUserDefaults standardUserDefaults] arrayForKey:@"levelData"] objectAtIndex:currentLevelIndex]);
 							}
-							
-//							// Figure out best time (for prototype only)
-//							int bestTime = [GameData sharedGameData].bestTime;
-//							NSLog(@"Best time is %i", bestTime);
-//							
-//							// Overwrite the best time value
-//							if (secondsLeft > bestTime)
-//								[GameData sharedGameData].bestTime = secondsLeft;
 							
 							// Add "Game Over" layer
 							[self addChild:[GameOverLayer node] z:4];
@@ -937,16 +926,15 @@
 - (void)blockHubEntrances
 {
 	// Check player progress here - probably by checking to see if a particular level has a "best time"
-	NSArray *levelData = [GameData sharedGameData].levelData;
+	NSMutableArray *levelData = [NSMutableArray arrayWithArray:[[NSUserDefaults standardUserDefaults] arrayForKey:@"levelData"]];
 	Boolean block = NO;
 	
 	// Block Forest world
 	for (int i = 10; i < 20; i++)
 	{
 		NSDictionary *d = [levelData objectAtIndex:i];
-		if ([[d objectForKey:@"bestTime"] isEqualToString:@"--:--"])
+		if (![d objectForKey:@"complete"])
 			block = YES;
-		NSLog(@"%@", [d objectForKey:@"--:--"]);
 	}
 	
 	if (block)
@@ -962,7 +950,7 @@
 	for (int i = 20; i < 30; i++)
 	{
 		NSDictionary *d = [levelData objectAtIndex:i];
-		if ([[d objectForKey:@"bestTime"] isEqualToString:@"--:--"])
+		if (![d objectForKey:@"complete"])
 			block = YES;
 	}
 	
@@ -979,7 +967,7 @@
 	for (int i = 30; i < 40; i++)
 	{
 		NSDictionary *d = [levelData objectAtIndex:i];
-		if ([[d objectForKey:@"bestTime"] isEqualToString:@"--:--"])
+		if (![d objectForKey:@"complete"])
 			block = YES;
 	}
 	

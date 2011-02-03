@@ -243,13 +243,13 @@
 			
 			if (CGRectContainsPoint(iconRect, touchPoint))
 			{
-				int currentWorld = [GameData sharedGameData].currentWorld;
+				int currentLevelIndex = (([GameData sharedGameData].currentWorld - 1) * 10) + i;
 				
 				// Check to see if the player has completed the previous level
-				NSArray *levelData = [GameData sharedGameData].levelData;
-				NSDictionary *d = [levelData objectAtIndex:((currentWorld - 1) * 10) + i];
-				
-				if ([[d objectForKey:@"bestTime"] isEqualToString:@"--:--"])
+				NSMutableArray *levelData = [NSMutableArray arrayWithArray:[[NSUserDefaults standardUserDefaults] arrayForKey:@"levelData"]];
+				NSDictionary *d = [levelData objectAtIndex:currentLevelIndex];
+
+				if ([d objectForKey:@"complete"])
 				{
 					// Move ball icon over the appropriate icon
 					[self moveLevelSelectCursor:i];

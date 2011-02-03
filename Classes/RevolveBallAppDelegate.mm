@@ -113,6 +113,10 @@
 	// Removes the startup flicker
 	[self removeStartupFlicker];
 	
+	// Load default defaults
+	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+	[defaults registerDefaults:[NSDictionary dictionaryWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"UserDefaults" ofType:@"plist"]]];
+	
 	// Run the intro Scene
 	[[CCDirector sharedDirector] runWithScene: [LevelSelectScene node]];		
 }
