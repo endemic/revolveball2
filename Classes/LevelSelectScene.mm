@@ -145,6 +145,21 @@
 		// Tell ball to spin for-evah!
 		[ball setScale:0.8];
 		[ball runAction:[CCRepeatForever actionWithAction:[CCRotateBy actionWithDuration:2.0 angle:360.0]]];
+		
+		// Add descriptive labels that show level info, such as title, best time, etc.
+		levelTitle = [CCLabelBMFont labelWithString:@"Level Name" fntFile:@"yoster-32.fnt"];
+		[levelTitle setPosition:ccp(windowSize.width / 2, windowSize.height / 3)];
+		[self addChild:levelTitle];
+		
+		levelBestTime = [CCLabelBMFont labelWithString:@"Best Time: --:--" fntFile:@"yoster-32.fnt"];
+		// Set the position based on the label above it
+		[levelBestTime setPosition:ccp(windowSize.width / 2, levelTitle.position.y - levelBestTime.contentSize.height)];
+		[self addChild:levelBestTime];
+		
+		levelTimeLimit = [CCLabelBMFont labelWithString:@"Limit: --:--" fntFile:@"yoster-32.fnt"];
+		// Set the position based on the label above it
+		[levelTimeLimit setPosition:ccp(windowSize.width / 2, levelBestTime.position.y - levelTimeLimit.contentSize.height)];
+		[self addChild:levelTimeLimit];
 	}
 	return self;
 }
@@ -244,18 +259,55 @@
 			if (CGRectContainsPoint(iconRect, touchPoint))
 			{
 				int currentLevelIndex = (([GameData sharedGameData].currentWorld - 1) * 10) + i;
+				int previousLevelIndex = currentLevelIndex - 1 > -1 ? currentLevelIndex - 1 : 0;
 				
 				// Check to see if the player has completed the previous level
 				NSMutableArray *levelData = [NSMutableArray arrayWithArray:[[NSUserDefaults standardUserDefaults] arrayForKey:@"levelData"]];
-				NSDictionary *d = [levelData objectAtIndex:currentLevelIndex];
-
-				if ([d objectForKey:@"complete"])
+				NSDictionary *d = [levelData objectAtIndex:previousLevelIndex];
+				
+				CCLOG(@"Checking status of level %i: %@", previousLevelIndex, [d objectForKey:@"complete"]);
+				
+				if ([[d objectForKey:@"complete"] boolValue])
 				{
 					// Move ball icon over the appropriate icon
 					[self moveLevelSelectCursor:i];
 					
 					// Set level
 					[GameData sharedGameData].currentLevel = i + 1;
+					
+					// Create string that is equal to map filename
+					NSMutableString *mapFile = [NSMutableString stringWithFormat:@"%i-%i", [GameData sharedGameData].currentWorld, [GameData sharedGameData].currentLevel];
+					
+					// If running on iPad, append "-hd" to filename to designate @2x level
+					if ([GameData sharedGameData].isTablet) [mapFile appendString:@"-hd"];
+					
+					// Append file format suffix
+					[mapFile appendString:@".tmx"];
+					
+					// Create map obj so we can get its' name + time limit
+					CCTMXTiledMap *map = [CCTMXTiledMap tiledMapWithTMXFile:mapFile];
+					
+					int minutes, seconds;
+					
+					// Populate "best time" field
+					int bestTimeInSeconds = [[[levelData objectAtIndex:previousLevelIndex] objectForKey:@"bestTime"] intValue];
+					minutes = floor(bestTimeInSeconds / 60);
+					seconds = bestTimeInSeconds % 60;
+					[levelBestTime setString:[NSString stringWithFormat:@"Best Time: %02d:%02d", minutes, seconds]];
+					
+					// Populate time limit field
+					if ([map propertyNamed:@"time"])
+					{
+						int timeLimitInSeconds = [[map propertyNamed:@"time"] intValue];
+						minutes = floor(timeLimitInSeconds / 60);
+						seconds = timeLimitInSeconds % 60;
+	
+						[levelTimeLimit setString:[NSString stringWithFormat:@"Limit: %02d:%02d", minutes, seconds]];
+					}
+					
+					// Set the map name field
+					if ([map propertyNamed:@"name"])
+						[levelTitle setString:[map propertyNamed:@"name"]];
 				}
 			}
 		}

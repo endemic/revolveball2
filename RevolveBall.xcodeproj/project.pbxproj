@@ -228,6 +228,8 @@
 		7DE912AD12C0686F00C4C2BC /* 1-6.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 7DE912A912C0686F00C4C2BC /* 1-6.tmx */; };
 		7DE912AE12C0686F00C4C2BC /* 1-7.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 7DE912AA12C0686F00C4C2BC /* 1-7.tmx */; };
 		7DE912AF12C0686F00C4C2BC /* 1-8.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 7DE912AB12C0686F00C4C2BC /* 1-8.tmx */; };
+		7DEB0B3312FC1C59003C6E0B /* yoster-24.fnt in Resources */ = {isa = PBXBuildFile; fileRef = 7DEB0B3112FC1C59003C6E0B /* yoster-24.fnt */; };
+		7DEB0B3412FC1C59003C6E0B /* yoster-24.png in Resources */ = {isa = PBXBuildFile; fileRef = 7DEB0B3212FC1C59003C6E0B /* yoster-24.png */; };
 		7DECBF6D12F13334002D2DFC /* 0-0.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 7DECBF6812F13334002D2DFC /* 0-0.tmx */; };
 		7DECBF6E12F13334002D2DFC /* 2-7.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 7DECBF6912F13334002D2DFC /* 2-7.tmx */; };
 		7DECBF6F12F13334002D2DFC /* 2-8.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 7DECBF6A12F13334002D2DFC /* 2-8.tmx */; };
@@ -653,6 +655,8 @@
 		7DE912A912C0686F00C4C2BC /* 1-6.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = "1-6.tmx"; path = "maps/1-6.tmx"; sourceTree = "<group>"; };
 		7DE912AA12C0686F00C4C2BC /* 1-7.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = "1-7.tmx"; path = "maps/1-7.tmx"; sourceTree = "<group>"; };
 		7DE912AB12C0686F00C4C2BC /* 1-8.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = "1-8.tmx"; path = "maps/1-8.tmx"; sourceTree = "<group>"; };
+		7DEB0B3112FC1C59003C6E0B /* yoster-24.fnt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = "yoster-24.fnt"; path = "fonts/yoster-24.fnt"; sourceTree = "<group>"; };
+		7DEB0B3212FC1C59003C6E0B /* yoster-24.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "yoster-24.png"; path = "fonts/yoster-24.png"; sourceTree = "<group>"; };
 		7DECBF6812F13334002D2DFC /* 0-0.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = "0-0.tmx"; path = "maps/0-0.tmx"; sourceTree = "<group>"; };
 		7DECBF6912F13334002D2DFC /* 2-7.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = "2-7.tmx"; path = "maps/2-7.tmx"; sourceTree = "<group>"; };
 		7DECBF6A12F13334002D2DFC /* 2-8.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = "2-8.tmx"; path = "maps/2-8.tmx"; sourceTree = "<group>"; };
@@ -1224,6 +1228,8 @@
 			children = (
 				7D50A25912BBF9640039A691 /* yoster-16.fnt */,
 				7D50A25A12BBF9640039A691 /* yoster-16.png */,
+				7DEB0B3112FC1C59003C6E0B /* yoster-24.fnt */,
+				7DEB0B3212FC1C59003C6E0B /* yoster-24.png */,
 				7D50A25B12BBF9640039A691 /* yoster-32.fnt */,
 				7D50A25C12BBF9640039A691 /* yoster-32.png */,
 				7D50A25D12BBF9640039A691 /* yoster-48.fnt */,
@@ -1867,6 +1873,8 @@
 				7D2BD60312F8A85000D0DA53 /* start-button.png in Resources */,
 				7DAE6EA812F96E150025901B /* level-icon.png in Resources */,
 				7DF2A78212FAC47C007023B0 /* UserDefaults.plist in Resources */,
+				7DEB0B3312FC1C59003C6E0B /* yoster-24.fnt in Resources */,
+				7DEB0B3412FC1C59003C6E0B /* yoster-24.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

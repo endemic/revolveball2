@@ -90,11 +90,13 @@
 		[bestTimeLabel setPosition:ccp(winSize.width / 2, winSize.height / 2 - 50)];
 		[self addChild:bestTimeLabel z:1];
 		
-		// Add button which takes us to game scene
-		CCMenuItem *startButton = [CCMenuItemImage itemFromNormalImage:@"start-button.png" selectedImage:@"start-button.png" target:self selector:@selector(nextLevel:)];
+		// Add button which takes us back to level select
+		CCMenuItem *startButton = [CCMenuItemImage itemFromNormalImage:@"start-button.png" selectedImage:@"start-button.png" target:self selector:@selector(continueButtonAction:)];
 		CCMenu *titleMenu = [CCMenu menuWithItems:startButton, nil];
 		[titleMenu setPosition:ccp(160, 50)];
 		[self addChild:titleMenu z:1];
+		
+		// ADD "REPLAY" button here
 	}
 	return self;
 }
@@ -105,11 +107,11 @@
 	[[CCDirector sharedDirector] replaceScene:transition];
 }
 
-- (void)nextLevel:(id)sender
+- (void)continueButtonAction:(id)sender
 {
 	[GameData sharedGameData].currentLevel++;
 	
-	CCTransitionRotoZoom *transition = [CCTransitionRotoZoom transitionWithDuration:1.0 scene:[GameScene node]];
+	CCTransitionRotoZoom *transition = [CCTransitionRotoZoom transitionWithDuration:1.0 scene:[LevelSelectScene node]];
 	[[CCDirector sharedDirector] replaceScene:transition];
 }
 
@@ -184,12 +186,9 @@
 		
 		// Set up timer
 		if ([map propertyNamed:@"time"])
-			secondsLeft = (int)[map propertyNamed:@"time"];
+			secondsLeft = [[map propertyNamed:@"time"] intValue];
 		else
 			secondsLeft = 180;
-		
-		if (![GameData sharedGameData].bestTime)
-			[GameData sharedGameData].bestTime = 0;
 		
 		timerLabel = [CCLabelBMFont labelWithString:@"3:00" fntFile:@"yoster-16.fnt"];
 		[timerLabel setPosition:ccp(winSize.width - timerLabel.contentSize.width, winSize.height - timerLabel.contentSize.height)];
@@ -635,9 +634,11 @@
 							NSDictionary *d = [levelData objectAtIndex:currentLevelIndex];
 
 							// Determine if current time is faster than saved
-							if (secondsLeft < [[d objectForKey:@"bestTime"] intValue])
+							int secondsElapsed = [[map propertyNamed:@"time"] intValue];
+							int bestSavedTime = [[d objectForKey:@"bestTime"] intValue];
+							if (secondsElapsed < bestSavedTime)
 							{
-								NSDictionary *d = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInt:secondsLeft], @"bestTime", YES, @"complete", nil];
+								NSDictionary *d = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInt:secondsElapsed], @"bestTime", [NSNumber numberWithBool:YES], @"complete", nil];
 								[levelData replaceObjectAtIndex:currentLevelIndex withObject:d];
 								[[NSUserDefaults standardUserDefaults] setObject:levelData forKey:@"levelData"];
 								NSLog(@"Setting new best time as %@", [[[NSUserDefaults standardUserDefaults] arrayForKey:@"levelData"] objectAtIndex:currentLevelIndex]);
@@ -933,7 +934,7 @@
 	for (int i = 10; i < 20; i++)
 	{
 		NSDictionary *d = [levelData objectAtIndex:i];
-		if (![d objectForKey:@"complete"])
+		if (![[d objectForKey:@"complete"] boolValue])
 			block = YES;
 	}
 	
@@ -950,7 +951,7 @@
 	for (int i = 20; i < 30; i++)
 	{
 		NSDictionary *d = [levelData objectAtIndex:i];
-		if (![d objectForKey:@"complete"])
+		if (![[d objectForKey:@"complete"] boolValue])
 			block = YES;
 	}
 	
@@ -967,7 +968,7 @@
 	for (int i = 30; i < 40; i++)
 	{
 		NSDictionary *d = [levelData objectAtIndex:i];
-		if (![d objectForKey:@"complete"])
+		if (![[d objectForKey:@"complete"] boolValue])
 			block = YES;
 	}
 	

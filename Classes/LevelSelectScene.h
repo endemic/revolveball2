@@ -16,6 +16,9 @@
 	// A collection of icons that represent levels
 	NSMutableArray *levelIcons;
 	
+	// Shows data about each level
+	CCLabelBMFont *levelTitle, *levelTimeLimit, *levelBestTime;
+	
 	// Rotating ball icon which represents current level selection
 	CCSprite *ball;
 }
