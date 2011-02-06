@@ -33,8 +33,8 @@
 	{
 		// DEBUG
 		// Set world/level
-		[GameData sharedGameData].currentWorld = 1;
-		[GameData sharedGameData].currentLevel = 1;
+		if (![GameData sharedGameData].currentWorld) [GameData sharedGameData].currentWorld = 1;
+		if (![GameData sharedGameData].currentLevel) [GameData sharedGameData].currentLevel = 1;
 		
 		/*
 		 PSEUDO-CODE
@@ -100,7 +100,8 @@
 		[self addChild:worldTitle];
 		
 		levelIcons = [[NSMutableArray alloc] init];
-		for (int i = 0; i < 10; i++)
+		int levelsPerWorld = 10;
+		for (int i = 0; i < levelsPerWorld; i++)
 		{
 			// Create level icon sprite
 			CCSprite *s = [CCSprite spriteWithFile:@"level-icon.png"];
@@ -139,7 +140,8 @@
 		[self addChild:ball z:1];
 		
 		// Set ball's position
-		CCSprite *currentLevelIcon = [levelIcons objectAtIndex:[GameData sharedGameData].currentLevel - 1];
+		int currentLevelIndex = [GameData sharedGameData].currentLevel - 1;
+		CCSprite *currentLevelIcon = [levelIcons objectAtIndex:currentLevelIndex];
 		[ball setPosition:ccp(currentLevelIcon.position.x, currentLevelIcon.position.y)];
 		
 		// Tell ball to spin for-evah!
@@ -290,10 +292,16 @@
 					int minutes, seconds;
 					
 					// Populate "best time" field
-					int bestTimeInSeconds = [[[levelData objectAtIndex:previousLevelIndex] objectForKey:@"bestTime"] intValue];
+					int bestTimeInSeconds = [[[levelData objectAtIndex:currentLevelIndex] objectForKey:@"bestTime"] intValue];
 					minutes = floor(bestTimeInSeconds / 60);
 					seconds = bestTimeInSeconds % 60;
-					[levelBestTime setString:[NSString stringWithFormat:@"Best Time: %02d:%02d", minutes, seconds]];
+					
+					// If the level is complete, display the best time... otherwise, just show "--:--"
+					if ([[[levelData objectAtIndex:currentLevelIndex] objectForKey:@"complete"] boolValue])
+						[levelBestTime setString:[NSString stringWithFormat:@"Best Time: %02d:%02d", minutes, seconds]];
+					else
+						[levelBestTime setString:@"Best Time: --:--"];
+
 					
 					// Populate time limit field
 					if ([map propertyNamed:@"time"])
@@ -308,6 +316,8 @@
 					// Set the map name field
 					if ([map propertyNamed:@"name"])
 						[levelTitle setString:[map propertyNamed:@"name"]];
+					else
+						[levelTitle setString:@"TITLE HERE"];
 				}
 			}
 		}

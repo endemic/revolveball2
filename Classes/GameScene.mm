@@ -73,12 +73,12 @@
 	if ((self = [super init]))
 	{
 		// Get window size
-		CGSize winSize = [CCDirector sharedDirector].winSize;
+		CGSize windowSize = [CCDirector sharedDirector].winSize;
 		
 		// Do stuff
 		//CCLabelBMFont
 		CCLabelBMFont *finishLabel = [CCLabelBMFont labelWithString:@"FINISH!" fntFile:@"yoster-48.fnt"];
-		[finishLabel setPosition:ccp(winSize.width / 2, winSize.height / 2)];
+		[finishLabel setPosition:ccp(windowSize.width / 2, windowSize.height / 2)];
 		[self addChild:finishLabel z:1];
 		
 		// Display your time/best time
@@ -87,21 +87,20 @@
 		int seconds = bestTime % 60;
 		
 		CCLabelBMFont *bestTimeLabel = [CCLabelBMFont labelWithString:[NSString stringWithFormat:@"Best time: %i:%02d", minutes, seconds] fntFile:@"yoster-32.fnt"];
-		[bestTimeLabel setPosition:ccp(winSize.width / 2, winSize.height / 2 - 50)];
+		[bestTimeLabel setPosition:ccp(windowSize.width / 2, windowSize.height / 2 - 50)];
 		[self addChild:bestTimeLabel z:1];
 		
 		// Add button which takes us back to level select
-		CCMenuItem *startButton = [CCMenuItemImage itemFromNormalImage:@"start-button.png" selectedImage:@"start-button.png" target:self selector:@selector(continueButtonAction:)];
-		CCMenu *titleMenu = [CCMenu menuWithItems:startButton, nil];
-		[titleMenu setPosition:ccp(160, 50)];
-		[self addChild:titleMenu z:1];
-		
-		// ADD "REPLAY" button here
+		CCMenuItem *continueButton = [CCMenuItemImage itemFromNormalImage:@"continue-button.png" selectedImage:@"continue-button.png" target:self selector:@selector(continueButtonAction:)];
+		CCMenuItem *retryButton = [CCMenuItemImage itemFromNormalImage:@"retry-button.png" selectedImage:@"retry-button.png" target:self selector:@selector(retryButtonAction:)];
+		CCMenu *menu = [CCMenu menuWithItems:continueButton, retryButton, nil];
+		[menu setPosition:ccp(windowSize.width / 2, windowSize.height / 6)];
+		[self addChild:menu z:1];
 	}
 	return self;
 }
 
-- (void)restartGame:(id)sender
+- (void)retryButtonAction:(id)sender
 {
 	CCTransitionRotoZoom *transition = [CCTransitionRotoZoom transitionWithDuration:1.0 scene:[GameScene node]];
 	[[CCDirector sharedDirector] replaceScene:transition];
@@ -634,14 +633,14 @@
 							NSDictionary *d = [levelData objectAtIndex:currentLevelIndex];
 
 							// Determine if current time is faster than saved
-							int secondsElapsed = [[map propertyNamed:@"time"] intValue];
+							int currentTime = [[map propertyNamed:@"time"] intValue] - secondsLeft;
 							int bestSavedTime = [[d objectForKey:@"bestTime"] intValue];
-							if (secondsElapsed < bestSavedTime)
+							if (currentTime < bestSavedTime)
 							{
-								NSDictionary *d = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInt:secondsElapsed], @"bestTime", [NSNumber numberWithBool:YES], @"complete", nil];
+								NSDictionary *d = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInt:currentTime], @"bestTime", [NSNumber numberWithBool:YES], @"complete", nil];
 								[levelData replaceObjectAtIndex:currentLevelIndex withObject:d];
 								[[NSUserDefaults standardUserDefaults] setObject:levelData forKey:@"levelData"];
-								NSLog(@"Setting new best time as %@", [[[NSUserDefaults standardUserDefaults] arrayForKey:@"levelData"] objectAtIndex:currentLevelIndex]);
+								NSLog(@"Setting new best time for level %i as %@", currentLevelIndex + 1, [[[NSUserDefaults standardUserDefaults] arrayForKey:@"levelData"] objectAtIndex:currentLevelIndex]);
 							}
 							
 							// Add "Game Over" layer
