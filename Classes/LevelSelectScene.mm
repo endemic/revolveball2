@@ -40,15 +40,15 @@
 		 PSEUDO-CODE
 		 
 		 * Check singleton to determine which background to display [DONE]
-		 * Check user defaults to determine which levels have already been completed
-		 * Draw "bridges" after levels that have already been completed
-		 * Player can move between levels by tapping level icon - up to currently completed level + 1
-		 * Selecting a level also updates singleton level counter
+		 * Check user defaults to determine which levels have already been completed [DONE]
+		 * Draw "bridges" after levels that have already been completed [DONE]
+		 * Player can move between levels by tapping level icon - up to currently completed level + 1 [DONE]
+		 * Selecting a level also updates singleton level counter [DONE]
 		 * Player can return to world select by tapping "back" button [DONE]
 		 * Player can play selected level by tapping "play" button [DONE]
-		 * When a level is complete, draw the "bridge" to the next level
+		 * When a level is complete, draw the "bridge" to the next level [DONE]
 		 * After 10th level is complete, "continue" button takes player back to world select scene
-		 * Gate that blocks next world disappears, arrow appears showing player where to go next
+		 * Gate that blocks next world disappears, arrow appears showing player where to go next [DONE]
 		 */
 		
 		// Get window size
@@ -96,9 +96,15 @@
 		}
 		
 		CCLabelBMFont *worldTitle = [CCLabelBMFont labelWithString:worldTitleString fntFile:@"yoster-48.fnt"];
-		[worldTitle setPosition:ccp(windowSize.width / 2, windowSize.height / 1.333)];
+		[worldTitle setPosition:ccp(windowSize.width / 2, windowSize.height / 1.3)];
 		[self addChild:worldTitle];
 		
+		// Add instructional text
+		CCLabelBMFont *instructions = [CCLabelBMFont labelWithString:@"Tap to select a level" fntFile:@"yoster-24.fnt"];
+		[instructions setPosition:ccp(windowSize.width / 2, worldTitle.position.y - instructions.contentSize.height * 1.5)];
+		[self addChild:instructions];
+		
+		// Create level icon objects
 		levelIcons = [[NSMutableArray alloc] init];
 		int levelsPerWorld = 10;
 		for (int i = 0; i < levelsPerWorld; i++)
@@ -107,8 +113,9 @@
 			CCSprite *s = [CCSprite spriteWithFile:@"level-icon.png"];
 			
 			// Add number to level icon
-			CCLabelBMFont *num = [CCLabelBMFont labelWithString:[NSString stringWithFormat:@"%i", i + 1] fntFile:@"yoster-16.fnt"];
-			[num setPosition:ccp(20, 10)];
+			CCLabelBMFont *num = [CCLabelBMFont labelWithString:[NSString stringWithFormat:@"%i", i + 1] fntFile:@"munro-small-20.fnt"];
+			// Attempt to position the number based on sprite/label widths
+			[num setPosition:ccp(s.contentSize.width - num.contentSize.width, s.contentSize.height - num.contentSize.height / 1.2)];
 			[s addChild:num];
 			
 			// Place level icon sprite in scene
@@ -129,15 +136,18 @@
 				case 8: [s setPosition:ccp(s.contentSize.width * 9, 290)]; break;
 				case 9: [s setPosition:ccp(s.contentSize.width * 9, 226)]; break;
 			}
-			[self addChild:s];
+			[self addChild:s z:2];
 			
 			// Add level icon sprite to NSMutableArray
 			[levelIcons addObject:s];
 		}
 		
+		// Draw "bridges" between completed levels
+		[self drawBridges];
+		
 		// Add rotating "ball" graphic to represent current level choice
 		ball = [CCSprite spriteWithFile:@"ball.png"];
-		[self addChild:ball z:1];
+		[self addChild:ball z:3];
 		
 		// Set ball's position
 		int currentLevelIndex = [GameData sharedGameData].currentLevel - 1;
@@ -149,19 +159,22 @@
 		[ball runAction:[CCRepeatForever actionWithAction:[CCRotateBy actionWithDuration:2.0 angle:360.0]]];
 		
 		// Add descriptive labels that show level info, such as title, best time, etc.
-		levelTitle = [CCLabelBMFont labelWithString:@"Level Name" fntFile:@"yoster-32.fnt"];
+		levelTitle = [CCLabelBMFont labelWithString:@"Level Name" fntFile:@"yoster-24.fnt"];
 		[levelTitle setPosition:ccp(windowSize.width / 2, windowSize.height / 3)];
 		[self addChild:levelTitle];
 		
-		levelBestTime = [CCLabelBMFont labelWithString:@"Best Time: --:--" fntFile:@"yoster-32.fnt"];
+		levelBestTime = [CCLabelBMFont labelWithString:@"Best Time: --:--" fntFile:@"yoster-24.fnt"];
 		// Set the position based on the label above it
 		[levelBestTime setPosition:ccp(windowSize.width / 2, levelTitle.position.y - levelBestTime.contentSize.height)];
 		[self addChild:levelBestTime];
 		
-		levelTimeLimit = [CCLabelBMFont labelWithString:@"Limit: --:--" fntFile:@"yoster-32.fnt"];
+		levelTimeLimit = [CCLabelBMFont labelWithString:@"Limit: --:--" fntFile:@"yoster-24.fnt"];
 		// Set the position based on the label above it
 		[levelTimeLimit setPosition:ccp(windowSize.width / 2, levelBestTime.position.y - levelTimeLimit.contentSize.height)];
 		[self addChild:levelTimeLimit];
+		
+		// Update level info labels that we just created
+		[self displayLevelInfo];
 	}
 	return self;
 }
@@ -238,6 +251,91 @@
 		[ball runAction:seq];
 }
 
+/* Draw "bridges" between level icons to indicate that the player can move between them */
+- (void)drawBridges
+{
+	// Cycle through level icons to determine which can have bridges drawn
+	for (uint i = 0; i < [levelIcons count]; i++)
+	{
+		int currentLevelIndex = (([GameData sharedGameData].currentWorld - 1) * 10) + i;
+		//int previousLevelIndex = currentLevelIndex - 1 > -1 ? currentLevelIndex - 1 : 0;
+		
+		// Check to see if the player has completed the current level
+		NSMutableArray *levelData = [NSMutableArray arrayWithArray:[[NSUserDefaults standardUserDefaults] arrayForKey:@"levelData"]];
+		NSDictionary *d = [levelData objectAtIndex:currentLevelIndex];
+		
+		// If so, draw a bridge
+		if ([[d objectForKey:@"complete"] boolValue])
+		{
+			CCSprite *icon = [levelIcons objectAtIndex:i];
+			CCSprite *b = [CCSprite spriteWithFile:@"level-connector.png"];
+			if (i % 2)	// Odd, means horizontal
+			{
+				[b setPosition:ccp(icon.position.x + b.contentSize.width / 2, icon.position.y)];
+			}
+			else
+			{
+				// Sprite is horizontal, so rotate to make vertical
+				[b setRotation:90.0];
+				
+				// The offset direction switches every other time
+				if (i == 0 || i == 4 || i == 8)
+					[b setPosition:ccp(icon.position.x, icon.position.y - b.contentSize.width / 2)];
+				else
+					[b setPosition:ccp(icon.position.x, icon.position.y + b.contentSize.width / 2)];
+			}
+			[self addChild:b z:1];
+		}
+	}
+}
+
+/* Updates labels that show best time/level title/etc. */
+- (void)displayLevelInfo
+{
+	// Create string that is equal to map filename
+	NSMutableString *mapFile = [NSMutableString stringWithFormat:@"%i-%i", [GameData sharedGameData].currentWorld, [GameData sharedGameData].currentLevel];
+	
+	// Append file format suffix
+	[mapFile appendString:@".tmx"];
+	
+	// Create map obj so we can get its' name + time limit
+	CCTMXTiledMap *map = [CCTMXTiledMap tiledMapWithTMXFile:mapFile];
+	
+	int minutes, seconds;
+	int currentLevelIndex = (([GameData sharedGameData].currentWorld - 1) * 10) + ([GameData sharedGameData].currentLevel - 1);
+	
+	// Get data structure that holds completion times for levels
+	NSMutableArray *levelData = [NSMutableArray arrayWithArray:[[NSUserDefaults standardUserDefaults] arrayForKey:@"levelData"]];
+	
+	// Populate "best time" field
+	int bestTimeInSeconds = [[[levelData objectAtIndex:currentLevelIndex] objectForKey:@"bestTime"] intValue];
+	minutes = floor(bestTimeInSeconds / 60);
+	seconds = bestTimeInSeconds % 60;
+	
+	// If the level is complete, display the best time... otherwise, just show "--:--"
+	if ([[[levelData objectAtIndex:currentLevelIndex] objectForKey:@"complete"] boolValue])
+		[levelBestTime setString:[NSString stringWithFormat:@"Best Time: %02d:%02d", minutes, seconds]];
+	else
+		[levelBestTime setString:@"Best Time: --:--"];
+	
+	
+	// Populate time limit field
+	if ([map propertyNamed:@"time"])
+	{
+		int timeLimitInSeconds = [[map propertyNamed:@"time"] intValue];
+		minutes = floor(timeLimitInSeconds / 60);
+		seconds = timeLimitInSeconds % 60;
+		
+		[levelTimeLimit setString:[NSString stringWithFormat:@"Limit: %02d:%02d", minutes, seconds]];
+	}
+	
+	// Set the map name field
+	if ([map propertyNamed:@"name"])
+		[levelTitle setString:[map propertyNamed:@"name"]];
+	else
+		[levelTitle setString:@"TITLE HERE"];
+}
+
 - (void)ccTouchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
 	UITouch *touch = [touches anyObject];
@@ -255,8 +353,11 @@
 		{
 			CCSprite *icon = [levelIcons objectAtIndex:i];
 			
+			// Additional padding around the hit box
+			int padding = 16;
+			
 			// CGRect origin is upper left, so offset the center
-			CGRect iconRect = CGRectMake(icon.position.x - icon.contentSize.width / 2, windowSize.height - icon.position.y - icon.contentSize.height / 2, icon.contentSize.width, icon.contentSize.height);
+			CGRect iconRect = CGRectMake(icon.position.x - (icon.contentSize.width / 2) - (padding / 2), windowSize.height - icon.position.y - (icon.contentSize.height / 2) - (padding / 2), icon.contentSize.width + padding, icon.contentSize.height + padding);
 			
 			if (CGRectContainsPoint(iconRect, touchPoint))
 			{
@@ -277,47 +378,8 @@
 					// Set level
 					[GameData sharedGameData].currentLevel = i + 1;
 					
-					// Create string that is equal to map filename
-					NSMutableString *mapFile = [NSMutableString stringWithFormat:@"%i-%i", [GameData sharedGameData].currentWorld, [GameData sharedGameData].currentLevel];
-					
-					// If running on iPad, append "-hd" to filename to designate @2x level
-					if ([GameData sharedGameData].isTablet) [mapFile appendString:@"-hd"];
-					
-					// Append file format suffix
-					[mapFile appendString:@".tmx"];
-					
-					// Create map obj so we can get its' name + time limit
-					CCTMXTiledMap *map = [CCTMXTiledMap tiledMapWithTMXFile:mapFile];
-					
-					int minutes, seconds;
-					
-					// Populate "best time" field
-					int bestTimeInSeconds = [[[levelData objectAtIndex:currentLevelIndex] objectForKey:@"bestTime"] intValue];
-					minutes = floor(bestTimeInSeconds / 60);
-					seconds = bestTimeInSeconds % 60;
-					
-					// If the level is complete, display the best time... otherwise, just show "--:--"
-					if ([[[levelData objectAtIndex:currentLevelIndex] objectForKey:@"complete"] boolValue])
-						[levelBestTime setString:[NSString stringWithFormat:@"Best Time: %02d:%02d", minutes, seconds]];
-					else
-						[levelBestTime setString:@"Best Time: --:--"];
-
-					
-					// Populate time limit field
-					if ([map propertyNamed:@"time"])
-					{
-						int timeLimitInSeconds = [[map propertyNamed:@"time"] intValue];
-						minutes = floor(timeLimitInSeconds / 60);
-						seconds = timeLimitInSeconds % 60;
-	
-						[levelTimeLimit setString:[NSString stringWithFormat:@"Limit: %02d:%02d", minutes, seconds]];
-					}
-					
-					// Set the map name field
-					if ([map propertyNamed:@"name"])
-						[levelTitle setString:[map propertyNamed:@"name"]];
-					else
-						[levelTitle setString:@"TITLE HERE"];
+					// Update level info labels
+					[self displayLevelInfo];
 				}
 			}
 		}

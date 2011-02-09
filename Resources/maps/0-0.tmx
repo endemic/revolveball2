@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" orientation="orthogonal" width="100" height="100" tilewidth="32" tileheight="32">
+ <properties>
+  <property name="name" value="World Select"/>
+  <property name="time" value="9999"/>
+ </properties>
  <tileset firstgid="1" name="texture" tilewidth="32" tileheight="32">
   <image source="texture.png"/>
  </tileset>
@@ -10,7 +14,7 @@
  </layer>
  <layer name="Extras" width="100" height="100">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAA+3Rx25UQRRF0TsE8zVgsk3O2ASTLXKOBkw2ksmIEeGTOYNuMW4h+sp4LWmrJu+pjlRVAAAAAAAAAAAAAACsRDvSzrQr7e6dQhxLx9OJdLJ5C1WX05V0NV3rnUIspMfpSXravIWq5fQuvU8feqcQ39OP9DP9at4CAAAAq9267gHAf2t92pAm08bmLVTtSXvTvrS/ecvQtrQ9TaXp5i3jNpdOpdPpTPOWoSPpaJpJs81bxu16upFuplsj/Ld2xHsmRvh2ftDFdGnEe1a6xfQsPU8vmrcM3U8P0sP0qHnLuH1Mn9Ln9KV5y9BSejs4l5q38OcdvAfwL63pHgAAAKwKm9LmtCVtbd5C1YF0MB1Kh5u3UHU2nUvn04XmLVTdTnfS3XSveQtVL9Or9Dq9ad5C1ddB3wYnAAAAAAAAAAAAAADwd34DQNpyTECcAAA=
+   H4sIAAAAAAAAA+3R2W6OARSF4X1LFFVDa55KqWpLqKmmmqmiElMRR4ZLtg7+Ly5A/DtNnid5s09XsqsAAAAAAAAAAAAAANiODqbpNJMO9U4hzqW5dD5daN5C1Uq6nm6km71TiCfpaXqWnjdvoep9+pA+pk+9U4gf6Wf6lX43bwEAAAAA/o8daWeaSLuat1B1OB1JR9Ox5i2DqbQv7U8HmreM23y6mBbSpeYtg9PpTJpNZ5u3jNutdDutpjvNWwZXRl1N15q3jNuL9DKtp1fNWwZr6WF6lB43bxm3z2krfUlfm7cMNtO70d1s3sLfP/gHAAAAsN3tTnvSZNrbvIWq4+lEOplONW+hajEtpeV0uXkLVXfTvXQ/PWjeQtVGep3epLfNW6j6Nur76AIAAAAAAAAAAAAAAP/mDxSjpltAnAAA
   </data>
  </layer>
 </map>

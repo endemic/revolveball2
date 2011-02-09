@@ -24,6 +24,11 @@
 #define kGoal 6
 #define kPlayerStart 7
 
+#define kDownArrow 8
+#define kLeftArrow 9
+#define kRightArrow 10
+#define kUpArrow 11
+
 #define kDownSpikes 22
 #define kLeftSpikes 23
 #define kRightSpikes 24
@@ -94,6 +99,7 @@
 		CCMenuItem *continueButton = [CCMenuItemImage itemFromNormalImage:@"continue-button.png" selectedImage:@"continue-button.png" target:self selector:@selector(continueButtonAction:)];
 		CCMenuItem *retryButton = [CCMenuItemImage itemFromNormalImage:@"retry-button.png" selectedImage:@"retry-button.png" target:self selector:@selector(retryButtonAction:)];
 		CCMenu *menu = [CCMenu menuWithItems:continueButton, retryButton, nil];
+		[menu alignItemsVertically];
 		[menu setPosition:ccp(windowSize.width / 2, windowSize.height / 6)];
 		[self addChild:menu z:1];
 	}
@@ -110,7 +116,23 @@
 {
 	[GameData sharedGameData].currentLevel++;
 	
-	CCTransitionRotoZoom *transition = [CCTransitionRotoZoom transitionWithDuration:1.0 scene:[LevelSelectScene node]];
+	int levelsPerWorld = 10;
+	CCTransitionRotoZoom *transition;
+	
+	// If player has just completed the 10th level in a world, take them back to the world select
+	if ([GameData sharedGameData].currentLevel > levelsPerWorld)
+	{
+		// This signifies the world select "level"
+		[GameData sharedGameData].currentWorld = 0;
+		[GameData sharedGameData].currentLevel = 0;
+		
+		transition = [CCTransitionRotoZoom transitionWithDuration:1.0 scene:[GameScene node]];
+	}
+	else
+	{
+		transition = [CCTransitionRotoZoom transitionWithDuration:1.0 scene:[LevelSelectScene node]];
+	}
+	
 	[[CCDirector sharedDirector] replaceScene:transition];
 }
 
@@ -192,6 +214,10 @@
 		timerLabel = [CCLabelBMFont labelWithString:@"3:00" fntFile:@"yoster-16.fnt"];
 		[timerLabel setPosition:ccp(winSize.width - timerLabel.contentSize.width, winSize.height - timerLabel.contentSize.height)];
 		[self addChild:timerLabel z:2];
+		
+		// Hide the timer if on the level select screen
+		if ([GameData sharedGameData].currentWorld == 0 && [GameData sharedGameData].currentLevel == 0)
+			[timerLabel setVisible:NO];
 		
 		// Store the collidable tiles
 		border = [[map layerNamed:@"Border"] retain];
@@ -529,6 +555,10 @@
 					case kToggleBlockRedOff:
 					case kToggleBlockGreenOn:
 					case kToggleBlockGreenOff:
+					case kLeftArrow:
+					case kRightArrow:
+					case kDownArrow:
+					case kUpArrow:
 					case kPeg:
 						// Regular blocks - do nothing
 						break;
@@ -928,20 +958,29 @@
 	// Check player progress here - probably by checking to see if a particular level has a "best time"
 	NSMutableArray *levelData = [NSMutableArray arrayWithArray:[[NSUserDefaults standardUserDefaults] arrayForKey:@"levelData"]];
 	Boolean block = NO;
+	Boolean showArrow = YES;
 	
-	// Block Forest world
-	for (int i = 10; i < 20; i++)
+	
+	// Block Cave world
+	for (int i = 30; i < 40; i++)
 	{
 		NSDictionary *d = [levelData objectAtIndex:i];
 		if (![[d objectForKey:@"complete"] boolValue])
 			block = YES;
 	}
 	
+	// Block the entrance if player hasn't made it that far yet
 	if (block)
 	{
-		[border setTileGID:kPeg at:ccp(49, 54)];
-		[border setTileGID:kPeg at:ccp(50, 54)];
-		[border setTileGID:kPeg at:ccp(51, 54)];
+		[border setTileGID:kPeg at:ccp(49, 46)];
+		[border setTileGID:kPeg at:ccp(50, 46)];
+		[border setTileGID:kPeg at:ccp(51, 46)];
+	}
+	// Otherwise, show an arrow to indicate where the player should go next
+	else if (showArrow)
+	{
+		[border setTileGID:kUpArrow at:ccp(50, 46)];
+		showArrow = NO;
 	}
 	
 	block = NO;
@@ -960,11 +999,17 @@
 		[border setTileGID:kPeg at:ccp(54, 50)];
 		[border setTileGID:kPeg at:ccp(54, 51)];
 	}
+	// Otherwise, show an arrow to indicate where the player should go next
+	else if (showArrow)
+	{
+		[border setTileGID:kRightArrow at:ccp(54, 50)];
+		showArrow = NO;
+	}
 	
 	block = NO;
-
-	// Block Cave world
-	for (int i = 30; i < 40; i++)
+	
+	// Block Forest world
+	for (int i = 10; i < 20; i++)
 	{
 		NSDictionary *d = [levelData objectAtIndex:i];
 		if (![[d objectForKey:@"complete"] boolValue])
@@ -973,10 +1018,20 @@
 	
 	if (block)
 	{
-		[border setTileGID:kPeg at:ccp(49, 46)];
-		[border setTileGID:kPeg at:ccp(50, 46)];
-		[border setTileGID:kPeg at:ccp(51, 46)];
+		[border setTileGID:kPeg at:ccp(49, 54)];
+		[border setTileGID:kPeg at:ccp(50, 54)];
+		[border setTileGID:kPeg at:ccp(51, 54)];
 	}
+	// Otherwise, show an arrow to indicate where the player should go next
+	else if (showArrow)
+	{
+		[border setTileGID:kDownArrow at:ccp(50, 54)];
+		showArrow = NO;
+	}
+	
+	// Finally, put an arrow pointing to the first world if no other progress has been made
+	if (showArrow)
+		[border setTileGID:kLeftArrow at:ccp(46, 50)];
 }
 
 - (void)removeSpriteFromParent:(CCNode *)sprite

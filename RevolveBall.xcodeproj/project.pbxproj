@@ -140,6 +140,7 @@
 		7D0BFDA912E3EB57006BF429 /* 2-4.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 7D0BFDA612E3EB57006BF429 /* 2-4.tmx */; };
 		7D0BFDAA12E3EB57006BF429 /* 2-5.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 7D0BFDA712E3EB57006BF429 /* 2-5.tmx */; };
 		7D0BFDAB12E3EB57006BF429 /* 2-6.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 7D0BFDA812E3EB57006BF429 /* 2-6.tmx */; };
+		7D1FAF58130159AC0076BFFB /* level-connector.png in Resources */ = {isa = PBXBuildFile; fileRef = 7D1FAF57130159AC0076BFFB /* level-connector.png */; };
 		7D2BD5FF12F8A85000D0DA53 /* back-button-selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 7D2BD5FA12F8A85000D0DA53 /* back-button-selected.png */; };
 		7D2BD60012F8A85000D0DA53 /* back-button.png in Resources */ = {isa = PBXBuildFile; fileRef = 7D2BD5FB12F8A85000D0DA53 /* back-button.png */; };
 		7D2BD60112F8A85000D0DA53 /* start-button-disabled.png in Resources */ = {isa = PBXBuildFile; fileRef = 7D2BD5FC12F8A85000D0DA53 /* start-button-disabled.png */; };
@@ -217,6 +218,8 @@
 		7D55E4B212C165F7005D97A6 /* task-list.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 7D55E4B112C165F7005D97A6 /* task-list.rtf */; };
 		7D90983C12FEB7620027EED4 /* continue-button.png in Resources */ = {isa = PBXBuildFile; fileRef = 7D90983A12FEB7620027EED4 /* continue-button.png */; };
 		7D90983D12FEB7620027EED4 /* retry-button.png in Resources */ = {isa = PBXBuildFile; fileRef = 7D90983B12FEB7620027EED4 /* retry-button.png */; };
+		7D9F32C51302B17D00F0E465 /* munro-small-20.fnt in Resources */ = {isa = PBXBuildFile; fileRef = 7D9F32C31302B17D00F0E465 /* munro-small-20.fnt */; };
+		7D9F32C61302B17D00F0E465 /* munro-small-20.png in Resources */ = {isa = PBXBuildFile; fileRef = 7D9F32C41302B17D00F0E465 /* munro-small-20.png */; };
 		7DAE6EA812F96E150025901B /* level-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 7DAE6EA712F96E150025901B /* level-icon.png */; };
 		7DBED19A12C3CC9100932EE0 /* 2-2.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 7DBED19812C3CC9100932EE0 /* 2-2.tmx */; };
 		7DBED19B12C3CC9100932EE0 /* world-2-tileset.png in Resources */ = {isa = PBXBuildFile; fileRef = 7DBED19912C3CC9100932EE0 /* world-2-tileset.png */; };
@@ -563,6 +566,7 @@
 		7D0BFDA612E3EB57006BF429 /* 2-4.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = "2-4.tmx"; path = "maps/2-4.tmx"; sourceTree = "<group>"; };
 		7D0BFDA712E3EB57006BF429 /* 2-5.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = "2-5.tmx"; path = "maps/2-5.tmx"; sourceTree = "<group>"; };
 		7D0BFDA812E3EB57006BF429 /* 2-6.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = "2-6.tmx"; path = "maps/2-6.tmx"; sourceTree = "<group>"; };
+		7D1FAF57130159AC0076BFFB /* level-connector.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "level-connector.png"; path = "images/level-connector.png"; sourceTree = "<group>"; };
 		7D2BD5FA12F8A85000D0DA53 /* back-button-selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "back-button-selected.png"; path = "images/buttons/back-button-selected.png"; sourceTree = "<group>"; };
 		7D2BD5FB12F8A85000D0DA53 /* back-button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "back-button.png"; path = "images/buttons/back-button.png"; sourceTree = "<group>"; };
 		7D2BD5FC12F8A85000D0DA53 /* start-button-disabled.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "start-button-disabled.png"; path = "images/buttons/start-button-disabled.png"; sourceTree = "<group>"; };
@@ -646,6 +650,8 @@
 		7D55E4B112C165F7005D97A6 /* task-list.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = "task-list.rtf"; sourceTree = "<group>"; };
 		7D90983A12FEB7620027EED4 /* continue-button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "continue-button.png"; path = "images/buttons/continue-button.png"; sourceTree = "<group>"; };
 		7D90983B12FEB7620027EED4 /* retry-button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "retry-button.png"; path = "images/buttons/retry-button.png"; sourceTree = "<group>"; };
+		7D9F32C31302B17D00F0E465 /* munro-small-20.fnt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = "munro-small-20.fnt"; path = "fonts/munro-small-20.fnt"; sourceTree = "<group>"; };
+		7D9F32C41302B17D00F0E465 /* munro-small-20.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "munro-small-20.png"; path = "fonts/munro-small-20.png"; sourceTree = "<group>"; };
 		7DAE6EA712F96E150025901B /* level-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "level-icon.png"; path = "images/level-icon.png"; sourceTree = "<group>"; };
 		7DBED19812C3CC9100932EE0 /* 2-2.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = "2-2.tmx"; path = "maps/2-2.tmx"; sourceTree = "<group>"; };
 		7DBED19912C3CC9100932EE0 /* world-2-tileset.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "world-2-tileset.png"; path = "maps/world-2-tileset.png"; sourceTree = "<group>"; };
@@ -1232,6 +1238,8 @@
 		7D50A1F612BBF8E20039A691 /* fonts */ = {
 			isa = PBXGroup;
 			children = (
+				7D9F32C31302B17D00F0E465 /* munro-small-20.fnt */,
+				7D9F32C41302B17D00F0E465 /* munro-small-20.png */,
 				7D50A25912BBF9640039A691 /* yoster-16.fnt */,
 				7D50A25A12BBF9640039A691 /* yoster-16.png */,
 				7DEB0B3112FC1C59003C6E0B /* yoster-24.fnt */,
@@ -1278,6 +1286,7 @@
 				7D50A21512BBF9590039A691 /* background-0.png */,
 				7D50A21612BBF9590039A691 /* down-arrow.png */,
 				7D50A21712BBF9590039A691 /* left-arrow.png */,
+				7D1FAF57130159AC0076BFFB /* level-connector.png */,
 				7DAE6EA712F96E150025901B /* level-icon.png */,
 				7D50A21812BBF9590039A691 /* logo.png */,
 				7D50A21B12BBF9590039A691 /* right-arrow.png */,
@@ -1883,6 +1892,9 @@
 				7DEB0B3412FC1C59003C6E0B /* yoster-24.png in Resources */,
 				7D90983C12FEB7620027EED4 /* continue-button.png in Resources */,
 				7D90983D12FEB7620027EED4 /* retry-button.png in Resources */,
+				7D1FAF58130159AC0076BFFB /* level-connector.png in Resources */,
+				7D9F32C51302B17D00F0E465 /* munro-small-20.fnt in Resources */,
+				7D9F32C61302B17D00F0E465 /* munro-small-20.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

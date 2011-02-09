@@ -23,9 +23,11 @@
 	CCSprite *ball;
 }
 
-
 - (void)backButtonAction:(id)sender;
 - (void)playButtonAction:(id)sender;
+- (void)moveLevelSelectCursor:(int)destination;
+- (void)drawBridges;
+- (void)displayLevelInfo;
 
 @end
 
