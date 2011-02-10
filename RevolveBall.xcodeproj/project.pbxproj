@@ -212,10 +212,14 @@
 		7D50A27A12BBF97A0039A691 /* test.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 7D50A26F12BBF97A0039A691 /* test.tmx */; };
 		7D50A27B12BBF97A0039A691 /* texture-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 7D50A27012BBF97A0039A691 /* texture-hd.png */; };
 		7D50A27C12BBF97A0039A691 /* texture.png in Resources */ = {isa = PBXBuildFile; fileRef = 7D50A27112BBF97A0039A691 /* texture.png */; };
-		7D50A27E12BBF9860039A691 /* toggle.wav in Resources */ = {isa = PBXBuildFile; fileRef = 7D50A27D12BBF9860039A691 /* toggle.wav */; };
 		7D52A49212D367270046E86C /* title-background-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 7D52A49012D367270046E86C /* title-background-hd.png */; };
 		7D52A49312D367270046E86C /* title-background.png in Resources */ = {isa = PBXBuildFile; fileRef = 7D52A49112D367270046E86C /* title-background.png */; };
 		7D55E4B212C165F7005D97A6 /* task-list.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 7D55E4B112C165F7005D97A6 /* task-list.rtf */; };
+		7D8E14B51302F1680094C28B /* button-press.caf in Resources */ = {isa = PBXBuildFile; fileRef = 7D8E14B01302F1680094C28B /* button-press.caf */; };
+		7D8E14B61302F1680094C28B /* spike-hit.caf in Resources */ = {isa = PBXBuildFile; fileRef = 7D8E14B11302F1680094C28B /* spike-hit.caf */; };
+		7D8E14B71302F1680094C28B /* time-pickup.caf in Resources */ = {isa = PBXBuildFile; fileRef = 7D8E14B21302F1680094C28B /* time-pickup.caf */; };
+		7D8E14B81302F1680094C28B /* toggle.caf in Resources */ = {isa = PBXBuildFile; fileRef = 7D8E14B31302F1680094C28B /* toggle.caf */; };
+		7D8E14B91302F1680094C28B /* wall-hit.caf in Resources */ = {isa = PBXBuildFile; fileRef = 7D8E14B41302F1680094C28B /* wall-hit.caf */; };
 		7D90983C12FEB7620027EED4 /* continue-button.png in Resources */ = {isa = PBXBuildFile; fileRef = 7D90983A12FEB7620027EED4 /* continue-button.png */; };
 		7D90983D12FEB7620027EED4 /* retry-button.png in Resources */ = {isa = PBXBuildFile; fileRef = 7D90983B12FEB7620027EED4 /* retry-button.png */; };
 		7D9F32C51302B17D00F0E465 /* munro-small-20.fnt in Resources */ = {isa = PBXBuildFile; fileRef = 7D9F32C31302B17D00F0E465 /* munro-small-20.fnt */; };
@@ -644,10 +648,14 @@
 		7D50A26F12BBF97A0039A691 /* test.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = test.tmx; path = maps/test.tmx; sourceTree = "<group>"; };
 		7D50A27012BBF97A0039A691 /* texture-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "texture-hd.png"; path = "maps/texture-hd.png"; sourceTree = "<group>"; };
 		7D50A27112BBF97A0039A691 /* texture.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = texture.png; path = maps/texture.png; sourceTree = "<group>"; };
-		7D50A27D12BBF9860039A691 /* toggle.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = toggle.wav; path = sounds/toggle.wav; sourceTree = "<group>"; };
 		7D52A49012D367270046E86C /* title-background-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "title-background-hd.png"; path = "images/title-background-hd.png"; sourceTree = "<group>"; };
 		7D52A49112D367270046E86C /* title-background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "title-background.png"; path = "images/title-background.png"; sourceTree = "<group>"; };
 		7D55E4B112C165F7005D97A6 /* task-list.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = "task-list.rtf"; sourceTree = "<group>"; };
+		7D8E14B01302F1680094C28B /* button-press.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "button-press.caf"; path = "sounds/caf/button-press.caf"; sourceTree = "<group>"; };
+		7D8E14B11302F1680094C28B /* spike-hit.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "spike-hit.caf"; path = "sounds/caf/spike-hit.caf"; sourceTree = "<group>"; };
+		7D8E14B21302F1680094C28B /* time-pickup.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "time-pickup.caf"; path = "sounds/caf/time-pickup.caf"; sourceTree = "<group>"; };
+		7D8E14B31302F1680094C28B /* toggle.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = toggle.caf; path = sounds/caf/toggle.caf; sourceTree = "<group>"; };
+		7D8E14B41302F1680094C28B /* wall-hit.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "wall-hit.caf"; path = "sounds/caf/wall-hit.caf"; sourceTree = "<group>"; };
 		7D90983A12FEB7620027EED4 /* continue-button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "continue-button.png"; path = "images/buttons/continue-button.png"; sourceTree = "<group>"; };
 		7D90983B12FEB7620027EED4 /* retry-button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "retry-button.png"; path = "images/buttons/retry-button.png"; sourceTree = "<group>"; };
 		7D9F32C31302B17D00F0E465 /* munro-small-20.fnt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = "munro-small-20.fnt"; path = "fonts/munro-small-20.fnt"; sourceTree = "<group>"; };
@@ -1349,9 +1357,21 @@
 		7D50A1F912BBF8F40039A691 /* sounds */ = {
 			isa = PBXGroup;
 			children = (
-				7D50A27D12BBF9860039A691 /* toggle.wav */,
+				7D8E14BA1302F1720094C28B /* caf */,
 			);
 			name = sounds;
+			sourceTree = "<group>";
+		};
+		7D8E14BA1302F1720094C28B /* caf */ = {
+			isa = PBXGroup;
+			children = (
+				7D8E14B01302F1680094C28B /* button-press.caf */,
+				7D8E14B11302F1680094C28B /* spike-hit.caf */,
+				7D8E14B21302F1680094C28B /* time-pickup.caf */,
+				7D8E14B31302F1680094C28B /* toggle.caf */,
+				7D8E14B41302F1680094C28B /* wall-hit.caf */,
+			);
+			name = caf;
 			sourceTree = "<group>";
 		};
 		E02BB8BF126CC28A006E46A2 /* cocos2d */ = {
@@ -1857,7 +1877,6 @@
 				7D50A27A12BBF97A0039A691 /* test.tmx in Resources */,
 				7D50A27B12BBF97A0039A691 /* texture-hd.png in Resources */,
 				7D50A27C12BBF97A0039A691 /* texture.png in Resources */,
-				7D50A27E12BBF9860039A691 /* toggle.wav in Resources */,
 				7DE912AC12C0686F00C4C2BC /* 1-5.tmx in Resources */,
 				7DE912AD12C0686F00C4C2BC /* 1-6.tmx in Resources */,
 				7DE912AE12C0686F00C4C2BC /* 1-7.tmx in Resources */,
@@ -1895,6 +1914,11 @@
 				7D1FAF58130159AC0076BFFB /* level-connector.png in Resources */,
 				7D9F32C51302B17D00F0E465 /* munro-small-20.fnt in Resources */,
 				7D9F32C61302B17D00F0E465 /* munro-small-20.png in Resources */,
+				7D8E14B51302F1680094C28B /* button-press.caf in Resources */,
+				7D8E14B61302F1680094C28B /* spike-hit.caf in Resources */,
+				7D8E14B71302F1680094C28B /* time-pickup.caf in Resources */,
+				7D8E14B81302F1680094C28B /* toggle.caf in Resources */,
+				7D8E14B91302F1680094C28B /* wall-hit.caf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

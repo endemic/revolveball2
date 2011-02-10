@@ -10,6 +10,9 @@
 #import "GameScene.h"
 #import "GameData.h"
 
+#import "CocosDenshion.h"
+#import "SimpleAudioEngine.h"
+
 #define COCOS2D_DEBUG 1
 
 @implementation LevelSelectScene
@@ -175,6 +178,12 @@
 		
 		// Update level info labels that we just created
 		[self displayLevelInfo];
+		
+		// Preload some SFX
+		[[SimpleAudioEngine sharedEngine] preloadEffect:@"spike-hit.caf"];
+		[[SimpleAudioEngine sharedEngine] preloadEffect:@"wall-hit.caf"];
+		[[SimpleAudioEngine sharedEngine] preloadEffect:@"time-pickup.caf"];
+		[[SimpleAudioEngine sharedEngine] preloadEffect:@"toggle.caf"];
 	}
 	return self;
 }

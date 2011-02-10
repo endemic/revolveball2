@@ -145,9 +145,6 @@
 {
 	if ((self = [super init]))
 	{
-		// Pre-load some SFX
-		//[[SimpleAudioEngine sharedEngine] preloadEffect:@"toggle.wav"];
-		
 		// Set pixel-to-Box2D ratio
 		ptmRatio = 32;
 		
@@ -488,7 +485,7 @@
 	{
 		[self schedule:@selector(togglePause:) interval:0.25];	// Call this method again in 0.5 seconds
 		[self unschedule:@selector(update:)];			// Pause the fizziks
-		//[[SimpleAudioEngine sharedEngine] playEffect:@"toggle.wav"];
+		[[SimpleAudioEngine sharedEngine] playEffect:@"toggle.caf"];
 		functionCalled = true;
 	}
 }
@@ -552,15 +549,15 @@
 					case kLowerLeftTriangle:
 					case kLowerRightTriangle:
 					case kToggleBlockRedOn:
-					case kToggleBlockRedOff:
 					case kToggleBlockGreenOn:
+					case kToggleBlockRedOff:
 					case kToggleBlockGreenOff:
 					case kLeftArrow:
 					case kRightArrow:
 					case kDownArrow:
 					case kUpArrow:
 					case kPeg:
-						// Regular blocks - do nothing
+						// Do nothing
 						break;
 					case kToggleSwitchGreen:
 						if (!toggleSwitchTimeout)
@@ -647,6 +644,8 @@
 					case kClock:
 							// Remove the clock sensor
 							discardedItems.push_back(b);
+							
+							[[SimpleAudioEngine sharedEngine] playEffect:@"time-pickup.caf"];
 						
 							// Add time to time limit
 							[self gainTime:5];
@@ -693,12 +692,16 @@
 						// Subtract time from time limit
 						[self loseTime:5];
 						
+						[[SimpleAudioEngine sharedEngine] playEffect:@"spike-hit.caf"];
+						
 						// Push ball in opposite direction
 						ballBody->ApplyLinearImpulse(b2Vec2(0.0f, -2.0f), ballBody->GetPosition());
 						break;
 					case kLeftSpikes:
 						// Subtract time from time limit
 						[self loseTime:5];
+						
+						[[SimpleAudioEngine sharedEngine] playEffect:@"spike-hit.caf"];
 						
 						// Push ball in opposite direction
 						ballBody->ApplyLinearImpulse(b2Vec2(-2.0f, 0.0f), ballBody->GetPosition());
@@ -707,12 +710,16 @@
 						// Subtract time from time limit
 						[self loseTime:5];
 						
+						[[SimpleAudioEngine sharedEngine] playEffect:@"spike-hit.caf"];
+						
 						// Push ball in opposite direction
 						ballBody->ApplyLinearImpulse(b2Vec2(2.0f, 0.0f), ballBody->GetPosition());
 						break;
 					case kUpSpikes:
 						// Subtract time from time limit
 						[self loseTime:5];
+						
+						[[SimpleAudioEngine sharedEngine] playEffect:@"spike-hit.caf"];
 						
 						// Push ball in opposite direction
 						ballBody->ApplyLinearImpulse(b2Vec2(0.0f, 2.0f), ballBody->GetPosition());
@@ -768,6 +775,39 @@
 						NSLog(@"Touching unrecognized tile GID: %i", tileGID);
 						break;
 				}
+			}
+		}
+
+		// Loop through SFX queue
+		for (CCSprite *s in contactListener->sfxQueue)
+		{
+			// Ignore when ball is in contact queue
+			if ((CCSprite *)b->GetUserData() == ball)
+				continue;
+
+			// Process all other objects
+			if ((CCSprite *)b->GetUserData() == s)
+			{
+				// Play SFX based on what object is in the sound queue
+				tileGID = [border tileGIDAt:ccp(s.position.x / ptmRatio, map.mapSize.height - (s.position.y / ptmRatio) - 1)];
+				switch (tileGID) 
+				{
+					case kSquare:
+					case kUpperLeftTriangle:
+					case kUpperRightTriangle:
+					case kLowerLeftTriangle:
+					case kLowerRightTriangle:
+					case kToggleBlockRedOn:
+					case kToggleBlockGreenOn:
+						[[SimpleAudioEngine sharedEngine] playEffect:@"wall-hit.caf"];
+						break;
+					case kPeg:
+						[[SimpleAudioEngine sharedEngine] playEffect:@"wall-hit.caf"];
+						break;
+				}
+			
+				// Remove object from SFX queue
+				[contactListener->sfxQueue removeObject:s];
 			}
 		}
 	}

@@ -10,6 +10,9 @@
 #import "GameScene.h"
 #import "GameData.h"
 
+#import "CocosDenshion.h"
+#import "SimpleAudioEngine.h"
+
 @implementation TitleScene
 - (id)init
 {
@@ -53,6 +56,8 @@
 		if ([GameData sharedGameData].isTablet)
 			[startButton setScale:2.0];
 		
+		[[SimpleAudioEngine sharedEngine] preloadEffect:@"button-press.caf"];
+		
 		// Run animation which moves background
 //		[background runAction:[CCRepeatForever actionWithAction:[CCSequence actions:
 //																 [CCDelayTime actionWithDuration:1.0],
@@ -69,6 +74,8 @@
 	// Load "hub" level
 	[GameData sharedGameData].currentWorld = 0;
 	[GameData sharedGameData].currentLevel = 0;
+	
+	[[SimpleAudioEngine sharedEngine] playEffect:@"button-press.caf"];
 	
 	CCTransitionRotoZoom *transition = [CCTransitionRotoZoom transitionWithDuration:1.0 scene:[GameScene node]];
 	[[CCDirector sharedDirector] replaceScene:transition];

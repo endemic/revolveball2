@@ -25,11 +25,13 @@ ContactPoint m_points[k_maxContactPoints];
 MyContactListener::MyContactListener()
 {
 	contactQueue = [[[NSMutableArray alloc] init] retain];
+	sfxQueue = [[[NSMutableArray alloc] init] retain];
 }
 
 MyContactListener::~MyContactListener()
 {
 	[contactQueue release];
+	[sfxQueue release];
 }
 
 void MyContactListener::BeginContact(b2Contact *contact)
@@ -73,7 +75,21 @@ void MyContactListener::PreSolve(b2Contact *contact, const b2Manifold *oldManifo
 	//const b2Manifold *manifold = contact->GetManifold();
 }
 
-void MyContactListener::PostSolve(b2Contact *contact)
+void MyContactListener::PostSolve(b2Contact *contact, const b2ContactImpulse *impulse)
 {
-	//const b2ContactImpulse *impulse;
+	b2Body *bodyA = contact->GetFixtureA()->GetBody();
+	b2Body *bodyB = contact->GetFixtureB()->GetBody();
+	
+	// Arbitrary number based on how fast the player is moving
+	if (impulse->normalImpulses[0] > 1.5)
+	{
+		//NSLog(@"%f", impulse->normalImpulses[0]);
+		
+		CCSprite *spriteA = (CCSprite *)bodyA->GetUserData();
+		CCSprite *spriteB = (CCSprite *)bodyB->GetUserData();
+		
+		// Add both sprites to SFX queue - will filter out the ball later
+		[sfxQueue addObject:spriteA];
+		[sfxQueue addObject:spriteB];
+	}
 }
