@@ -245,6 +245,7 @@
 		7DECBF7012F13334002D2DFC /* 2-9.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 7DECBF6B12F13334002D2DFC /* 2-9.tmx */; };
 		7DECBF7112F13334002D2DFC /* 2-10.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 7DECBF6C12F13334002D2DFC /* 2-10.tmx */; };
 		7DF2A78212FAC47C007023B0 /* UserDefaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7DF2A78112FAC47C007023B0 /* UserDefaults.plist */; };
+		7DFACC90130553300014000C /* peg-hit.caf in Resources */ = {isa = PBXBuildFile; fileRef = 7DFACC8F130553300014000C /* peg-hit.caf */; };
 		DC6640030F83B3EA000B3E49 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC6640020F83B3EA000B3E49 /* AudioToolbox.framework */; };
 		DC6640050F83B3EA000B3E49 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC6640040F83B3EA000B3E49 /* OpenAL.framework */; };
 		DCCBF1B70F6022AE0040855A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCCBF1B60F6022AE0040855A /* CoreGraphics.framework */; };
@@ -681,6 +682,7 @@
 		7DECBF6B12F13334002D2DFC /* 2-9.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = "2-9.tmx"; path = "maps/2-9.tmx"; sourceTree = "<group>"; };
 		7DECBF6C12F13334002D2DFC /* 2-10.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = "2-10.tmx"; path = "maps/2-10.tmx"; sourceTree = "<group>"; };
 		7DF2A78112FAC47C007023B0 /* UserDefaults.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = UserDefaults.plist; sourceTree = "<group>"; };
+		7DFACC8F130553300014000C /* peg-hit.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "peg-hit.caf"; path = "sounds/caf/peg-hit.caf"; sourceTree = "<group>"; };
 		DC6640020F83B3EA000B3E49 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		DC6640040F83B3EA000B3E49 /* OpenAL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenAL.framework; path = System/Library/Frameworks/OpenAL.framework; sourceTree = SDKROOT; };
 		DCCBF1B60F6022AE0040855A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -1365,6 +1367,7 @@
 		7D8E14BA1302F1720094C28B /* caf */ = {
 			isa = PBXGroup;
 			children = (
+				7DFACC8F130553300014000C /* peg-hit.caf */,
 				7D8E14B01302F1680094C28B /* button-press.caf */,
 				7D8E14B11302F1680094C28B /* spike-hit.caf */,
 				7D8E14B21302F1680094C28B /* time-pickup.caf */,
@@ -1919,6 +1922,7 @@
 				7D8E14B71302F1680094C28B /* time-pickup.caf in Resources */,
 				7D8E14B81302F1680094C28B /* toggle.caf in Resources */,
 				7D8E14B91302F1680094C28B /* wall-hit.caf in Resources */,
+				7DFACC90130553300014000C /* peg-hit.caf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

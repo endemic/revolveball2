@@ -71,73 +71,6 @@
 }
 @end
 
-@implementation GameOverLayer
-
-- (id)init
-{
-	if ((self = [super init]))
-	{
-		// Get window size
-		CGSize windowSize = [CCDirector sharedDirector].winSize;
-		
-		// Do stuff
-		//CCLabelBMFont
-		CCLabelBMFont *finishLabel = [CCLabelBMFont labelWithString:@"FINISH!" fntFile:@"yoster-48.fnt"];
-		[finishLabel setPosition:ccp(windowSize.width / 2, windowSize.height / 2)];
-		[self addChild:finishLabel z:1];
-		
-		// Display your time/best time
-		int bestTime = [GameData sharedGameData].bestTime;
-		int minutes = floor(bestTime / 60);
-		int seconds = bestTime % 60;
-		
-		CCLabelBMFont *bestTimeLabel = [CCLabelBMFont labelWithString:[NSString stringWithFormat:@"Best time: %i:%02d", minutes, seconds] fntFile:@"yoster-32.fnt"];
-		[bestTimeLabel setPosition:ccp(windowSize.width / 2, windowSize.height / 2 - 50)];
-		[self addChild:bestTimeLabel z:1];
-		
-		// Add button which takes us back to level select
-		CCMenuItem *continueButton = [CCMenuItemImage itemFromNormalImage:@"continue-button.png" selectedImage:@"continue-button.png" target:self selector:@selector(continueButtonAction:)];
-		CCMenuItem *retryButton = [CCMenuItemImage itemFromNormalImage:@"retry-button.png" selectedImage:@"retry-button.png" target:self selector:@selector(retryButtonAction:)];
-		CCMenu *menu = [CCMenu menuWithItems:continueButton, retryButton, nil];
-		[menu alignItemsVertically];
-		[menu setPosition:ccp(windowSize.width / 2, windowSize.height / 6)];
-		[self addChild:menu z:1];
-	}
-	return self;
-}
-
-- (void)retryButtonAction:(id)sender
-{
-	CCTransitionRotoZoom *transition = [CCTransitionRotoZoom transitionWithDuration:1.0 scene:[GameScene node]];
-	[[CCDirector sharedDirector] replaceScene:transition];
-}
-
-- (void)continueButtonAction:(id)sender
-{
-	[GameData sharedGameData].currentLevel++;
-	
-	int levelsPerWorld = 10;
-	CCTransitionRotoZoom *transition;
-	
-	// If player has just completed the 10th level in a world, take them back to the world select
-	if ([GameData sharedGameData].currentLevel > levelsPerWorld)
-	{
-		// This signifies the world select "level"
-		[GameData sharedGameData].currentWorld = 0;
-		[GameData sharedGameData].currentLevel = 0;
-		
-		transition = [CCTransitionRotoZoom transitionWithDuration:1.0 scene:[GameScene node]];
-	}
-	else
-	{
-		transition = [CCTransitionRotoZoom transitionWithDuration:1.0 scene:[LevelSelectScene node]];
-	}
-	
-	[[CCDirector sharedDirector] replaceScene:transition];
-}
-
-@end
-
 
 @implementation GameLayer
 
@@ -208,7 +141,10 @@
 		else
 			secondsLeft = 180;
 		
-		timerLabel = [CCLabelBMFont labelWithString:@"3:00" fntFile:@"yoster-16.fnt"];
+		int minutes = floor(secondsLeft / 60);
+		int seconds = secondsLeft % 60;
+		
+		timerLabel = [CCLabelBMFont labelWithString:[NSString stringWithFormat:@"%i:%02d", minutes, seconds] fntFile:@"yoster-16.fnt"];
 		[timerLabel setPosition:ccp(winSize.width - timerLabel.contentSize.width, winSize.height - timerLabel.contentSize.height)];
 		[self addChild:timerLabel z:2];
 		
@@ -669,11 +605,41 @@
 								NSDictionary *d = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInt:currentTime], @"bestTime", [NSNumber numberWithBool:YES], @"complete", nil];
 								[levelData replaceObjectAtIndex:currentLevelIndex withObject:d];
 								[[NSUserDefaults standardUserDefaults] setObject:levelData forKey:@"levelData"];
-								NSLog(@"Setting new best time for level %i as %@", currentLevelIndex + 1, [[[NSUserDefaults standardUserDefaults] arrayForKey:@"levelData"] objectAtIndex:currentLevelIndex]);
+								bestSavedTime = currentTime;	// for display below
+								//NSLog(@"Setting new best time for level %i as %@", currentLevelIndex + 1, [[[NSUserDefaults standardUserDefaults] arrayForKey:@"levelData"] objectAtIndex:currentLevelIndex]);
 							}
 							
-							// Add "Game Over" layer
-							[self addChild:[GameOverLayer node] z:4];
+							// Get window size
+							CGSize windowSize = [CCDirector sharedDirector].winSize;
+							
+							// Add "Finish" label
+							CCLabelBMFont *finishLabel = [CCLabelBMFont labelWithString:@"FINISH!" fntFile:@"yoster-48.fnt"];
+							[finishLabel setPosition:ccp(windowSize.width / 2, windowSize.height / 2)];
+							[self addChild:finishLabel z:4];
+							
+							int minutes = floor(currentTime / 60);
+							int seconds = currentTime % 60;
+							
+							// Add "your time" label
+							CCLabelBMFont *yourTimeLabel = [CCLabelBMFont labelWithString:[NSString stringWithFormat:@"Current: %02d:%02d", minutes, seconds] fntFile:@"yoster-32.fnt"];
+							[yourTimeLabel setPosition:ccp(windowSize.width / 2, finishLabel.position.y - yourTimeLabel.contentSize.height * 1.5)];
+							[self addChild:yourTimeLabel z:1];
+							
+							minutes = floor(bestSavedTime / 60);
+							seconds = bestSavedTime % 60;
+							
+							// Add "best time" label
+							CCLabelBMFont *bestTimeLabel = [CCLabelBMFont labelWithString:[NSString stringWithFormat:@"Best: %02d:%02d", minutes, seconds] fntFile:@"yoster-32.fnt"];
+							[bestTimeLabel setPosition:ccp(windowSize.width / 2, yourTimeLabel.position.y - bestTimeLabel.contentSize.height)];
+							[self addChild:bestTimeLabel z:1];
+							
+							// Add button which takes us back to level select
+							CCMenuItem *continueButton = [CCMenuItemImage itemFromNormalImage:@"continue-button.png" selectedImage:@"continue-button.png" target:self selector:@selector(continueButtonAction:)];
+							CCMenuItem *retryButton = [CCMenuItemImage itemFromNormalImage:@"retry-button.png" selectedImage:@"retry-button.png" target:self selector:@selector(retryButtonAction:)];
+							CCMenu *menu = [CCMenu menuWithItems:continueButton, retryButton, nil];
+							[menu alignItemsVertically];
+							[menu setPosition:ccp(windowSize.width / 2, windowSize.height / 6)];
+							[self addChild:menu z:1];
 						}
 						break;
 					case kDownBoost:
@@ -783,13 +749,18 @@
 		{
 			// Ignore when ball is in contact queue
 			if ((CCSprite *)b->GetUserData() == ball)
+			{
+				// Remove object from SFX queue
+				[contactListener->sfxQueue removeObject:ball];
+				
 				continue;
+			}
 
 			// Process all other objects
 			if ((CCSprite *)b->GetUserData() == s)
 			{
 				// Play SFX based on what object is in the sound queue
-				tileGID = [border tileGIDAt:ccp(s.position.x / ptmRatio, map.mapSize.height - (s.position.y / ptmRatio) - 1)];
+				int tileGID = [border tileGIDAt:ccp(s.position.x / ptmRatio, map.mapSize.height - (s.position.y / ptmRatio) - 1)];
 				switch (tileGID) 
 				{
 					case kSquare:
@@ -802,7 +773,7 @@
 						[[SimpleAudioEngine sharedEngine] playEffect:@"wall-hit.caf"];
 						break;
 					case kPeg:
-						[[SimpleAudioEngine sharedEngine] playEffect:@"wall-hit.caf"];
+						[[SimpleAudioEngine sharedEngine] playEffect:@"peg-hit.caf"];
 						break;
 				}
 			
@@ -1072,6 +1043,36 @@
 	// Finally, put an arrow pointing to the first world if no other progress has been made
 	if (showArrow)
 		[border setTileGID:kLeftArrow at:ccp(46, 50)];
+}
+
+- (void)retryButtonAction:(id)sender
+{
+	CCTransitionRotoZoom *transition = [CCTransitionRotoZoom transitionWithDuration:1.0 scene:[GameScene node]];
+	[[CCDirector sharedDirector] replaceScene:transition];
+}
+
+- (void)continueButtonAction:(id)sender
+{
+	[GameData sharedGameData].currentLevel++;
+	
+	int levelsPerWorld = 10;
+	CCTransitionRotoZoom *transition;
+	
+	// If player has just completed the 10th level in a world, take them back to the world select
+	if ([GameData sharedGameData].currentLevel > levelsPerWorld)
+	{
+		// This signifies the world select "level"
+		[GameData sharedGameData].currentWorld = 0;
+		[GameData sharedGameData].currentLevel = 0;
+		
+		transition = [CCTransitionRotoZoom transitionWithDuration:1.0 scene:[GameScene node]];
+	}
+	else
+	{
+		transition = [CCTransitionRotoZoom transitionWithDuration:1.0 scene:[LevelSelectScene node]];
+	}
+	
+	[[CCDirector sharedDirector] replaceScene:transition];
 }
 
 - (void)removeSpriteFromParent:(CCNode *)sprite

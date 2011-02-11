@@ -8,16 +8,15 @@
 * Generate good-looking font for level select scene\
 * Create level blocks for "bonus" levels\
 * Create level blocks for "cave" levels\
-* Create placeholder SFX with MML\
 * Rapid prototype levels\
-* Create/add placeholder SFX/music\
-* Change block SFX playing to be dependeng on collision force - or perhaps change volume based on collision force\
+* Create/add placeholder music\
 * Implement "breakable" behavior [BROKEN]\
 \
 ## Crashes\
 * Crashes when touching start point in 1-3.tmx?\
 \
 ## Other Problems\
+* Seems to be a memory leak or something regarding playing sound; initially hit sounds are fine but eventually lag builds up\
 * Hitting a toggle switch only changes that one switch; others need to be changed as well\
 * For some reason, breakable blocks directly underneath the starting position are triggered immediately\
 * Root cause of above - a collision is immediately triggered when the simulation starts with whatever is below the ball - maybe funked up gravity? Tried setting initial gravity to zero, but of course that means the ball doesn't move until the user touches the screen}

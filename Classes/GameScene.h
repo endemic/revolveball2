@@ -15,13 +15,6 @@
 
 @end
 
-@interface GameOverLayer : CCScene 
-{
-	int time;
-}
-@end
-
-
 @interface GameLayer : CCLayer 
 {
 	// Box2D
