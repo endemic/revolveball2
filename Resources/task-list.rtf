@@ -4,19 +4,16 @@
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural\pardirnatural
 
 \f0\fs20 \cf0 ## Task List\
-* Fix 24pt font\
-* Generate good-looking font for level select scene\
-* Create level blocks for "bonus" levels\
-* Create level blocks for "cave" levels\
 * Rapid prototype levels\
 * Create/add placeholder music\
+* Create level blocks for "bonus" levels\
+* Create level blocks for "cave" levels\
 * Implement "breakable" behavior [BROKEN]\
 \
 ## Crashes\
 * Crashes when touching start point in 1-3.tmx?\
 \
 ## Other Problems\
-* Seems to be a memory leak or something regarding playing sound; initially hit sounds are fine but eventually lag builds up\
-* Hitting a toggle switch only changes that one switch; others need to be changed as well\
+* Hitting a toggle switch only changes that one switch; others need to be changed as well or else level design must take discrepancy into account\
 * For some reason, breakable blocks directly underneath the starting position are triggered immediately\
 * Root cause of above - a collision is immediately triggered when the simulation starts with whatever is below the ball - maybe funked up gravity? Tried setting initial gravity to zero, but of course that means the ball doesn't move until the user touches the screen}
