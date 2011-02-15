@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="100" height="100" tilewidth="32" tileheight="32">
+ <properties>
+  <property name="name" value="Squiggly"/>
+  <property name="time" value=""/>
+ </properties>
+ <tileset firstgid="1" name="texture" tilewidth="32" tileheight="32">
+  <image source="texture.png"/>
+ </tileset>
+ <layer name="Border" width="100" height="100">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAA+3WOwrDMAAFQSk/3//GaRxQrTiwhBkQ7lToseA5xphO6tBgjxZ7tNijxR4t9tj3i/8ie+xb3+1+4Z322LO+2+PCO+2x5/N2x9BHxe386qPheX710aCPFn206KNFHy36aNFHiz5a9NGijxZ9tOijRR8t+mjRR4s+WvTRoo8WfbToo0UfLfpo0UeLPlr00aKPFn206KNFHy36aNFHiz5a9NGijxZ9tOijRR8t+mjRR4s+WvTRoo8WfbToo0UfLfpo0UeLPlr00aKPFn206KNFHy2v5VzBHt+xx3+zR4s9WuzRYo8We7TYo8UeLfZosUeLPVrs0WKPFnu02KPFHi32aLFHiz1a7NFijxZ7tNijxR4t9mixR4s9WuzRYo8We7TYo8UeLfZomU7uvAG8/13dQJwAAA==
+  </data>
+ </layer>
+ <layer name="Extras" width="100" height="100">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAA+3BMQEAAADCoPVP7WULoAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgBt5RKnmQJwAAA==
+  </data>
+ </layer>
+</map>

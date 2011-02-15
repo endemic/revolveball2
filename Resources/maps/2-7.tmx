@@ -2,19 +2,19 @@
 <map version="1.0" orientation="orthogonal" width="100" height="100" tilewidth="32" tileheight="32">
  <properties>
   <property name="name" value="The Spiral"/>
-  <property name="time" value=""/>
+  <property name="time" value="180"/>
  </properties>
  <tileset firstgid="1" name="texture" tilewidth="32" tileheight="32">
   <image source="texture.png"/>
  </tileset>
  <layer name="Border" width="100" height="100">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAA+3b7U60MBCGYfw+Dv6oe/4nqEaJpTtPZ6YUost9JUS3QMk7T9ouyDtNAIA9PHxudwds90f9g/6xJYunna/zOJGJZ68s3kQ7mWjRLFRte5GJ7Yg5Slkywa9WPUat760xQB5rqh6j1hRvXiKPNaseVhZzdUz9uVbub2VCHmtWPXrGhZePWivIY22px6vRtuhdR+rxQB6+SI28uctijQfy8EXz8FgZkUdeq0azcUxknlJ9k4cvOz68+lnHWrlG+zubTB5z8bsaF3eTrn/5+dK4/pn1jo+vn88/W90e6afVdmaqRrM4hjz2FR0f9RxkzVP1ueSRN2o9V3moceb1d1ZlPV6Ntvqz9z2X8bGNV6NZHFPut861ziMPX3S+Kp9Fqecly3OuVj+R659ZpEbLs6jIVj7nIo88VaMRf9fm/jzPqof6+5Gap9R+xkeeqkfk/Y9WPvVaUl7rYrThW6semXXDW0vUtchjbdRaEb1WpO3Mou+lvW+8jjV/TaLt7Ea+K2jl1np3iDxse72/6b3HRR7a1vW7tfE+XL/RNeJ9uG1Ujer7jcz9Ie/D9eutkZcPefSx7qt7t1a/qg1rkTp6YyHaD3n4InW08DxxH606ZuYo8hjDyyN6bvn7LM4lD18kDzUulp9W/evPF6MN16J5WMcwX42XzeNFtJPHGKqO5RxkzVv1ueQxRs981Tp2Nvapa+Fa73rO9919ZL/vqnt18hgjkgfPS46z9f7cmrusflUb1nqfX2X7Hdn3LWvl4c1Trf3k0SczPiLriNUP/58zzspj1OZdC9eOrBF5+FSNtr6jmLkWfm2tUSY38vAxX/0tI9fvnjUeAAAAAAAAAAAAAAAAAAAAAAAAAAAAAG7NBzGwLzNAnAAA
+   H4sIAAAAAAAAA+3dUWrDMBCEYaet25ukzf0vWIISELIty9LuamH/DwLOi21myCTuS5cFAAAAAAAAAAAAAABYujl6YV4Ov8V7+ki85ODlPma7FcezNoo+kmcO9+zY+tp7x5HNzIQ+to4ysd4o+kis86GPOvrwpSUfi42ij8QiK/poRx++XM1Ka6PoI9HKjT760IcvI7lJbhR9JKMZfr9eEucCfXgjmRt9jKMPX6SfP0bOC72s6KMPffgisVHS2xWZRT700Y4+fJHeKIntisw6E/qoow9fNDeqd7sim5kDfWyVOfxNuPZj5z6istqoK9sV2TOH9XVs+dnYuw/4ycHLfcw24/fV2XZFVvaxZu+t9utroY83L9+p9JHUns/4fWWv1se66Mk36r7Qx9vMv1/w+dhq6cNio+gjae1DYrvK31H0sdXah+X1Irvah9ZG0UfS08eV7WrdKPpIevrQvkZkI31IbhR9JKN97OnZKPpINPqQPlckEn38CJ4rOskM6WOc9Pe5xHkj08qNPvr05PZxcs7PzvNC/pmD548xFlnRRzupjTrSs12RSW+UxHZFZp0PfdRpbNSR1u2KTHOjercrspmZ0MeW9kYdqW1XZM8cHtmx9Su/D/jJwct9zGa5Ubn8/7GU2xXZjI062y4AAAAAAAAA7f4B6owP+kCcAAA=
   </data>
  </layer>
  <layer name="Extras" width="100" height="100">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAA+3BMQEAAADCoPVP7WULoAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgBt5RKnmQJwAAA==
+   H4sIAAAAAAAAA+3bOw6AMAxEwZR87n9fClqQLCGwNsxUSefqdTsGAAAAAAAAAADMY+0+AKBIr4AUegWk0CsghV4BX1kK76v/nf3BGwDosXUfAFCkV0AKvQJS6BWQQq+AFHoFpNArIIVeASn0CuCf3trPVHY+1Y0PAPOxPwdS6BWQQq+AFHoFpNArAAAAAIDTARorFlRAnAAA
   </data>
  </layer>
 </map>
