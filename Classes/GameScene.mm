@@ -155,8 +155,8 @@
 		// Store the collidable tiles
 		border = [[map layerNamed:@"Border"] retain];
 		
-		if ([GameData sharedGameData].currentLevel == 0 && [GameData sharedGameData].currentWorld == 0)
-			[self blockHubEntrances];
+		//if ([GameData sharedGameData].currentLevel == 0 && [GameData sharedGameData].currentWorld == 0)
+		//	[self blockHubEntrances];
 		
 		// Create Box2D world
 		//b2Vec2 gravity = b2Vec2(0.0f, 0.0f);
