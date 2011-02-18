@@ -12,6 +12,7 @@
 #import "GameConfig.h"
 #import "TitleScene.h"
 #import "LevelSelectScene.h"
+#import "CrossPromoScene.h"
 #import "RootViewController.h"
 
 @implementation RevolveBallAppDelegate

@@ -4,7 +4,7 @@
   <property name="time" value="320"/>
  </properties>
  <tileset firstgid="1" name="texture" tilewidth="32" tileheight="32">
-  <image source="texture.png"/>
+  <image source="world-2-tileset.png"/>
  </tileset>
  <layer name="Border" width="100" height="100">
   <data encoding="base64" compression="gzip">
