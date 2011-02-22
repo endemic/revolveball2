@@ -140,6 +140,9 @@
 		7D0BFDA912E3EB57006BF429 /* 2-4.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 7D0BFDA612E3EB57006BF429 /* 2-4.tmx */; };
 		7D0BFDAA12E3EB57006BF429 /* 2-5.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 7D0BFDA712E3EB57006BF429 /* 2-5.tmx */; };
 		7D0BFDAB12E3EB57006BF429 /* 2-6.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 7D0BFDA812E3EB57006BF429 /* 2-6.tmx */; };
+		7D15DFD913143BD7003CF95B /* 3-9.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 7D15DFD613143BD7003CF95B /* 3-9.tmx */; };
+		7D15DFDA13143BD7003CF95B /* 3-10.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 7D15DFD713143BD7003CF95B /* 3-10.tmx */; };
+		7D15DFDB13143BD7003CF95B /* world-4-tileset.png in Resources */ = {isa = PBXBuildFile; fileRef = 7D15DFD813143BD7003CF95B /* world-4-tileset.png */; };
 		7D1FAF58130159AC0076BFFB /* level-connector.png in Resources */ = {isa = PBXBuildFile; fileRef = 7D1FAF57130159AC0076BFFB /* level-connector.png */; };
 		7D2BD5FF12F8A85000D0DA53 /* back-button-selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 7D2BD5FA12F8A85000D0DA53 /* back-button-selected.png */; };
 		7D2BD60012F8A85000D0DA53 /* back-button.png in Resources */ = {isa = PBXBuildFile; fileRef = 7D2BD5FB12F8A85000D0DA53 /* back-button.png */; };
@@ -580,6 +583,9 @@
 		7D0BFDA612E3EB57006BF429 /* 2-4.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = "2-4.tmx"; path = "maps/2-4.tmx"; sourceTree = "<group>"; };
 		7D0BFDA712E3EB57006BF429 /* 2-5.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = "2-5.tmx"; path = "maps/2-5.tmx"; sourceTree = "<group>"; };
 		7D0BFDA812E3EB57006BF429 /* 2-6.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = "2-6.tmx"; path = "maps/2-6.tmx"; sourceTree = "<group>"; };
+		7D15DFD613143BD7003CF95B /* 3-9.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = "3-9.tmx"; path = "maps/3-9.tmx"; sourceTree = "<group>"; };
+		7D15DFD713143BD7003CF95B /* 3-10.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = "3-10.tmx"; path = "maps/3-10.tmx"; sourceTree = "<group>"; };
+		7D15DFD813143BD7003CF95B /* world-4-tileset.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "world-4-tileset.png"; path = "maps/world-4-tileset.png"; sourceTree = "<group>"; };
 		7D1FAF57130159AC0076BFFB /* level-connector.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "level-connector.png"; path = "images/level-connector.png"; sourceTree = "<group>"; };
 		7D2BD5FA12F8A85000D0DA53 /* back-button-selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "back-button-selected.png"; path = "images/buttons/back-button-selected.png"; sourceTree = "<group>"; };
 		7D2BD5FB12F8A85000D0DA53 /* back-button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "back-button.png"; path = "images/buttons/back-button.png"; sourceTree = "<group>"; };
@@ -1342,7 +1348,6 @@
 		7D50A1F812BBF8EF0039A691 /* maps */ = {
 			isa = PBXGroup;
 			children = (
-				7D94D241130E8FFB00C1135F /* world-1-tileset.png */,
 				7DECBF6812F13334002D2DFC /* 0-0.tmx */,
 				7D50A26712BBF97A0039A691 /* 1-1.tmx */,
 				7D50A26812BBF97A0039A691 /* 1-2.tmx */,
@@ -1372,9 +1377,13 @@
 				7D59192D130BF10D0052E9E8 /* 3-6.tmx */,
 				7DF2AEBE130D4312002FAE81 /* 3-7.tmx */,
 				7DF2AEBF130D4312002FAE81 /* 3-8.tmx */,
+				7D15DFD613143BD7003CF95B /* 3-9.tmx */,
+				7D15DFD713143BD7003CF95B /* 3-10.tmx */,
 				7D50A26B12BBF97A0039A691 /* coordinates.plist */,
-				7DC41EBD12CC4E6500D45992 /* world-3-tileset.png */,
+				7D94D241130E8FFB00C1135F /* world-1-tileset.png */,
 				7DBED19912C3CC9100932EE0 /* world-2-tileset.png */,
+				7DC41EBD12CC4E6500D45992 /* world-3-tileset.png */,
+				7D15DFD813143BD7003CF95B /* world-4-tileset.png */,
 				7D50A26C12BBF97A0039A691 /* Default.tmx */,
 				7D50A26D12BBF97A0039A691 /* project.ztp */,
 				7D50A26E12BBF97A0039A691 /* test-hd.tmx */,
@@ -1960,6 +1969,9 @@
 				7DF2AEC0130D4312002FAE81 /* 3-7.tmx in Resources */,
 				7DF2AEC1130D4312002FAE81 /* 3-8.tmx in Resources */,
 				7D94D242130E8FFB00C1135F /* world-1-tileset.png in Resources */,
+				7D15DFD913143BD7003CF95B /* 3-9.tmx in Resources */,
+				7D15DFDA13143BD7003CF95B /* 3-10.tmx in Resources */,
+				7D15DFDB13143BD7003CF95B /* world-4-tileset.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
