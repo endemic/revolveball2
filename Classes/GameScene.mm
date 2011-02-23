@@ -159,11 +159,10 @@
 		//	[self blockHubEntrances];
 		
 		// Create Box2D world
-		//b2Vec2 gravity = b2Vec2(0.0f, 0.0f);
 		b2Vec2 gravity(sin(CC_DEGREES_TO_RADIANS(map.rotation)) * 15, -cos(CC_DEGREES_TO_RADIANS(map.rotation)) * 15);
 		bool doSleep = false;
 		world = new b2World(gravity, doSleep);
-		
+
 		// Initialize contact listener
 		contactListener = new MyContactListener();
 		world->SetContactListener(contactListener);
@@ -174,6 +173,7 @@
 		
 		bool sensorFlag;
 		bool toggleFlag;
+		bool destroyStartPosition;
 		
 		for (int x = 0; x < map.mapSize.width; x++)
 			for (int y = 0; y < map.mapSize.height; y++)
@@ -195,6 +195,7 @@
 					// Default sensor flag to false
 					sensorFlag = NO;
 					toggleFlag = NO;
+					destroyStartPosition = NO;
 					
 					int tileGID = [border tileGIDAt:ccp(x, y)];
 					switch (tileGID) 
@@ -241,14 +242,15 @@
 							break;
 						case kPlayerStart:
 							polygonShape.SetAsBox(0.5f, 0.5f);		// Create 1x1 box shape
-							sensorFlag = YES;
 							
 							// Player starting location
 							startPosition = ccp(x, y);
 							
 							// Delete tile that showed start position
 							[border removeTileAt:ccp(x, y)];
-							bodyDefinition.userData = NULL;
+							
+							// Flag this body to be destroyed immediately
+							destroyStartPosition = YES;
 							break;
 						case kDownBoost:
 						case kLeftBoost:
@@ -319,6 +321,12 @@
 					fixtureDefinition.isSensor = sensorFlag;
 					
 					body->CreateFixture(&fixtureDefinition);
+					
+					if (destroyStartPosition)
+					{
+						world->DestroyBody(body);
+						destroyStartPosition = NO;
+					}
 					
 					// Push certain bodies into the "toggle" vector
 					if (toggleFlag)
@@ -465,6 +473,7 @@
 
 			[map setAnchorPoint:ccp(anchorX, anchorY)];
 			
+			// Set local variable equal to ball object in order to apply forces, etc. to it later
 			ballBody = b;
 		}
 		
@@ -791,8 +800,12 @@
 		b2Body *body = *position;     
 		if (body->GetUserData() != NULL) 
 		{
+			// Remove sprite from map
 			CCSprite *sprite = (CCSprite *)body->GetUserData();
 			[border removeChild:sprite cleanup:YES];
+			
+			// Remove object from contact queue - does this actually do anything?
+			//[contactListener->contactQueue removeObject:sprite];
 		}
 		world->DestroyBody(body);
 	}

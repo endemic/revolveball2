@@ -38,17 +38,14 @@ void MyContactListener::BeginContact(b2Contact *contact)
 {
 	b2Body *bodyA = contact->GetFixtureA()->GetBody();
 	b2Body *bodyB = contact->GetFixtureB()->GetBody();
+
+	CCSprite *spriteA = (CCSprite *)bodyA->GetUserData();
+	CCSprite *spriteB = (CCSprite *)bodyB->GetUserData();
+	//NSLog(@"Sprite B: %@; Sprite A: %@", spriteA, spriteB);
 	
-	//if (contact->IsTouching()) 
-	{
-		CCSprite *spriteA = (CCSprite *)bodyA->GetUserData();
-		CCSprite *spriteB = (CCSprite *)bodyB->GetUserData();
-		//NSLog(@"Sprite B: %@; Sprite A: %@", spriteA, spriteB);
-		
-		// Add both sprites to contact queue - will filter out the ball later
-		[contactQueue addObject:spriteA];
-		[contactQueue addObject:spriteB];
-	}
+	// Add both sprites to contact queue - will filter out the ball later
+	[contactQueue addObject:spriteA];
+	[contactQueue addObject:spriteB];
 }
 
 void MyContactListener::EndContact(b2Contact *contact)
@@ -56,7 +53,6 @@ void MyContactListener::EndContact(b2Contact *contact)
 	b2Body *bodyA = contact->GetFixtureA()->GetBody();
 	b2Body *bodyB = contact->GetFixtureB()->GetBody();
 	NSMutableArray *discardedItems = [NSMutableArray array];
-	//CCSprite *item;
 	
 	for (CCSprite *item in contactQueue)
 	{
