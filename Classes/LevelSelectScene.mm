@@ -184,6 +184,9 @@
 		[[SimpleAudioEngine sharedEngine] preloadEffect:@"wall-hit.caf"];
 		[[SimpleAudioEngine sharedEngine] preloadEffect:@"time-pickup.caf"];
 		[[SimpleAudioEngine sharedEngine] preloadEffect:@"toggle.caf"];
+		
+		// Preload music - eventually do this based on the "world" that is selected
+		[[SimpleAudioEngine sharedEngine] preloadBackgroundMusic:@"world-1-bgm.mp3"];
 	}
 	return self;
 }

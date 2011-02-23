@@ -240,6 +240,11 @@
 		7DC41EBF12CC4E6500D45992 /* 3-1.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 7DC41EBC12CC4E6500D45992 /* 3-1.tmx */; };
 		7DC41EC012CC4E6500D45992 /* world-3-tileset.png in Resources */ = {isa = PBXBuildFile; fileRef = 7DC41EBD12CC4E6500D45992 /* world-3-tileset.png */; };
 		7DC87561130DC6420080847F /* CrossPromoScene.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7DC87560130DC6420080847F /* CrossPromoScene.mm */; };
+		7DCC4F591315242E00BF4962 /* 4-1.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 7DCC4F561315242E00BF4962 /* 4-1.tmx */; };
+		7DCC4F5A1315242E00BF4962 /* 4-2.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 7DCC4F571315242E00BF4962 /* 4-2.tmx */; };
+		7DCC4F5B1315242E00BF4962 /* 4-3.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 7DCC4F581315242E00BF4962 /* 4-3.tmx */; };
+		7DCC4F601315245B00BF4962 /* world-1-bgm.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7DCC4F5E1315245B00BF4962 /* world-1-bgm.mp3 */; };
+		7DCC4F611315245B00BF4962 /* world-2-bgm.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7DCC4F5F1315245B00BF4962 /* world-2-bgm.mp3 */; };
 		7DE41D6012C30AA700F9B4DE /* 1-9.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 7DE41D5D12C30AA700F9B4DE /* 1-9.tmx */; };
 		7DE41D6112C30AA700F9B4DE /* 1-10.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 7DE41D5E12C30AA700F9B4DE /* 1-10.tmx */; };
 		7DE41D6212C30AA700F9B4DE /* 2-1.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 7DE41D5F12C30AA700F9B4DE /* 2-1.tmx */; };
@@ -690,6 +695,11 @@
 		7DC41EBD12CC4E6500D45992 /* world-3-tileset.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "world-3-tileset.png"; path = "maps/world-3-tileset.png"; sourceTree = "<group>"; };
 		7DC8755F130DC6420080847F /* CrossPromoScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CrossPromoScene.h; sourceTree = "<group>"; };
 		7DC87560130DC6420080847F /* CrossPromoScene.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = CrossPromoScene.mm; sourceTree = "<group>"; };
+		7DCC4F561315242E00BF4962 /* 4-1.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = "4-1.tmx"; path = "maps/4-1.tmx"; sourceTree = "<group>"; };
+		7DCC4F571315242E00BF4962 /* 4-2.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = "4-2.tmx"; path = "maps/4-2.tmx"; sourceTree = "<group>"; };
+		7DCC4F581315242E00BF4962 /* 4-3.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = "4-3.tmx"; path = "maps/4-3.tmx"; sourceTree = "<group>"; };
+		7DCC4F5E1315245B00BF4962 /* world-1-bgm.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "world-1-bgm.mp3"; path = "music/world-1-bgm.mp3"; sourceTree = "<group>"; };
+		7DCC4F5F1315245B00BF4962 /* world-2-bgm.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "world-2-bgm.mp3"; path = "music/world-2-bgm.mp3"; sourceTree = "<group>"; };
 		7DE41D5D12C30AA700F9B4DE /* 1-9.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = "1-9.tmx"; path = "maps/1-9.tmx"; sourceTree = "<group>"; };
 		7DE41D5E12C30AA700F9B4DE /* 1-10.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = "1-10.tmx"; path = "maps/1-10.tmx"; sourceTree = "<group>"; };
 		7DE41D5F12C30AA700F9B4DE /* 2-1.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = "2-1.tmx"; path = "maps/2-1.tmx"; sourceTree = "<group>"; };
@@ -1242,6 +1252,7 @@
 				7D50A1F612BBF8E20039A691 /* fonts */,
 				7D50A1F812BBF8EF0039A691 /* maps */,
 				7D50A1F912BBF8F40039A691 /* sounds */,
+				7DCC4F5D1315244400BF4962 /* music */,
 				E02BBA10126CC29D006E46A2 /* iTunesArtwork */,
 				E02BB53E126CA5DA006E46A2 /* Icon@2x.png */,
 				E02BB53F126CA5DA006E46A2 /* Icon-Small@2x.png */,
@@ -1379,6 +1390,9 @@
 				7DF2AEBF130D4312002FAE81 /* 3-8.tmx */,
 				7D15DFD613143BD7003CF95B /* 3-9.tmx */,
 				7D15DFD713143BD7003CF95B /* 3-10.tmx */,
+				7DCC4F561315242E00BF4962 /* 4-1.tmx */,
+				7DCC4F571315242E00BF4962 /* 4-2.tmx */,
+				7DCC4F581315242E00BF4962 /* 4-3.tmx */,
 				7D50A26B12BBF97A0039A691 /* coordinates.plist */,
 				7D94D241130E8FFB00C1135F /* world-1-tileset.png */,
 				7DBED19912C3CC9100932EE0 /* world-2-tileset.png */,
@@ -1413,6 +1427,15 @@
 				7D8E14B41302F1680094C28B /* wall-hit.caf */,
 			);
 			name = caf;
+			sourceTree = "<group>";
+		};
+		7DCC4F5D1315244400BF4962 /* music */ = {
+			isa = PBXGroup;
+			children = (
+				7DCC4F5E1315245B00BF4962 /* world-1-bgm.mp3 */,
+				7DCC4F5F1315245B00BF4962 /* world-2-bgm.mp3 */,
+			);
+			name = music;
 			sourceTree = "<group>";
 		};
 		E02BB8BF126CC28A006E46A2 /* cocos2d */ = {
@@ -1972,6 +1995,11 @@
 				7D15DFD913143BD7003CF95B /* 3-9.tmx in Resources */,
 				7D15DFDA13143BD7003CF95B /* 3-10.tmx in Resources */,
 				7D15DFDB13143BD7003CF95B /* world-4-tileset.png in Resources */,
+				7DCC4F591315242E00BF4962 /* 4-1.tmx in Resources */,
+				7DCC4F5A1315242E00BF4962 /* 4-2.tmx in Resources */,
+				7DCC4F5B1315242E00BF4962 /* 4-3.tmx in Resources */,
+				7DCC4F601315245B00BF4962 /* world-1-bgm.mp3 in Resources */,
+				7DCC4F611315245B00BF4962 /* world-2-bgm.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

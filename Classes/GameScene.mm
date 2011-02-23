@@ -401,6 +401,9 @@
 		
 		// Schedule timer function for 1 second intervals
 		[self schedule:@selector(timer:) interval:1];
+		
+		// Start playing BGM
+		[[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"world-1-bgm.mp3"];
 	}
 }
 
@@ -566,12 +569,10 @@
 							// Push block onto the "destroy" stack if ball is moving fast enough
 							if (sqrt(pow(ballSpeed.x, 2) + pow(ballSpeed.y, 2)) > 4)	// At this point, 4 is an arbitrary number; need to derive it from gravity somehow
 							{	
-								discardedItems.push_back(b);
-								
-								// Since the ball stays at the same position, even though it is techncially moving, we need to find the
-								// correct spot to place the shards on the layer
-								//int diffX = (winSize.width / 2) - (ballBody->GetPosition().x * ptmRatio - s.position.x);
-								//int diffY = (winSize.height / 2) - (ballBody->GetPosition().y * ptmRatio - s.position.y);
+								// does this have an effect?
+								if (std::find(discardedItems.begin(), discardedItems.end(), b) == discardedItems.end()) {
+									discardedItems.push_back(b);
+								}
 								
 								// Create particle effect here
 							}

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="100" height="100" tilewidth="32" tileheight="32">
+ <properties>
+  <property name="name" value="Twisty"/>
+  <property name="time" value="60"/>
+ </properties>
+ <tileset firstgid="1" name="world-4-tileset" tilewidth="32" tileheight="32">
+  <image source="world-4-tileset.png"/>
+ </tileset>
+ <layer name="Border" width="100" height="100">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAA+3Y0WrDIBQG4O5mu97lLvP+LznKOtaJiUdzTAL9PhBKYi2cP2rs7QYAcI63lcY5arWXx3l+a/9Rucbx1ubHVmOe3vrKYy55XEt0vdrqT557fb+KVtZcHrla+3Nrz5ZHrr17hDxyRWu4PPW3f8xT1rNW66X8UmAsxmw93953jxfJYymuOZ/P0zs/ojXvfU/jRyuP0Tq2+smjbub82HP/VUXer8rPe8at3edPpC6tzFrrWi1LedRlrT+R78qjLfKM730fkkeOtf18pJXjyaNf9rlBHm29ZzZ5zBWpy+ejRfr3vnPx34w8sn73FUXOg2v9W+Nl9Hs1kf9LRudH797EWB72iHkieWSMTUzv/Bgdm5gZ65U9YlzveqXGc7Xy8Mwfy/y4lsh5cGn0MXfyRGu4tLvII0FmDeWxX3T9WTb6P4/FPJH9XB7HiezZ8jjOvb7vj/Z8reyzdo9ca3nYP85Ry6PVn3nkcS3R9cr5/BhqDgAAAAAAAAAAAAAAAAAAAAAAAPt9A9l9dBZAnAAA
+  </data>
+ </layer>
+ <layer name="Extras" width="100" height="100">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAA+3BMQEAAADCoPVP7WULoAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgBt5RKnmQJwAAA==
+  </data>
+ </layer>
+</map>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="100" height="100" tilewidth="32" tileheight="32">
+ <properties>
+  <property name="name" value="Twisty"/>
+  <property name="time" value="60"/>
+ </properties>
+ <tileset firstgid="1" name="world-4-tileset" tilewidth="32" tileheight="32">
+  <image source="world-4-tileset.png"/>
+ </tileset>
+ <layer name="Border" width="100" height="100">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAA+3WMQrAMAgF0GTq3PtfNhQqdAjppgm8By6O/4PYGgAAAADAefrPkGuW+f2OPvJF5tdnp486q8z1kU8fe3kyj/sU3Ks6+tiLfxcAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABqDW3aPh5AnAAA
+  </data>
+ </layer>
+ <layer name="Extras" width="100" height="100">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAA+3BMQEAAADCoPVP7WULoAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgBt5RKnmQJwAAA==
+  </data>
+ </layer>
+</map>
