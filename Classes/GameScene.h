@@ -28,8 +28,9 @@
 	CCTMXTiledMap *map;
 	CCTMXLayer *border;
 	
-	// Vector of Box2D bodies that can be toggled off/on in a level
-	std::vector<b2Body *> toggleGroup;
+	// Vectors of Box2D bodies that can be toggled off/on in a level
+	std::vector<b2Body *> toggleBlockGroup;
+	std::vector<b2Body *> toggleSwitchGroup;
 	
 	// Flag for whether or not the toggle block switch can be thrown
 	bool toggleSwitchTimeout;
@@ -40,7 +41,6 @@
 	// For time limit
 	int secondsLeft;
 	CCLabelBMFont *timerLabel;
-	//CCBitmapFontAtlas *timerLabel;
 	
 	// For countdown at start of level
 	int countdownTime;

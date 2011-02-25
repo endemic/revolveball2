@@ -172,7 +172,8 @@
 		CGPoint startPosition;
 		
 		bool sensorFlag;
-		bool toggleFlag;
+		bool toggleBlockFlag;
+		bool toggleSwitchFlag;
 		bool destroyStartPosition;
 		
 		for (int x = 0; x < map.mapSize.width; x++)
@@ -194,7 +195,8 @@
 					
 					// Default sensor flag to false
 					sensorFlag = NO;
-					toggleFlag = NO;
+					toggleBlockFlag = NO;
+					toggleSwitchFlag = NO;
 					destroyStartPosition = NO;
 					
 					int tileGID = [border tileGIDAt:ccp(x, y)];
@@ -301,12 +303,13 @@
 						case kToggleBlockRedOn:
 						case kToggleBlockGreenOff:
 						case kToggleBlockRedOff:
-							toggleFlag = YES;
+							toggleBlockFlag = YES;
 							polygonShape.SetAsBox(0.5f, 0.5f);
 							break;
 						case kToggleSwitchRed:
 						case kToggleSwitchGreen:
 							sensorFlag = YES;
+							toggleSwitchFlag = YES;
 							polygonShape.SetAsBox(0.4f, 0.4f);	// Slightly smaller box to try to fake a circle - lazy!
 						default:
 							// Default is to create sensor that then triggers an NSLog that tells us we're missing something
@@ -328,14 +331,18 @@
 						destroyStartPosition = NO;
 					}
 					
-					// Push certain bodies into the "toggle" vector
-					if (toggleFlag)
+					// Push toggle blocks into a vector
+					if (toggleBlockFlag)
 					{
 						// Set the "off" blocks to be inactive at first!
 						if (tileGID == kToggleBlockGreenOff || tileGID == kToggleBlockRedOff)
 							body->SetActive(false);
-						toggleGroup.push_back(body);
+						toggleBlockGroup.push_back(body);
 					}
+					
+					// Push toggle switches into a vector
+					if (toggleSwitchFlag)
+						toggleSwitchGroup.push_back(body);
 				}
 			}
 		
@@ -411,7 +418,7 @@
 		[self schedule:@selector(timer:) interval:1];
 		
 		// Start playing BGM
-		[[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"world-1-bgm.mp3"];
+		//[[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"world-1-bgm.mp3"];
 	}
 }
 
@@ -450,14 +457,16 @@
 	CGSize winSize = [CCDirector sharedDirector].winSize;
 	
 	// Step through world collisions - (timeStep, velocityIterations, positionIterations)
-	world->Step(dt, 8, 1);
-	
-	// Vector containing Box2D bodies to be destroyed
-	std::vector<b2Body *> discardedItems;
+	world->Step(dt, 10, 10);
 	
 	// Local convenience variable
 	b2Body *ballBody;
 	
+	// Vector containing Box2D bodies to be destroyed
+	std::vector<b2Body *> discardedItems;
+	
+	// Loop through all Box2D bodies in the world and find the ball object;
+	// Update the map's anchor point + the player sprite's rotation based on that object
 	for (b2Body *b = world->GetBodyList(); b; b = b->GetNext()) 
 	{
 		// Find the ball in the list of Box2D objects, and move the map's anchor position based on the ball's position within the map
@@ -473,325 +482,310 @@
 
 			[map setAnchorPoint:ccp(anchorX, anchorY)];
 			
-			// Set local variable equal to ball object in order to apply forces, etc. to it later
+			// Set local variable equal to ball Box2D body in order to apply forces, etc. to it later
 			ballBody = b;
 		}
+	}
+	
+	// Loop thru sprite contact queue
+	for (std::vector<ContactPoint>::iterator position = contactListener->contactQueue.begin(); position != contactListener->contactQueue.end(); ++position) 
+	{
+		ContactPoint contact = *position;
 		
-		// Loop thru sprite contact queue
-		for (CCSprite *s in contactListener->contactQueue)
+		// Find "other" object in the contact
+		b2Body *b = contact.fixtureA->GetBody();
+		
+		if ((CCSprite *)b->GetUserData() == ball)
+			b = contact.fixtureB->GetBody();
+		
+		// Get sprite associated w/ body
+		CCSprite *s = (CCSprite *)b->GetUserData();
+		
+		// Process collisions with all other objects
+		int tileGID = [border tileGIDAt:ccp(s.position.x / ptmRatio, map.mapSize.height - (s.position.y / ptmRatio) - 1)];	// Box2D and TMX y-coords are inverted
+		switch (tileGID) 
 		{
-			// Ignore when ball is in contact queue
-			if ((CCSprite *)b->GetUserData() == ball)
-				continue;
-			
-			// Process all other objects
-			if ((CCSprite *)b->GetUserData() == s)
-			{
-				int tileGID = [border tileGIDAt:ccp(s.position.x / ptmRatio, map.mapSize.height - (s.position.y / ptmRatio) - 1)];	// Box2D and TMX y-coords are inverted
-				
-				switch (tileGID) 
+			case kSquare:
+			case kUpperLeftTriangle:
+			case kUpperRightTriangle:
+			case kLowerLeftTriangle:
+			case kLowerRightTriangle:
+			case kToggleBlockRedOn:
+			case kToggleBlockGreenOn:
+			case kToggleBlockRedOff:
+			case kToggleBlockGreenOff:
+			case kLeftArrow:
+			case kRightArrow:
+			case kDownArrow:
+			case kUpArrow:
+			case kPeg:
+				// Do nothing
+				break;
+			case kToggleSwitchRed:
+			case kToggleSwitchGreen:
+				if (!toggleSwitchTimeout)
 				{
-					case kSquare:
-					case kUpperLeftTriangle:
-					case kUpperRightTriangle:
-					case kLowerLeftTriangle:
-					case kLowerRightTriangle:
-					case kToggleBlockRedOn:
-					case kToggleBlockGreenOn:
-					case kToggleBlockRedOff:
-					case kToggleBlockGreenOff:
-					case kLeftArrow:
-					case kRightArrow:
-					case kDownArrow:
-					case kUpArrow:
-					case kPeg:
-						// Do nothing
-						break;
-					case kToggleSwitchGreen:
-						if (!toggleSwitchTimeout)
-						{
-							toggleSwitchTimeout = true;
-							
-							// Switch the "active" states for each body in the "toggleGroup" vector
-							for (std::vector<b2Body *>::iterator position = toggleGroup.begin(); position != toggleGroup.end(); ++position) 
-							{
-								b2Body *body = *position;
-								if (body->IsActive())
-								{
-									body->SetActive(false);
-									// Turn red blocks off
-									[border setTileGID:kToggleBlockRedOff at:ccp(body->GetPosition().x - 0.5, map.mapSize.height - body->GetPosition().y - 0.5)];
-									//NSLog(@"Tryin' to swap tiles at %f, %f", body->GetPosition().x - 0.5, map.mapSize.height - body->GetPosition().y - 0.5);
-								}
-								else
-								{
-									body->SetActive(true);
-									// Turn green blocks on
-									[border setTileGID:kToggleBlockGreenOn at:ccp(body->GetPosition().x - 0.5, map.mapSize.height - body->GetPosition().y - 0.5)];
-								}
-							}
-							
-							// Swap the tile for the switch
-							[border setTileGID:kToggleSwitchRed at:ccp(s.position.x / ptmRatio, map.mapSize.height - (s.position.y / ptmRatio) - 1)];
-							//NSLog(@"Toggling switch at %f, %f", s.position.x / ptmRatio, map.mapSize.height - (s.position.y / ptmRatio) - 1);
-							
-							// Do pause effect
-							[self togglePause:0];
-						}
-						break;
-					case kToggleSwitchRed:
-						if (!toggleSwitchTimeout)
-						{
-							toggleSwitchTimeout = true;
-							
-							// Switch the "active" states for each body in the "toggleGroup" vector
-							for (std::vector<b2Body *>::iterator position = toggleGroup.begin(); position != toggleGroup.end(); ++position) 
-							{
-								b2Body *body = *position;
-								if (body->IsActive())
-								{
-									body->SetActive(false);
-									// Turn green blocks off
-									[border setTileGID:kToggleBlockGreenOff at:ccp(body->GetPosition().x - 0.5, map.mapSize.height - body->GetPosition().y - 0.5)];
-								}
-								else
-								{
-									body->SetActive(true);
-									// Turn red blocks on
-									[border setTileGID:kToggleBlockRedOn at:ccp(body->GetPosition().x - 0.5, map.mapSize.height - body->GetPosition().y - 0.5)];
-								}
-							}
-							
-							// Swap the tile for the switch - green are passable
-							[border setTileGID:kToggleSwitchGreen at:ccp(s.position.x / ptmRatio, map.mapSize.height - (s.position.y / ptmRatio) - 1)];
-							
-							// Do pause effect
-							[self togglePause:0];
-						}
-						break;
-					case kBreakable:
-						{
-							// Find ball's speed
-							b2Vec2 ballSpeed = ballBody->GetLinearVelocity();
-							CCLOG(@"Ball velocity: %f", sqrt(pow(ballSpeed.x, 2) + pow(ballSpeed.y, 2)));
-							
-							// Push block onto the "destroy" stack if ball is moving fast enough
-							if (sqrt(pow(ballSpeed.x, 2) + pow(ballSpeed.y, 2)) > 4)	// At this point, 4 is an arbitrary number; need to derive it from gravity somehow
-							{	
-								// does this have an effect?
-								if (std::find(discardedItems.begin(), discardedItems.end(), b) == discardedItems.end()) {
-									discardedItems.push_back(b);
-								}
-								
-								// Create particle effect here
-							}
-						}
-						break;
-					case kClock:
-							// Remove the clock sensor
-							discardedItems.push_back(b);
-							
-							[[SimpleAudioEngine sharedEngine] playEffect:@"time-pickup.caf"];
-						
-							// Add time to time limit
-							[self gainTime:5];
-						break;
-					case kGoal:
-						{
-							[self unschedule:@selector(update:)];		// Need a better way of determining the end of a level
-							[self unschedule:@selector(timer:)];
-							
-							int currentLevelIndex = (([GameData sharedGameData].currentWorld - 1) * 10) + [GameData sharedGameData].currentLevel - 1;
-							
-							// Get best time from user defaults
-							NSMutableArray *levelData = [NSMutableArray arrayWithArray:[[NSUserDefaults standardUserDefaults] arrayForKey:@"levelData"]];
-							NSDictionary *d = [levelData objectAtIndex:currentLevelIndex];
+					toggleSwitchTimeout = true;
+					
+					// Switch the "active" states for each body in the "toggleGroup" vector
+					for (std::vector<b2Body *>::iterator position = toggleBlockGroup.begin(); position != toggleBlockGroup.end(); ++position) 
+					{
+						b2Body *body = *position;
+						CGPoint blockPosition = ccp(body->GetPosition().x - 0.5, map.mapSize.height - body->GetPosition().y - 0.5);
 
-							// Determine if current time is faster than saved
-							int currentTime = [[map propertyNamed:@"time"] intValue] - secondsLeft;
-							int bestSavedTime = [[d objectForKey:@"bestTime"] intValue];
-							if (currentTime < bestSavedTime)
-							{
-								NSDictionary *d = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInt:currentTime], @"bestTime", [NSNumber numberWithBool:YES], @"complete", nil];
-								[levelData replaceObjectAtIndex:currentLevelIndex withObject:d];
-								[[NSUserDefaults standardUserDefaults] setObject:levelData forKey:@"levelData"];
-								bestSavedTime = currentTime;	// for display below
-								//NSLog(@"Setting new best time for level %i as %@", currentLevelIndex + 1, [[[NSUserDefaults standardUserDefaults] arrayForKey:@"levelData"] objectAtIndex:currentLevelIndex]);
-							}
-							
-							// Get window size
-							CGSize windowSize = [CCDirector sharedDirector].winSize;
-							
-							// Add "Finish" label
-							CCLabelBMFont *finishLabel = [CCLabelBMFont labelWithString:@"FINISH!" fntFile:@"yoster-48.fnt"];
-							[finishLabel setPosition:ccp(windowSize.width / 2, windowSize.height / 2)];
-							[self addChild:finishLabel z:4];
-							
-							int minutes = floor(currentTime / 60);
-							int seconds = currentTime % 60;
-							
-							// Add "your time" label
-							CCLabelBMFont *yourTimeLabel = [CCLabelBMFont labelWithString:[NSString stringWithFormat:@"Current: %02d:%02d", minutes, seconds] fntFile:@"yoster-32.fnt"];
-							[yourTimeLabel setPosition:ccp(windowSize.width / 2, finishLabel.position.y - yourTimeLabel.contentSize.height * 1.5)];
-							[self addChild:yourTimeLabel z:1];
-							
-							minutes = floor(bestSavedTime / 60);
-							seconds = bestSavedTime % 60;
-							
-							// Add "best time" label
-							CCLabelBMFont *bestTimeLabel = [CCLabelBMFont labelWithString:[NSString stringWithFormat:@"Best: %02d:%02d", minutes, seconds] fntFile:@"yoster-32.fnt"];
-							[bestTimeLabel setPosition:ccp(windowSize.width / 2, yourTimeLabel.position.y - bestTimeLabel.contentSize.height)];
-							[self addChild:bestTimeLabel z:1];
-							
-							// Add button which takes us back to level select
-							CCMenuItem *continueButton = [CCMenuItemImage itemFromNormalImage:@"continue-button.png" selectedImage:@"continue-button.png" target:self selector:@selector(continueButtonAction:)];
-							CCMenuItem *retryButton = [CCMenuItemImage itemFromNormalImage:@"retry-button.png" selectedImage:@"retry-button.png" target:self selector:@selector(retryButtonAction:)];
-							CCMenu *menu = [CCMenu menuWithItems:continueButton, retryButton, nil];
-							[menu alignItemsVertically];
-							[menu setPosition:ccp(windowSize.width / 2, windowSize.height / 6)];
-							[self addChild:menu z:1];
+						if (body->IsActive())
+						{
+							// Turn active blocks off
+							body->SetActive(false);
+							if ([border tileGIDAt:blockPosition] == kToggleBlockRedOn)
+								[border setTileGID:kToggleBlockRedOff at:blockPosition];
+							else// if ([border tileGIDAt:blockPosition] == kToggleBlockGreenOn)
+								[border setTileGID:kToggleBlockGreenOff at:blockPosition];
 						}
-						break;
-					case kDownBoost:
-						ballBody->ApplyLinearImpulse(b2Vec2(0.0f, -1.0f), ballBody->GetPosition());
-						break;
-					case kLeftBoost:
-						ballBody->ApplyLinearImpulse(b2Vec2(-1.0f, 0.0f), ballBody->GetPosition());
-						break;
-					case kRightBoost:
-						ballBody->ApplyLinearImpulse(b2Vec2(1.0f, 0.0f), ballBody->GetPosition());
-						break;
-					case kUpBoost:
-						ballBody->ApplyLinearImpulse(b2Vec2(0.0f, 1.0f), ballBody->GetPosition());
-						break;
-					case kDownSpikes:
-						// Subtract time from time limit
-						[self loseTime:5];
+						else
+						{
+							// Turn inactive blocks on
+							body->SetActive(true);
+							if ([border tileGIDAt:blockPosition] == kToggleBlockRedOff)
+								[border setTileGID:kToggleBlockRedOn at:blockPosition];
+							else// if ([border tileGIDAt:blockPosition] == kToggleBlockGreenOff)
+								[border setTileGID:kToggleBlockGreenOn at:blockPosition];
+						}
+					}
+					
+					// Switch the colors for each switch
+					for (std::vector<b2Body *>::iterator position = toggleSwitchGroup.begin(); position != toggleSwitchGroup.end(); ++position) 
+					{
+						b2Body *body = *position;
+						CGPoint switchPosition = ccp(body->GetPosition().x - 0.5, map.mapSize.height - body->GetPosition().y - 0.5);
 						
-						[[SimpleAudioEngine sharedEngine] playEffect:@"spike-hit.caf"];
-						
-						// Push ball in opposite direction
-						ballBody->ApplyLinearImpulse(b2Vec2(0.0f, -2.0f), ballBody->GetPosition());
-						break;
-					case kLeftSpikes:
-						// Subtract time from time limit
-						[self loseTime:5];
-						
-						[[SimpleAudioEngine sharedEngine] playEffect:@"spike-hit.caf"];
-						
-						// Push ball in opposite direction
-						ballBody->ApplyLinearImpulse(b2Vec2(-2.0f, 0.0f), ballBody->GetPosition());
-						break;
-					case kRightSpikes:
-						// Subtract time from time limit
-						[self loseTime:5];
-						
-						[[SimpleAudioEngine sharedEngine] playEffect:@"spike-hit.caf"];
-						
-						// Push ball in opposite direction
-						ballBody->ApplyLinearImpulse(b2Vec2(2.0f, 0.0f), ballBody->GetPosition());
-						break;
-					case kUpSpikes:
-						// Subtract time from time limit
-						[self loseTime:5];
-						
-						[[SimpleAudioEngine sharedEngine] playEffect:@"spike-hit.caf"];
-						
-						// Push ball in opposite direction
-						ballBody->ApplyLinearImpulse(b2Vec2(0.0f, 2.0f), ballBody->GetPosition());
-						break;
-					case kBumper:
-						// Find the contact point and apply a linear inpulse at that point
-						break;
-					case kSkyLevelWarp:
-						// Stop update method
-						[self unschedule:@selector(update:)];
-						
-						// Set world/level
-						[GameData sharedGameData].currentWorld = 1;
-						[GameData sharedGameData].currentLevel = 1;
-						
-						// Transition to level select scene
-						[[CCDirector sharedDirector] replaceScene:[CCTransitionRotoZoom transitionWithDuration:1.0 scene:[LevelSelectScene node]]];
-						break;
-					case kForestLevelWarp:
-						// Stop update method
-						[self unschedule:@selector(update:)];
-						
-						// Set world/level
-						[GameData sharedGameData].currentWorld = 2;
-						[GameData sharedGameData].currentLevel = 1;
-						
-						// Transition to level select scene
-						[[CCDirector sharedDirector] replaceScene:[CCTransitionRotoZoom transitionWithDuration:1.0 scene:[LevelSelectScene node]]];
-						break;
-					case kMountainLevelWarp:
-						// Stop update method
-						[self unschedule:@selector(update:)];
-						
-						// Set world/level
-						[GameData sharedGameData].currentWorld = 3;
-						[GameData sharedGameData].currentLevel = 1;
-						
-						// Transition to level select scene
-						[[CCDirector sharedDirector] replaceScene:[CCTransitionRotoZoom transitionWithDuration:1.0 scene:[LevelSelectScene node]]];
-						break;
-					case kCaveLevelWarp:
-						// Stop update method
-						[self unschedule:@selector(update:)];
-						
-						// Set world/level
-						[GameData sharedGameData].currentWorld = 4;
-						[GameData sharedGameData].currentLevel = 1;
-						
-						// Transition to level select scene
-						[[CCDirector sharedDirector] replaceScene:[CCTransitionRotoZoom transitionWithDuration:1.0 scene:[LevelSelectScene node]]];
-						break;
-					default:
-						NSLog(@"Touching unrecognized tile GID: %i", tileGID);
-						break;
+						// Find the current color for the switch
+						if ([border tileGIDAt:switchPosition] == kToggleSwitchRed)
+							[border setTileGID:kToggleSwitchGreen at:switchPosition];
+						else
+							[border setTileGID:kToggleSwitchRed at:switchPosition];
+					}
+	
+					// Do pause effect
+					[self togglePause:0];
 				}
-			}
-		}
-
-		// Loop through SFX queue
-		for (CCSprite *s in contactListener->sfxQueue)
-		{
-			// Ignore when ball is in contact queue
-			if ((CCSprite *)b->GetUserData() == ball)
-			{
-				// Remove object from SFX queue
-				[contactListener->sfxQueue removeObject:ball];
-				
-				continue;
-			}
-
-			// Process all other objects
-			if ((CCSprite *)b->GetUserData() == s)
-			{
-				// Play SFX based on what object is in the sound queue
-				int tileGID = [border tileGIDAt:ccp(s.position.x / ptmRatio, map.mapSize.height - (s.position.y / ptmRatio) - 1)];
-				switch (tileGID) 
+				break;
+			case kBreakable:
 				{
-					case kSquare:
-					case kUpperLeftTriangle:
-					case kUpperRightTriangle:
-					case kLowerLeftTriangle:
-					case kLowerRightTriangle:
-					case kToggleBlockRedOn:
-					case kToggleBlockGreenOn:
-						[[SimpleAudioEngine sharedEngine] playEffect:@"wall-hit.caf"];
-						break;
-					case kPeg:
-						[[SimpleAudioEngine sharedEngine] playEffect:@"peg-hit.caf"];
-						break;
 				}
-			
-				// Remove object from SFX queue
-				[contactListener->sfxQueue removeObject:s];
-			}
+				break;
+			case kClock:
+					// Remove the clock sensor
+					discardedItems.push_back(b);
+					
+					[[SimpleAudioEngine sharedEngine] playEffect:@"time-pickup.caf"];
+				
+					// Add time to time limit
+					[self gainTime:5];
+				break;
+			case kGoal:
+				{
+					[self unschedule:@selector(update:)];		// Need a better way of determining the end of a level
+					[self unschedule:@selector(timer:)];
+					
+					int currentLevelIndex = (([GameData sharedGameData].currentWorld - 1) * 10) + [GameData sharedGameData].currentLevel - 1;
+					
+					// Get best time from user defaults
+					NSMutableArray *levelData = [NSMutableArray arrayWithArray:[[NSUserDefaults standardUserDefaults] arrayForKey:@"levelData"]];
+					NSDictionary *d = [levelData objectAtIndex:currentLevelIndex];
+
+					// Determine if current time is faster than saved
+					int currentTime = [[map propertyNamed:@"time"] intValue] - secondsLeft;
+					int bestSavedTime = [[d objectForKey:@"bestTime"] intValue];
+					if (currentTime < bestSavedTime)
+					{
+						NSDictionary *d = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInt:currentTime], @"bestTime", [NSNumber numberWithBool:YES], @"complete", nil];
+						[levelData replaceObjectAtIndex:currentLevelIndex withObject:d];
+						[[NSUserDefaults standardUserDefaults] setObject:levelData forKey:@"levelData"];
+						bestSavedTime = currentTime;	// for display below
+						//NSLog(@"Setting new best time for level %i as %@", currentLevelIndex + 1, [[[NSUserDefaults standardUserDefaults] arrayForKey:@"levelData"] objectAtIndex:currentLevelIndex]);
+					}
+					
+					// Get window size
+					CGSize windowSize = [CCDirector sharedDirector].winSize;
+					
+					// Add "Finish" label
+					CCLabelBMFont *finishLabel = [CCLabelBMFont labelWithString:@"FINISH!" fntFile:@"yoster-48.fnt"];
+					[finishLabel setPosition:ccp(windowSize.width / 2, windowSize.height / 2)];
+					[self addChild:finishLabel z:4];
+					
+					int minutes = floor(currentTime / 60);
+					int seconds = currentTime % 60;
+					
+					// Add "your time" label
+					CCLabelBMFont *yourTimeLabel = [CCLabelBMFont labelWithString:[NSString stringWithFormat:@"Current: %02d:%02d", minutes, seconds] fntFile:@"yoster-32.fnt"];
+					[yourTimeLabel setPosition:ccp(windowSize.width / 2, finishLabel.position.y - yourTimeLabel.contentSize.height * 1.5)];
+					[self addChild:yourTimeLabel z:1];
+					
+					minutes = floor(bestSavedTime / 60);
+					seconds = bestSavedTime % 60;
+					
+					// Add "best time" label
+					CCLabelBMFont *bestTimeLabel = [CCLabelBMFont labelWithString:[NSString stringWithFormat:@"Best: %02d:%02d", minutes, seconds] fntFile:@"yoster-32.fnt"];
+					[bestTimeLabel setPosition:ccp(windowSize.width / 2, yourTimeLabel.position.y - bestTimeLabel.contentSize.height)];
+					[self addChild:bestTimeLabel z:1];
+					
+					// Add button which takes us back to level select
+					CCMenuItem *continueButton = [CCMenuItemImage itemFromNormalImage:@"continue-button.png" selectedImage:@"continue-button.png" target:self selector:@selector(continueButtonAction:)];
+					CCMenuItem *retryButton = [CCMenuItemImage itemFromNormalImage:@"retry-button.png" selectedImage:@"retry-button.png" target:self selector:@selector(retryButtonAction:)];
+					CCMenu *menu = [CCMenu menuWithItems:continueButton, retryButton, nil];
+					[menu alignItemsVertically];
+					[menu setPosition:ccp(windowSize.width / 2, windowSize.height / 6)];
+					[self addChild:menu z:1];
+				}
+				break;
+			case kDownBoost:
+				ballBody->ApplyLinearImpulse(b2Vec2(0.0f, -1.0f), ballBody->GetPosition());
+				break;
+			case kLeftBoost:
+				ballBody->ApplyLinearImpulse(b2Vec2(-1.0f, 0.0f), ballBody->GetPosition());
+				break;
+			case kRightBoost:
+				ballBody->ApplyLinearImpulse(b2Vec2(1.0f, 0.0f), ballBody->GetPosition());
+				break;
+			case kUpBoost:
+				ballBody->ApplyLinearImpulse(b2Vec2(0.0f, 1.0f), ballBody->GetPosition());
+				break;
+			case kDownSpikes:
+				// Subtract time from time limit
+				[self loseTime:5];
+				
+				[[SimpleAudioEngine sharedEngine] playEffect:@"spike-hit.caf"];
+				
+				// Push ball in opposite direction
+				ballBody->ApplyLinearImpulse(b2Vec2(0.0f, -2.0f), ballBody->GetPosition());
+				break;
+			case kLeftSpikes:
+				// Subtract time from time limit
+				[self loseTime:5];
+				
+				[[SimpleAudioEngine sharedEngine] playEffect:@"spike-hit.caf"];
+				
+				// Push ball in opposite direction
+				ballBody->ApplyLinearImpulse(b2Vec2(-2.0f, 0.0f), ballBody->GetPosition());
+				break;
+			case kRightSpikes:
+				// Subtract time from time limit
+				[self loseTime:5];
+				
+				[[SimpleAudioEngine sharedEngine] playEffect:@"spike-hit.caf"];
+				
+				// Push ball in opposite direction
+				ballBody->ApplyLinearImpulse(b2Vec2(2.0f, 0.0f), ballBody->GetPosition());
+				break;
+			case kUpSpikes:
+				// Subtract time from time limit
+				[self loseTime:5];
+				
+				[[SimpleAudioEngine sharedEngine] playEffect:@"spike-hit.caf"];
+				
+				// Push ball in opposite direction
+				ballBody->ApplyLinearImpulse(b2Vec2(0.0f, 2.0f), ballBody->GetPosition());
+				break;
+			case kBumper:
+				// Find the contact point and apply a linear inpulse at that point
+				break;
+			case kSkyLevelWarp:
+				// Stop update method
+				[self unschedule:@selector(update:)];
+				
+				// Set world/level
+				[GameData sharedGameData].currentWorld = 1;
+				[GameData sharedGameData].currentLevel = 1;
+				
+				// Transition to level select scene
+				[[CCDirector sharedDirector] replaceScene:[CCTransitionRotoZoom transitionWithDuration:1.0 scene:[LevelSelectScene node]]];
+				break;
+			case kForestLevelWarp:
+				// Stop update method
+				[self unschedule:@selector(update:)];
+				
+				// Set world/level
+				[GameData sharedGameData].currentWorld = 2;
+				[GameData sharedGameData].currentLevel = 1;
+				
+				// Transition to level select scene
+				[[CCDirector sharedDirector] replaceScene:[CCTransitionRotoZoom transitionWithDuration:1.0 scene:[LevelSelectScene node]]];
+				break;
+			case kMountainLevelWarp:
+				// Stop update method
+				[self unschedule:@selector(update:)];
+				
+				// Set world/level
+				[GameData sharedGameData].currentWorld = 3;
+				[GameData sharedGameData].currentLevel = 1;
+				
+				// Transition to level select scene
+				[[CCDirector sharedDirector] replaceScene:[CCTransitionRotoZoom transitionWithDuration:1.0 scene:[LevelSelectScene node]]];
+				break;
+			case kCaveLevelWarp:
+				// Stop update method
+				[self unschedule:@selector(update:)];
+				
+				// Set world/level
+				[GameData sharedGameData].currentWorld = 4;
+				[GameData sharedGameData].currentLevel = 1;
+				
+				// Transition to level select scene
+				[[CCDirector sharedDirector] replaceScene:[CCTransitionRotoZoom transitionWithDuration:1.0 scene:[LevelSelectScene node]]];
+				break;
+			default:
+				NSLog(@"Touching unrecognized tile GID: %i", tileGID);
+				break;
 		}
 	}
+	
+	// Loop thru SFX contact queue
+	for (std::vector<ContactPoint>::iterator position = contactListener->sfxQueue.begin(); position != contactListener->sfxQueue.end(); ++position) 
+	{
+		ContactPoint contact = *position;
+		
+		// Find "other" object in the contact
+		b2Body *b = contact.fixtureA->GetBody();
+		
+		if ((CCSprite *)b->GetUserData() == ball)
+			b = contact.fixtureB->GetBody();
+		
+		// Get sprite associated w/ body
+		CCSprite *s = (CCSprite *)b->GetUserData();
+		
+		// Process collisions with all other objects
+		int tileGID = [border tileGIDAt:ccp(s.position.x / ptmRatio, map.mapSize.height - (s.position.y / ptmRatio) - 1)];	// Box2D and TMX y-coords are inverted
+		switch (tileGID) 
+		{
+			case kSquare:
+			case kUpperLeftTriangle:
+			case kUpperRightTriangle:
+			case kLowerLeftTriangle:
+			case kLowerRightTriangle:
+			case kToggleBlockRedOn:
+			case kToggleBlockGreenOn:
+				if (contact.impulse > 1.5)
+					[[SimpleAudioEngine sharedEngine] playEffect:@"wall-hit.caf"];
+				break;
+			case kPeg:
+				if (contact.impulse > 1.5)
+					[[SimpleAudioEngine sharedEngine] playEffect:@"peg-hit.caf"];
+				break;
+			case kBreakable:
+				if (std::find(discardedItems.begin(), discardedItems.end(), b) == discardedItems.end() && contact.impulse > 3.5)
+					discardedItems.push_back(b);
+				else if (contact.impulse > 1.5)
+					[[SimpleAudioEngine sharedEngine] playEffect:@"wall-hit.caf"];
+				break;
+		}
+	}
+	
+	// Clear the contact vector
+	contactListener->contactQueue.clear();
+	
+	// Clear the SFX vector
+	contactListener->sfxQueue.clear();
 	
 	// Remove any Box2D bodies in "discardedItems" vector
 	std::vector<b2Body *>::iterator position;
@@ -801,11 +795,11 @@
 		if (body->GetUserData() != NULL) 
 		{
 			// Remove sprite from map
-			CCSprite *sprite = (CCSprite *)body->GetUserData();
-			[border removeChild:sprite cleanup:YES];
+			CCSprite *s = (CCSprite *)body->GetUserData();
+			[border removeChild:s cleanup:YES];
 			
 			// Remove object from contact queue - does this actually do anything?
-			//[contactListener->contactQueue removeObject:sprite];
+			//[contactListener->contactQueue removeObject:s];
 		}
 		world->DestroyBody(body);
 	}

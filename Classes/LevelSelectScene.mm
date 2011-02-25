@@ -37,7 +37,7 @@
 		// DEBUG
 		// Set world/level
 		if (![GameData sharedGameData].currentWorld) [GameData sharedGameData].currentWorld = 1;
-		if (![GameData sharedGameData].currentLevel) [GameData sharedGameData].currentLevel = 1;
+		if (![GameData sharedGameData].currentLevel) [GameData sharedGameData].currentLevel = 3;
 		
 		/*
 		 PSEUDO-CODE
