@@ -572,6 +572,7 @@
 				break;
 			case kBreakable:
 				{
+					// Breakable blocks are handled in the SFX contact queue, since they need a certain impulse to be destroyed
 				}
 				break;
 			case kClock:
@@ -774,7 +775,12 @@
 				break;
 			case kBreakable:
 				if (std::find(discardedItems.begin(), discardedItems.end(), b) == discardedItems.end() && contact.impulse > 3.5)
+				{
+					//[self createParticleEmitterAt:ccp(s.position.x + 160 - ballBody->GetPosition().x * ptmRatio, s.position.y + 240 - ballBody->GetPosition().y * ptmRatio)];
+					//[self createParticleEmitterAt:ccp(s.position.x + s.contentSize.width / 2, s.position.y + s.contentSize.height / 2)];
 					discardedItems.push_back(b);
+					//[[SimpleAudioEngine sharedEngine] playEffect:@"wall-break.caf"];
+				}
 				else if (contact.impulse > 1.5)
 					[[SimpleAudioEngine sharedEngine] playEffect:@"wall-hit.caf"];
 				break;
@@ -797,9 +803,6 @@
 			// Remove sprite from map
 			CCSprite *s = (CCSprite *)body->GetUserData();
 			[border removeChild:s cleanup:YES];
-			
-			// Remove object from contact queue - does this actually do anything?
-			//[contactListener->contactQueue removeObject:s];
 		}
 		world->DestroyBody(body);
 	}
@@ -1081,6 +1084,78 @@
 	}
 	
 	[[CCDirector sharedDirector] replaceScene:transition];
+}
+
+/**
+ Init a particle emitter for destroyed blocks
+ */
+- (void)createParticleEmitterAt:(CGPoint)position
+{
+	// Create quad particle system (faster on 3rd gen & higher devices, only slightly slower on 1st/2nd gen)
+	CCParticleSystemQuad *particleSystem = [[CCParticleSystemQuad alloc] initWithTotalParticles:4];
+	
+	// duration is for the emitter
+	[particleSystem setDuration:0.25f];
+	
+	[particleSystem setEmitterMode:kCCParticleModeGravity];
+	
+	// Gravity Mode: gravity
+	[particleSystem setGravity:ccp(sin(CC_DEGREES_TO_RADIANS(map.rotation)) * 15, -cos(CC_DEGREES_TO_RADIANS(map.rotation)) * 15)];
+	
+	// Gravity Mode: speed of particles
+	[particleSystem setSpeed:70];
+	[particleSystem setSpeedVar:40];
+	
+	// Gravity Mode: radial
+	[particleSystem setRadialAccel:0];
+	[particleSystem setRadialAccelVar:0];
+	
+	// Gravity Mode: tagential
+	[particleSystem setTangentialAccel:0];
+	[particleSystem setTangentialAccelVar:0];
+	
+	// angle
+	[particleSystem setAngle:90];
+	[particleSystem setAngleVar:360];
+	
+	// emitter position
+	[particleSystem setPosition:position];
+	[particleSystem setPosVar:CGPointZero];
+	
+	CCSprite *s = [CCSprite spriteWithFile:@"blue-block.png"];
+	s.position = position;
+	[self addChild:s];
+	
+	// life is for particles particles - in seconds
+	[particleSystem setLife:1.0f];
+	[particleSystem setLifeVar:1.0f];
+	
+	// size, in pixels
+	[particleSystem setStartSize:16.0f];
+	[particleSystem setStartSizeVar:0.0f];
+	[particleSystem setEndSize:kCCParticleStartSizeEqualToEndSize];
+	
+	// emits per second
+	[particleSystem setEmissionRate:[particleSystem totalParticles] / [particleSystem duration]];
+	
+	// color of particles
+	ccColor4F startColor = {1.0f, 1.0f, 1.0f, 1.0f};
+	ccColor4F endColor = {1.0f, 1.0f, 1.0f, 1.0f};
+	[particleSystem setStartColor:startColor];
+	[particleSystem setEndColor:endColor];
+	
+	[particleSystem setTexture:[[CCTextureCache sharedTextureCache] addImage: @"blue-block-breakable-shard.png"]];
+	
+	// additive
+	[particleSystem setBlendAdditive:NO];
+	
+	// Auto-remove the emitter when it is done!
+	[particleSystem setAutoRemoveOnFinish:YES];
+	
+	// Add to layer
+	[self addChild:particleSystem z:10];
+	
+	NSLog(@"Tryin' to make a particle emitter at %f, %f", position.x, position.y);
 }
 
 - (void)removeSpriteFromParent:(CCNode *)sprite

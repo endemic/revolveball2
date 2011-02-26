@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" orientation="orthogonal" width="100" height="100" tilewidth="32" tileheight="32">
  <properties>
-  <property name="name" value="Twisty"/>
-  <property name="time" value="60"/>
+  <property name="name" value="Mind The Spikes"/>
+  <property name="time" value="90"/>
  </properties>
  <tileset firstgid="1" name="world-4-tileset" tilewidth="32" tileheight="32">
   <image source="world-4-tileset.png"/>
  </tileset>
  <layer name="Border" width="100" height="100">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAA+3Z0WrDMAyF4Zax7Q0Guxzs/Z9x9GI0DWldVTq2LP8fBBbSxYlPLTvp6YSKzgcbxtn3f3Qe5G1zlEdk/6nzrqbVP4o8GC/3PZOHp//UeVfTqifeeqPOu5pX8rD0nzrv2bT6L3r/qH3rfuXxcrmfr82m6G9P3kfns3x+Nq3v3/sTn/e2F3m+2f3fz+9uv/X51v7Pg/+3jJeWqnnc2387+ebni3vZPNP+avO7en5Wt08e/nqzHS/kcUu5vt3XqUd1a/v/keux2ajXs97raR2vnof3eHQe0eux7EY8PzN/3Hfe/a2cT1rtK84/G3X/e+dn8ohd34zOezbq7yPjxaZ3Ht7j1cdLj3rSap/xcqWen19p73uzRZx/pvGScX0bmbf1+Gjq/rOeryX6+5BNhvWqRfX5pPfzAHk8pq43ijx61sfRFHl45ueWFfIYWW+s1NebTfY8rOevkEdkvemRx9H1foraG02Rh2V+tqo2Pva8/de7nqjzHq3H80Pl/ovm7b9qz2+jefsv+nl/dd7+i95fnbp/ycMmot58bDby8In4fpNHnIg8IueX1Y2eL8jjlqJ/PeNldep6Qx4+ijwseeOWut6Qh48iD96XvI56kxt55EK9yYXxkYv1+Q9aPN/l4n1fgli8L8wl+v1iDxmuQWXG9+sZrkGlSh5VxkuVPB7tz6RqHrOOF/XvVwozXGOUGe51xjXhq9S/X0WYscZGyXhvq+dhGS89rJzHXoZ7I4+rDHPjjGvClZBHLjOsCVdGHrlkXBPiijxyybAmBAAAAAAAAAAAAAAAABDnD044kExAnAAA
+   H4sIAAAAAAAAA+3a0W6DMAyF4VbTtjeYtEukvf8zTr2YRtMEx9gGJ/yfhNQIGtocQpKW2w0zulc2nOfR/l+rzTsP8tYp28e7/aLzno3UPh55lGX6S1tPHpb2i857NrXrV1PW1l/bT3/5tycPTftF5z0aqf28y7Xza8sz9xdpfuPR3pa8a/Vpjh+NdP29dxxvPZ9nfaP7+z4/RVk6XiovG+/X9BfJrHm0ym832/j80Mqm5/xXG997vq9m/Rx9/yKP17L1frPuL+TxzKM9vlfben95n9q6b63r85yPjSZ6Pmv9PNL+2fOw7vfOw3s+lt0Z62fGj7Z78dq7fSLy1tQ/Gu34HD0fI4/Xsuf8Rlq/eJQ95xNni74e6S86R+dh3T97f4m+Pq3rl6v1l57vU85PLeuBnvO15hN76x+pv2Sc33rmrd1/tuj209Yn8b4esvFuv9HGl2yytV+tvsj1SzbW+01P/a3ysuN8R98fzxaRR/R8zPL+7Kzt11O/pj7v+dhoeZSk9cCe+rbK2uOt48tovNdT0euJ1uf97Kzvah7tsRRlz/FF2k8ez7zvN9b599VFj8/0B53o+S556Oy935Svveq/uujrnTx0WP/lcvR4QR7bpPX+nnK5faw28tjmPZ+t1U8e+7H+y0XbfrTvscgjF+vvi4glzcdwLMZnAAAAAMBRWIPmwm9muWj/s0cs/pPPxfqMC3zxDEsuHs+4wA/PfOVCHrmQRy7kkUv0M5SwIY9crP0FscgjF56hzI08cuH3EgAAAAAAAAAAAAAAAGAuvyqFohJAnAAA
   </data>
  </layer>
  <layer name="Extras" width="100" height="100">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAA+3BMQEAAADCoPVP7WULoAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgBt5RKnmQJwAAA==
+   H4sIAAAAAAAAA+3aOQrAMAwEQJex8///pjYuTCCwwpl5wTZCB2oNAAAA4Ds9HYDFlQ5Q3J0OAEAJ6X5phgIAmI10ADhIet+Bk+3uy+oPAAAAAADe898NAPXp1wAAAAAAAAAAAAAAAAAAAAAAAAAA/MkDJjhDfUCcAAA=
   </data>
  </layer>
 </map>
