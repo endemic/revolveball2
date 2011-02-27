@@ -641,15 +641,19 @@
 				}
 				break;
 			case kDownBoost:
+				[[SimpleAudioEngine sharedEngine] playEffect:@"boost.caf"];
 				ballBody->ApplyLinearImpulse(b2Vec2(0.0f, -1.0f), ballBody->GetPosition());
 				break;
 			case kLeftBoost:
+				[[SimpleAudioEngine sharedEngine] playEffect:@"boost.caf"];
 				ballBody->ApplyLinearImpulse(b2Vec2(-1.0f, 0.0f), ballBody->GetPosition());
 				break;
 			case kRightBoost:
+				[[SimpleAudioEngine sharedEngine] playEffect:@"boost.caf"];
 				ballBody->ApplyLinearImpulse(b2Vec2(1.0f, 0.0f), ballBody->GetPosition());
 				break;
 			case kUpBoost:
+				[[SimpleAudioEngine sharedEngine] playEffect:@"boost.caf"];
 				ballBody->ApplyLinearImpulse(b2Vec2(0.0f, 1.0f), ballBody->GetPosition());
 				break;
 			case kDownSpikes:
@@ -785,7 +789,7 @@
 					discardedItems.push_back(b);
 					
 					// Play SFX
-					//[[SimpleAudioEngine sharedEngine] playEffect:@"wall-break.caf"];
+					[[SimpleAudioEngine sharedEngine] playEffect:@"wall-break.caf"];
 				}
 				else if (contact.impulse > 1.5)
 					[[SimpleAudioEngine sharedEngine] playEffect:@"wall-hit.caf"];
