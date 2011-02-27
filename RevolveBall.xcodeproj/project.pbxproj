@@ -149,6 +149,7 @@
 		7D2BD60112F8A85000D0DA53 /* start-button-disabled.png in Resources */ = {isa = PBXBuildFile; fileRef = 7D2BD5FC12F8A85000D0DA53 /* start-button-disabled.png */; };
 		7D2BD60212F8A85000D0DA53 /* start-button-selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 7D2BD5FD12F8A85000D0DA53 /* start-button-selected.png */; };
 		7D2BD60312F8A85000D0DA53 /* start-button.png in Resources */ = {isa = PBXBuildFile; fileRef = 7D2BD5FE12F8A85000D0DA53 /* start-button.png */; };
+		7D49FC6413199D670082FFCE /* world-4-breakable-shard.png in Resources */ = {isa = PBXBuildFile; fileRef = 7D49FC6313199D670082FFCE /* world-4-breakable-shard.png */; };
 		7D50A1F112BBF8CA0039A691 /* GameData.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7D50A1E712BBF8CA0039A691 /* GameData.mm */; };
 		7D50A1F212BBF8CA0039A691 /* GameScene.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7D50A1E912BBF8CA0039A691 /* GameScene.mm */; };
 		7D50A1F312BBF8CA0039A691 /* MyContactListener.mm in Sources */ = {isa = PBXBuildFile; fileRef = 7D50A1EB12BBF8CA0039A691 /* MyContactListener.mm */; };
@@ -598,6 +599,7 @@
 		7D2BD5FC12F8A85000D0DA53 /* start-button-disabled.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "start-button-disabled.png"; path = "images/buttons/start-button-disabled.png"; sourceTree = "<group>"; };
 		7D2BD5FD12F8A85000D0DA53 /* start-button-selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "start-button-selected.png"; path = "images/buttons/start-button-selected.png"; sourceTree = "<group>"; };
 		7D2BD5FE12F8A85000D0DA53 /* start-button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "start-button.png"; path = "images/buttons/start-button.png"; sourceTree = "<group>"; };
+		7D49FC6313199D670082FFCE /* world-4-breakable-shard.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "world-4-breakable-shard.png"; path = "images/world-4-breakable-shard.png"; sourceTree = "<group>"; };
 		7D50A1E612BBF8CA0039A691 /* GameData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameData.h; sourceTree = "<group>"; };
 		7D50A1E712BBF8CA0039A691 /* GameData.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = GameData.mm; sourceTree = "<group>"; };
 		7D50A1E812BBF8CA0039A691 /* GameScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameScene.h; sourceTree = "<group>"; };
@@ -1306,6 +1308,7 @@
 		7D50A1F712BBF8EA0039A691 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				7D49FC6313199D670082FFCE /* world-4-breakable-shard.png */,
 				7D2BD5F912F8A83E00D0DA53 /* buttons */,
 				7D52A49012D367270046E86C /* title-background-hd.png */,
 				7D52A49112D367270046E86C /* title-background.png */,
@@ -2004,6 +2007,7 @@
 				7DCC4F601315245B00BF4962 /* world-1-bgm.mp3 in Resources */,
 				7DCC4F611315245B00BF4962 /* world-2-bgm.mp3 in Resources */,
 				7DA604DA1317D0C500785E46 /* 4-4.tmx in Resources */,
+				7D49FC6413199D670082FFCE /* world-4-breakable-shard.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

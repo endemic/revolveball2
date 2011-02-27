@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="100" height="100" tilewidth="32" tileheight="32">
+ <properties>
+  <property name="name" value="Tetrads"/>
+  <property name="time" value="90"/>
+ </properties>
+ <tileset firstgid="1" name="world-4-tileset" tilewidth="32" tileheight="32">
+  <image source="world-4-tileset.png"/>
+ </tileset>
+ <layer name="Border" width="100" height="100">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAA+3a3WrbQBAGUOWmue5NnyC08fu/YDHUWGx25NkfqQs5BwSxWUkwn6XJyH7btu3tP2zU9dZmpK7yiPXW5ue/7cpzfgcttfnc/S2Pc5S1uaJfyCMmj7WUtSnvQ38ajxXle3ROnl7l0XqszPHkEct8nluOlbne5BGb3Rey/Yg6eazlXpueuSKbR7Qvdb39XB7nGKmpPOZrmQejdY9ryjw4Th5r6b03Ha37tdse7/3YbfKInZFH7T155MzK41as+yj2lUdOa6/onRHNgznyWEvUf/fOeAZPXWamG3kG7/lum6j/lmt6a+j7jzajvaK3p1Anj7VEtZn1DL7lnORqI4/rzJrPW9dRN9I/ascyD46Rx1p65sFoPs/OLvKIzZzPs/vKI5b9PPf2c89L2txrU/u+tVxjHryGPNbSe28q/d7t++r5vTxis/KI9pVHm0dtbrvXM/J49fyeuhm9ouw/teMdnZMneaxl5qyRXSeP2FEeH9tXR30hOr488lwfa2npHyPrjs7JkzzWcva9yfPdNq11zvT4V7+FkEfsit7tfpVXm+datm1gP76Sx1oy95foO77eusoj1pNHue598Jw83WtzK15ne7LrY77e2o/0C3nERv+PlcdcM+eP7L7yiJ2dh/m8zdV5+D3csZ5ZbsYGAAAAAAAAAAAAAAAAAAAAxP4C3fut7ECcAAA=
+  </data>
+ </layer>
+ <layer name="Extras" width="100" height="100">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAA+3bywqAIBQEUNv1+P//bS0EScFoec5auBdcyAxYCnBnD8xYAzMAgGe23gsAAADATxyN5xK9PAAwBh08AOTJ3QAwt6ss3trfAwBZMjwAQDv9BgCj8kYxm6X3AlTcBwAAX/A2O/ufBgAAAAAAAAAAAAAAAAAAAEDCCd6fen1AnAAA
+  </data>
+ </layer>
+</map>

@@ -50,7 +50,7 @@
 		 * Player can return to world select by tapping "back" button [DONE]
 		 * Player can play selected level by tapping "play" button [DONE]
 		 * When a level is complete, draw the "bridge" to the next level [DONE]
-		 * After 10th level is complete, "continue" button takes player back to world select scene
+		 * After 10th level is complete, "continue" button takes player back to world select scene [DONE]
 		 * Gate that blocks next world disappears, arrow appears showing player where to go next [DONE]
 		 */
 		

@@ -777,8 +777,14 @@
 				if (std::find(discardedItems.begin(), discardedItems.end(), b) == discardedItems.end() && contact.impulse > 3.5)
 				{
 					//[self createParticleEmitterAt:ccp(s.position.x + 160 - ballBody->GetPosition().x * ptmRatio, s.position.y + 240 - ballBody->GetPosition().y * ptmRatio)];
-					//[self createParticleEmitterAt:ccp(s.position.x + s.contentSize.width / 2, s.position.y + s.contentSize.height / 2)];
+					
+					// Create a particle effect at the position of the destroyed block on the map
+					[self createParticleEmitterAt:ccp(s.position.x + s.contentSize.width / 2, s.position.y + s.contentSize.height / 2)];
+					
+					// Schedule block for removal
 					discardedItems.push_back(b);
+					
+					// Play SFX
 					//[[SimpleAudioEngine sharedEngine] playEffect:@"wall-break.caf"];
 				}
 				else if (contact.impulse > 1.5)
@@ -1095,7 +1101,7 @@
 	CCParticleSystemQuad *particleSystem = [[CCParticleSystemQuad alloc] initWithTotalParticles:4];
 	
 	// duration is for the emitter
-	[particleSystem setDuration:0.25f];
+	[particleSystem setDuration:0.10f];
 	
 	[particleSystem setEmitterMode:kCCParticleModeGravity];
 	
@@ -1103,8 +1109,8 @@
 	[particleSystem setGravity:ccp(sin(CC_DEGREES_TO_RADIANS(map.rotation)) * 15, -cos(CC_DEGREES_TO_RADIANS(map.rotation)) * 15)];
 	
 	// Gravity Mode: speed of particles
-	[particleSystem setSpeed:70];
-	[particleSystem setSpeedVar:40];
+	[particleSystem setSpeed:60];
+	[particleSystem setSpeedVar:0];
 	
 	// Gravity Mode: radial
 	[particleSystem setRadialAccel:0];
@@ -1115,20 +1121,20 @@
 	[particleSystem setTangentialAccelVar:0];
 	
 	// angle
-	[particleSystem setAngle:90];
-	[particleSystem setAngleVar:360];
+	[particleSystem setAngle:map.rotation - 90];
+	[particleSystem setAngleVar:90];
 	
 	// emitter position
 	[particleSystem setPosition:position];
 	[particleSystem setPosVar:CGPointZero];
 	
-	CCSprite *s = [CCSprite spriteWithFile:@"blue-block.png"];
-	s.position = position;
-	[self addChild:s];
+//	CCSprite *s = [CCSprite spriteWithFile:@"blue-block.png"];
+//	s.position = position;
+//	[self addChild:s];
 	
 	// life is for particles particles - in seconds
-	[particleSystem setLife:1.0f];
-	[particleSystem setLifeVar:1.0f];
+	[particleSystem setLife:0.35f];
+	[particleSystem setLifeVar:0];
 	
 	// size, in pixels
 	[particleSystem setStartSize:16.0f];
@@ -1144,7 +1150,8 @@
 	[particleSystem setStartColor:startColor];
 	[particleSystem setEndColor:endColor];
 	
-	[particleSystem setTexture:[[CCTextureCache sharedTextureCache] addImage: @"blue-block-breakable-shard.png"]];
+	// Set the texture!
+	[particleSystem setTexture:[[CCTextureCache sharedTextureCache] addImage:[NSString stringWithFormat:@"world-%i-breakable-shard.png", [GameData sharedGameData].currentWorld]]];
 	
 	// additive
 	[particleSystem setBlendAdditive:NO];
@@ -1153,9 +1160,9 @@
 	[particleSystem setAutoRemoveOnFinish:YES];
 	
 	// Add to layer
-	[self addChild:particleSystem z:10];
+	[map addChild:particleSystem z:3];
 	
-	NSLog(@"Tryin' to make a particle emitter at %f, %f", position.x, position.y);
+	//NSLog(@"Tryin' to make a particle emitter at %f, %f with gravity %f, %f", position.x, position.y, sin(CC_DEGREES_TO_RADIANS(map.rotation)) * 15, -cos(CC_DEGREES_TO_RADIANS(map.rotation)) * 15);
 }
 
 - (void)removeSpriteFromParent:(CCNode *)sprite

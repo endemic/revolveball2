@@ -56,6 +56,9 @@
 		if ([GameData sharedGameData].isTablet)
 			[startButton setScale:2.0];
 		
+		// Set audio mixer rate to lower level
+		[CDSoundEngine setMixerSampleRate:CD_SAMPLE_RATE_MID];
+		
 		[[SimpleAudioEngine sharedEngine] preloadEffect:@"button-press.caf"];
 		
 		// Run animation which moves background
