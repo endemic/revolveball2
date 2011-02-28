@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="100" height="100" tilewidth="32" tileheight="32">
+ <properties>
+  <property name="name" value="Tricky"/>
+  <property name="time" value="120"/>
+ </properties>
+ <tileset firstgid="1" name="world-4-tileset" tilewidth="32" tileheight="32">
+  <image source="world-4-tileset.png"/>
+ </tileset>
+ <layer name="Border" width="100" height="100">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAA+3ZywrDIBAFULtp/6CPZf7/J0topVmUUKOJgz0H3AUjcxnNIyUAAAAAAAAAAACA/k6BBq86XAMMebzMdbj3XkSSRyaPWKLUIco6eiutw6NytFrHqErrcEt1z1Df9sY8J+XPnzW1y3lMDef8F3vm0XLO0fToj6Wpcs7RbD0/tt5Lf6xb1uHyw/XOj33pj1hK389b5pH7RB4fPfNoMedo5jqUvmM7P/Zz5L8K/RHL2t7oP9bxWn7bP7+HPLaTRyw1e5L9CgAAAAAAAAAAAAAAAAAAAAAAAACA0T0B2jw9tECcAAA=
+  </data>
+ </layer>
+ <layer name="Extras" width="100" height="100">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAA+3OQQkAAAgEMN/av68pRDi2BKsCAAAAAAAAAAAAAOBCfwcAAIB48x0AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAItSzDF7VAnAAA
+  </data>
+ </layer>
+</map>

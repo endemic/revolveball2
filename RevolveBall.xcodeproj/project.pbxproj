@@ -140,6 +140,7 @@
 		7D0BFDA912E3EB57006BF429 /* 2-4.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 7D0BFDA612E3EB57006BF429 /* 2-4.tmx */; };
 		7D0BFDAA12E3EB57006BF429 /* 2-5.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 7D0BFDA712E3EB57006BF429 /* 2-5.tmx */; };
 		7D0BFDAB12E3EB57006BF429 /* 2-6.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 7D0BFDA812E3EB57006BF429 /* 2-6.tmx */; };
+		7D1129E4131BC07A00DC7727 /* level-complete.caf in Resources */ = {isa = PBXBuildFile; fileRef = 7D1129E3131BC07A00DC7727 /* level-complete.caf */; };
 		7D15DFD913143BD7003CF95B /* 3-9.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 7D15DFD613143BD7003CF95B /* 3-9.tmx */; };
 		7D15DFDA13143BD7003CF95B /* 3-10.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 7D15DFD713143BD7003CF95B /* 3-10.tmx */; };
 		7D15DFDB13143BD7003CF95B /* world-4-tileset.png in Resources */ = {isa = PBXBuildFile; fileRef = 7D15DFD813143BD7003CF95B /* world-4-tileset.png */; };
@@ -596,6 +597,7 @@
 		7D0BFDA612E3EB57006BF429 /* 2-4.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = "2-4.tmx"; path = "maps/2-4.tmx"; sourceTree = "<group>"; };
 		7D0BFDA712E3EB57006BF429 /* 2-5.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = "2-5.tmx"; path = "maps/2-5.tmx"; sourceTree = "<group>"; };
 		7D0BFDA812E3EB57006BF429 /* 2-6.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = "2-6.tmx"; path = "maps/2-6.tmx"; sourceTree = "<group>"; };
+		7D1129E3131BC07A00DC7727 /* level-complete.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "level-complete.caf"; path = "sounds/caf/level-complete.caf"; sourceTree = "<group>"; };
 		7D15DFD613143BD7003CF95B /* 3-9.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = "3-9.tmx"; path = "maps/3-9.tmx"; sourceTree = "<group>"; };
 		7D15DFD713143BD7003CF95B /* 3-10.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = "3-10.tmx"; path = "maps/3-10.tmx"; sourceTree = "<group>"; };
 		7D15DFD813143BD7003CF95B /* world-4-tileset.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "world-4-tileset.png"; path = "maps/world-4-tileset.png"; sourceTree = "<group>"; };
@@ -1441,6 +1443,7 @@
 		7D8E14BA1302F1720094C28B /* caf */ = {
 			isa = PBXGroup;
 			children = (
+				7D1129E3131BC07A00DC7727 /* level-complete.caf */,
 				7D49FC8F131A7E330082FFCE /* boost.caf */,
 				7D49FC90131A7E330082FFCE /* wall-break.caf */,
 				7DFACC8F130553300014000C /* peg-hit.caf */,
@@ -2032,6 +2035,7 @@
 				7D49FC8C131A7C170082FFCE /* 4-8.tmx in Resources */,
 				7D49FC91131A7E330082FFCE /* boost.caf in Resources */,
 				7D49FC92131A7E330082FFCE /* wall-break.caf in Resources */,
+				7D1129E4131BC07A00DC7727 /* level-complete.caf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -88,7 +88,10 @@
 		previousAngle = currentAngle = 0;
 		
 		// Allow toggle switches to be pressed
-		toggleSwitchTimeout = false;
+		toggleSwitchTimeout = NO;
+		
+		// boolean for completing the level
+		levelComplete = NO;
 		
 		// Enable touches/accelerometer
 		[self setIsTouchEnabled:YES];
@@ -488,6 +491,7 @@
 	}
 	
 	// Loop thru sprite contact queue
+	if (!levelComplete)
 	for (std::vector<ContactPoint>::iterator position = contactListener->contactQueue.begin(); position != contactListener->contactQueue.end(); ++position) 
 	{
 		ContactPoint contact = *position;
@@ -586,8 +590,17 @@
 				break;
 			case kGoal:
 				{
-					[self unschedule:@selector(update:)];		// Need a better way of determining the end of a level
+					
+					levelComplete = YES;
+					
+					// Disable touches so player can't move anymore
+					[self setIsTouchEnabled:NO];
+					
+					//[self unschedule:@selector(update:)];		// Need a better way of determining the end of a level
 					[self unschedule:@selector(timer:)];
+					
+					// Play sound effect
+					[[SimpleAudioEngine sharedEngine] playEffect:@"level-complete.caf"];
 					
 					int currentLevelIndex = (([GameData sharedGameData].currentWorld - 1) * 10) + [GameData sharedGameData].currentLevel - 1;
 					
@@ -642,19 +655,19 @@
 				break;
 			case kDownBoost:
 				[[SimpleAudioEngine sharedEngine] playEffect:@"boost.caf"];
-				ballBody->ApplyLinearImpulse(b2Vec2(0.0f, -1.0f), ballBody->GetPosition());
+				ballBody->ApplyLinearImpulse(b2Vec2(0.0f, -15.0f), ballBody->GetPosition());
 				break;
 			case kLeftBoost:
 				[[SimpleAudioEngine sharedEngine] playEffect:@"boost.caf"];
-				ballBody->ApplyLinearImpulse(b2Vec2(-1.0f, 0.0f), ballBody->GetPosition());
+				ballBody->ApplyLinearImpulse(b2Vec2(-15.0f, 0.0f), ballBody->GetPosition());
 				break;
 			case kRightBoost:
 				[[SimpleAudioEngine sharedEngine] playEffect:@"boost.caf"];
-				ballBody->ApplyLinearImpulse(b2Vec2(1.0f, 0.0f), ballBody->GetPosition());
+				ballBody->ApplyLinearImpulse(b2Vec2(15.0f, 0.0f), ballBody->GetPosition());
 				break;
 			case kUpBoost:
 				[[SimpleAudioEngine sharedEngine] playEffect:@"boost.caf"];
-				ballBody->ApplyLinearImpulse(b2Vec2(0.0f, 1.0f), ballBody->GetPosition());
+				ballBody->ApplyLinearImpulse(b2Vec2(0.0f, 15.0f), ballBody->GetPosition());
 				break;
 			case kDownSpikes:
 				// Subtract time from time limit
@@ -746,6 +759,7 @@
 	}
 	
 	// Loop thru SFX contact queue
+	if (!levelComplete)
 	for (std::vector<ContactPoint>::iterator position = contactListener->sfxQueue.begin(); position != contactListener->sfxQueue.end(); ++position) 
 	{
 		ContactPoint contact = *position;
@@ -803,7 +817,7 @@
 	// Clear the SFX vector
 	contactListener->sfxQueue.clear();
 	
-	// Remove any Box2D bodies in "discardedItems" vector
+	// Remove any Box2D bodies (w/ attached CCSprites) in "discardedItems" vector
 	std::vector<b2Body *>::iterator position;
 	for (position = discardedItems.begin(); position != discardedItems.end(); ++position) 
 	{
