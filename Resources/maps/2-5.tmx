@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" orientation="orthogonal" width="100" height="100" tilewidth="32" tileheight="32">
+ <properties>
+  <property name="name" value="A-Maze-Ing"/>
+  <property name="time" value="120"/>
+ </properties>
  <tileset firstgid="1" name="texture" tilewidth="32" tileheight="32">
   <image source="world-2-tileset.png"/>
  </tileset>

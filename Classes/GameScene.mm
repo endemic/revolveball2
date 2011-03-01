@@ -590,67 +590,7 @@
 				break;
 			case kGoal:
 				{
-					
-					levelComplete = YES;
-					
-					// Disable touches so player can't move anymore
-					[self setIsTouchEnabled:NO];
-					
-					//[self unschedule:@selector(update:)];		// Need a better way of determining the end of a level
-					[self unschedule:@selector(timer:)];
-					
-					// Play sound effect
-					[[SimpleAudioEngine sharedEngine] playEffect:@"level-complete.caf"];
-					
-					int currentLevelIndex = (([GameData sharedGameData].currentWorld - 1) * 10) + [GameData sharedGameData].currentLevel - 1;
-					
-					// Get best time from user defaults
-					NSMutableArray *levelData = [NSMutableArray arrayWithArray:[[NSUserDefaults standardUserDefaults] arrayForKey:@"levelData"]];
-					NSDictionary *d = [levelData objectAtIndex:currentLevelIndex];
-
-					// Determine if current time is faster than saved
-					int currentTime = [[map propertyNamed:@"time"] intValue] - secondsLeft;
-					int bestSavedTime = [[d objectForKey:@"bestTime"] intValue];
-					if (currentTime < bestSavedTime)
-					{
-						NSDictionary *d = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInt:currentTime], @"bestTime", [NSNumber numberWithBool:YES], @"complete", nil];
-						[levelData replaceObjectAtIndex:currentLevelIndex withObject:d];
-						[[NSUserDefaults standardUserDefaults] setObject:levelData forKey:@"levelData"];
-						bestSavedTime = currentTime;	// for display below
-						//NSLog(@"Setting new best time for level %i as %@", currentLevelIndex + 1, [[[NSUserDefaults standardUserDefaults] arrayForKey:@"levelData"] objectAtIndex:currentLevelIndex]);
-					}
-					
-					// Get window size
-					CGSize windowSize = [CCDirector sharedDirector].winSize;
-					
-					// Add "Finish" label
-					CCLabelBMFont *finishLabel = [CCLabelBMFont labelWithString:@"FINISH!" fntFile:@"yoster-48.fnt"];
-					[finishLabel setPosition:ccp(windowSize.width / 2, windowSize.height / 2)];
-					[self addChild:finishLabel z:4];
-					
-					int minutes = floor(currentTime / 60);
-					int seconds = currentTime % 60;
-					
-					// Add "your time" label
-					CCLabelBMFont *yourTimeLabel = [CCLabelBMFont labelWithString:[NSString stringWithFormat:@"Current: %02d:%02d", minutes, seconds] fntFile:@"yoster-32.fnt"];
-					[yourTimeLabel setPosition:ccp(windowSize.width / 2, finishLabel.position.y - yourTimeLabel.contentSize.height * 1.5)];
-					[self addChild:yourTimeLabel z:1];
-					
-					minutes = floor(bestSavedTime / 60);
-					seconds = bestSavedTime % 60;
-					
-					// Add "best time" label
-					CCLabelBMFont *bestTimeLabel = [CCLabelBMFont labelWithString:[NSString stringWithFormat:@"Best: %02d:%02d", minutes, seconds] fntFile:@"yoster-32.fnt"];
-					[bestTimeLabel setPosition:ccp(windowSize.width / 2, yourTimeLabel.position.y - bestTimeLabel.contentSize.height)];
-					[self addChild:bestTimeLabel z:1];
-					
-					// Add button which takes us back to level select
-					CCMenuItem *continueButton = [CCMenuItemImage itemFromNormalImage:@"continue-button.png" selectedImage:@"continue-button.png" target:self selector:@selector(continueButtonAction:)];
-					CCMenuItem *retryButton = [CCMenuItemImage itemFromNormalImage:@"retry-button.png" selectedImage:@"retry-button.png" target:self selector:@selector(retryButtonAction:)];
-					CCMenu *menu = [CCMenu menuWithItems:continueButton, retryButton, nil];
-					[menu alignItemsVertically];
-					[menu setPosition:ccp(windowSize.width / 2, windowSize.height / 6)];
-					[self addChild:menu z:1];
+					[self winGame];
 				}
 				break;
 			case kDownBoost:
@@ -676,7 +616,7 @@
 				[[SimpleAudioEngine sharedEngine] playEffect:@"spike-hit.caf"];
 				
 				// Push ball in opposite direction
-				ballBody->ApplyLinearImpulse(b2Vec2(0.0f, -2.0f), ballBody->GetPosition());
+				ballBody->ApplyLinearImpulse(b2Vec2(0.0f, -4.0f), ballBody->GetPosition());
 				break;
 			case kLeftSpikes:
 				// Subtract time from time limit
@@ -685,7 +625,7 @@
 				[[SimpleAudioEngine sharedEngine] playEffect:@"spike-hit.caf"];
 				
 				// Push ball in opposite direction
-				ballBody->ApplyLinearImpulse(b2Vec2(-2.0f, 0.0f), ballBody->GetPosition());
+				ballBody->ApplyLinearImpulse(b2Vec2(-4.0f, 0.0f), ballBody->GetPosition());
 				break;
 			case kRightSpikes:
 				// Subtract time from time limit
@@ -694,7 +634,7 @@
 				[[SimpleAudioEngine sharedEngine] playEffect:@"spike-hit.caf"];
 				
 				// Push ball in opposite direction
-				ballBody->ApplyLinearImpulse(b2Vec2(2.0f, 0.0f), ballBody->GetPosition());
+				ballBody->ApplyLinearImpulse(b2Vec2(4.0f, 0.0f), ballBody->GetPosition());
 				break;
 			case kUpSpikes:
 				// Subtract time from time limit
@@ -703,54 +643,70 @@
 				[[SimpleAudioEngine sharedEngine] playEffect:@"spike-hit.caf"];
 				
 				// Push ball in opposite direction
-				ballBody->ApplyLinearImpulse(b2Vec2(0.0f, 2.0f), ballBody->GetPosition());
+				ballBody->ApplyLinearImpulse(b2Vec2(0.0f, 4.0f), ballBody->GetPosition());
 				break;
 			case kBumper:
 				// Find the contact point and apply a linear inpulse at that point
 				break;
 			case kSkyLevelWarp:
-				// Stop update method
-				[self unschedule:@selector(update:)];
-				
-				// Set world/level
-				[GameData sharedGameData].currentWorld = 1;
-				[GameData sharedGameData].currentLevel = 1;
-				
-				// Transition to level select scene
-				[[CCDirector sharedDirector] replaceScene:[CCTransitionRotoZoom transitionWithDuration:1.0 scene:[LevelSelectScene node]]];
+				// This condition allows the physics simulation to continue, but starts the transition to 
+				// the level select scene, which makes the "warp" feel more fluid
+				if (!levelComplete)
+				{
+					levelComplete = YES;
+
+					// Set world/level
+					[GameData sharedGameData].currentWorld = 1;
+					[GameData sharedGameData].currentLevel = 1;
+					
+					// Transition to level select scene
+					[[CCDirector sharedDirector] replaceScene:[CCTransitionRotoZoom transitionWithDuration:1.0 scene:[LevelSelectScene node]]];
+				}
 				break;
 			case kForestLevelWarp:
-				// Stop update method
-				[self unschedule:@selector(update:)];
-				
-				// Set world/level
-				[GameData sharedGameData].currentWorld = 2;
-				[GameData sharedGameData].currentLevel = 1;
-				
-				// Transition to level select scene
-				[[CCDirector sharedDirector] replaceScene:[CCTransitionRotoZoom transitionWithDuration:1.0 scene:[LevelSelectScene node]]];
+				// This condition allows the physics simulation to continue, but starts the transition to 
+				// the level select scene, which makes the "warp" feel more fluid
+				if (!levelComplete)
+				{
+					levelComplete = YES;
+
+					// Set world/level
+					[GameData sharedGameData].currentWorld = 2;
+					[GameData sharedGameData].currentLevel = 1;
+					
+					// Transition to level select scene
+					[[CCDirector sharedDirector] replaceScene:[CCTransitionRotoZoom transitionWithDuration:1.0 scene:[LevelSelectScene node]]];
+				}
 				break;
 			case kMountainLevelWarp:
-				// Stop update method
-				[self unschedule:@selector(update:)];
-				
-				// Set world/level
-				[GameData sharedGameData].currentWorld = 3;
-				[GameData sharedGameData].currentLevel = 1;
-				
-				// Transition to level select scene
-				[[CCDirector sharedDirector] replaceScene:[CCTransitionRotoZoom transitionWithDuration:1.0 scene:[LevelSelectScene node]]];
+				// This condition allows the physics simulation to continue, but starts the transition to 
+				// the level select scene, which makes the "warp" feel more fluid
+				if (!levelComplete)
+				{
+					levelComplete = YES;
+
+					// Set world/level
+					[GameData sharedGameData].currentWorld = 3;
+					[GameData sharedGameData].currentLevel = 1;
+					
+					// Transition to level select scene
+					[[CCDirector sharedDirector] replaceScene:[CCTransitionRotoZoom transitionWithDuration:1.0 scene:[LevelSelectScene node]]];
+				}
 				break;
 			case kCaveLevelWarp:
-				// Stop update method
-				[self unschedule:@selector(update:)];
-				
-				// Set world/level
-				[GameData sharedGameData].currentWorld = 4;
-				[GameData sharedGameData].currentLevel = 1;
-				
-				// Transition to level select scene
-				[[CCDirector sharedDirector] replaceScene:[CCTransitionRotoZoom transitionWithDuration:1.0 scene:[LevelSelectScene node]]];
+				// This condition allows the physics simulation to continue, but starts the transition to 
+				// the level select scene, which makes the "warp" feel more fluid
+				if (!levelComplete)
+				{
+					levelComplete = YES;
+
+					// Set world/level
+					[GameData sharedGameData].currentWorld = 4;
+					[GameData sharedGameData].currentLevel = 1;
+					
+					// Transition to level select scene
+					[[CCDirector sharedDirector] replaceScene:[CCTransitionRotoZoom transitionWithDuration:1.0 scene:[LevelSelectScene node]]];
+				}
 				break;
 			default:
 				NSLog(@"Touching unrecognized tile GID: %i", tileGID);
@@ -832,6 +788,102 @@
 	}
 }
 
+- (void)winGame
+{
+	// Boolean which sets contact listeners to be ignored
+	levelComplete = YES;
+	
+	// Disable touches so player can't move anymore
+	[self setIsTouchEnabled:NO];
+	
+	// Stop countdown timer
+	[self unschedule:@selector(timer:)];
+	
+	// Play sound effect
+	[[SimpleAudioEngine sharedEngine] playEffect:@"level-complete.caf"];
+	
+	int currentLevelIndex = (([GameData sharedGameData].currentWorld - 1) * 10) + [GameData sharedGameData].currentLevel - 1;
+	
+	// Get best time from user defaults
+	NSMutableArray *levelData = [NSMutableArray arrayWithArray:[[NSUserDefaults standardUserDefaults] arrayForKey:@"levelData"]];
+	NSDictionary *d = [levelData objectAtIndex:currentLevelIndex];
+	
+	// Determine if current time is faster than saved
+	int currentTime = [[map propertyNamed:@"time"] intValue] - secondsLeft;
+	int bestSavedTime = [[d objectForKey:@"bestTime"] intValue];
+	if (currentTime < bestSavedTime)
+	{
+		NSDictionary *d = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInt:currentTime], @"bestTime", [NSNumber numberWithBool:YES], @"complete", nil];
+		[levelData replaceObjectAtIndex:currentLevelIndex withObject:d];
+		[[NSUserDefaults standardUserDefaults] setObject:levelData forKey:@"levelData"];
+		bestSavedTime = currentTime;	// for display below
+		//NSLog(@"Setting new best time for level %i as %@", currentLevelIndex + 1, [[[NSUserDefaults standardUserDefaults] arrayForKey:@"levelData"] objectAtIndex:currentLevelIndex]);
+	}
+	
+	// Get window size
+	CGSize windowSize = [CCDirector sharedDirector].winSize;
+	
+	// Add "Finish" label
+	CCLabelBMFont *finishLabel = [CCLabelBMFont labelWithString:@"FINISH!" fntFile:@"yoster-48.fnt"];
+	[finishLabel setPosition:ccp(windowSize.width / 2, windowSize.height / 2)];
+	[self addChild:finishLabel z:4];
+	
+	int minutes = floor(currentTime / 60);
+	int seconds = currentTime % 60;
+	
+	// Add "your time" label
+	CCLabelBMFont *yourTimeLabel = [CCLabelBMFont labelWithString:[NSString stringWithFormat:@"Current: %02d:%02d", minutes, seconds] fntFile:@"yoster-32.fnt"];
+	[yourTimeLabel setPosition:ccp(windowSize.width / 2, finishLabel.position.y - yourTimeLabel.contentSize.height * 1.5)];
+	[self addChild:yourTimeLabel z:1];
+	
+	minutes = floor(bestSavedTime / 60);
+	seconds = bestSavedTime % 60;
+	
+	// Add "best time" label
+	CCLabelBMFont *bestTimeLabel = [CCLabelBMFont labelWithString:[NSString stringWithFormat:@"Best: %02d:%02d", minutes, seconds] fntFile:@"yoster-32.fnt"];
+	[bestTimeLabel setPosition:ccp(windowSize.width / 2, yourTimeLabel.position.y - bestTimeLabel.contentSize.height)];
+	[self addChild:bestTimeLabel z:1];
+	
+	// Add button which takes us back to level select
+	CCMenuItem *continueButton = [CCMenuItemImage itemFromNormalImage:@"continue-button.png" selectedImage:@"continue-button.png" target:self selector:@selector(continueButtonAction:)];
+	CCMenuItem *retryButton = [CCMenuItemImage itemFromNormalImage:@"retry-button.png" selectedImage:@"retry-button.png" target:self selector:@selector(retryButtonAction:)];
+	CCMenu *menu = [CCMenu menuWithItems:continueButton, retryButton, nil];
+	[menu alignItemsVertically];
+	[menu setPosition:ccp(windowSize.width / 2, windowSize.height / 6)];
+	[self addChild:menu z:1];
+}
+
+- (void)loseGame
+{
+	// Boolean which ignores contact listeners
+	levelComplete = YES;
+	
+	// Disable touches so player can't move anymore
+	[self setIsTouchEnabled:NO];
+	
+	// Stop timer
+	[self unschedule:@selector(timer:)];
+	
+	// Set timer display to be 0:00, just in case it was otherwise negative
+	[timerLabel setString:@"0:00"];
+	
+	// Get window size
+	CGSize windowSize = [CCDirector sharedDirector].winSize;
+	
+	// Add "FAIL" label
+	CCLabelBMFont *finishLabel = [CCLabelBMFont labelWithString:@"FAILURE!" fntFile:@"yoster-48.fnt"];
+	[finishLabel setPosition:ccp(windowSize.width / 2, windowSize.height / 2)];
+	[self addChild:finishLabel z:4];
+	
+	// Add button which takes us back to level select
+	CCMenuItem *continueButton = [CCMenuItemImage itemFromNormalImage:@"continue-button.png" selectedImage:@"continue-button.png" target:self selector:@selector(continueButtonAction:)];
+	CCMenuItem *retryButton = [CCMenuItemImage itemFromNormalImage:@"retry-button.png" selectedImage:@"retry-button.png" target:self selector:@selector(retryButtonAction:)];
+	CCMenu *menu = [CCMenu menuWithItems:continueButton, retryButton, nil];
+	[menu alignItemsVertically];
+	[menu setPosition:ccp(windowSize.width / 2, windowSize.height / 6)];
+	[self addChild:menu z:1];
+}
+
 /**
  Remove time from countdown timer and display label
  */
@@ -853,6 +905,9 @@
 	
 	//[deductedTimeLabel runAction:[CCSequence actions:[CCSpawn actions:moveAction, fadeAction, nil], removeAction, nil]];
 	[label runAction:[CCSequence actions:[CCSpawn actions:moveAction, fadeAction, nil], removeAction, nil]];
+	
+	if (secondsLeft <= 0)
+		[self loseGame];
 }
 
 /**
@@ -883,6 +938,9 @@
 - (void)timer:(ccTime)dt
 {
 	secondsLeft--;
+	
+	if (secondsLeft <= 0)
+		[self loseGame];
 	
 	int minutes = floor(secondsLeft / 60);
 	int seconds = secondsLeft % 60;
@@ -1145,10 +1203,6 @@
 	// emitter position
 	[particleSystem setPosition:position];
 	[particleSystem setPosVar:CGPointZero];
-	
-//	CCSprite *s = [CCSprite spriteWithFile:@"blue-block.png"];
-//	s.position = position;
-//	[self addChild:s];
 	
 	// life is for particles particles - in seconds
 	[particleSystem setLife:0.35f];

@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" orientation="orthogonal" width="100" height="100" tilewidth="32" tileheight="32">
+ <properties>
+  <property name="name" value="In The Woods"/>
+  <property name="time" value="90"/>
+ </properties>
  <tileset firstgid="1" name="texture" tilewidth="32" tileheight="32">
   <image source="world-2-tileset.png"/>
  </tileset>
@@ -10,7 +14,7 @@
  </layer>
  <layer name="Extras" width="100" height="100">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAA+3dSwqDMBAAUIsUanv/+7bQZuPG3zg2yXsgbpJMklk4fsBhAPh6dhITAACA9ky/s/tMIj2ungDQLNcrgL5Ny02q0tp6AAAAAIBzvK6ewMz96gkAkCr6ndb4OW4r265tFzFGRKzabMlFcWSfMmPNjYFjnWFPLoo9/TJj1eZILoot/TNjHZX97V5ELoo142TGasnSeiP3IzNWjdRX/6OX+qoG6qv/0Xt95XkqAAAAAAAAAAAAAAAAAABQC/+gBAAAAADO8gbUkJ0HQJwAAA==
+   H4sIAAAAAAAAA+3c0Q6CIBQAUJtry/r//82HfPFBRK8QeM7WegEuQsqNWMMAXOFduwMH1Ohzi+MEQHnWCwAgZfq9184basffa0oXYfaq3QGgW62sF2u5/fYcBVq2foZ9AtvuLR/v7XoAgDp8hwQAgP5F7rNGeNbuAABFpX7Tyt2fGufXY2fZveUi2oiI1ZqcuVicGaeSsdbGwLausDUXqXNHR8Zpq85WvDvcJ0fui7Wc+iVjnVX67F7EXCz2tFMyVk9S1xs5HiVjtUh+9T+ic57ItTm3fKvnthdHP4PR+dUV9Vpz9/zKfioAAAAAAAAAAAAAAAAAANAK/3sPAAAAAFzlC5R8UulAnAAA
   </data>
  </layer>
 </map>

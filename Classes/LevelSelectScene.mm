@@ -92,10 +92,14 @@
 		NSString *worldTitleString;
 		switch ([GameData sharedGameData].currentWorld) 
 		{
-			case 1: worldTitleString = @"Sky"; break;
-			case 2: worldTitleString = @"Forest"; break;
-			case 3: worldTitleString = @"Mountains"; break;
-			case 4: worldTitleString = @"Caves"; break;
+//			case 1: worldTitleString = @"Sky"; break;
+//			case 2: worldTitleString = @"Forest"; break;
+//			case 3: worldTitleString = @"Mountains"; break;
+//			case 4: worldTitleString = @"Caves"; break;
+			case 1: worldTitleString = @"World 1"; break;
+			case 2: worldTitleString = @"World 2"; break;
+			case 3: worldTitleString = @"World 3"; break;
+			case 4: worldTitleString = @"World 4"; break;
 		}
 		
 		CCLabelBMFont *worldTitle = [CCLabelBMFont labelWithString:worldTitleString fntFile:@"yoster-48.fnt"];
@@ -184,6 +188,7 @@
 		[[SimpleAudioEngine sharedEngine] preloadEffect:@"wall-hit.caf"];
 		[[SimpleAudioEngine sharedEngine] preloadEffect:@"time-pickup.caf"];
 		[[SimpleAudioEngine sharedEngine] preloadEffect:@"toggle.caf"];
+		[[SimpleAudioEngine sharedEngine] preloadEffect:@"level-complete.caf"];
 		
 		// Preload music - eventually do this based on the "world" that is selected
 		[[SimpleAudioEngine sharedEngine] preloadBackgroundMusic:@"world-1-bgm.mp3"];

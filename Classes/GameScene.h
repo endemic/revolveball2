@@ -51,7 +51,8 @@
 	// Base size of Box2D objects; doubles on iPad/iPhone 4 Retina Display
 	int ptmRatio;
 }
-
+- (void)winGame;	// Win/loss actions
+- (void)loseGame;
 - (void)loseTime:(int)seconds;	// Method to subtract from countdown timer & display a label w/ lost time
 - (void)gainTime:(int)seconds;
 - (void)blockHubEntrances;	// Used in hub level; checks player progress and inserts barriers to prevent access to higher levels

@@ -2,19 +2,19 @@
 <map version="1.0" orientation="orthogonal" width="100" height="100" tilewidth="32" tileheight="32">
  <properties>
   <property name="name" value="Pipes"/>
-  <property name="time" value="120"/>
+  <property name="time" value="90"/>
  </properties>
  <tileset firstgid="1" name="texture" tilewidth="32" tileheight="32">
   <image source="world-1-tileset.png"/>
  </tileset>
  <layer name="Border" width="100" height="100">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAA+2b2Y7DIAxF28ks///HozxEqhABbyQmnCPloY25AS61oWpfLwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAALiL94AL7Ozz9xOk9f3CDy/l/HnnEz98RM8ffviofT489QI/fEjmT1MX8MOHdH3jxzXs8/cljOuxCeNWJPocEVFnVj6nRJ4rDr0oVjyn1MYrmQNv/ZCCH3aOuiCpM1JW92PE91RPPqdE18Toc4UUad2awY/f4pK00dyz1hQNTzmn9PzYc3iZv3t+RJ0rNDzlnNLzY88tZR7ImMc9dSsTlnwV9dwMeiv6kal+RLUbhaV+eBmRx63nlNn8iKwfI/N2ljrmJXq/m50Z/Lh7bV9Jdj9WAz9ygR+5wI9c4EcuWn6M3sOjrzt/eD8rkvGsrK/tQ/bxzK6v7UP28cyur+1DLZdZc1/vWavoe+pJRP+IjyPbeGaP95JtPLPHe8k2ntnjvWQbz+zxVlr7Dd7Xv+/l7nU0Kn67qT9eovr3Prnv1de+3tka95/sR61tK17y+8KafuuZ5eutc7/Uql2t9iWZ/NDGn/0+xKv/6fH3AP1WTsjoh2b9WvQl8WeeXJ0/vVj716sjHn3tPueg5olkPqXrSZI/vdyx//msI9H6pSeS+iHVz+6Htp4ffNaRaD9G1CePnparPh9nv72NnK/af5Ko5/V7tb1VT1+z3z37f1irDtVq0qz73ZH1XPu69V+9q/d7Xu6o50+O93LFfnSl971Y/c++Tu+Ot4IfY+Kt4MeYeCv4MSbeSqQfvcvz3Nn0rZS6f8LnevtjXQez6I/SxY8x7a26+DGmfUtXkzc17Sy6T9G38g+PBBqkQJwAAA==
+   H4sIAAAAAAAAA+3a2Y7CMAxAUZgyw///8cADUhVl8RK3TrlH6gPUcZO6JAFxuwEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAOAq7sYDMd739q84JG0QY1SP7XX8VNogxqgej9fxW2nD3BbDMl9p80OOeuRiWT+0+SEXsX6UsZCbvd+lHj6zvw9Sj1yoRy7UIxfqkQv1yKVXD+veQfrbC/l13z+8nxXJeL45v7YP2cezen5tH7KPZ/X82j7U5jLr3De61rfk96wnM/pH/DzZxrN6vFe28awe75VtPKvHe2Ubz+rxVr39Bu/r3/c6+zmKit9O6o/XrP7dG+e9+bWv37bO+SvXo9a2Fy/5/14tf++a5ettcL7MVTt67UuZ6qGNb/3/wpt/X+NHQP7enJCxHprn15JfEt+qydHzp5e1f6N1xJNfu8/5qNVEcj+lz5Nk/vQ6Y/+zX0dm5y9rIlk/pPmz10O7nn/s15HZ9YhYnzz5tI76fLT+2zrzfpW1mJX/iut5bW81yq/Z79Zyt+J7e9xV97uR67n2dasWEf0ZxXudsZ5fOd7riP3oN73vZa1/9uf07Hgr6hETb0U9YuKtqEdMvNXMeowOz3VXy29V5n0Kr+vtj/U5WCV/VF7qEdPempd6xLTv5dXMm5p2lrxXyW/1D8PWBHRAnAAA
   </data>
  </layer>
  <layer name="Extras" width="100" height="100">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAA+3aQQqAMAwEwPao/v+/3ryoB0HMBmce0C5dKAQyBgAAAAAAAAAAAAAAAAAAAEBfS3UAAACgvbfnCnMKAAD8T/ockJ4PAAAAoJPV+ZF3AQAAcDarA3CYQx8p5tBHEn3Uunp3fdS5e3t91PA/ZdFHFl1k0QVf2aoDAAAAPNR9H9cOLuTZAWQrGV1AnAAA
+   H4sIAAAAAAAAA+3asQ2AMAxFQacE9t+XjiZQ0OBPdDdAYuVJqVwFAAAAAAAAAAAAAAAAAAAAAAAAAAAAwKq27gEAAAAAFrI7P/IuAAAAZqN7AC6j9EgxSo8kevS6e3c9+jy9vR49/E9Z9MiiRRYt+MrRPQAAAMBLf9/HtYMLeU4QOOvAQJwAAA==
   </data>
  </layer>
 </map>
