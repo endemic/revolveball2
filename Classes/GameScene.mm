@@ -389,23 +389,48 @@
 	// Get window size
 	CGSize winSize = [CCDirector sharedDirector].winSize;
 	
-	NSString *text;
-	if (countdownTime == 0)
-		text = @"GO";
-	else
-		text = @"READY";
+	// If we're on the hub level
+	if ([GameData sharedGameData].currentWorld == 0 && [GameData sharedGameData].currentLevel == 0)
+	{
+		NSString *text;
+		if (countdownTime == 0)
+			text = @"Touch to rotate!";
+		else
+			text = @"Select a world";
 		//text = [NSString stringWithFormat:@"%i", countdownTime];
-	
-	CCLabelBMFont *label = [CCLabelBMFont labelWithString:text fntFile:@"yoster-48.fnt"];
-	[label setPosition:ccp(winSize.width / 2, winSize.height / 2)];
-	[self addChild:label z:2];
-	
-	// Move and fade actions
-	id moveAction = [CCMoveTo actionWithDuration:1 position:ccp(ball.position.x, ball.position.y + 64)];
-	id fadeAction = [CCFadeOut actionWithDuration:1];
-	id removeAction = [CCCallFuncN actionWithTarget:self selector:@selector(removeSpriteFromParent:)];
-	
-	[label runAction:[CCSequence actions:[CCSpawn actions:moveAction, fadeAction, nil], removeAction, nil]];
+		
+		CCLabelBMFont *label = [CCLabelBMFont labelWithString:text fntFile:@"yoster-48.fnt"];
+		[label setPosition:ccp(winSize.width / 2, winSize.height / 2)];
+		[self addChild:label z:2];
+		
+		// Move and fade actions
+		id moveAction = [CCMoveTo actionWithDuration:1 position:ccp(ball.position.x, ball.position.y + 64)];
+		id fadeAction = [CCFadeOut actionWithDuration:1];
+		id removeAction = [CCCallFuncN actionWithTarget:self selector:@selector(removeSpriteFromParent:)];
+		
+		[label runAction:[CCSequence actions:[CCSpawn actions:moveAction, fadeAction, nil], removeAction, nil]];
+	}
+	// Otherwise, do "normal" actions
+	else 
+	{
+		NSString *text;
+		if (countdownTime == 0)
+			text = @"GO";
+		else
+			text = @"READY";
+		//text = [NSString stringWithFormat:@"%i", countdownTime];
+		
+		CCLabelBMFont *label = [CCLabelBMFont labelWithString:text fntFile:@"yoster-48.fnt"];
+		[label setPosition:ccp(winSize.width / 2, winSize.height / 2)];
+		[self addChild:label z:2];
+		
+		// Move and fade actions
+		id moveAction = [CCMoveTo actionWithDuration:1 position:ccp(ball.position.x, ball.position.y + 64)];
+		id fadeAction = [CCFadeOut actionWithDuration:1];
+		id removeAction = [CCCallFuncN actionWithTarget:self selector:@selector(removeSpriteFromParent:)];
+		
+		[label runAction:[CCSequence actions:[CCSpawn actions:moveAction, fadeAction, nil], removeAction, nil]];
+	}
 	
 	countdownTime--;
 	
