@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="100" height="100" tilewidth="64" tileheight="64">
+ <properties>
+  <property name="name" value="Last One"/>
+  <property name="time" value="60"/>
+ </properties>
+ <tileset firstgid="1" name="texture" tilewidth="64" tileheight="64">
+  <image source="world-4-tileset-hd.png"/>
+ </tileset>
+ <layer name="Border" width="100" height="100">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAA+3bwWoCMQAE0FWr/QIFzwXB//9BKcUqYhqajTq7vgc5dSczEEpPXQzDsKicW7XvW4+en7P545Tu3XU+esa9x1fno2fce/Sm5/IeLe/cm57y352x97Z4x57tnZ/ffvPZcG8Pevx+pPU86j1WV3efz1LPy96jlDkUvj/o+f35M99Dpp5J2iKTtUUma4tM1haZrC0yWVtksrbIZG2Rydoik7VFJmuLTNYWmawtMllbZLK2yGRtkcnaIpO1RSZri0z7vcfC98cRW/TU7/24+u581o1b9NR7ave2aNmvx3sk9kx9/9x6pr5/bj1T3z+3nu+T8L9aei7vse98Svv11Hsede7t1/P/HgAAAAAAAAAAAAAAAAAAAAAAAAAAAACAd3UCneDNv0CcAAA=
+  </data>
+ </layer>
+ <layer name="Extras" width="100" height="100">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAA+3BMQEAAADCoPVP7WULoAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgBt5RKnmQJwAAA==
+  </data>
+ </layer>
+</map>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="100" height="100" tilewidth="64" tileheight="64">
+ <properties>
+  <property name="name" value="Corridors"/>
+  <property name="time" value="120"/>
+ </properties>
+ <tileset firstgid="1" name="world-4-tileset" tilewidth="64" tileheight="64">
+  <image source="world-4-tileset-hd.png"/>
+ </tileset>
+ <layer name="Border" width="100" height="100">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAA+3Zy2rDMBCFYfe+dqB0HbpI3v8JG0MEg9BlFEuacfN/IOq6siTPia1AlwUAAABATy+0bLNQm3d9snOB1zyk0vpr/cK5q/LaUr/cOjQ1L93D571tvOZRq99G3qOmf+5aTT/t+NrcpSPkEXh6p8w4Z5mH3L9Oy5i98YjN0jb/SRzDVvx8wP75lM+Ht2ZBzvt2a69G65BmriM3l4c83m/tY8dYveqoWceoub7vPz3kUVOrgWUdtbTzHyGPvc9PrzFmzG+ZR7x/We+jXpqlOA/YIg9fQgbnZXwe1u8hz03WKHU8Qmn8Pe/ulmtn7BEtc/wsPvL4iv62JuZPnUtpuVY7ptSaYct6vOSh0TujR/s/+jdNvyPlkRtjxDofHXfvelJ5nMXxSNZ7ppeWqoc8lzrGGLV6k8dcW41XcSzPl56fZ24j1d5Np0WvpW/Nb+F8yzyhf2i5cWOhf+w/51Hq3ysPeY02i3BNqv+sPOLvv/J47+c+d33ufFyHUh1DnWtrbMki9L+I32f9P0rzXWpUHjkteYS6tda7dQ2BZR4e9kzrdVjs56nvV5Zyn5Fn4PHePa5pFk/3fpT3lcW72kKY92wwt3bOS71L9zmt8+ilJVdtnS1ys86j1/PRsyatNPegXZ91HoHFe2smbWaWedDKezwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAYJ8/6Y9pSECcAAA=
+  </data>
+ </layer>
+ <layer name="Extras" width="100" height="100">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAA+3ZwQ3AIAgAQJ9a99/XBXwKNXg3AEJIDITWAAAAINf3dwIAAMBzZkDMKrtNlToAAIhjZqzvRI/7gRi8xd8CAFQScYfYGUnvcDezNAAA5LGHAQAAAAAAAAAAAAAAAAAAAAAAAAAAALAAnNZx0kCcAAA=
+  </data>
+ </layer>
+</map>

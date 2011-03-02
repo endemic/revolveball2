@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="100" height="100" tilewidth="64" tileheight="64">
+ <properties>
+  <property name="name" value="Mind The Spikes"/>
+  <property name="time" value="90"/>
+ </properties>
+ <tileset firstgid="1" name="world-4-tileset" tilewidth="64" tileheight="64">
+  <image source="world-4-tileset-hd.png"/>
+ </tileset>
+ <layer name="Border" width="100" height="100">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAA+3a0W6DMAyF4VbTtjeYtEukvf8zTr2YRtMEx9gGJ/yfhNQIGtocQpKW2w0zulc2nOfR/l+rzTsP8tYp28e7/aLzno3UPh55lGX6S1tPHpb2i857NrXrV1PW1l/bT3/5tycPTftF5z0aqf28y7Xza8sz9xdpfuPR3pa8a/Vpjh+NdP29dxxvPZ9nfaP7+z4/RVk6XiovG+/X9BfJrHm0ym832/j80Mqm5/xXG997vq9m/Rx9/yKP17L1frPuL+TxzKM9vlfben95n9q6b63r85yPjSZ6Pmv9PNL+2fOw7vfOw3s+lt0Z62fGj7Z78dq7fSLy1tQ/Gu34HD0fI4/Xsuf8Rlq/eJQ95xNni74e6S86R+dh3T97f4m+Pq3rl6v1l57vU85PLeuBnvO15hN76x+pv2Sc33rmrd1/tuj209Yn8b4esvFuv9HGl2yytV+tvsj1SzbW+01P/a3ysuN8R98fzxaRR/R8zPL+7Kzt11O/pj7v+dhoeZSk9cCe+rbK2uOt48tovNdT0euJ1uf97Kzvah7tsRRlz/FF2k8ez7zvN9b599VFj8/0B53o+S556Oy935Svveq/uujrnTx0WP/lcvR4QR7bpPX+nnK5faw28tjmPZ+t1U8e+7H+y0XbfrTvscgjF+vvi4glzcdwLMZnAAAAAMBRWIPmwm9muWj/s0cs/pPPxfqMC3zxDEsuHs+4wA/PfOVCHrmQRy7kkUv0M5SwIY9crP0FscgjF56hzI08cuH3EgAAAAAAAAAAAAAAAGAuvyqFohJAnAAA
+  </data>
+ </layer>
+ <layer name="Extras" width="100" height="100">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAA+3aOQrAMAwEQJex8///pjYuTCCwwpl5wTZCB2oNAAAA4Ds9HYDFlQ5Q3J0OAEAJ6X5phgIAmI10ADhIet+Bk+3uy+oPAAAAAADe898NAPXp1wAAAAAAAAAAAAAAAAAAAAAAAAAA/MkDJjhDfUCcAAA=
+  </data>
+ </layer>
+</map>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="100" height="100" tilewidth="64" tileheight="64">
+ <properties>
+  <property name="name" value="Two Paths"/>
+  <property name="time" value="90"/>
+ </properties>
+ <tileset firstgid="1" name="texture" tilewidth="64" tileheight="64">
+  <image source="world-2-tileset-hd.png"/>
+ </tileset>
+ <layer name="Border" width="100" height="100">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAA+3Y0WrDMAyF4fZmux/sAcb6/s84Cg2E4nSyI1dH8v9BWfBcx6ocqfRyAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAqOX69Mo6r4JWfBnHKlA84z3zqskcU+a9H8kcU+a9H1GtQ6vWqzulnrx6P99cD65b86Kfheq5uFOPV31/3tTjVd+ftyr1qsLvAko9OeOYJ8Wzpv4szMyJUi2+Pf4q9orv3fUq+dgo5mMvKh8K9UB9fzMo9caMYzNkOOPe63neV513HFGfC/l4z3pR91XoeV7rfT1einFYKPW8ymMW6t8Tt+uPp1f0/nrjsFLsPdZ87P2+WO/V/2YiH21V8qHwnK9Wr47ex1hMP2+9X/WsWedFfd+1zLOy5kMdcWhZLY4M9ap1rbI/C6WeV3nMQvEMVXkWRnKyQo2NQj60eOeDeuW3vx5KPa/yWI8MZ9d7vYh4o3jvb7V4vZGP8+tRr+bvz0Kp51Ues1A8Q5FnfFa8Vu+sxa183FoTT/pxntuz3t7ZfHwO3nfkXrPPgffnPJIT7+eDenV+3gilnld5rEeGs1Zh3n/+AICvTeNAnAAA
+  </data>
+ </layer>
+ <layer name="Extras" width="100" height="100">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAA+3aMRKAIBADQEqV///X0g4scAK4+4JcmcyVAgAAAAAAAAAAAAAAAAAAAAAAAAAAQNKVDtBxpAMAAADAx2o6wAuz7wcAAADQkuq1K3T+njMdAAAAgC2M7Mh/7Kqr3JzYYHbYXwAAAHjM/reuhwKQcANhLLrdQJwAAA==
+  </data>
+ </layer>
+</map>

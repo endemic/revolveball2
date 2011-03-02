@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="100" height="100" tilewidth="64" tileheight="64">
+ <properties>
+  <property name="name" value="Pegs"/>
+  <property name="time" value="120"/>
+ </properties>
+ <tileset firstgid="1" name="texture" tilewidth="64" tileheight="64">
+  <image source="world-1-tileset-hd.png"/>
+ </tileset>
+ <layer name="Border" width="100" height="100">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAA+2ZWa7cIBBF8U+yjidl/2vMaylIhNTEUPgq3COVbLnbgDldDO5SyEme7/gS4nmzUZdSXUjQyXnoA4vex8/mnD7Ow/zAwXJRCn2cRHLB9dU7aC6eLsgcfT96obnIaMttaHs5K1p2u7h5zPPmY48MF5l1oLPi44SLjLqQmfWR6UIbG29wElmzZr4nlFxYa4f/3Ul03Zq15vH6mz7OPjN9/A2qj9nxSvts9PpbvO1DaoO137Ha9iifj17vvzNyXAXBh9aO2paIj/b+9juj16UyR46rzM7nu+d1qy3eeGY9w+h1qcyR42pfWX0Qid1+tLHLa1v7+cq5VOYIXl95aOPEbP2rTjwfXlt25Er/nWhE22exkh+zdY60Z+ZZ+7Fm5LpU7i4ffb0SO/MjUp+H5KNeGxkLnsnrWeNV/52Ik5l4iv67m0Hz4YVW1uj1Ntpnih619s04iYTmZNSHV0e03Zm0uRQ9emW1rDybVF5b7owPK+/ast/yUZq6o0evrF1Osnx4vO1jN7ucSOPIl3JOHzY7nFg+ZsrVykMbr7JYdXLCB9p8no3lJBJSP/W/6xW/t/n4oDmJRnuP5Gy2Hbf6+BCdSy1W+6ltw69yt48Pq052+mjLu9XHB2n8j8ZqH9GHTHQun50nrHp3+NjdrluR+t1aN1hl7MzbW4nOX1ofa/fTyRwrPrx76WQcby1RkfY5q+MckdHWClZ/j7qikzWi41gp//Y3feyHPvDw5pZ2bcvx6gzRfSnncwyscY0uzsP9IBbaupgu3oFzNxb0gQV9YEEfWNAHBt5evAbJpfa3tR/v36WQPEbeM5ZCJ9m0Pvq80M7pIw/mBxbS/G2d00cuzA8s2rVVxTqnj1yYH1hwfYUF8wMLrq+wYH5gwfUVFswPLLi+woL5gQXXV1gwP/Dg/4N48P9zTDQf5B3oAwv6wII+sKAPLOgDC/o4xxMM+shH2oNbUaGPHEbfU1XoIwf6wEKaF6JBH/vx3hOOBFlnJT+YL/uZnT8qP/4EfeyBPrAY3X9wvMpndv7mfE4IIYQQQt7iN/mHm7JAnAAA
+  </data>
+ </layer>
+ <layer name="Extras" width="100" height="100">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAA+3BMQEAAADCoPVP7WULoAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgBt5RKnmQJwAAA==
+  </data>
+ </layer>
+</map>

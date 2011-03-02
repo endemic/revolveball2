@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="100" height="100" tilewidth="64" tileheight="64">
+ <properties>
+  <property name="name" value="Don't Get Lost"/>
+  <property name="time" value="60"/>
+ </properties>
+ <tileset firstgid="1" name="texture" tilewidth="64" tileheight="64">
+  <image source="world-1-tileset-hd.png"/>
+ </tileset>
+ <layer name="Border" width="100" height="100">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAA+3VwQnDMBBFwfXFqSP9NxkCPggVED3IPFi+72LwNTOXS9w8+36+7bld3+Pba3QyPlq7+9DZ+GgtH634aC0frfhoLR+t+GgtH634aC0frfhoLR+t+GgtH634aC0frfhoLR+t+GgtH634aC0frfhoLR+t+GgtH634aC0frfhoLR+t+GgtH634aC0frfhoLR+t+GgtH634aC0frfhoLR+t+GgtH634aC0frfhoLR+t+GgtH634aC0frfhoLR+t+GgtH634aC0frfhoLR+t+GgtH634aC0frfhoLR+t+GgtH634aC0frfhoLR+t+GgtH634aC0frfhoLR+t+Gjt7uNeTr9v93FvO5aPP87/o7W7D52Nj9by0YqP1vLRio/W8tGKj9by0YqP1q7v4RqnXh/zBChLQJwAAA==
+  </data>
+ </layer>
+ <layer name="Extras" width="100" height="100">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAA+3cQQqDMBAFUJe2R9AbtPe/Xyl0KWlJJmZq3tuK8MFgfgxmWYAa98brb8+IIADwYV6B3Fr74xoVZCL76AAQwPz+X0rv8l++EwDn07EAAGLoVQAAfehZAADtHqMDAAAkcqu8T6cao/Z5UWY8A1Bifw4AIJZ+BQDQl3NpAOC6zPMAAH3YvwIA4Mr0XQCAdv5FBzhftvNVvuXJlpc59RiHxjazsxYA4Mg2OgAAAJDWC28wkUdAnAAA
+  </data>
+ </layer>
+</map>

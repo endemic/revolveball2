@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="100" height="100" tilewidth="64" tileheight="64">
+ <properties>
+  <property name="name" value="The Spiral"/>
+  <property name="time" value="90"/>
+ </properties>
+ <tileset firstgid="1" name="texture" tilewidth="64" tileheight="64">
+  <image source="world-2-tileset-hd.png"/>
+ </tileset>
+ <layer name="Border" width="100" height="100">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAA+3c22rDQAyEYafHN0mb93/BUtTQxYe1rNVqF/R/EPCVE2bIJG7rLgsAAAAAAAAAAAAAAIh0m+gByeF9wPN+FcdvC308zZLDLK9jtNvqeNRG0Yf4zeFeHPfcrtpG0YcYmQl9bB1lEr1R9CHWmXhvl3aj6ENE50MfdZp8IjaKPkQtH4/t0m4UfYiIrOhD72pWvTaKPoQlt7PtsmwUfYheudGHTUtunhtFH6I1w4+/h8e5QB+z8cyNPtpZcntxPNfecWbe1x8t50W/rOjDpnWj9rxeOO/ecWYeG+W9XZlF5EMfetqN+jaev9yux8nzwX+jPLYrs+hM6KOux0Yd0W5XZj03yrpdmY3MgT62em/Ukdp2ZRa1UVe2K7PfHJ6/D496bxy9DsyRw/rnXZmN+H51tl2Zrfso/5Ynar+4X+3fLJ+p9CFq12d8v4pX66PndpUbdV/o42nkzy94f2xp+ojYKPoQ2j487l2rbRR9CG0fkc+X2dU+em0UfQhLH1e2S7tR9CEsffR+jsxa+vDcKPoQrX3s4X41ux59eJ8rE48+Ph3PlZ1nhvTRzvvz3OO8mfXKjT5sLLmd3QvC/R923tccXH+0iciKPvRq+TyK4yv3q5Us25WZ90Z5bFdm0fnQR12PjSqV/89Su12Z9dwo63ZlNjIT+ti6eq3XQrtdma0/M6If5evAPDnM8jpG671RR2rbldmIjTrbLgAAAAAAAAB6P8FdZQFAnAAA
+  </data>
+ </layer>
+ <layer name="Extras" width="100" height="100">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAA+3bOw6AMAxEwZR87n9fClqQLCGwNsxUSefqdTsGAAAAAAAAAADMY+0+AKBIr4AUegWk0CsghV4BX1kK76v/nf3BGwDosXUfAFCkV0AKvQJS6BWQQq+AFHoFpNArIIVeASn0CuCf3trPVHY+1Y0PAPOxPwdS6BWQQq+AFHoFpNArAAAAAIDTARorFlRAnAAA
+  </data>
+ </layer>
+</map>

@@ -6,22 +6,33 @@ require 'nokogiri'
 # Get all map files in current directory
 maps = Dir.glob('*.tmx')
 
-maps.each { |map|
+maps.each { |filename|
   # Only process "sd" maps
-  next if map[-6, 2] == 'hd'
+  next if filename.index('-hd')
 
-  f = File.open(map)
-  xml = Nokogiri::XML(f)
+  # Determine base filename/extension
+  filename_base, filename_extension = filename.split('.')
+
+  # Open and parse file
+  f = File.open(filename)
+  document = Nokogiri::XML(f)
   f.close
   
-  xml.map['tilewidth'] = String(Integer(xml.map['tilewidth']) * 2)
-  xml.map['tileheight'] = String(xml.map['tileheight'].to_i * 2)
+  # Get the XML nodes that we need to modify
+  map = document.at_css 'map'
+  tileset = document.at_css 'tileset'
+  image = document.at_css 'image'
   
-  xml.map.tileset['tilewidth'] = String(xml.map.tileset['tileheight'].to_i * 2)
-  xml.map.tileset['tileheight'] = String(xml.map.tileset['tileheight'].to_i * 2)
+  # Determine new tile size; since we use square tiles of one size, this is just multiplied by 2
+  new_tile_size = String(map['tilewidth'].to_i * 2)
   
-  File.new(map + 'hd', 'w').write xml unless xml.validate
-  
-  # DEBUG - only do one file, for testing =]
-  break
+  # Set the new tile size
+  map['tilewidth'] = map['tileheight'] = tileset['tilewidth'] = tileset['tileheight'] = new_tile_size
+
+  # Append '-hd' to the tilemap image source
+  image_file_base, image_file_extension = image['source'].split('.')
+  image['source'] = image_file_base + '-hd.' + image_file_extension
+    
+  # Write the new file
+  File.new(filename_base + '-hd.' + filename_extension, 'w').write document.to_xml unless document.validate
 }
