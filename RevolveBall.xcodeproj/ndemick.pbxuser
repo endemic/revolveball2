@@ -23,7 +23,7 @@
 	29B97313FDCFA39411CA2CEA /* Project object */ = {
 		activeBuildConfigurationName = Debug;
 		activeExecutable = 7D50A1A412BBF7F40039A691 /* RevolveBall */;
-		activeSDKPreference = iphoneos4.2;
+		activeSDKPreference = iphonesimulator4.2;
 		activeTarget = 1D6058900D05DD3D006BFB54 /* RevolveBall */;
 		addToTargets = (
 			1D6058900D05DD3D006BFB54 /* RevolveBall */,
@@ -239,6 +239,13 @@
 		vrLen = 1527;
 		vrLoc = 3805;
 	};
+	7D15DFD813143BD7003CF95B /* world-4-tileset.png */ = {
+		isa = PBXFileReference;
+		lastKnownFileType = image.png;
+		name = "world-4-tileset.png";
+		path = "/Users/ndemick/iPhone/RevolveBall/Resources/maps/world-4-tileset.png";
+		sourceTree = "<absolute>";
+	};
 	7D15DFDC13143E89003CF95B /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
 		fRef = 7DF2AEBF130D4312002FAE81 /* 3-8.tmx */;
@@ -446,6 +453,111 @@
 			sepNavSelRange = "{2340, 0}";
 			sepNavVisRange = "{13680, 1741}";
 		};
+	};
+	7D50A20712BBF9590039A691 /* block.png */ = {
+		isa = PBXFileReference;
+		lastKnownFileType = image.png;
+		name = block.png;
+		path = /Users/ndemick/iPhone/RevolveBall/Resources/images/block.png;
+		sourceTree = "<absolute>";
+	};
+	7D50A20812BBF9590039A691 /* blue-block-bottom-left.png */ = {
+		isa = PBXFileReference;
+		lastKnownFileType = image.png;
+		name = "blue-block-bottom-left.png";
+		path = "/Users/ndemick/iPhone/RevolveBall/Resources/images/blue-block-bottom-left.png";
+		sourceTree = "<absolute>";
+	};
+	7D50A20912BBF9590039A691 /* blue-block-bottom-right.png */ = {
+		isa = PBXFileReference;
+		lastKnownFileType = image.png;
+		name = "blue-block-bottom-right.png";
+		path = "/Users/ndemick/iPhone/RevolveBall/Resources/images/blue-block-bottom-right.png";
+		sourceTree = "<absolute>";
+	};
+	7D50A20A12BBF9590039A691 /* blue-block-breakable-shard.png */ = {
+		isa = PBXFileReference;
+		lastKnownFileType = image.png;
+		name = "blue-block-breakable-shard.png";
+		path = "/Users/ndemick/iPhone/RevolveBall/Resources/images/blue-block-breakable-shard.png";
+		sourceTree = "<absolute>";
+	};
+	7D50A20B12BBF9590039A691 /* blue-block-breakable.png */ = {
+		isa = PBXFileReference;
+		lastKnownFileType = image.png;
+		name = "blue-block-breakable.png";
+		path = "/Users/ndemick/iPhone/RevolveBall/Resources/images/blue-block-breakable.png";
+		sourceTree = "<absolute>";
+	};
+	7D50A20C12BBF9590039A691 /* blue-block-top-left.png */ = {
+		isa = PBXFileReference;
+		lastKnownFileType = image.png;
+		name = "blue-block-top-left.png";
+		path = "/Users/ndemick/iPhone/RevolveBall/Resources/images/blue-block-top-left.png";
+		sourceTree = "<absolute>";
+	};
+	7D50A20D12BBF9590039A691 /* blue-block-top-right.png */ = {
+		isa = PBXFileReference;
+		lastKnownFileType = image.png;
+		name = "blue-block-top-right.png";
+		path = "/Users/ndemick/iPhone/RevolveBall/Resources/images/blue-block-top-right.png";
+		sourceTree = "<absolute>";
+	};
+	7D50A20E12BBF9590039A691 /* blue-block.png */ = {
+		isa = PBXFileReference;
+		lastKnownFileType = image.png;
+		name = "blue-block.png";
+		path = "/Users/ndemick/iPhone/RevolveBall/Resources/images/blue-block.png";
+		sourceTree = "<absolute>";
+	};
+	7D50A20F12BBF9590039A691 /* boost-down.png */ = {
+		isa = PBXFileReference;
+		lastKnownFileType = image.png;
+		name = "boost-down.png";
+		path = "/Users/ndemick/iPhone/RevolveBall/Resources/images/boost-down.png";
+		sourceTree = "<absolute>";
+	};
+	7D50A21012BBF9590039A691 /* boost-left.png */ = {
+		isa = PBXFileReference;
+		lastKnownFileType = image.png;
+		name = "boost-left.png";
+		path = "/Users/ndemick/iPhone/RevolveBall/Resources/images/boost-left.png";
+		sourceTree = "<absolute>";
+	};
+	7D50A21112BBF9590039A691 /* boost-right.png */ = {
+		isa = PBXFileReference;
+		lastKnownFileType = image.png;
+		name = "boost-right.png";
+		path = "/Users/ndemick/iPhone/RevolveBall/Resources/images/boost-right.png";
+		sourceTree = "<absolute>";
+	};
+	7D50A21212BBF9590039A691 /* boost-up.png */ = {
+		isa = PBXFileReference;
+		lastKnownFileType = image.png;
+		name = "boost-up.png";
+		path = "/Users/ndemick/iPhone/RevolveBall/Resources/images/boost-up.png";
+		sourceTree = "<absolute>";
+	};
+	7D50A21312BBF9590039A691 /* checkered-block.png */ = {
+		isa = PBXFileReference;
+		lastKnownFileType = image.png;
+		name = "checkered-block.png";
+		path = "/Users/ndemick/iPhone/RevolveBall/Resources/images/checkered-block.png";
+		sourceTree = "<absolute>";
+	};
+	7D50A21412BBF9590039A691 /* cloud-background.png */ = {
+		isa = PBXFileReference;
+		lastKnownFileType = image.png;
+		name = "cloud-background.png";
+		path = "/Users/ndemick/iPhone/RevolveBall/Resources/images/cloud-background.png";
+		sourceTree = "<absolute>";
+	};
+	7D50A21612BBF9590039A691 /* down-arrow.png */ = {
+		isa = PBXFileReference;
+		lastKnownFileType = image.png;
+		name = "down-arrow.png";
+		path = "/Users/ndemick/iPhone/RevolveBall/Resources/images/down-arrow.png";
+		sourceTree = "<absolute>";
 	};
 	7D50A26712BBF97A0039A691 /* 1-1.tmx */ = {
 		uiCtxt = {
@@ -722,6 +834,13 @@
 		rType = 0;
 		vrLen = 1728;
 		vrLoc = 0;
+	};
+	7DBED19912C3CC9100932EE0 /* world-2-tileset.png */ = {
+		isa = PBXFileReference;
+		lastKnownFileType = image.png;
+		name = "world-2-tileset.png";
+		path = "/Users/ndemick/iPhone/RevolveBall/Resources/maps/world-2-tileset.png";
+		sourceTree = "<absolute>";
 	};
 	7DC8755F130DC6420080847F /* CrossPromoScene.h */ = {
 		uiCtxt = {
