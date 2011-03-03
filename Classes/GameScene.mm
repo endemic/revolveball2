@@ -404,7 +404,7 @@
 		[self addChild:label z:2];
 		
 		// Move and fade actions
-		id moveAction = [CCMoveTo actionWithDuration:1 position:ccp(ball.position.x, ball.position.y + 64)];
+		id moveAction = [CCMoveTo actionWithDuration:3 position:ccp(ball.position.x, ball.position.y + 64)];
 		id fadeAction = [CCFadeOut actionWithDuration:1];
 		id removeAction = [CCCallFuncN actionWithTarget:self selector:@selector(removeSpriteFromParent:)];
 		
