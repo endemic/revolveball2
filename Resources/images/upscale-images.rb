@@ -11,6 +11,5 @@ maps.each { |filename|
   filename_base, filename_extension = filename.split('.')
   
   # Run ImageMagick shell command to increase size 2x w/ nearest neighbor filter, then re-save w/ -hd suffix
-  # `convert #{filename} -resize 200% -filter Point #{filename_base}-hd.#{filename_extension}`
-  puts "convert #{filename} -resize 200% -filter Point #{filename_base}-hd.#{filename_extension}"
+  `convert #{filename} -scale 200% #{filename_base}-hd.#{filename_extension}`
 }
