@@ -28,6 +28,7 @@
 - (void)moveLevelSelectCursor:(int)destination;
 - (void)drawBridges;
 - (void)displayLevelInfo;
+- (void)preloadAudio;
 
 @end
 

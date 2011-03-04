@@ -6,7 +6,7 @@
 \f0\fs20 \cf0 For "beta" release\
 ==================\
 \
-* Lay out/complete UI for options/title screen - including larger buttons\
+* Level loading? [self performSelectorInBackground:@selector(loadLevel:)];\
 * Add placeholder music\
 	1. Title screen/options\
 	2. World select/level select\
@@ -18,13 +18,16 @@
 	1. Button click\
 	2. Moving between levels\
 	3. Selecting a level (maybe same as button noise)\
-* Ensure all levels are playable [Through 2-10]\
-* Determine graphics for "hub" world\
-* Write script to upscale graphics for iPad\
+* Fix iPad layout code - Have each filename string look like this:\
+if ([GameData sharedGameData].isTablet)\
+	NSString *isTabletExtension = @"-hd";\
+	\
+[NSString stringWithFormat:@"my-filename%@.png", isTabletExtension];\
 \
 Post-beta\
 ---------\
 \
+* Lay out/complete UI for options/title screen - including larger buttons\
 * "Rate this app" scene w/ options to ignore or never see again\
 * Tweak music/SFX\
 * Playtest levels\

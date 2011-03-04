@@ -158,8 +158,8 @@
 		// Store the collidable tiles
 		border = [[map layerNamed:@"Border"] retain];
 		
-		//if ([GameData sharedGameData].currentLevel == 0 && [GameData sharedGameData].currentWorld == 0)
-		//	[self blockHubEntrances];
+		if ([GameData sharedGameData].currentLevel == 0 && [GameData sharedGameData].currentWorld == 0)
+			[self blockHubEntrances];
 		
 		// Create Box2D world
 		b2Vec2 gravity(sin(CC_DEGREES_TO_RADIANS(map.rotation)) * 15, -cos(CC_DEGREES_TO_RADIANS(map.rotation)) * 15);
@@ -399,7 +399,7 @@
 			text = @"Select a world";
 		//text = [NSString stringWithFormat:@"%i", countdownTime];
 		
-		CCLabelBMFont *label = [CCLabelBMFont labelWithString:text fntFile:@"yoster-48.fnt"];
+		CCLabelBMFont *label = [CCLabelBMFont labelWithString:text fntFile:@"yoster-24.fnt"];
 		[label setPosition:ccp(winSize.width / 2, winSize.height / 2)];
 		[self addChild:label z:2];
 		
@@ -870,9 +870,9 @@
 	[self addChild:bestTimeLabel z:1];
 	
 	// Add button which takes us back to level select
-	CCMenuItem *continueButton = [CCMenuItemImage itemFromNormalImage:@"continue-button.png" selectedImage:@"continue-button.png" target:self selector:@selector(continueButtonAction:)];
-	CCMenuItem *retryButton = [CCMenuItemImage itemFromNormalImage:@"retry-button.png" selectedImage:@"retry-button.png" target:self selector:@selector(retryButtonAction:)];
-	CCMenu *menu = [CCMenu menuWithItems:continueButton, retryButton, nil];
+	CCMenuItem *nextButton = [CCMenuItemImage itemFromNormalImage:@"next-button.png" selectedImage:@"next-button-selected.png" target:self selector:@selector(nextButtonAction:)];
+	CCMenuItem *retryButton = [CCMenuItemImage itemFromNormalImage:@"retry-button.png" selectedImage:@"retry-button-selected.png" target:self selector:@selector(retryButtonAction:)];
+	CCMenu *menu = [CCMenu menuWithItems:nextButton, retryButton, nil];
 	[menu alignItemsVertically];
 	[menu setPosition:ccp(windowSize.width / 2, windowSize.height / 6)];
 	[self addChild:menu z:1];
@@ -901,9 +901,9 @@
 	[self addChild:finishLabel z:4];
 	
 	// Add button which takes us back to level select
-	CCMenuItem *continueButton = [CCMenuItemImage itemFromNormalImage:@"continue-button.png" selectedImage:@"continue-button.png" target:self selector:@selector(continueButtonAction:)];
-	CCMenuItem *retryButton = [CCMenuItemImage itemFromNormalImage:@"retry-button.png" selectedImage:@"retry-button.png" target:self selector:@selector(retryButtonAction:)];
-	CCMenu *menu = [CCMenu menuWithItems:continueButton, retryButton, nil];
+	CCMenuItem *nextButton = [CCMenuItemImage itemFromNormalImage:@"next-button.png" selectedImage:@"next-button-selected.png" target:self selector:@selector(nextButtonAction:)];
+	CCMenuItem *retryButton = [CCMenuItemImage itemFromNormalImage:@"retry-button.png" selectedImage:@"retry-button-selected.png" target:self selector:@selector(retryButtonAction:)];
+	CCMenu *menu = [CCMenu menuWithItems:nextButton, retryButton, nil];
 	[menu alignItemsVertically];
 	[menu setPosition:ccp(windowSize.width / 2, windowSize.height / 6)];
 	[self addChild:menu z:1];
@@ -1165,12 +1165,19 @@
 
 - (void)retryButtonAction:(id)sender
 {
+	// Play SFX
+	[[SimpleAudioEngine sharedEngine] playEffect:@"button-press.caf"];
+	
+	// Reload the same scene/level
 	CCTransitionRotoZoom *transition = [CCTransitionRotoZoom transitionWithDuration:1.0 scene:[GameScene node]];
 	[[CCDirector sharedDirector] replaceScene:transition];
 }
 
-- (void)continueButtonAction:(id)sender
+- (void)nextButtonAction:(id)sender
 {
+	// Play SFX
+	[[SimpleAudioEngine sharedEngine] playEffect:@"button-press.caf"];
+	
 	[GameData sharedGameData].currentLevel++;
 	
 	int levelsPerWorld = 10;

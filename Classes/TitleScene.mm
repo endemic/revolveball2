@@ -47,18 +47,19 @@
 		[self addChild:background z:0];
 		
 		// Add button which takes us to game scene
-		CCMenuItem *startButton = [CCMenuItemImage itemFromNormalImage:@"start-button.png" selectedImage:@"start-button.png" target:self selector:@selector(startGame:)];
+//		if ([GameData sharedGameData].isTablet)
+//			CCMenuItem *startButton = [CCMenuItemImage itemFromNormalImage:@"start-button-hd.png" selectedImage:@"start-button-selected-hd.png" target:self selector:@selector(startGame:)];
+//		else
+			CCMenuItem *startButton = [CCMenuItemImage itemFromNormalImage:@"start-button.png" selectedImage:@"start-button-selected.png" target:self selector:@selector(startGame:)];
+
 		CCMenu *titleMenu = [CCMenu menuWithItems:startButton, nil];
 		[titleMenu setPosition:ccp(windowSize.width / 2, windowSize.height / 10)];
 		[self addChild:titleMenu z:1];
-		
-		// Check if running on iPad
-		if ([GameData sharedGameData].isTablet)
-			[startButton setScale:2.0];
-		
+
 		// Set audio mixer rate to lower level
 		[CDSoundEngine setMixerSampleRate:CD_SAMPLE_RATE_MID];
 		
+		// Preload SFX
 		[[SimpleAudioEngine sharedEngine] preloadEffect:@"button-press.caf"];
 		
 		// Run animation which moves background
@@ -78,6 +79,7 @@
 	[GameData sharedGameData].currentWorld = 0;
 	[GameData sharedGameData].currentLevel = 0;
 	
+	// Play SFX
 	[[SimpleAudioEngine sharedEngine] playEffect:@"button-press.caf"];
 	
 	CCTransitionRotoZoom *transition = [CCTransitionRotoZoom transitionWithDuration:1.0 scene:[GameScene node]];

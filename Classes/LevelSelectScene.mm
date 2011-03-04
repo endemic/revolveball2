@@ -183,21 +183,34 @@
 		// Update level info labels that we just created
 		[self displayLevelInfo];
 		
-		// Preload some SFX
-		[[SimpleAudioEngine sharedEngine] preloadEffect:@"spike-hit.caf"];
-		[[SimpleAudioEngine sharedEngine] preloadEffect:@"wall-hit.caf"];
-		[[SimpleAudioEngine sharedEngine] preloadEffect:@"time-pickup.caf"];
-		[[SimpleAudioEngine sharedEngine] preloadEffect:@"toggle.caf"];
-		[[SimpleAudioEngine sharedEngine] preloadEffect:@"level-complete.caf"];
+		[self preloadAudio];
 		
-		// Preload music - eventually do this based on the "world" that is selected
-		[[SimpleAudioEngine sharedEngine] preloadBackgroundMusic:@"world-1-bgm.mp3"];
+		//[self performSelectorInBackground:@selector(preloadAudio) withObject:nil];
 	}
 	return self;
 }
 
+- (void)preloadAudio
+{
+	// Preload some SFX
+	[[SimpleAudioEngine sharedEngine] preloadEffect:@"spike-hit.caf"];
+	[[SimpleAudioEngine sharedEngine] preloadEffect:@"wall-hit.caf"];
+	[[SimpleAudioEngine sharedEngine] preloadEffect:@"wall-break.caf"];
+	[[SimpleAudioEngine sharedEngine] preloadEffect:@"peg-hit.caf"];
+	[[SimpleAudioEngine sharedEngine] preloadEffect:@"time-pickup.caf"];
+	[[SimpleAudioEngine sharedEngine] preloadEffect:@"toggle.caf"];
+	[[SimpleAudioEngine sharedEngine] preloadEffect:@"boost.caf"];
+	[[SimpleAudioEngine sharedEngine] preloadEffect:@"level-complete.caf"];
+	
+	// Preload music - eventually do this based on the "world" that is selected
+	[[SimpleAudioEngine sharedEngine] preloadBackgroundMusic:@"world-1-bgm.mp3"];
+}
+
 - (void)backButtonAction:(id)sender
 {
+	// Play SFX
+	[[SimpleAudioEngine sharedEngine] playEffect:@"button-press.caf"];
+	
 	// Load "hub" level
 	[GameData sharedGameData].currentWorld = 0;
 	[GameData sharedGameData].currentLevel = 0;
@@ -208,6 +221,9 @@
 
 - (void)playButtonAction:(id)sender
 {
+	// Play SFX
+	[[SimpleAudioEngine sharedEngine] playEffect:@"button-press.caf"];
+	
 	// Load current level stored in singleton variables
 	CCTransitionRotoZoom *transition = [CCTransitionRotoZoom transitionWithDuration:1.0 scene:[GameScene node]];
 	[[CCDirector sharedDirector] replaceScene:transition];
@@ -285,7 +301,10 @@
 		if ([[d objectForKey:@"complete"] boolValue])
 		{
 			CCSprite *icon = [levelIcons objectAtIndex:i];
-			CCSprite *b = [CCSprite spriteWithFile:@"level-connector.png"];
+//			if ([GameData sharedGameData].isTablet)
+//				CCSprite *b = [CCSprite spriteWithFile:@"level-connector-hd.png"];
+//			else
+				CCSprite *b = [CCSprite spriteWithFile:@"level-connector.png"];
 			if (i % 2)	// Odd, means horizontal
 			{
 				[b setPosition:ccp(icon.position.x + b.contentSize.width / 2, icon.position.y)];
@@ -385,7 +404,7 @@
 				NSMutableArray *levelData = [NSMutableArray arrayWithArray:[[NSUserDefaults standardUserDefaults] arrayForKey:@"levelData"]];
 				NSDictionary *d = [levelData objectAtIndex:previousLevelIndex];
 				
-				CCLOG(@"Checking status of level %i: %@", previousLevelIndex, [d objectForKey:@"complete"]);
+				//NSLog(@"Checking status of level %i: %@", previousLevelIndex, [d objectForKey:@"complete"]);
 				
 				if ([[d objectForKey:@"complete"] boolValue])
 				{
@@ -397,6 +416,9 @@
 					
 					// Update level info labels
 					[self displayLevelInfo];
+					
+					// Play SFX
+					[[SimpleAudioEngine sharedEngine] playEffect:@"button-press.caf"];
 				}
 			}
 		}
