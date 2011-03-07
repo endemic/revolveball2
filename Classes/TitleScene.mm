@@ -33,24 +33,17 @@
 		
 		CGSize windowSize = [CCDirector sharedDirector].winSize;
 		
-		// Add background
-		NSMutableString *backgroundFile = [NSMutableString stringWithFormat:@"title-background"];
+		// This string gets appended onto all image filenames based on whether the game is on iPad or not
+		NSString *hdSuffix;
+		if ([GameData sharedGameData].isTablet) hdSuffix = @"-hd";
+		else hdSuffix = @"";
 		
-		// Check if running on iPad
-		if ([GameData sharedGameData].isTablet) [backgroundFile appendString:@"-hd"];
-		
-		// Append file extension
-		[backgroundFile appendString:@".png"];
-		
-		CCSprite *background = [CCSprite spriteWithFile:backgroundFile];
+		CCSprite *background = [CCSprite spriteWithFile:[NSString stringWithFormat:@"title-background%@.png", hdSuffix]];
 		[background setPosition:ccp(windowSize.width / 2, windowSize.height / 2)];
 		[self addChild:background z:0];
 		
 		// Add button which takes us to game scene
-//		if ([GameData sharedGameData].isTablet)
-//			CCMenuItem *startButton = [CCMenuItemImage itemFromNormalImage:@"start-button-hd.png" selectedImage:@"start-button-selected-hd.png" target:self selector:@selector(startGame:)];
-//		else
-			CCMenuItem *startButton = [CCMenuItemImage itemFromNormalImage:@"start-button.png" selectedImage:@"start-button-selected.png" target:self selector:@selector(startGame:)];
+		CCMenuItem *startButton = [CCMenuItemImage itemFromNormalImage:[NSString stringWithFormat:@"start-button%@.png", hdSuffix] selectedImage:[NSString stringWithFormat:@"start-button-selected%@.png", hdSuffix] target:self selector:@selector(startGame:)];
 
 		CCMenu *titleMenu = [CCMenu menuWithItems:startButton, nil];
 		[titleMenu setPosition:ccp(windowSize.width / 2, windowSize.height / 10)];
@@ -61,14 +54,6 @@
 		
 		// Preload SFX
 		[[SimpleAudioEngine sharedEngine] preloadEffect:@"button-press.caf"];
-		
-		// Run animation which moves background
-//		[background runAction:[CCRepeatForever actionWithAction:[CCSequence actions:
-//																 [CCDelayTime actionWithDuration:1.0],
-//																 [CCMoveTo actionWithDuration:15.0 position:ccp(0, 240)], 
-//																 [CCDelayTime actionWithDuration:1.0],
-//																 [CCMoveTo actionWithDuration:15.0 position:ccp(320, 240)], 
-//																 nil]]];
 	}
 	return self;
 }

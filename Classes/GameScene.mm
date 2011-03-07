@@ -1091,7 +1091,7 @@
 	
 	
 	// Block Cave world
-	for (int i = 30; i < 40; i++)
+	for (int i = 20; i < 30; i++)
 	{
 		NSDictionary *d = [levelData objectAtIndex:i];
 		if (![[d objectForKey:@"complete"] boolValue])
@@ -1115,7 +1115,7 @@
 	block = NO;
 	
 	// Block Mountain world
-	for (int i = 20; i < 30; i++)
+	for (int i = 10; i < 20; i++)
 	{
 		NSDictionary *d = [levelData objectAtIndex:i];
 		if (![[d objectForKey:@"complete"] boolValue])
@@ -1138,7 +1138,7 @@
 	block = NO;
 	
 	// Block Forest world
-	for (int i = 10; i < 20; i++)
+	for (int i = 0; i < 10; i++)
 	{
 		NSDictionary *d = [levelData objectAtIndex:i];
 		if (![[d objectForKey:@"complete"] boolValue])

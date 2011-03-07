@@ -6,7 +6,6 @@
 \f0\fs20 \cf0 For "beta" release\
 ==================\
 \
-* Level loading? [self performSelectorInBackground:@selector(loadLevel:)];\
 * Add placeholder music\
 	1. Title screen/options\
 	2. World select/level select\
@@ -14,15 +13,11 @@
 	4. World 2\
 	5. World 3\
 	6. World 4\
-* Determine SFX list\
-	1. Button click\
+* Determine SFX list & attach to appropriate events\
 	2. Moving between levels\
-	3. Selecting a level (maybe same as button noise)\
-* Fix iPad layout code - Have each filename string look like this:\
-if ([GameData sharedGameData].isTablet)\
-	NSString *isTabletExtension = @"-hd";\
-	\
-[NSString stringWithFormat:@"my-filename%@.png", isTabletExtension];\
+* Fix iPad layout code\
+* Double font sizes\
+\
 \
 Post-beta\
 ---------\
@@ -33,9 +28,12 @@ Post-beta\
 * Playtest levels\
 * Fix "breakable" block particle effect\
 * Fix font bleeding\
+* Change button style to be shadowed white text on grey background\
+* Edit cloud background so text in center of screen and upper right can be seen\
+* Level loading? [self performSelectorInBackground:@selector(loadLevel:)];\
 \
 Future\
 ------\
 \
 * Add accelerometer option\
-}
+* Add "pause" button to game scene}

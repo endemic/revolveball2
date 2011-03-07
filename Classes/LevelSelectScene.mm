@@ -60,30 +60,25 @@
 		// Enable touches
 		[self setIsTouchEnabled:YES];
 		
-		// Decide which background to display
-		// Create string to reference background image
-		NSMutableString *backgroundFile = [NSMutableString stringWithFormat:@"background-%i", [GameData sharedGameData].currentWorld];
-		
-		// If running on iPad, append "-hd" suffix
-		if ([GameData sharedGameData].isTablet) [backgroundFile appendString:@"-hd"];
-		
-		// Append file format suffix
-		[backgroundFile appendString:@".png"];
+		// This string gets appended onto all image filenames based on whether the game is on iPad or not
+		NSString *hdSuffix;
+		if ([GameData sharedGameData].isTablet) hdSuffix = @"-hd";
+		else hdSuffix = @"";
 		
 		// Add background to layer
-		CCSprite *background = [CCSprite spriteWithFile:backgroundFile];
+		CCSprite *background = [CCSprite spriteWithFile:[NSString stringWithFormat:@"background-%i%@.png", [GameData sharedGameData].currentWorld, hdSuffix]];
 		[background setPosition:ccp(windowSize.width / 2, windowSize.height / 2)];
 		[background.texture setAliasTexParameters];
 		[self addChild:background z:0];
 		
 		// Add "back" button
-		CCMenuItemImage *backButton = [CCMenuItemImage itemFromNormalImage:@"back-button.png" selectedImage:@"back-button-selected.png" target:self selector:@selector(backButtonAction:)];
+		CCMenuItemImage *backButton = [CCMenuItemImage itemFromNormalImage:[NSString stringWithFormat:@"back-button%@.png", hdSuffix] selectedImage:[NSString stringWithFormat:@"back-button-selected%@.png", hdSuffix] target:self selector:@selector(backButtonAction:)];
 		CCMenu *backButtonMenu = [CCMenu menuWithItems:backButton, nil];
 		[backButtonMenu setPosition:ccp(backButton.contentSize.width / 1.5, windowSize.height - backButton.contentSize.height)];
 		[self addChild:backButtonMenu];
 		
 		// Add "play" button
-		CCMenuItemImage *playButton = [CCMenuItemImage itemFromNormalImage:@"start-button.png" selectedImage:@"start-button-selected.png" disabledImage:@"start-button-disabled.png" target:self selector:@selector(playButtonAction:)];
+		CCMenuItemImage *playButton = [CCMenuItemImage itemFromNormalImage:[NSString stringWithFormat:@"start-button%@.png", hdSuffix] selectedImage:[NSString stringWithFormat:@"start-button-selected%@.png", hdSuffix] target:self selector:@selector(playButtonAction:)];
 		CCMenu *playButtonMenu = [CCMenu menuWithItems:playButton, nil];
 		[playButtonMenu setPosition:ccp(windowSize.width / 2, windowSize.height / 10)];
 		[self addChild:playButtonMenu];
@@ -117,7 +112,7 @@
 		for (int i = 0; i < levelsPerWorld; i++)
 		{
 			// Create level icon sprite
-			CCSprite *s = [CCSprite spriteWithFile:@"level-icon.png"];
+			CCSprite *s = [CCSprite spriteWithFile:[NSString stringWithFormat:@"level-icon%@.png", hdSuffix]];
 			
 			// Add number to level icon
 			CCLabelBMFont *num = [CCLabelBMFont labelWithString:[NSString stringWithFormat:@"%i", i + 1] fntFile:@"munro-small-20.fnt"];
@@ -125,23 +120,26 @@
 			[num setPosition:ccp(s.contentSize.width - num.contentSize.width, s.contentSize.height - num.contentSize.height / 1.2)];
 			[s addChild:num];
 			
+			int levelIconYPos = windowSize.height * 0.6;
 			// Place level icon sprite in scene
 			switch (i) 
 			{
-				case 0: [s setPosition:ccp(s.contentSize.width, 290)]; break;
-				case 1: [s setPosition:ccp(s.contentSize.width, 226)]; break;
+				// old Y values - 290, 226
 				
-				case 2: [s setPosition:ccp(s.contentSize.width * 3, 226)]; break;
-				case 3: [s setPosition:ccp(s.contentSize.width * 3, 290)]; break;
+				case 0: [s setPosition:ccp(s.contentSize.width, levelIconYPos)]; break;
+				case 1: [s setPosition:ccp(s.contentSize.width, levelIconYPos - s.contentSize.width * 2)]; break;
 				
-				case 4: [s setPosition:ccp(s.contentSize.width * 5, 290)]; break;
-				case 5: [s setPosition:ccp(s.contentSize.width * 5, 226)]; break;
+				case 2: [s setPosition:ccp(s.contentSize.width * 3, levelIconYPos - s.contentSize.width * 2)]; break;
+				case 3: [s setPosition:ccp(s.contentSize.width * 3, levelIconYPos)]; break;
 				
-				case 6: [s setPosition:ccp(s.contentSize.width * 7, 226)]; break;
-				case 7: [s setPosition:ccp(s.contentSize.width * 7, 290)]; break;
+				case 4: [s setPosition:ccp(s.contentSize.width * 5, levelIconYPos)]; break;
+				case 5: [s setPosition:ccp(s.contentSize.width * 5, levelIconYPos - s.contentSize.width * 2)]; break;
 				
-				case 8: [s setPosition:ccp(s.contentSize.width * 9, 290)]; break;
-				case 9: [s setPosition:ccp(s.contentSize.width * 9, 226)]; break;
+				case 6: [s setPosition:ccp(s.contentSize.width * 7, levelIconYPos - s.contentSize.width * 2)]; break;
+				case 7: [s setPosition:ccp(s.contentSize.width * 7, levelIconYPos)]; break;
+				
+				case 8: [s setPosition:ccp(s.contentSize.width * 9, levelIconYPos)]; break;
+				case 9: [s setPosition:ccp(s.contentSize.width * 9, levelIconYPos - s.contentSize.width * 2)]; break;
 			}
 			[self addChild:s z:2];
 			
@@ -153,7 +151,7 @@
 		[self drawBridges];
 		
 		// Add rotating "ball" graphic to represent current level choice
-		ball = [CCSprite spriteWithFile:@"ball.png"];
+		ball = [CCSprite spriteWithFile:[NSString stringWithFormat:@"ball%@.png", hdSuffix]];
 		[self addChild:ball z:3];
 		
 		// Set ball's position
@@ -183,15 +181,18 @@
 		// Update level info labels that we just created
 		[self displayLevelInfo];
 		
-		[self preloadAudio];
+		//[self preloadAudio];
 		
-		//[self performSelectorInBackground:@selector(preloadAudio) withObject:nil];
+		[self performSelectorInBackground:@selector(preloadAudio) withObject:nil];
 	}
 	return self;
 }
 
 - (void)preloadAudio
 {
+	// Info about running this method in background: http://stackoverflow.com/questions/2441856/iphone-sdk-leaking-memory-with-performselectorinbackground
+	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
+	
 	// Preload some SFX
 	[[SimpleAudioEngine sharedEngine] preloadEffect:@"spike-hit.caf"];
 	[[SimpleAudioEngine sharedEngine] preloadEffect:@"wall-hit.caf"];
@@ -204,6 +205,8 @@
 	
 	// Preload music - eventually do this based on the "world" that is selected
 	[[SimpleAudioEngine sharedEngine] preloadBackgroundMusic:@"world-1-bgm.mp3"];
+	
+	[pool release];
 }
 
 - (void)backButtonAction:(id)sender
@@ -287,8 +290,13 @@
 /* Draw "bridges" between level icons to indicate that the player can move between them */
 - (void)drawBridges
 {
+	// This string gets appended onto all image filenames based on whether the game is on iPad or not
+	NSString *hdSuffix;
+	if ([GameData sharedGameData].isTablet) hdSuffix = @"-hd";
+	else hdSuffix = @"";
+	
 	// Cycle through level icons to determine which can have bridges drawn
-	for (uint i = 0; i < [levelIcons count]; i++)
+	for (uint i = 0; i < [levelIcons count] - 1; i++)
 	{
 		int currentLevelIndex = (([GameData sharedGameData].currentWorld - 1) * 10) + i;
 		//int previousLevelIndex = currentLevelIndex - 1 > -1 ? currentLevelIndex - 1 : 0;
@@ -301,10 +309,7 @@
 		if ([[d objectForKey:@"complete"] boolValue])
 		{
 			CCSprite *icon = [levelIcons objectAtIndex:i];
-//			if ([GameData sharedGameData].isTablet)
-//				CCSprite *b = [CCSprite spriteWithFile:@"level-connector-hd.png"];
-//			else
-				CCSprite *b = [CCSprite spriteWithFile:@"level-connector.png"];
+			CCSprite *b = [CCSprite spriteWithFile:[NSString stringWithFormat:@"level-connector%@.png", hdSuffix]];
 			if (i % 2)	// Odd, means horizontal
 			{
 				[b setPosition:ccp(icon.position.x + b.contentSize.width / 2, icon.position.y)];
@@ -369,10 +374,10 @@
 	if ([map propertyNamed:@"name"])
 		[levelTitle setString:[map propertyNamed:@"name"]];
 	else
-		[levelTitle setString:@"TITLE HERE"];
+		[levelTitle setString:[NSString stringWithFormat:@"Level %i", [GameData sharedGameData].currentLevel]];
 }
 
-- (void)ccTouchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
+- (void)ccTouchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
 	UITouch *touch = [touches anyObject];
 	
@@ -404,9 +409,8 @@
 				NSMutableArray *levelData = [NSMutableArray arrayWithArray:[[NSUserDefaults standardUserDefaults] arrayForKey:@"levelData"]];
 				NSDictionary *d = [levelData objectAtIndex:previousLevelIndex];
 				
-				//NSLog(@"Checking status of level %i: %@", previousLevelIndex, [d objectForKey:@"complete"]);
-				
-				if ([[d objectForKey:@"complete"] boolValue])
+				// If the level is complete and the ball isn't moving already, move to the tapped location
+				if ([[d objectForKey:@"complete"] boolValue] && [ball numberOfRunningActions] < 1)
 				{
 					// Move ball icon over the appropriate icon
 					[self moveLevelSelectCursor:i];
