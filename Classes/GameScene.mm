@@ -84,6 +84,11 @@
 		// Double ratio if running on tablet
 		if ([GameData sharedGameData].isTablet) ptmRatio = 64;
 		
+		// This string gets appended onto all image filenames based on whether the game is on iPad or not
+		NSString *hdSuffix;
+		if ([GameData sharedGameData].isTablet) hdSuffix = @"-hd";
+		else hdSuffix = @"";
+		
 		// Initialize values for rotational control
 		previousAngle = currentAngle = 0;
 		
@@ -101,40 +106,19 @@
 		CGSize winSize = [CCDirector sharedDirector].winSize;
 		
 		// Create/add ball
-		if ([GameData sharedGameData].isTablet)
-			ball = [CCSprite spriteWithFile:@"ball-hd.png"];
-		else
-			ball = [CCSprite spriteWithFile:@"ball.png"];
+		ball = [CCSprite spriteWithFile:[NSString stringWithFormat:@"ball%@.png", hdSuffix]];
 		[ball setPosition:ccp(winSize.width / 2, winSize.height / 2)];
 		[ball.texture setAliasTexParameters];
 		[self addChild:ball z:2];
 		
-		// Create string to reference background image
-		NSMutableString *backgroundFile = [NSMutableString stringWithFormat:@"background-%i", [GameData sharedGameData].currentWorld];
-		
-		// If running on iPad, append "-hd" suffix
-		if ([GameData sharedGameData].isTablet) [backgroundFile appendString:@"-hd"];
-		
-		// Append file format suffix
-		[backgroundFile appendString:@".png"];
-		
 		// Add background to layer
-		CCSprite *background = [CCSprite spriteWithFile:backgroundFile];
+		CCSprite *background = [CCSprite spriteWithFile:[NSString stringWithFormat:@"background-%i%@.png", [GameData sharedGameData].currentWorld, hdSuffix]];
 		[background setPosition:ccp(winSize.width / 2, winSize.height / 2)];
 		[background.texture setAliasTexParameters];
 		[self addChild:background z:0];
 		
-		// Create string that is equal to map filename
-		NSMutableString *mapFile = [NSMutableString stringWithFormat:@"%i-%i", [GameData sharedGameData].currentWorld, [GameData sharedGameData].currentLevel];
-		
-		// If running on iPad, append "-hd" to filename to designate @2x level
-		if ([GameData sharedGameData].isTablet) [mapFile appendString:@"-hd"];
-		
-		// Append file format suffix
-		[mapFile appendString:@".tmx"];
-		
 		// Create map obj and add to layer
-		map = [CCTMXTiledMap tiledMapWithTMXFile:mapFile];
+		map = [CCTMXTiledMap tiledMapWithTMXFile:[NSString stringWithFormat:@"%i-%i%@.tmx", [GameData sharedGameData].currentWorld, [GameData sharedGameData].currentLevel, hdSuffix]];
 		[map setPosition:ccp(winSize.width / 2, winSize.height / 2)];
 		[self addChild:map z:1];
 		
@@ -147,7 +131,7 @@
 		int minutes = floor(secondsLeft / 60);
 		int seconds = secondsLeft % 60;
 		
-		timerLabel = [CCLabelBMFont labelWithString:[NSString stringWithFormat:@"%i:%02d", minutes, seconds] fntFile:@"yoster-16.fnt"];
+		timerLabel = [CCLabelBMFont labelWithString:[NSString stringWithFormat:@"%i:%02d", minutes, seconds] fntFile:[NSString stringWithFormat:@"yoster-16%@.fnt", hdSuffix]];
 		[timerLabel setPosition:ccp(winSize.width - timerLabel.contentSize.width, winSize.height - timerLabel.contentSize.height)];
 		[self addChild:timerLabel z:2];
 		
@@ -158,6 +142,7 @@
 		// Store the collidable tiles
 		border = [[map layerNamed:@"Border"] retain];
 		
+		// Run a method which limits access to certain areas in the "hub" world
 		if ([GameData sharedGameData].currentLevel == 0 && [GameData sharedGameData].currentWorld == 0)
 			[self blockHubEntrances];
 		
@@ -389,6 +374,11 @@
 	// Get window size
 	CGSize winSize = [CCDirector sharedDirector].winSize;
 	
+	// This string gets appended onto all image filenames based on whether the game is on iPad or not
+	NSString *hdSuffix;
+	if ([GameData sharedGameData].isTablet) hdSuffix = @"-hd";
+	else hdSuffix = @"";
+	
 	// If we're on the hub level
 	if ([GameData sharedGameData].currentWorld == 0 && [GameData sharedGameData].currentLevel == 0)
 	{
@@ -399,7 +389,7 @@
 			text = @"Select a world";
 		//text = [NSString stringWithFormat:@"%i", countdownTime];
 		
-		CCLabelBMFont *label = [CCLabelBMFont labelWithString:text fntFile:@"yoster-24.fnt"];
+		CCLabelBMFont *label = [CCLabelBMFont labelWithString:text fntFile:[NSString stringWithFormat:@"yoster-24%@.fnt", hdSuffix]];
 		[label setPosition:ccp(winSize.width / 2, winSize.height / 2)];
 		[self addChild:label z:2];
 		
@@ -420,7 +410,7 @@
 			text = @"READY";
 		//text = [NSString stringWithFormat:@"%i", countdownTime];
 		
-		CCLabelBMFont *label = [CCLabelBMFont labelWithString:text fntFile:@"yoster-48.fnt"];
+		CCLabelBMFont *label = [CCLabelBMFont labelWithString:text fntFile:[NSString stringWithFormat:@"yoster-48%@.fnt", hdSuffix]];
 		[label setPosition:ccp(winSize.width / 2, winSize.height / 2)];
 		[self addChild:label z:2];
 		
@@ -734,7 +724,7 @@
 				}
 				break;
 			default:
-				NSLog(@"Touching unrecognized tile GID: %i", tileGID);
+				//NSLog(@"Touching unrecognized tile GID: %i", tileGID);
 				break;
 		}
 	}
@@ -848,8 +838,13 @@
 	// Get window size
 	CGSize windowSize = [CCDirector sharedDirector].winSize;
 	
+	// This string gets appended onto all image filenames based on whether the game is on iPad or not
+	NSString *hdSuffix;
+	if ([GameData sharedGameData].isTablet) hdSuffix = @"-hd";
+	else hdSuffix = @"";
+	
 	// Add "Finish" label
-	CCLabelBMFont *finishLabel = [CCLabelBMFont labelWithString:@"FINISH!" fntFile:@"yoster-48.fnt"];
+	CCLabelBMFont *finishLabel = [CCLabelBMFont labelWithString:@"FINISH!" fntFile:[NSString stringWithFormat:@"yoster-48%@.fnt", hdSuffix]];
 	[finishLabel setPosition:ccp(windowSize.width / 2, windowSize.height / 2)];
 	[self addChild:finishLabel z:4];
 	
@@ -857,7 +852,7 @@
 	int seconds = currentTime % 60;
 	
 	// Add "your time" label
-	CCLabelBMFont *yourTimeLabel = [CCLabelBMFont labelWithString:[NSString stringWithFormat:@"Current: %02d:%02d", minutes, seconds] fntFile:@"yoster-32.fnt"];
+	CCLabelBMFont *yourTimeLabel = [CCLabelBMFont labelWithString:[NSString stringWithFormat:@"Current: %02d:%02d", minutes, seconds] fntFile:[NSString stringWithFormat:@"yoster-32%@.fnt", hdSuffix]];
 	[yourTimeLabel setPosition:ccp(windowSize.width / 2, finishLabel.position.y - yourTimeLabel.contentSize.height * 1.5)];
 	[self addChild:yourTimeLabel z:1];
 	
@@ -865,13 +860,13 @@
 	seconds = bestSavedTime % 60;
 	
 	// Add "best time" label
-	CCLabelBMFont *bestTimeLabel = [CCLabelBMFont labelWithString:[NSString stringWithFormat:@"Best: %02d:%02d", minutes, seconds] fntFile:@"yoster-32.fnt"];
+	CCLabelBMFont *bestTimeLabel = [CCLabelBMFont labelWithString:[NSString stringWithFormat:@"Best: %02d:%02d", minutes, seconds] fntFile:[NSString stringWithFormat:@"yoster-32%@.fnt", hdSuffix]];
 	[bestTimeLabel setPosition:ccp(windowSize.width / 2, yourTimeLabel.position.y - bestTimeLabel.contentSize.height)];
 	[self addChild:bestTimeLabel z:1];
 	
 	// Add button which takes us back to level select
-	CCMenuItem *nextButton = [CCMenuItemImage itemFromNormalImage:@"next-button.png" selectedImage:@"next-button-selected.png" target:self selector:@selector(nextButtonAction:)];
-	CCMenuItem *retryButton = [CCMenuItemImage itemFromNormalImage:@"retry-button.png" selectedImage:@"retry-button-selected.png" target:self selector:@selector(retryButtonAction:)];
+	CCMenuItem *nextButton = [CCMenuItemImage itemFromNormalImage:[NSString stringWithFormat:@"next-button%@.png", hdSuffix] selectedImage:[NSString stringWithFormat:@"next-button-selected%@.png", hdSuffix] target:self selector:@selector(nextButtonAction:)];
+	CCMenuItem *retryButton = [CCMenuItemImage itemFromNormalImage:[NSString stringWithFormat:@"retry-button%@.png", hdSuffix] selectedImage:[NSString stringWithFormat:@"retry-button-selected%@.png", hdSuffix] target:self selector:@selector(retryButtonAction:)];
 	CCMenu *menu = [CCMenu menuWithItems:nextButton, retryButton, nil];
 	[menu alignItemsVertically];
 	[menu setPosition:ccp(windowSize.width / 2, windowSize.height / 6)];
@@ -895,14 +890,19 @@
 	// Get window size
 	CGSize windowSize = [CCDirector sharedDirector].winSize;
 	
+	// This string gets appended onto all image filenames based on whether the game is on iPad or not
+	NSString *hdSuffix;
+	if ([GameData sharedGameData].isTablet) hdSuffix = @"-hd";
+	else hdSuffix = @"";
+	
 	// Add "FAIL" label
-	CCLabelBMFont *finishLabel = [CCLabelBMFont labelWithString:@"FAILURE!" fntFile:@"yoster-48.fnt"];
+	CCLabelBMFont *finishLabel = [CCLabelBMFont labelWithString:@"FAILURE!" fntFile:[NSString stringWithFormat:@"yoster-48%@.fnt", hdSuffix]];
 	[finishLabel setPosition:ccp(windowSize.width / 2, windowSize.height / 2)];
 	[self addChild:finishLabel z:4];
 	
 	// Add button which takes us back to level select
-	CCMenuItem *nextButton = [CCMenuItemImage itemFromNormalImage:@"next-button.png" selectedImage:@"next-button-selected.png" target:self selector:@selector(nextButtonAction:)];
-	CCMenuItem *retryButton = [CCMenuItemImage itemFromNormalImage:@"retry-button.png" selectedImage:@"retry-button-selected.png" target:self selector:@selector(retryButtonAction:)];
+	CCMenuItem *nextButton = [CCMenuItemImage itemFromNormalImage:[NSString stringWithFormat:@"next-button%@.png", hdSuffix] selectedImage:[NSString stringWithFormat:@"next-button-selected%@.png", hdSuffix] target:self selector:@selector(nextButtonAction:)];
+	CCMenuItem *retryButton = [CCMenuItemImage itemFromNormalImage:[NSString stringWithFormat:@"retry-button%@.png", hdSuffix] selectedImage:[NSString stringWithFormat:@"retry-button-selected%@.png", hdSuffix] target:self selector:@selector(retryButtonAction:)];
 	CCMenu *menu = [CCMenu menuWithItems:nextButton, retryButton, nil];
 	[menu alignItemsVertically];
 	[menu setPosition:ccp(windowSize.width / 2, windowSize.height / 6)];
@@ -914,12 +914,17 @@
  */
 - (void)loseTime:(int)seconds
 {
+	// This string gets appended onto all image filenames based on whether the game is on iPad or not
+	NSString *hdSuffix;
+	if ([GameData sharedGameData].isTablet) hdSuffix = @"-hd";
+	else hdSuffix = @"";
+	
 	// Subtract time from "secondsLeft" time limit variable
 	secondsLeft -= seconds;
 	
 	// Create a label that shows how much time you lost
 	NSString *s = [NSString stringWithFormat:@"-%i seconds", seconds];
-	CCLabelBMFont *label = [CCLabelBMFont labelWithString:s fntFile:@"yoster-16.fnt"];
+	CCLabelBMFont *label = [CCLabelBMFont labelWithString:s fntFile:[NSString stringWithFormat:@"yoster-16%@.fnt", hdSuffix]];
 	[label setPosition:ccp(ball.position.x, ball.position.y + 16)];
 	[self addChild:label z:5];
 
@@ -940,12 +945,17 @@
  */
 - (void)gainTime:(int)seconds
 {
+	// This string gets appended onto all image filenames based on whether the game is on iPad or not
+	NSString *hdSuffix;
+	if ([GameData sharedGameData].isTablet) hdSuffix = @"-hd";
+	else hdSuffix = @"";
+	
 	// Add time to "secondsLeft" time limit variable
 	secondsLeft += seconds;
 	
 	// Create a label that shows how much time you got
 	NSString *s = [NSString stringWithFormat:@"+%i seconds", seconds];
-	CCLabelBMFont *label = [CCLabelBMFont labelWithString:s fntFile:@"yoster-16.fnt"];
+	CCLabelBMFont *label = [CCLabelBMFont labelWithString:s fntFile:[NSString stringWithFormat:@"yoster-16%@.fnt", hdSuffix]];
 	[label setPosition:ccp(ball.position.x, ball.position.y + 16)];
 	[self addChild:label z:5];
 	
@@ -1287,6 +1297,7 @@
 	delete contactListener;
 	world = NULL;
 	contactListener = NULL;
+	[border release];
 	[super dealloc];
 }
 

@@ -36,8 +36,8 @@
 	{
 		// DEBUG
 		// Set world/level
-		if (![GameData sharedGameData].currentWorld) [GameData sharedGameData].currentWorld = 4;
-		if (![GameData sharedGameData].currentLevel) [GameData sharedGameData].currentLevel = 3;
+		if (![GameData sharedGameData].currentWorld) [GameData sharedGameData].currentWorld = 1;
+		if (![GameData sharedGameData].currentLevel) [GameData sharedGameData].currentLevel = 1;
 		
 		/*
 		 PSEUDO-CODE
@@ -97,12 +97,12 @@
 			case 4: worldTitleString = @"World 4"; break;
 		}
 		
-		CCLabelBMFont *worldTitle = [CCLabelBMFont labelWithString:worldTitleString fntFile:@"yoster-48.fnt"];
+		CCLabelBMFont *worldTitle = [CCLabelBMFont labelWithString:worldTitleString fntFile:[NSString stringWithFormat:@"yoster-48%@.fnt", hdSuffix]];
 		[worldTitle setPosition:ccp(windowSize.width / 2, windowSize.height / 1.3)];
 		[self addChild:worldTitle];
 		
 		// Add instructional text
-		CCLabelBMFont *instructions = [CCLabelBMFont labelWithString:@"Tap to select a level" fntFile:@"yoster-24.fnt"];
+		CCLabelBMFont *instructions = [CCLabelBMFont labelWithString:@"Tap to select a level" fntFile:[NSString stringWithFormat:@"yoster-24%@.fnt", hdSuffix]];
 		[instructions setPosition:ccp(windowSize.width / 2, worldTitle.position.y - instructions.contentSize.height * 1.5)];
 		[self addChild:instructions];
 		
@@ -115,31 +115,35 @@
 			CCSprite *s = [CCSprite spriteWithFile:[NSString stringWithFormat:@"level-icon%@.png", hdSuffix]];
 			
 			// Add number to level icon
-			CCLabelBMFont *num = [CCLabelBMFont labelWithString:[NSString stringWithFormat:@"%i", i + 1] fntFile:@"munro-small-20.fnt"];
+			CCLabelBMFont *num = [CCLabelBMFont labelWithString:[NSString stringWithFormat:@"%i", i + 1] fntFile:[NSString stringWithFormat:@"munro-small-20%@.fnt", hdSuffix]];
+			
 			// Attempt to position the number based on sprite/label widths
 			[num setPosition:ccp(s.contentSize.width - num.contentSize.width, s.contentSize.height - num.contentSize.height / 1.2)];
 			[s addChild:num];
 			
+			// Some default positioning variables
 			int levelIconYPos = windowSize.height * 0.6;
+			int levelIconXPos = windowSize.width / 2;
+			
 			// Place level icon sprite in scene
 			switch (i) 
 			{
 				// old Y values - 290, 226
 				
-				case 0: [s setPosition:ccp(s.contentSize.width, levelIconYPos)]; break;
-				case 1: [s setPosition:ccp(s.contentSize.width, levelIconYPos - s.contentSize.width * 2)]; break;
+				case 0: [s setPosition:ccp(levelIconXPos - s.contentSize.width * 4, levelIconYPos)]; break;
+				case 1: [s setPosition:ccp(levelIconXPos - s.contentSize.width * 4, levelIconYPos - s.contentSize.width * 2)]; break;
 				
-				case 2: [s setPosition:ccp(s.contentSize.width * 3, levelIconYPos - s.contentSize.width * 2)]; break;
-				case 3: [s setPosition:ccp(s.contentSize.width * 3, levelIconYPos)]; break;
+				case 2: [s setPosition:ccp(levelIconXPos - s.contentSize.width * 2, levelIconYPos - s.contentSize.width * 2)]; break;
+				case 3: [s setPosition:ccp(levelIconXPos - s.contentSize.width * 2, levelIconYPos)]; break;
 				
-				case 4: [s setPosition:ccp(s.contentSize.width * 5, levelIconYPos)]; break;
-				case 5: [s setPosition:ccp(s.contentSize.width * 5, levelIconYPos - s.contentSize.width * 2)]; break;
+				case 4: [s setPosition:ccp(levelIconXPos, levelIconYPos)]; break;
+				case 5: [s setPosition:ccp(levelIconXPos, levelIconYPos - s.contentSize.width * 2)]; break;
 				
-				case 6: [s setPosition:ccp(s.contentSize.width * 7, levelIconYPos - s.contentSize.width * 2)]; break;
-				case 7: [s setPosition:ccp(s.contentSize.width * 7, levelIconYPos)]; break;
+				case 6: [s setPosition:ccp(levelIconXPos + s.contentSize.width * 2, levelIconYPos - s.contentSize.width * 2)]; break;
+				case 7: [s setPosition:ccp(levelIconXPos + s.contentSize.width * 2, levelIconYPos)]; break;
 				
-				case 8: [s setPosition:ccp(s.contentSize.width * 9, levelIconYPos)]; break;
-				case 9: [s setPosition:ccp(s.contentSize.width * 9, levelIconYPos - s.contentSize.width * 2)]; break;
+				case 8: [s setPosition:ccp(levelIconXPos + s.contentSize.width * 4, levelIconYPos)]; break;
+				case 9: [s setPosition:ccp(levelIconXPos + s.contentSize.width * 4, levelIconYPos - s.contentSize.width * 2)]; break;
 			}
 			[self addChild:s z:2];
 			
@@ -164,16 +168,16 @@
 		[ball runAction:[CCRepeatForever actionWithAction:[CCRotateBy actionWithDuration:2.0 angle:360.0]]];
 		
 		// Add descriptive labels that show level info, such as title, best time, etc.
-		levelTitle = [CCLabelBMFont labelWithString:@"Level Name" fntFile:@"yoster-24.fnt"];
+		levelTitle = [CCLabelBMFont labelWithString:@"Level Name" fntFile:[NSString stringWithFormat:@"yoster-24%@.fnt", hdSuffix]];
 		[levelTitle setPosition:ccp(windowSize.width / 2, windowSize.height / 3)];
 		[self addChild:levelTitle];
 		
-		levelBestTime = [CCLabelBMFont labelWithString:@"Best Time: --:--" fntFile:@"yoster-24.fnt"];
+		levelBestTime = [CCLabelBMFont labelWithString:@"Best Time: --:--" fntFile:[NSString stringWithFormat:@"yoster-24%@.fnt", hdSuffix]];
 		// Set the position based on the label above it
 		[levelBestTime setPosition:ccp(windowSize.width / 2, levelTitle.position.y - levelBestTime.contentSize.height)];
 		[self addChild:levelBestTime];
 		
-		levelTimeLimit = [CCLabelBMFont labelWithString:@"Limit: --:--" fntFile:@"yoster-24.fnt"];
+		levelTimeLimit = [CCLabelBMFont labelWithString:@"Limit: --:--" fntFile:[NSString stringWithFormat:@"yoster-24%@.fnt", hdSuffix]];
 		// Set the position based on the label above it
 		[levelTimeLimit setPosition:ccp(windowSize.width / 2, levelBestTime.position.y - levelTimeLimit.contentSize.height)];
 		[self addChild:levelTimeLimit];
@@ -388,7 +392,7 @@
 		 
 		// Convert location
 		CGPoint touchPoint = [touch locationInView:[touch view]];
-		
+
 		// Cycle through level icons and determine a touch
 		for (uint i = 0; i < [levelIcons count]; i++)
 		{
@@ -400,6 +404,8 @@
 			// CGRect origin is upper left, so offset the center
 			CGRect iconRect = CGRectMake(icon.position.x - (icon.contentSize.width / 2) - (padding / 2), windowSize.height - icon.position.y - (icon.contentSize.height / 2) - (padding / 2), icon.contentSize.width + padding, icon.contentSize.height + padding);
 			
+			//NSLog(@"iconRect: %@", NSStringFromCGRect(iconRect));
+			
 			if (CGRectContainsPoint(iconRect, touchPoint))
 			{
 				int currentLevelIndex = (([GameData sharedGameData].currentWorld - 1) * 10) + i;
@@ -410,7 +416,7 @@
 				NSDictionary *d = [levelData objectAtIndex:previousLevelIndex];
 				
 				// If the level is complete and the ball isn't moving already, move to the tapped location
-				if ([[d objectForKey:@"complete"] boolValue] && [ball numberOfRunningActions] < 1)
+				if ([[d objectForKey:@"complete"] boolValue]/* && [ball numberOfRunningActions] < 1*/)
 				{
 					// Move ball icon over the appropriate icon
 					[self moveLevelSelectCursor:i];
