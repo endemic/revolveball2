@@ -13,8 +13,6 @@
 #import "CocosDenshion.h"
 #import "SimpleAudioEngine.h"
 
-#define COCOS2D_DEBUG 1
-
 @implementation LevelSelectScene
 
 - (id)init

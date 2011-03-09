@@ -273,13 +273,13 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>9</integer>
-									<integer>5</integer>
+									<integer>28</integer>
+									<integer>27</integer>
 									<integer>0</integer>
 								</array>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateVisibleRectKey</key>
-							<string>{{0, 69}, {218, 644}}</string>
+							<string>{{0, 0}, {218, 644}}</string>
 						</dict>
 						<key>PBXTopSmartGroupGIDs</key>
 						<array/>
@@ -316,7 +316,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>1CE0B20306471E060097A5F4</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>GameScene.mm</string>
+								<string>task-list.rtf</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -324,11 +324,11 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CE0B20406471E060097A5F4</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>GameScene.mm</string>
+										<string>task-list.rtf</string>
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>7DF397EA1327966F00A93676</string>
+										<string>7DF3980013279D5500A93676</string>
 										<key>history</key>
 										<array>
 											<string>7D50A2B012BBFCFC0039A691</string>
@@ -392,7 +392,6 @@
 											<string>7D49FC6E13199D890082FFCE</string>
 											<string>7D49FC7813199F560082FFCE</string>
 											<string>7D49FC96131A7E7E0082FFCE</string>
-											<string>7D93C14A131FBBF000D44DE5</string>
 											<string>7D93C14B131FBBF000D44DE5</string>
 											<string>7D93C14C131FBBF000D44DE5</string>
 											<string>7D6DEC6413201FE500D5DBE6</string>
@@ -403,10 +402,7 @@
 											<string>7D6DADA313218C9C004E3A16</string>
 											<string>7DFBFC6213226334007453ED</string>
 											<string>7DFBFC6D1324F68D007453ED</string>
-											<string>7DEC0F6B1325DE2D007D826B</string>
 											<string>7DEC0F8B1326432B007D826B</string>
-											<string>7DF397C91327941F00A93676</string>
-											<string>7DF397CC1327941F00A93676</string>
 											<string>7DF397CD1327941F00A93676</string>
 											<string>7DF397CE1327941F00A93676</string>
 											<string>7DF397CF1327941F00A93676</string>
@@ -414,8 +410,13 @@
 											<string>7DF397D11327941F00A93676</string>
 											<string>7DF397E3132794CC00A93676</string>
 											<string>7DF397E71327966F00A93676</string>
-											<string>7DF397E81327966F00A93676</string>
-											<string>7DF397E91327966F00A93676</string>
+											<string>7DF397F713279CB200A93676</string>
+											<string>7DF397F813279CB200A93676</string>
+											<string>7DF397F913279CB200A93676</string>
+											<string>7DF397FA13279CB200A93676</string>
+											<string>7DF397FD13279D5500A93676</string>
+											<string>7DF397FE13279D5500A93676</string>
+											<string>7DF397C91327941F00A93676</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
