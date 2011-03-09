@@ -850,7 +850,7 @@
 	
 	int minutes = floor(currentTime / 60);
 	int seconds = currentTime % 60;
-	
+
 	// Add "your time" label
 	CCLabelBMFont *yourTimeLabel = [CCLabelBMFont labelWithString:[NSString stringWithFormat:@"Current: %02d:%02d", minutes, seconds] fntFile:[NSString stringWithFormat:@"yoster-32%@.fnt", hdSuffix]];
 	[yourTimeLabel setPosition:ccp(windowSize.width / 2, finishLabel.position.y - yourTimeLabel.contentSize.height * 1.5)];
@@ -887,6 +887,9 @@
 	// Set timer display to be 0:00, just in case it was otherwise negative
 	[timerLabel setString:@"0:00"];
 	
+	// Play "you lose" sfx
+	[[SimpleAudioEngine sharedEngine] playEffect:@"level-fail.caf"];
+	
 	// Get window size
 	CGSize windowSize = [CCDirector sharedDirector].winSize;
 	
@@ -901,7 +904,7 @@
 	[self addChild:finishLabel z:4];
 	
 	// Add button which takes us back to level select
-	CCMenuItem *nextButton = [CCMenuItemImage itemFromNormalImage:[NSString stringWithFormat:@"next-button%@.png", hdSuffix] selectedImage:[NSString stringWithFormat:@"next-button-selected%@.png", hdSuffix] target:self selector:@selector(nextButtonAction:)];
+	CCMenuItem *nextButton = [CCMenuItemImage itemFromNormalImage:[NSString stringWithFormat:@"next-button%@.png", hdSuffix] selectedImage:[NSString stringWithFormat:@"next-button-selected%@.png", hdSuffix] target:self selector:@selector(backButtonAction:)];
 	CCMenuItem *retryButton = [CCMenuItemImage itemFromNormalImage:[NSString stringWithFormat:@"retry-button%@.png", hdSuffix] selectedImage:[NSString stringWithFormat:@"retry-button-selected%@.png", hdSuffix] target:self selector:@selector(retryButtonAction:)];
 	CCMenu *menu = [CCMenu menuWithItems:nextButton, retryButton, nil];
 	[menu alignItemsVertically];
@@ -1210,6 +1213,16 @@
 	[[CCDirector sharedDirector] replaceScene:transition];
 }
 
+- (void)backButtonAction:(id)sender
+{
+	// Play SFX
+	[[SimpleAudioEngine sharedEngine] playEffect:@"button-press.caf"];
+	
+	// Reload the same scene/level
+	CCTransitionRotoZoom *transition = [CCTransitionRotoZoom transitionWithDuration:1.0 scene:[LevelSelectScene node]];
+	[[CCDirector sharedDirector] replaceScene:transition];
+}
+
 /**
  Init a particle emitter for destroyed blocks
  */
@@ -1264,8 +1277,13 @@
 	[particleSystem setStartColor:startColor];
 	[particleSystem setEndColor:endColor];
 	
+	// This string gets appended onto all image filenames based on whether the game is on iPad or not
+	NSString *hdSuffix;
+	if ([GameData sharedGameData].isTablet) hdSuffix = @"-hd";
+	else hdSuffix = @"";
+	
 	// Set the texture!
-	[particleSystem setTexture:[[CCTextureCache sharedTextureCache] addImage:[NSString stringWithFormat:@"world-%i-breakable-shard.png", [GameData sharedGameData].currentWorld]]];
+	[particleSystem setTexture:[[CCTextureCache sharedTextureCache] addImage:[NSString stringWithFormat:@"world-%i-breakable-shard%@.png", [GameData sharedGameData].currentWorld, hdSuffix]]];
 	
 	// additive
 	[particleSystem setBlendAdditive:NO];

@@ -312,6 +312,9 @@
 		7DF2A78212FAC47C007023B0 /* UserDefaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7DF2A78112FAC47C007023B0 /* UserDefaults.plist */; };
 		7DF2AEC0130D4312002FAE81 /* 3-7.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 7DF2AEBE130D4312002FAE81 /* 3-7.tmx */; };
 		7DF2AEC1130D4312002FAE81 /* 3-8.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 7DF2AEBF130D4312002FAE81 /* 3-8.tmx */; };
+		7DF397C113278ADB00A93676 /* level-fail.caf in Resources */ = {isa = PBXBuildFile; fileRef = 7DF397C013278ADB00A93676 /* level-fail.caf */; };
+		7DF397DD132794AD00A93676 /* yoster-32-hd.fnt in Resources */ = {isa = PBXBuildFile; fileRef = 7DF397DB132794AD00A93676 /* yoster-32-hd.fnt */; };
+		7DF397DE132794AD00A93676 /* yoster-32-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 7DF397DC132794AD00A93676 /* yoster-32-hd.png */; };
 		7DFACC90130553300014000C /* peg-hit.caf in Resources */ = {isa = PBXBuildFile; fileRef = 7DFACC8F130553300014000C /* peg-hit.caf */; };
 		7DFB8313132107F9003B587B /* level-select-change.caf in Resources */ = {isa = PBXBuildFile; fileRef = 7DFB8312132107F9003B587B /* level-select-change.caf */; };
 		DC6640030F83B3EA000B3E49 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC6640020F83B3EA000B3E49 /* AudioToolbox.framework */; };
@@ -818,6 +821,9 @@
 		7DF2A78112FAC47C007023B0 /* UserDefaults.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = UserDefaults.plist; sourceTree = "<group>"; };
 		7DF2AEBE130D4312002FAE81 /* 3-7.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = "3-7.tmx"; path = "maps/3-7.tmx"; sourceTree = "<group>"; };
 		7DF2AEBF130D4312002FAE81 /* 3-8.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = "3-8.tmx"; path = "maps/3-8.tmx"; sourceTree = "<group>"; };
+		7DF397C013278ADB00A93676 /* level-fail.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "level-fail.caf"; path = "sounds/caf/level-fail.caf"; sourceTree = "<group>"; };
+		7DF397DB132794AD00A93676 /* yoster-32-hd.fnt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = "yoster-32-hd.fnt"; path = "fonts/yoster-32-hd.fnt"; sourceTree = "<group>"; };
+		7DF397DC132794AD00A93676 /* yoster-32-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "yoster-32-hd.png"; path = "fonts/yoster-32-hd.png"; sourceTree = "<group>"; };
 		7DFACC8F130553300014000C /* peg-hit.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "peg-hit.caf"; path = "sounds/caf/peg-hit.caf"; sourceTree = "<group>"; };
 		7DFB8312132107F9003B587B /* level-select-change.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "level-select-change.caf"; path = "sounds/caf/level-select-change.caf"; sourceTree = "<group>"; };
 		DC6640020F83B3EA000B3E49 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
@@ -1400,24 +1406,26 @@
 		7D50A1F612BBF8E20039A691 /* fonts */ = {
 			isa = PBXGroup;
 			children = (
-				7DEC0F8513264298007D826B /* yoster-24-hd.fnt */,
-				7DEC0F8613264298007D826B /* yoster-24-hd.png */,
-				7DEC0F7913264227007D826B /* munro-small-20-hd.fnt */,
-				7DEC0F7A13264227007D826B /* munro-small-20-hd.png */,
-				7DEC0F7B13264227007D826B /* yoster-16-hd.fnt */,
-				7DEC0F7C13264227007D826B /* yoster-16-hd.png */,
-				7DEC0F7D13264227007D826B /* yoster-48-hd.fnt */,
-				7DEC0F7E13264227007D826B /* yoster-48-hd.png */,
 				7D9F32C31302B17D00F0E465 /* munro-small-20.fnt */,
 				7D9F32C41302B17D00F0E465 /* munro-small-20.png */,
+				7DEC0F7913264227007D826B /* munro-small-20-hd.fnt */,
+				7DEC0F7A13264227007D826B /* munro-small-20-hd.png */,
 				7D50A25912BBF9640039A691 /* yoster-16.fnt */,
 				7D50A25A12BBF9640039A691 /* yoster-16.png */,
+				7DEC0F7B13264227007D826B /* yoster-16-hd.fnt */,
+				7DEC0F7C13264227007D826B /* yoster-16-hd.png */,
 				7DEB0B3112FC1C59003C6E0B /* yoster-24.fnt */,
 				7DEB0B3212FC1C59003C6E0B /* yoster-24.png */,
+				7DEC0F8513264298007D826B /* yoster-24-hd.fnt */,
+				7DEC0F8613264298007D826B /* yoster-24-hd.png */,
 				7D50A25B12BBF9640039A691 /* yoster-32.fnt */,
 				7D50A25C12BBF9640039A691 /* yoster-32.png */,
+				7DF397DB132794AD00A93676 /* yoster-32-hd.fnt */,
+				7DF397DC132794AD00A93676 /* yoster-32-hd.png */,
 				7D50A25D12BBF9640039A691 /* yoster-48.fnt */,
 				7D50A25E12BBF9640039A691 /* yoster-48.png */,
+				7DEC0F7D13264227007D826B /* yoster-48-hd.fnt */,
+				7DEC0F7E13264227007D826B /* yoster-48-hd.png */,
 				7D50A25F12BBF9640039A691 /* yoster.ttf */,
 			);
 			name = fonts;
@@ -1568,6 +1576,7 @@
 		7D8E14BA1302F1720094C28B /* caf */ = {
 			isa = PBXGroup;
 			children = (
+				7DF397C013278ADB00A93676 /* level-fail.caf */,
 				7DFB8312132107F9003B587B /* level-select-change.caf */,
 				7D1129E3131BC07A00DC7727 /* level-complete.caf */,
 				7D49FC8F131A7E330082FFCE /* boost.caf */,
@@ -2204,6 +2213,9 @@
 				7DEC0F8813264298007D826B /* yoster-24-hd.png in Resources */,
 				7DEC0F9A132649C1007D826B /* next-button-selected-hd.png in Resources */,
 				7DEC0F9B132649C1007D826B /* next-button-selected.png in Resources */,
+				7DF397C113278ADB00A93676 /* level-fail.caf in Resources */,
+				7DF397DD132794AD00A93676 /* yoster-32-hd.fnt in Resources */,
+				7DF397DE132794AD00A93676 /* yoster-32-hd.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

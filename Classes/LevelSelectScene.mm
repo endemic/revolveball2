@@ -206,6 +206,7 @@
 	[[SimpleAudioEngine sharedEngine] preloadEffect:@"toggle.caf"];
 	[[SimpleAudioEngine sharedEngine] preloadEffect:@"boost.caf"];
 	[[SimpleAudioEngine sharedEngine] preloadEffect:@"level-complete.caf"];
+	[[SimpleAudioEngine sharedEngine] preloadEffect:@"level-fail.caf"];
 	
 	// Preload music - eventually do this based on the "world" that is selected
 	[[SimpleAudioEngine sharedEngine] preloadBackgroundMusic:@"world-1-bgm.mp3"];
