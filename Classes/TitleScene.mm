@@ -52,10 +52,34 @@
 		// Set audio mixer rate to lower level
 		[CDSoundEngine setMixerSampleRate:CD_SAMPLE_RATE_MID];
 		
-		// Preload SFX
-		[[SimpleAudioEngine sharedEngine] preloadEffect:@"button-press.caf"];
+		[self preloadAudio];
+		
+		//[self performSelectorInBackground:@selector(preloadAudio) withObject:nil];
 	}
 	return self;
+}
+
+- (void)preloadAudio
+{
+	// Info about running this method in background: http://stackoverflow.com/questions/2441856/iphone-sdk-leaking-memory-with-performselectorinbackground
+	//NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
+	
+	// Preload some SFX
+	[[SimpleAudioEngine sharedEngine] preloadEffect:@"button-press.caf"];
+	[[SimpleAudioEngine sharedEngine] preloadEffect:@"spike-hit.caf"];
+	[[SimpleAudioEngine sharedEngine] preloadEffect:@"wall-hit.caf"];
+	[[SimpleAudioEngine sharedEngine] preloadEffect:@"wall-break.caf"];
+	[[SimpleAudioEngine sharedEngine] preloadEffect:@"peg-hit.caf"];
+	[[SimpleAudioEngine sharedEngine] preloadEffect:@"time-pickup.caf"];
+	[[SimpleAudioEngine sharedEngine] preloadEffect:@"toggle.caf"];
+	[[SimpleAudioEngine sharedEngine] preloadEffect:@"boost.caf"];
+	[[SimpleAudioEngine sharedEngine] preloadEffect:@"level-complete.caf"];
+	[[SimpleAudioEngine sharedEngine] preloadEffect:@"level-fail.caf"];
+	
+	// Preload music - eventually do this based on the "world" that is selected
+	[[SimpleAudioEngine sharedEngine] preloadBackgroundMusic:@"world-1-bgm.mp3"];
+	
+	//[pool release];
 }
 
 - (void)startGame:(id)sender

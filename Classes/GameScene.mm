@@ -122,6 +122,8 @@
 		[map setPosition:ccp(winSize.width / 2, winSize.height / 2)];
 		[self addChild:map z:1];
 		
+		map.visible = NO;
+		
 		// Set up timer
 		if ([map propertyNamed:@"time"])
 			secondsLeft = [[map propertyNamed:@"time"] intValue];
@@ -371,6 +373,8 @@
 
 - (void)countdown:(ccTime)dt
 {
+	map.visible = YES;
+	
 	// Get window size
 	CGSize winSize = [CCDirector sharedDirector].winSize;
 	
@@ -674,6 +678,8 @@
 					[GameData sharedGameData].currentWorld = 1;
 					[GameData sharedGameData].currentLevel = 1;
 					
+					map.visible = NO;
+					
 					// Transition to level select scene
 					[[CCDirector sharedDirector] replaceScene:[CCTransitionRotoZoom transitionWithDuration:1.0 scene:[LevelSelectScene node]]];
 				}
@@ -688,6 +694,8 @@
 					// Set world/level
 					[GameData sharedGameData].currentWorld = 2;
 					[GameData sharedGameData].currentLevel = 1;
+					
+					map.visible = NO;
 					
 					// Transition to level select scene
 					[[CCDirector sharedDirector] replaceScene:[CCTransitionRotoZoom transitionWithDuration:1.0 scene:[LevelSelectScene node]]];
@@ -704,6 +712,8 @@
 					[GameData sharedGameData].currentWorld = 3;
 					[GameData sharedGameData].currentLevel = 1;
 					
+					map.visible = NO;
+					
 					// Transition to level select scene
 					[[CCDirector sharedDirector] replaceScene:[CCTransitionRotoZoom transitionWithDuration:1.0 scene:[LevelSelectScene node]]];
 				}
@@ -718,6 +728,8 @@
 					// Set world/level
 					[GameData sharedGameData].currentWorld = 4;
 					[GameData sharedGameData].currentLevel = 1;
+					
+					map.visible = NO;
 					
 					// Transition to level select scene
 					[[CCDirector sharedDirector] replaceScene:[CCTransitionRotoZoom transitionWithDuration:1.0 scene:[LevelSelectScene node]]];
@@ -1181,6 +1193,8 @@
 	// Play SFX
 	[[SimpleAudioEngine sharedEngine] playEffect:@"button-press.caf"];
 	
+	map.visible = NO;
+	
 	// Reload the same scene/level
 	CCTransitionRotoZoom *transition = [CCTransitionRotoZoom transitionWithDuration:1.0 scene:[GameScene node]];
 	[[CCDirector sharedDirector] replaceScene:transition];
@@ -1192,6 +1206,8 @@
 	[[SimpleAudioEngine sharedEngine] playEffect:@"button-press.caf"];
 	
 	[GameData sharedGameData].currentLevel++;
+	
+	map.visible = NO;
 	
 	int levelsPerWorld = 10;
 	CCTransitionRotoZoom *transition;

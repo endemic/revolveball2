@@ -13,6 +13,7 @@
 
 @interface TitleLayer : CCLayer {}
 
+- (void)preloadAudio;
 - (void)startGame:(id)sender;
 
 @end
