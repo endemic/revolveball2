@@ -15,6 +15,8 @@
 #import "CrossPromoScene.h"
 #import "RootViewController.h"
 
+#import "Appirater.h"
+
 @implementation RevolveBallAppDelegate
 
 @synthesize window;
@@ -94,7 +96,7 @@
 	
 	[director setDeviceOrientation:kCCDeviceOrientationPortrait];
 	[director setAnimationInterval:1.0/60];
-	[director setDisplayFPS:NO];
+	[director setDisplayFPS:YES];
 	
 	
 	// make the OpenGLView a child of the view controller
@@ -112,6 +114,9 @@
 	
 	// Removes the startup flicker
 	[self removeStartupFlicker];
+	
+	// Initialize the "rating" singleton
+	[Appirater appLaunched:YES];
 	
 	// Load default defaults
 	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
@@ -140,6 +145,9 @@
 
 -(void) applicationWillEnterForeground:(UIApplication*)application {
 	[[CCDirector sharedDirector] startAnimation];
+	
+	// Tell "rating" singleton to resume
+	[Appirater appEnteredForeground:YES];
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {

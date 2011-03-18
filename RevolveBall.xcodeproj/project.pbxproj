@@ -275,6 +275,9 @@
 		7D9F32C51302B17D00F0E465 /* munro-small-20.fnt in Resources */ = {isa = PBXBuildFile; fileRef = 7D9F32C31302B17D00F0E465 /* munro-small-20.fnt */; };
 		7D9F32C61302B17D00F0E465 /* munro-small-20.png in Resources */ = {isa = PBXBuildFile; fileRef = 7D9F32C41302B17D00F0E465 /* munro-small-20.png */; };
 		7DA604DA1317D0C500785E46 /* 4-4.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 7DA604D91317D0C500785E46 /* 4-4.tmx */; };
+		7DA6B5BB132F7898005AF6A2 /* Appirater.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DA6B5BA132F7898005AF6A2 /* Appirater.m */; };
+		7DA6B5BE132F7B0C005AF6A2 /* world-0-bgm.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7DA6B5BD132F7B0C005AF6A2 /* world-0-bgm.mp3 */; };
+		7DA6B5D3132F7C4C005AF6A2 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7DA6B5D2132F7C4C005AF6A2 /* SystemConfiguration.framework */; };
 		7DAE6EA812F96E150025901B /* level-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 7DAE6EA712F96E150025901B /* level-icon.png */; };
 		7DBED19A12C3CC9100932EE0 /* 2-2.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 7DBED19812C3CC9100932EE0 /* 2-2.tmx */; };
 		7DC41EBE12CC4E6500D45992 /* 2-3.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 7DC41EBB12CC4E6500D45992 /* 2-3.tmx */; };
@@ -285,6 +288,8 @@
 		7DCC4F5B1315242E00BF4962 /* 4-3.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 7DCC4F581315242E00BF4962 /* 4-3.tmx */; };
 		7DCC4F601315245B00BF4962 /* world-1-bgm.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7DCC4F5E1315245B00BF4962 /* world-1-bgm.mp3 */; };
 		7DCC4F611315245B00BF4962 /* world-2-bgm.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7DCC4F5F1315245B00BF4962 /* world-2-bgm.mp3 */; };
+		7DE39A861333717C001DD4AA /* world-3-breakable-shard.png in Resources */ = {isa = PBXBuildFile; fileRef = 7DE39A841333717C001DD4AA /* world-3-breakable-shard.png */; };
+		7DE39A871333717C001DD4AA /* world-2-breakable-shard.png in Resources */ = {isa = PBXBuildFile; fileRef = 7DE39A851333717C001DD4AA /* world-2-breakable-shard.png */; };
 		7DE41D6012C30AA700F9B4DE /* 1-9.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 7DE41D5D12C30AA700F9B4DE /* 1-9.tmx */; };
 		7DE41D6112C30AA700F9B4DE /* 1-10.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 7DE41D5E12C30AA700F9B4DE /* 1-10.tmx */; };
 		7DE41D6212C30AA700F9B4DE /* 2-1.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 7DE41D5F12C30AA700F9B4DE /* 2-1.tmx */; };
@@ -783,6 +788,10 @@
 		7D9F32C31302B17D00F0E465 /* munro-small-20.fnt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = "munro-small-20.fnt"; path = "fonts/munro-small-20.fnt"; sourceTree = "<group>"; };
 		7D9F32C41302B17D00F0E465 /* munro-small-20.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "munro-small-20.png"; path = "fonts/munro-small-20.png"; sourceTree = "<group>"; };
 		7DA604D91317D0C500785E46 /* 4-4.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = "4-4.tmx"; path = "maps/4-4.tmx"; sourceTree = "<group>"; };
+		7DA6B5B9132F7898005AF6A2 /* Appirater.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Appirater.h; sourceTree = "<group>"; };
+		7DA6B5BA132F7898005AF6A2 /* Appirater.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Appirater.m; sourceTree = "<group>"; };
+		7DA6B5BD132F7B0C005AF6A2 /* world-0-bgm.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "world-0-bgm.mp3"; sourceTree = "<group>"; };
+		7DA6B5D2132F7C4C005AF6A2 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		7DAE6EA712F96E150025901B /* level-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "level-icon.png"; path = "images/level-icon.png"; sourceTree = "<group>"; };
 		7DBED19812C3CC9100932EE0 /* 2-2.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = "2-2.tmx"; path = "maps/2-2.tmx"; sourceTree = "<group>"; };
 		7DC41EBB12CC4E6500D45992 /* 2-3.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = "2-3.tmx"; path = "maps/2-3.tmx"; sourceTree = "<group>"; };
@@ -794,6 +803,8 @@
 		7DCC4F581315242E00BF4962 /* 4-3.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = "4-3.tmx"; path = "maps/4-3.tmx"; sourceTree = "<group>"; };
 		7DCC4F5E1315245B00BF4962 /* world-1-bgm.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "world-1-bgm.mp3"; path = "music/world-1-bgm.mp3"; sourceTree = "<group>"; };
 		7DCC4F5F1315245B00BF4962 /* world-2-bgm.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "world-2-bgm.mp3"; path = "music/world-2-bgm.mp3"; sourceTree = "<group>"; };
+		7DE39A841333717C001DD4AA /* world-3-breakable-shard.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "world-3-breakable-shard.png"; path = "images/world-3-breakable-shard.png"; sourceTree = "<group>"; };
+		7DE39A851333717C001DD4AA /* world-2-breakable-shard.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "world-2-breakable-shard.png"; path = "images/world-2-breakable-shard.png"; sourceTree = "<group>"; };
 		7DE41D5D12C30AA700F9B4DE /* 1-9.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = "1-9.tmx"; path = "maps/1-9.tmx"; sourceTree = "<group>"; };
 		7DE41D5E12C30AA700F9B4DE /* 1-10.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = "1-10.tmx"; path = "maps/1-10.tmx"; sourceTree = "<group>"; };
 		7DE41D5F12C30AA700F9B4DE /* 2-1.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = "2-1.tmx"; path = "maps/2-1.tmx"; sourceTree = "<group>"; };
@@ -1026,6 +1037,7 @@
 				506EDB88102F4C4000A389B3 /* libz.dylib in Frameworks */,
 				506EDBA5102F4C9F00A389B3 /* AVFoundation.framework in Frameworks */,
 				506EE1A91030508200A389B3 /* libcocos2d libraries.a in Frameworks */,
+				7DA6B5D3132F7C4C005AF6A2 /* SystemConfiguration.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1092,6 +1104,7 @@
 				DC6640020F83B3EA000B3E49 /* AudioToolbox.framework */,
 				506EDB87102F4C4000A389B3 /* libz.dylib */,
 				506EDBA4102F4C9F00A389B3 /* AVFoundation.framework */,
+				7DA6B5D2132F7C4C005AF6A2 /* SystemConfiguration.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -1099,6 +1112,8 @@
 		2D500B1D0D5A766B00DBA0E3 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				7DA6B5B9132F7898005AF6A2 /* Appirater.h */,
+				7DA6B5BA132F7898005AF6A2 /* Appirater.m */,
 				7D50A1E612BBF8CA0039A691 /* GameData.h */,
 				7D50A1E712BBF8CA0039A691 /* GameData.mm */,
 				7D50A1E812BBF8CA0039A691 /* GameScene.h */,
@@ -1434,6 +1449,8 @@
 		7D50A1F712BBF8EA0039A691 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				7DE39A841333717C001DD4AA /* world-3-breakable-shard.png */,
+				7DE39A851333717C001DD4AA /* world-2-breakable-shard.png */,
 				7D2BD5F912F8A83E00D0DA53 /* buttons */,
 				7D93C0C0131FBB6E00D44DE5 /* background-0-hd.png */,
 				7D93C0C1131FBB6E00D44DE5 /* level-connector-hd.png */,
@@ -1594,6 +1611,7 @@
 		7DCC4F5D1315244400BF4962 /* music */ = {
 			isa = PBXGroup;
 			children = (
+				7DA6B5BD132F7B0C005AF6A2 /* world-0-bgm.mp3 */,
 				7DCC4F5E1315245B00BF4962 /* world-1-bgm.mp3 */,
 				7DCC4F5F1315245B00BF4962 /* world-2-bgm.mp3 */,
 			);
@@ -2216,6 +2234,9 @@
 				7DF397C113278ADB00A93676 /* level-fail.caf in Resources */,
 				7DF397DD132794AD00A93676 /* yoster-32-hd.fnt in Resources */,
 				7DF397DE132794AD00A93676 /* yoster-32-hd.png in Resources */,
+				7DA6B5BE132F7B0C005AF6A2 /* world-0-bgm.mp3 in Resources */,
+				7DE39A861333717C001DD4AA /* world-3-breakable-shard.png in Resources */,
+				7DE39A871333717C001DD4AA /* world-2-breakable-shard.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2235,6 +2256,7 @@
 				7D50A1F412BBF8CA0039A691 /* TitleScene.mm in Sources */,
 				7D50A1F512BBF8CA0039A691 /* LevelSelectScene.mm in Sources */,
 				7DC87561130DC6420080847F /* CrossPromoScene.mm in Sources */,
+				7DA6B5BB132F7898005AF6A2 /* Appirater.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2529,7 +2551,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Nathan Demick (NK8N934RTW)";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					DEBUG,
@@ -2546,7 +2568,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_CFLAGS = "-fvisibility=hidden";
 				PREBINDING = NO;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "998F46CF-AFA7-435C-9F52-F7ABC2334519";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

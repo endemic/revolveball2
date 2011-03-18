@@ -15,6 +15,8 @@
 #import "CocosDenshion.h"
 #import "SimpleAudioEngine.h"
 
+#import "Appirater.h"
+
 // Constants for tile GIDs
 #define kSquare 1
 #define kLowerLeftTriangle 2
@@ -121,8 +123,6 @@
 		map = [CCTMXTiledMap tiledMapWithTMXFile:[NSString stringWithFormat:@"%i-%i%@.tmx", [GameData sharedGameData].currentWorld, [GameData sharedGameData].currentLevel, hdSuffix]];
 		[map setPosition:ccp(winSize.width / 2, winSize.height / 2)];
 		[self addChild:map z:1];
-		
-		map.visible = NO;
 		
 		// Set up timer
 		if ([map propertyNamed:@"time"])
@@ -365,7 +365,7 @@
 		[map setAnchorPoint:ccp(anchorX, anchorY)];
 		
 		// Schedule countdown timer
-		countdownTime = 1;
+		countdownTime = 2;
 		[self schedule:@selector(countdown:) interval:1.0];
 	}
 	return self;
@@ -373,8 +373,6 @@
 
 - (void)countdown:(ccTime)dt
 {
-	map.visible = YES;
-	
 	// Get window size
 	CGSize winSize = [CCDirector sharedDirector].winSize;
 	
@@ -389,8 +387,10 @@
 		NSString *text;
 		if (countdownTime == 0)
 			text = @"Touch to rotate!";
-		else
+		else if (countdownTime == 1)
 			text = @"Select a world";
+		else 
+			text = @"";
 		//text = [NSString stringWithFormat:@"%i", countdownTime];
 		
 		CCLabelBMFont *label = [CCLabelBMFont labelWithString:text fntFile:[NSString stringWithFormat:@"yoster-24%@.fnt", hdSuffix]];
@@ -410,8 +410,10 @@
 		NSString *text;
 		if (countdownTime == 0)
 			text = @"GO";
-		else
+		else if (countdownTime == 1)
 			text = @"READY";
+		else 
+			text = @"";
 		//text = [NSString stringWithFormat:@"%i", countdownTime];
 		
 		CCLabelBMFont *label = [CCLabelBMFont labelWithString:text fntFile:[NSString stringWithFormat:@"yoster-48%@.fnt", hdSuffix]];
@@ -440,7 +442,7 @@
 		[self schedule:@selector(timer:) interval:1];
 		
 		// Start playing BGM
-		//[[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"world-1-bgm.mp3"];
+		//[[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"world-0-bgm.mp3"];
 	}
 }
 
@@ -828,6 +830,9 @@
 	
 	// Play sound effect
 	[[SimpleAudioEngine sharedEngine] playEffect:@"level-complete.caf"];
+	
+	// Tell rating singleton that a "significant event" happened
+	[Appirater userDidSignificantEvent:YES];
 	
 	int currentLevelIndex = (([GameData sharedGameData].currentWorld - 1) * 10) + [GameData sharedGameData].currentLevel - 1;
 	
