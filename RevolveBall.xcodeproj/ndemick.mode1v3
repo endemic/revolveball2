@@ -268,19 +268,20 @@
 								<string>2D500B1D0D5A766B00DBA0E3</string>
 								<string>29B97315FDCFA39411CA2CEA</string>
 								<string>50F4144210692EE7002A0D5E</string>
+								<string>7DCC4F5D1315244400BF4962</string>
 								<string>29B97323FDCFA39411CA2CEA</string>
 								<string>1C37FABC05509CD000000102</string>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>31</integer>
-									<integer>29</integer>
+									<integer>6</integer>
+									<integer>5</integer>
 									<integer>0</integer>
 								</array>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateVisibleRectKey</key>
-							<string>{{0, 179}, {218, 644}}</string>
+							<string>{{0, 98}, {218, 644}}</string>
 						</dict>
 						<key>PBXTopSmartGroupGIDs</key>
 						<array/>
@@ -317,7 +318,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>1CE0B20306471E060097A5F4</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>GameScene.mm</string>
+								<string>Appirater.h</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -325,11 +326,11 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CE0B20406471E060097A5F4</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>GameScene.mm</string>
+										<string>Appirater.h</string>
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>7DE39A881333717D001DD4AA</string>
+										<string>7D360B10133AAA1800472593</string>
 										<key>history</key>
 										<array>
 											<string>7D50A2B012BBFCFC0039A691</string>
@@ -415,14 +416,14 @@
 											<string>7D480A73132AD95A00A8DE6B</string>
 											<string>7D480A74132AD95A00A8DE6B</string>
 											<string>7D480A75132AD95A00A8DE6B</string>
-											<string>7DA6B5D8132F7CA3005AF6A2</string>
 											<string>7DA6B5D9132F7CA3005AF6A2</string>
 											<string>7DA6B5DA132F7CA3005AF6A2</string>
-											<string>7DE39A7913336FA2001DD4AA</string>
 											<string>7DE39A7A13336FA2001DD4AA</string>
-											<string>7DE39A7B13336FA2001DD4AA</string>
+											<string>7D360B0C133AAA1800472593</string>
+											<string>7D360B0D133AAA1800472593</string>
+											<string>7D360B0E133AAA1800472593</string>
+											<string>7D360B0F133AAA1800472593</string>
 											<string>7DE39A7C13336FA2001DD4AA</string>
-											<string>7DE39A7D13336FA2001DD4AA</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -480,9 +481,9 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>7DE39A7F13336FA2001DD4AA</string>
+				<string>7D360B11133AAA1800472593</string>
 				<string>1CE0B1FE06471DED0097A5F4</string>
-				<string>7DE39A8013336FA2001DD4AA</string>
+				<string>7D360B12133AAA1800472593</string>
 				<string>1CE0B20306471E060097A5F4</string>
 				<string>1CE0B20506471E060097A5F4</string>
 			</array>
@@ -620,10 +621,6 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
-		<string>7DE39A8113336FA2001DD4AA</string>
-		<string>7DE39A8213336FA2001DD4AA</string>
-		<string>1C78EAAD065D492600B07095</string>
-		<string>1CD10A99069EF8BA00B06720</string>
 		<string>7D50A1CB12BBF8100039A691</string>
 		<string>/Users/ndemick/iPhone/RevolveBall/RevolveBall.xcodeproj</string>
 	</array>
@@ -644,14 +641,12 @@
 					<key>Dock</key>
 					<array>
 						<dict>
-							<key>BecomeActive</key>
-							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
 								<string>1CD0528F0623707200166675</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>RevolveBallAppDelegate.mm</string>
+								<string></string>
 								<key>StatusBarVisibility</key>
 								<true/>
 							</dict>
@@ -707,7 +702,7 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>7D50A1CB12BBF8100039A691</string>
-				<string>7DE39A6813336DA4001DD4AA</string>
+				<string>7D360B13133AAA1800472593</string>
 				<string>1CD0528F0623707200166675</string>
 				<string>XCMainBuildResultsModuleGUID</string>
 			</array>

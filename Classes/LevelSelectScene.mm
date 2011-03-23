@@ -207,6 +207,9 @@
 	// Load current level stored in singleton variables
 	CCTransitionRotoZoom *transition = [CCTransitionRotoZoom transitionWithDuration:1.0 scene:[GameScene node]];
 	[[CCDirector sharedDirector] replaceScene:transition];
+	
+	// Stop the BGM
+	[[SimpleAudioEngine sharedEngine] stopBackgroundMusic];
 }
 
 - (void)moveLevelSelectCursor:(int)destination

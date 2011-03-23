@@ -442,7 +442,11 @@
 		[self schedule:@selector(timer:) interval:1];
 		
 		// Start playing BGM
-		//[[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"world-0-bgm.mp3"];
+		if ([GameData sharedGameData].currentWorld == 0 && [GameData sharedGameData].currentLevel == 0)
+			[[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"level-select.mp3"];
+		else
+			[[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"gameplay.mp3"];
+
 	}
 }
 
@@ -831,6 +835,9 @@
 	// Play sound effect
 	[[SimpleAudioEngine sharedEngine] playEffect:@"level-complete.caf"];
 	
+	// Stop the BGM
+	[[SimpleAudioEngine sharedEngine] stopBackgroundMusic];
+	
 	// Tell rating singleton that a "significant event" happened
 	[Appirater userDidSignificantEvent:YES];
 	
@@ -906,6 +913,9 @@
 	
 	// Play "you lose" sfx
 	[[SimpleAudioEngine sharedEngine] playEffect:@"level-fail.caf"];
+	
+	// Stop the BGM
+	[[SimpleAudioEngine sharedEngine] stopBackgroundMusic];
 	
 	// Get window size
 	CGSize windowSize = [CCDirector sharedDirector].winSize;

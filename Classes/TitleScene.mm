@@ -77,7 +77,8 @@
 	[[SimpleAudioEngine sharedEngine] preloadEffect:@"level-fail.caf"];
 	
 	// Preload music - eventually do this based on the "world" that is selected
-	[[SimpleAudioEngine sharedEngine] preloadBackgroundMusic:@"world-1-bgm.mp3"];
+	[[SimpleAudioEngine sharedEngine] preloadBackgroundMusic:@"level-select.mp3"];
+	[[SimpleAudioEngine sharedEngine] preloadBackgroundMusic:@"gameplay.mp3"];
 	
 	//[pool release];
 }
