@@ -57,7 +57,7 @@ extern NSString *const kAppiraterDeclinedToRate;
  This is the message your users will see once they've passed the day+launches
  threshold.
  */
-#define APPIRATER_MESSAGE				[NSString stringWithFormat:@"If you like %@, would you mind rating it? It helps me continue future development. Thanks for your support!", APPIRATER_APP_NAME]
+#define APPIRATER_MESSAGE				[NSString stringWithFormat:@"If you like %@, would you mind rating it? It helps me continue future development. Thank you!", APPIRATER_APP_NAME]
 
 /*
  This is the title of the message alert that users will see.
@@ -108,7 +108,7 @@ extern NSString *const kAppiraterDeclinedToRate;
  a significant event, call the method:
  [Appirater userDidSignificantEvent:];
  */
-#define APPIRATER_SIG_EVENTS_UNTIL_PROMPT	10	// integer
+#define APPIRATER_SIG_EVENTS_UNTIL_PROMPT	20	// integer
 
 /*
  Once the rating alert is presented to the user, they might select

@@ -58,6 +58,10 @@
 		// Enable touches
 		[self setIsTouchEnabled:YES];
 		
+		// Start playing music if it's not already playing
+		if (![[SimpleAudioEngine sharedEngine] isBackgroundMusicPlaying])
+			[[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"level-select.mp3"];
+		
 		// This string gets appended onto all image filenames based on whether the game is on iPad or not
 		NSString *hdSuffix;
 		if ([GameData sharedGameData].isTablet) hdSuffix = @"-hd";

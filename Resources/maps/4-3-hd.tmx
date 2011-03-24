@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" orientation="orthogonal" width="100" height="100" tilewidth="64" tileheight="64">
  <properties>
-  <property name="name" value="Twisty"/>
+  <property name="name" value="Don't Get Lost"/>
   <property name="time" value="60"/>
  </properties>
- <tileset firstgid="1" name="world-4-tileset" tilewidth="64" tileheight="64">
+ <tileset firstgid="1" name="texture" tilewidth="64" tileheight="64">
   <image source="world-4-tileset-hd.png"/>
  </tileset>
  <layer name="Border" width="100" height="100">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAA+3a0WqDMACGUb3Zrvf+LzsGlVVtidEYf+o5EFYKrZiv02g7DAAAsDZuGPRTmm89+tIjy7h4vDxG6dHXq7nX4zp6ZNGjvSPr1aM9rJXXXu33z2P06DFtq3bbn2ra7++n557nZOtn+F2P0tBjrtV+v+rR4v3uRo8spWNGzRh2vMbxau7KOdFj7co157t1wZ3XuwlcQ2bRI4seWfTIokcWPbLokaX2HiTnqpljPc6nR5Y937NwHT368v+Rxfkjix5ZXH9kcX7IokcWPbLokUWPLHpk0eOf319l+dvvr8eY+H3idUo9asaw4zV6zLXa73Hxt9X73Y0eWUrHjNrvJWrvDTpezR2Zky09ztr2pzqy3m3Rw331do72oC09suiRpXSfQ4++as73nE+PLDXXiwAAAAAAAAAAAAAAAAAAAAA1fgFota30QJwAAA==
+   H4sIAAAAAAAAA+2XUWrDMBQE7Z/0HL3/JUughdJC5aTWajaeAfEC7ceun4bE+7Ztuyd6/uL+9/fPz87588g+7rwN/k/OQT9Y86gfkkE/WFM/WOgHa+oHC/1gTf1goR+seWQfK85VIXb/ykS4r+lJ3scVIXbXDxbETCmI3fWDxZV/e7X1u+cl3ONZs3Efr0xbP/1gMfpuWXHO7ifPc7av7uN/6AcL/WChHyz0I4O/r1ises9p3Ufbe8VRmvex4v7Ons37eEVae+kHi9bcI1p76QeL1twjWnvpB4vW3CNae+kHi9bcI1p76QeL1twjWnvpB4vW3CNae+kHi9bcI1p76QeLWbl3wGlklh+tz2M1M/2Qx9EPFvrBQj9Y6AcL/WBBfP+4MrP8eHa6Dxa0PGn0gwWtPy1PGv1gQetPy5NGP1jQ+tPypNEPFrT+tDxp9IMFrT8tTxr9YEHrT8uTRj9Y0PrT8qTRDxa0/rQ8afSDBa0/LU+aq/qxgw+J5D4I948+k/uQMfrBmvrBQj9YM+3H7duR36T9uP2Ym1M/wPj9wZr+vsqyHzipHIT7t3pS7iUlx2ooz0E/9IMI5Tnoh34QoTwH/dAPIpTnoB88PzycfQiLD9fjvBhAnAAA
   </data>
  </layer>
  <layer name="Extras" width="100" height="100">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAA+3BMQEAAADCoPVP7WULoAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgBt5RKnmQJwAAA==
+   H4sIAAAAAAAAA+3cQQqDMBAFUJe2R9AbtPe/Xyl0KWlJJmZq3tuK8MFgfgxmWYAa98brb8+IIADwYV6B3Fr74xoVZCL76AAQwPz+X0rv8l++EwDn07EAAGLoVQAAfehZAADtHqMDAAAkcqu8T6cao/Z5UWY8A1Bifw4AIJZ+BQDQl3NpAOC6zPMAAH3YvwIA4Mr0XQCAdv5FBzhftvNVvuXJlpc59RiHxjazsxYA4Mg2OgAAAJDWC28wkUdAnAAA
   </data>
  </layer>
 </map>
