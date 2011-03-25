@@ -2,14 +2,14 @@
 <map version="1.0" orientation="orthogonal" width="100" height="100" tilewidth="64" tileheight="64">
  <properties>
   <property name="name" value="Spiky End"/>
-  <property name="time" value="60"/>
+  <property name="time" value="45"/>
  </properties>
- <tileset firstgid="1" name="world-4-tileset" tilewidth="64" tileheight="64">
+ <tileset firstgid="1" name="texture" tilewidth="64" tileheight="64">
   <image source="world-1-tileset-hd.png"/>
  </tileset>
  <layer name="Border" width="100" height="100">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAA+3by06DQACG0Xajazde3v9FTROItNDAwDD8lnOSiY2JJcynMFC8XAAAYOy6YNDO3Hzr0ZYeWa4Prx+PUXq0NTX3ehxHjyx61Ldlvbq1h7Xy2NR+f3SjRY9+W5/dWLrtV9Xv9/vge8M5Wfo7/KzH3Oi3NbXtM6q131M91vqq9D7/kR5Z5o4ZJeOy4mccr+4N5+SnG63mRI+xI9ecz9YFZ17vJnANmUWPLHpk0SOLHln0yKJHltJ7kOyrZI712J8eWdZ8zsJx9GjL30cW548semRx/ZHF+SGLHln0yKJHFj2y6JFFjz+ev8py2++3brR+5t/ziWPDHj3P7x7ntt/fld5n+HWLsz/frkeOuWNG6ecSpfcGHa/uDeek9P8NlvTYa9uvast6t0YP99Xr2dqDuvTIokeWufscerRVcr5nf3pkKbleBAAAAAAAAAAAAAAAAAAAACjxCyxqNkdAnAAA
+   H4sIAAAAAAAAA+3b3W6CMBgGYNyfxzvZz/3f6EICWRWY1JbyTZ4naWZ0tun3bligdh0AAEydVjTa6ev9uvDaSyeP1m7VWx5tna4eXx+j5NHWXO3lsR95xCKP+krWq6V5WCtPzc37fWgt8hjH+hja2rEf1Tjvc/JcWpO1f8NLedxq41hzYx9RrXnP5XGvz0r9/Ec15v3cXebxVNjf0fP465iR07o73uN4dSmtyffQWtVEHlN7rjmX1gVHXu9G4BwyFnnEIo9Y5BGLPGKRRyzyiCX3GiTbWltje1bayLkGKY/t3XOfhf3Ioy3/H7H0NV7adzr3u2xrbY3T+5Bsx/lHLD4fYpFHLPKIRR6xyCMWecQij1/2X8XSz/ttaK33/NufOJXmMbJ/dz/9vL8K+0jv2+VcG1xy9P3tpXmM/aQ/Sxw9j5LvG6T9dDPPOV7lSWuS+32DNXlsNfajKlnv1sjDdfV6SvOgLnnEIo9Ybl3nkEdbOZ/3bK+v99I+T3tB2ss5XwQAAAAAAAAAAAAAAAAAAADI8QN1kfZwQJwAAA==
   </data>
  </layer>
  <layer name="Extras" width="100" height="100">

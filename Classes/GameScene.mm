@@ -684,7 +684,7 @@
 					[GameData sharedGameData].currentWorld = 1;
 					[GameData sharedGameData].currentLevel = 1;
 					
-					map.visible = NO;
+					//map.visible = NO;
 					
 					// Transition to level select scene
 					[[CCDirector sharedDirector] replaceScene:[CCTransitionRotoZoom transitionWithDuration:1.0 scene:[LevelSelectScene node]]];
@@ -701,7 +701,7 @@
 					[GameData sharedGameData].currentWorld = 2;
 					[GameData sharedGameData].currentLevel = 1;
 					
-					map.visible = NO;
+					//map.visible = NO;
 					
 					// Transition to level select scene
 					[[CCDirector sharedDirector] replaceScene:[CCTransitionRotoZoom transitionWithDuration:1.0 scene:[LevelSelectScene node]]];
@@ -718,7 +718,7 @@
 					[GameData sharedGameData].currentWorld = 3;
 					[GameData sharedGameData].currentLevel = 1;
 					
-					map.visible = NO;
+					//map.visible = NO;
 					
 					// Transition to level select scene
 					[[CCDirector sharedDirector] replaceScene:[CCTransitionRotoZoom transitionWithDuration:1.0 scene:[LevelSelectScene node]]];
@@ -735,7 +735,7 @@
 					[GameData sharedGameData].currentWorld = 4;
 					[GameData sharedGameData].currentLevel = 1;
 					
-					map.visible = NO;
+					//map.visible = NO;
 					
 					// Transition to level select scene
 					[[CCDirector sharedDirector] replaceScene:[CCTransitionRotoZoom transitionWithDuration:1.0 scene:[LevelSelectScene node]]];

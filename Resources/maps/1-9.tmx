@@ -2,14 +2,14 @@
 <map version="1.0" orientation="orthogonal" width="100" height="100" tilewidth="32" tileheight="32">
  <properties>
   <property name="name" value="Confusing Circles"/>
-  <property name="time" value="120"/>
+  <property name="time" value="60"/>
  </properties>
  <tileset firstgid="1" name="texture" tilewidth="32" tileheight="32">
   <image source="world-1-tileset.png"/>
  </tileset>
  <layer name="Border" width="100" height="100">
   <data encoding="base64" compression="gzip">
-   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
+   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
   </data>
  </layer>
  <layer name="Extras" width="100" height="100">
