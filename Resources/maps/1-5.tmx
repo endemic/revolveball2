@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" orientation="orthogonal" width="100" height="100" tilewidth="32" tileheight="32">
  <properties>
-  <property name="name" value="Whatev"/>
+  <property name="name" value="Pachinko"/>
   <property name="time" value="30"/>
  </properties>
- <tileset firstgid="1" name="world-4-tileset" tilewidth="32" tileheight="32">
+ <tileset firstgid="1" name="texture" tilewidth="32" tileheight="32">
   <image source="world-1-tileset.png"/>
  </tileset>
  <layer name="Border" width="100" height="100">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAA+3XWQqDMBQFUO24jv51/yusBT+KQzM4pc058EBC0PhucGgaAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACgJm1fHO+dw60vmRxPHmVpZ445hjzKIo+yyKMs8thfG6jPeWwrpcc15RHao1tV6hprkHKfj5XG5667Zn6/KOYe18pgOD68dg39DsnZo2s9o7yrx5bu0UtX18x58hhL6cm5q1PEOWPnyWNsqif3wdjez66afetJbo+eC9dRs6kM5r4tc/qcu45axfahtH/DfxbqhV7tz74FAACAeC8raXA9QJwAAA==
+   H4sIAAAAAAAAA+3VSW7CQABFQbxJzsH9L8mCBdByxwZBXBKvJEQUpq/XDKdTkiRJkiRJkiRJNMuTl3zGq307l/fa0/P3Tc+TubV+5+F6vH2Z3G/refO32Tms3W/P78XsXLJtfI+PZv9/5n6zz1cerfWZffecd/y9ddvsNXN13+Y/Ph/ja+Zm67t/9r6fXW89fs9rf7Mjm3Qej4QewgaF0ELYoBBaCBsUQgthg0JoIWxQCC2EDQqhhbBBIbQQNiiEFsIGhdBC2KAQWggbFEILYYNCaCFsUAgthA0KoYWwQSG0EDYohBbCBoXQQtigEFoIGxRCC2GDQmghbFAILYQNCqGFsEEhtBA2KIQWwgaF0ELYoBBaCBsUQgthg0JoIWxQCC2EDQqhhbBBIbQQNiiEFsIGhdBC2KAQWggbFEILYYNCaCFsUAgthA0KoYWwQSG0EDYohBbCBoXQQtigEFoIGxRCC2GDQmghbFAILYQNCqGFsEEhtBA2KIQWwgaF0ELYoBBaCBsUQgthg0JoIWxQCC2EDQqhhbBBIbQQNiiEFsIGhdBC2KAQWggbFEILYYNCaCFsUAgthA2KscVy0CVXR7X4ubt0Hjedh6XzsBz1e9HvR5IkSfI5F9BgNs5AnAAA
   </data>
  </layer>
  <layer name="Extras" width="100" height="100">

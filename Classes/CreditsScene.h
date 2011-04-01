@@ -9,8 +9,9 @@
 #import <Foundation/Foundation.h>
 #import "cocos2d.h"
 
-@interface CreditsScene : CCLayer {
-
-}
-
+@interface CreditsScene : CCScene {}
 @end
+
+@interface CreditsLayer : CCLayer {}
+@end
+

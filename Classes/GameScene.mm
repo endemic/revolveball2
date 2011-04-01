@@ -931,7 +931,7 @@
 	[self addChild:finishLabel z:4];
 	
 	// Add button which takes us back to level select
-	CCMenuItem *nextButton = [CCMenuItemImage itemFromNormalImage:[NSString stringWithFormat:@"next-button%@.png", hdSuffix] selectedImage:[NSString stringWithFormat:@"next-button-selected%@.png", hdSuffix] target:self selector:@selector(backButtonAction:)];
+	CCMenuItem *nextButton = [CCMenuItemImage itemFromNormalImage:[NSString stringWithFormat:@"wide-back-button%@.png", hdSuffix] selectedImage:[NSString stringWithFormat:@"wide-back-button-selected%@.png", hdSuffix] target:self selector:@selector(backButtonAction:)];
 	CCMenuItem *retryButton = [CCMenuItemImage itemFromNormalImage:[NSString stringWithFormat:@"retry-button%@.png", hdSuffix] selectedImage:[NSString stringWithFormat:@"retry-button-selected%@.png", hdSuffix] target:self selector:@selector(retryButtonAction:)];
 	CCMenu *menu = [CCMenu menuWithItems:nextButton, retryButton, nil];
 	[menu alignItemsVertically];
