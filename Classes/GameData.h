@@ -16,6 +16,11 @@
 	// The current level
 	int currentWorld, currentLevel;
 	
+	
+	// Boolean that's set to "true" if game is running on iPad!
+	bool isTablet;
+	
+	/** Below aren't currently used **/
 	// Variable we check to see if player quit in the middle of a level
 	bool restoreLevel;
 	
@@ -26,9 +31,6 @@
 	int bestTime;
 	
 	bool paused;
-	
-	// Boolean that's set to "true" if game is running on iPad!
-	bool isTablet;
 }
 
 @property (readwrite, nonatomic) int currentWorld;

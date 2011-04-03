@@ -124,7 +124,7 @@
 	[defaults registerDefaults:[NSDictionary dictionaryWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"UserDefaults" ofType:@"plist"]]];
 	
 	// Run the intro Scene
-	[[CCDirector sharedDirector] runWithScene: [CreditsScene node]];		
+	[[CCDirector sharedDirector] runWithScene: [TitleScene node]];		
 }
 
 

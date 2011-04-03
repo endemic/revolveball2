@@ -8,14 +8,13 @@
 
 #import "GameScene.h"
 #import "LevelSelectScene.h"
+#import "CreditsScene.h"
 #import "GameData.h"
 #import "math.h"
 #import <vector>	// Easy data structure to store Box2D bodies
 
 #import "CocosDenshion.h"
 #import "SimpleAudioEngine.h"
-
-#import "Appirater.h"
 
 // Constants for tile GIDs
 #define kSquare 1
@@ -838,9 +837,6 @@
 	// Stop the BGM
 	[[SimpleAudioEngine sharedEngine] stopBackgroundMusic];
 	
-	// Tell rating singleton that a "significant event" happened
-	[Appirater userDidSignificantEvent:YES];
-	
 	int currentLevelIndex = (([GameData sharedGameData].currentWorld - 1) * 10) + [GameData sharedGameData].currentLevel - 1;
 	
 	// Get best time from user defaults
@@ -1129,6 +1125,25 @@
 	Boolean block = NO;
 	Boolean showArrow = YES;
 	
+	// Check to see whether all levels are complete
+	for (int i = 30; i < 40; i++)
+	{
+		NSDictionary *d = [levelData objectAtIndex:i];
+		if (![[d objectForKey:@"complete"] boolValue])
+			block = YES;
+	}
+	
+	// This condition signifies that all levels are complete - show arrows pointing to all "worlds"
+	if (block == NO)
+	{
+		[border setTileGID:kLeftArrow at:ccp(46, 50)];
+		[border setTileGID:kDownArrow at:ccp(50, 54)];
+		[border setTileGID:kRightArrow at:ccp(54, 50)];
+		[border setTileGID:kUpArrow at:ccp(50, 46)];
+		showArrow = NO;
+	}
+	
+	block = NO;
 	
 	// Block Cave world
 	for (int i = 20; i < 30; i++)
@@ -1207,9 +1222,7 @@
 {
 	// Play SFX
 	[[SimpleAudioEngine sharedEngine] playEffect:@"button-press.caf"];
-	
-	map.visible = NO;
-	
+
 	// Reload the same scene/level
 	CCTransitionRotoZoom *transition = [CCTransitionRotoZoom transitionWithDuration:1.0 scene:[GameScene node]];
 	[[CCDirector sharedDirector] replaceScene:transition];
@@ -1220,15 +1233,26 @@
 	// Play SFX
 	[[SimpleAudioEngine sharedEngine] playEffect:@"button-press.caf"];
 	
+	// Increment level counter
 	[GameData sharedGameData].currentLevel++;
 	
-	map.visible = NO;
-	
 	int levelsPerWorld = 10;
+	int lastWorld = 4;
 	CCTransitionRotoZoom *transition;
+	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
 	
+	// If the player has finished the game
+	if ([GameData sharedGameData].currentLevel > levelsPerWorld && [GameData sharedGameData].currentWorld == lastWorld && [defaults boolForKey:@"completedGame"] == NO)
+	{
+		// Set "completed game" boolean
+		[defaults setBool:YES forKey:@"completedGame"];
+		[defaults synchronize];
+		
+		// Transition to "credits" scene
+		transition = [CCTransitionRotoZoom transitionWithDuration:1.0 scene:[CreditsScene node]];
+	}
 	// If player has just completed the 10th level in a world, take them back to the world select
-	if ([GameData sharedGameData].currentLevel > levelsPerWorld)
+	else if ([GameData sharedGameData].currentLevel > levelsPerWorld)
 	{
 		// This signifies the world select "level"
 		[GameData sharedGameData].currentWorld = 0;
@@ -1236,6 +1260,7 @@
 		
 		transition = [CCTransitionRotoZoom transitionWithDuration:1.0 scene:[GameScene node]];
 	}
+	// Otherwise just go back to level select
 	else
 	{
 		transition = [CCTransitionRotoZoom transitionWithDuration:1.0 scene:[LevelSelectScene node]];

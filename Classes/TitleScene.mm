@@ -13,6 +13,8 @@
 #import "CocosDenshion.h"
 #import "SimpleAudioEngine.h"
 
+#import "Appirater.h"
+
 @implementation TitleScene
 - (id)init
 {
@@ -55,6 +57,10 @@
 		[self preloadAudio];
 		
 		//[self performSelectorInBackground:@selector(preloadAudio) withObject:nil];
+		
+		// If the player has completed the game, prompt them to rate the game
+		if ([[NSUserDefaults standardUserDefaults] boolForKey:@"completedGame"] == YES)
+			[Appirater userDidSignificantEvent:YES];
 	}
 	return self;
 }

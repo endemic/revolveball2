@@ -83,7 +83,7 @@ extern NSString *const kAppiraterDeclinedToRate;
  Users will need to have the same version of your app installed for this many
  days before they will be prompted to rate it.
  */
-#define APPIRATER_DAYS_UNTIL_PROMPT		3		// double
+#define APPIRATER_DAYS_UNTIL_PROMPT		1		// double
 
 /*
  An example of a 'use' would be if the user launched the app. Bringing the app
@@ -95,7 +95,7 @@ extern NSString *const kAppiraterDeclinedToRate;
  Users need to 'use' the same version of the app this many times before
  before they will be prompted to rate it.
  */
-#define APPIRATER_USES_UNTIL_PROMPT		10		// integer
+#define APPIRATER_USES_UNTIL_PROMPT		1		// integer
 
 /*
  A significant event can be anything you want to be in your app. In a
@@ -108,7 +108,7 @@ extern NSString *const kAppiraterDeclinedToRate;
  a significant event, call the method:
  [Appirater userDidSignificantEvent:];
  */
-#define APPIRATER_SIG_EVENTS_UNTIL_PROMPT	20	// integer
+#define APPIRATER_SIG_EVENTS_UNTIL_PROMPT	1	// integer
 
 /*
  Once the rating alert is presented to the user, they might select

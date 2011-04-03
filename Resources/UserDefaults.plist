@@ -245,5 +245,7 @@
 			<false/>
 		</dict>
 	</array>
+	<key>completedGame</key>
+	<false/>
 </dict>
 </plist>

@@ -21,7 +21,8 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(GameData);
 	{
 		// Initialize any variables here
 		isTablet = NO;
-		if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) isTablet = YES;
+		if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) 
+			isTablet = YES;
 	}
 	return self;
 }
