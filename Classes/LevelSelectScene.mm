@@ -396,7 +396,7 @@
 				NSDictionary *d = [levelData objectAtIndex:previousLevelIndex];
 				
 				// If the level is complete and the ball isn't moving already, move to the tapped location
-				if ([[d objectForKey:@"complete"] boolValue]/* && [ball numberOfRunningActions] < 1*/)
+				if ([[d objectForKey:@"complete"] boolValue] && [ball numberOfRunningActions] < 2)
 				{
 					// Move ball icon over the appropriate icon
 					[self moveLevelSelectCursor:i];

@@ -273,7 +273,7 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>15</integer>
+									<integer>11</integer>
 									<integer>5</integer>
 									<integer>0</integer>
 								</array>
@@ -316,7 +316,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>1CE0B20306471E060097A5F4</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>TitleScene.mm</string>
+								<string>GameScene.mm</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -324,11 +324,11 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CE0B20406471E060097A5F4</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>TitleScene.mm</string>
+										<string>GameScene.mm</string>
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>7DEFC3111348E9B800AF896B</string>
+										<string>7DEFC3351349D1A100AF896B</string>
 										<key>history</key>
 										<array>
 											<string>7D50A2B012BBFCFC0039A691</string>
@@ -402,29 +402,30 @@
 											<string>7D480A72132AD95A00A8DE6B</string>
 											<string>7D480A73132AD95A00A8DE6B</string>
 											<string>7D480A74132AD95A00A8DE6B</string>
-											<string>7D480A75132AD95A00A8DE6B</string>
 											<string>7DE39A7A13336FA2001DD4AA</string>
 											<string>7DF07AC8133B556700DB2AE4</string>
 											<string>7D566E4B133B8A98003B3C44</string>
 											<string>7DE8D80013448FAC004C8EC2</string>
 											<string>7DF7D6AB1345D7CE0017E1FA</string>
-											<string>7DF7D6C81345D9610017E1FA</string>
 											<string>7DF7D6D71345DC790017E1FA</string>
 											<string>7DF7D6D81345DC790017E1FA</string>
 											<string>7DF7D6D91345DC790017E1FA</string>
 											<string>7DEFC2C41348E6A100AF896B</string>
-											<string>7DEFC2C51348E6A100AF896B</string>
 											<string>7DEFC2C71348E6A100AF896B</string>
 											<string>7DEFC2C81348E6A100AF896B</string>
 											<string>7DEFC2C91348E6A100AF896B</string>
-											<string>7DEFC2CA1348E6A100AF896B</string>
 											<string>7DEFC2CB1348E6A100AF896B</string>
 											<string>7DEFC2CC1348E6A100AF896B</string>
-											<string>7DEFC2CE1348E6A100AF896B</string>
 											<string>7DEFC3081348E95500AF896B</string>
-											<string>7DEFC3091348E95500AF896B</string>
-											<string>7DEFC30A1348E95500AF896B</string>
-											<string>7DEFC30B1348E95500AF896B</string>
+											<string>7DEFC3131348EBE700AF896B</string>
+											<string>7DEFC3161348ED5200AF896B</string>
+											<string>7DEFC3171348ED5200AF896B</string>
+											<string>7DEFC3181348ED5200AF896B</string>
+											<string>7DEFC32A1349D07D00AF896B</string>
+											<string>7DEFC32B1349D07D00AF896B</string>
+											<string>7DEFC32C1349D07D00AF896B</string>
+											<string>7DEFC3331349D1A100AF896B</string>
+											<string>7DEFC3341349D1A100AF896B</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -622,12 +623,11 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
-		<string>7DEFC3121348E9B800AF896B</string>
 		<string>7DEFC30D1348E95500AF896B</string>
 		<string>7DEFC2F41348E74C00AF896B</string>
+		<string>1C78EAAD065D492600B07095</string>
 		<string>1CD10A99069EF8BA00B06720</string>
 		<string>7D50A1CB12BBF8100039A691</string>
-		<string>1C78EAAD065D492600B07095</string>
 		<string>/Users/ndemick/iPhone/RevolveBall/RevolveBall.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
@@ -1004,7 +1004,7 @@
 			<key>WindowToolGUID</key>
 			<string>1C78EAAD065D492600B07095</string>
 			<key>WindowToolIsVisible</key>
-			<true/>
+			<false/>
 		</dict>
 		<dict>
 			<key>Identifier</key>

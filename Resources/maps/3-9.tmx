@@ -2,14 +2,14 @@
 <map version="1.0" orientation="orthogonal" width="100" height="100" tilewidth="32" tileheight="32">
  <properties>
   <property name="name" value="Go Against"/>
-  <property name="time" value="45"/>
+  <property name="time" value="60"/>
  </properties>
  <tileset firstgid="1" name="texture" tilewidth="32" tileheight="32">
   <image source="world-3-tileset.png"/>
  </tileset>
  <layer name="Border" width="100" height="100">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAA+3aAU4CMRCF4VVARe5h9P4XNJvQ2AzT0hLpm7T/l5CsoLbbYfvahW0DAOB/vFQeEfuk7NcI+/m9Z8dv14e6Hifn+eO2Rj3y4yj1eOS1Gdh6JPt78XVwX7x+HEw/VqqHrYHq3Pd2P7Ljk3ltZl4NvrJjhdI1u18rXq7Mxjv/yxavHrNfG4mdHzbneCTq4R8rMt3OSavXQ53ptbxYpR55DfYsV74nV8/yJMqcHW1toRK5Hop+qJXWWCMzPZ+TfjbqkdTyZFQfarVZQW1dNbIe3jW6WpYn6rlb3X40dgwuzvPPbv+n0JcVKffp7MtvKffp7MtvKffp7Mt9qkwly32qe+/Uw8f1EYeXo6M+uy2ttZXfq1BTrnEifQYThXKNE+F+TTTqOVzdfjTq8VC3H0kpL0Z+NpfaSffX072sFTM9X0up7leQ6X8i3K9INYj0XTCVKHN3lH6oRRmHKP1Q+o99+eH6u6VHax4rP4OJIr+H2JLl3th7GXPOjo/O33jjS6bXs9x7r9fy/bujXa9Gtk6KdbdabY6ojf3Z/Fyqn70OajWzba6YIS3nbMewNGd5Y90yV9na9vRtJl5e2LGq5cXng+221Ci1u9I+vTUvWnPB/o98/O7VridPZtWTF1bLOqt0HbTWt5YnM6qdX/5+bl3jtrg3V9WuoxXq0ZMXz9KTJzPr3V+MVMoTAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAwr19PbBGxQJwAAA==
+   H4sIAAAAAAAAA+3aDW4CIRCG4W3VttZ7GHv/CzabSErGAVmrfBN4n2QT/IVlhIFdlwUAgOd4qxwR26RsVw/r+X1m5Y/roY7HwXl+v8wRj7wcJR6PvDYCG49k/S2+d26L146dacdM8chjcF50577W+5WVD+a1kdlxUBovPZXasI4VL6+Mxjv/0xIvHqOPjcTOD4tT7ol4+GVFTrdz0uzxqOWT3m2pxWZktXWVMh4z5vIkypwdbW2hEjkeinaoldZYPXN6Pif9LMQjUe3TS/nCxmYGEfbppTE6Wy5P1HO3uv5obB+cnOd71u+VZ6Lcp7Mvv6Xcp7Mvv6Xcp7Mv96nmcHKHz645z1n51fX+OHURj/vlkeqNTLnGKa21lf+rUFOucSLdg4lCucaJcL0mGvUcrq4/GnV/qOuPpJQvet6bS/Wk6+tp/TtjTs/3GqrrFeT0PxGuV6QYRPovmEqUuTtKO9Tsufe6TnKvHV55dM/Yl++u7y0drflYeQ8mivwaYksu9/o+feaSve+YlffOZ7z+JafXc7n3W39WfvdiZOOkWHer1eaIWt8fzeNS/Ow4uCxlts4Zc0jLOds+LM1ZXl+3zFU2tlvaNhIvX9i+quWL7wfrbYlRqnemfXprvqjNMTn7HXn/3Yvdlnwyqi35wqqNm/w7vf5tjW8tn4yodn7577ml71vdm6tq42iGeGzJF6+yJZ+M7JX7i/8q5RMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADCuX2mDVNdAnAAA
   </data>
  </layer>
  <layer name="Extras" width="100" height="100">

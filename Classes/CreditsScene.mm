@@ -108,6 +108,6 @@
 - (void)moreGamesButtonAction:(id)sender
 {
 	// Go to iTunes
-	[[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://www.itunes.com/ganbarugames/"]];
+	[[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://itunes.com/apps/ganbarugames"]];
 }
 @end
