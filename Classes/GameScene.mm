@@ -442,10 +442,15 @@
 		
 		// Start playing BGM
 		if ([GameData sharedGameData].currentWorld == 0 && [GameData sharedGameData].currentLevel == 0)
-			if (![[SimpleAudioEngine sharedEngine] isBackgroundMusicPlaying])	// Start playing music if it's not already playing
+		{
+			// Start playing music if it's not already playing
+			if (![[SimpleAudioEngine sharedEngine] isBackgroundMusicPlaying])
 				[[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"level-select.mp3"];
+		}
 		else
+		{
 			[[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"gameplay.mp3"];
+		}
 
 	}
 }

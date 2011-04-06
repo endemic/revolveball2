@@ -2587,7 +2587,6 @@
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_CFLAGS = "-fvisibility=hidden";
 				PREBINDING = NO;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "998F46CF-AFA7-435C-9F52-F7ABC2334519";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -2610,7 +2609,8 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 3.2;
 				OTHER_CFLAGS = "-fvisibility=hidden";
 				PREBINDING = NO;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "B6236AE8-2A84-4239-BE03-9EDD3F6698B0";
+				PRODUCT_NAME = "Revolve Ball";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "63BB1B0B-9B3C-4A3F-A0E9-258A4CB634E6";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
