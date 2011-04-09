@@ -86,6 +86,10 @@
 	[[SimpleAudioEngine sharedEngine] preloadBackgroundMusic:@"level-select.mp3"];
 	[[SimpleAudioEngine sharedEngine] preloadBackgroundMusic:@"gameplay.mp3"];
 	
+	// Set BGM volume
+	//NSLog(@"Current background music volume: %f", [[SimpleAudioEngine sharedEngine] backgroundMusicVolume]);
+	[[SimpleAudioEngine sharedEngine] setBackgroundMusicVolume:0.75];
+	
 	//[pool release];
 }
 

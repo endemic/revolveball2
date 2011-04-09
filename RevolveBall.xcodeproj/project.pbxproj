@@ -324,6 +324,8 @@
 		7DF397C113278ADB00A93676 /* level-fail.caf in Resources */ = {isa = PBXBuildFile; fileRef = 7DF397C013278ADB00A93676 /* level-fail.caf */; };
 		7DF397DD132794AD00A93676 /* yoster-32-hd.fnt in Resources */ = {isa = PBXBuildFile; fileRef = 7DF397DB132794AD00A93676 /* yoster-32-hd.fnt */; };
 		7DF397DE132794AD00A93676 /* yoster-32-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 7DF397DC132794AD00A93676 /* yoster-32-hd.png */; };
+		7DFA89C8134DC21000F6D742 /* world-2-breakable-shard-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 7DFA89C6134DC21000F6D742 /* world-2-breakable-shard-hd.png */; };
+		7DFA89C9134DC21000F6D742 /* world-3-breakable-shard-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 7DFA89C7134DC21000F6D742 /* world-3-breakable-shard-hd.png */; };
 		7DFACC90130553300014000C /* peg-hit.caf in Resources */ = {isa = PBXBuildFile; fileRef = 7DFACC8F130553300014000C /* peg-hit.caf */; };
 		7DFB8313132107F9003B587B /* level-select-change.caf in Resources */ = {isa = PBXBuildFile; fileRef = 7DFB8312132107F9003B587B /* level-select-change.caf */; };
 		DC6640030F83B3EA000B3E49 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC6640020F83B3EA000B3E49 /* AudioToolbox.framework */; };
@@ -844,6 +846,8 @@
 		7DF397C013278ADB00A93676 /* level-fail.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "level-fail.caf"; path = "sounds/caf/level-fail.caf"; sourceTree = "<group>"; };
 		7DF397DB132794AD00A93676 /* yoster-32-hd.fnt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = "yoster-32-hd.fnt"; path = "fonts/yoster-32-hd.fnt"; sourceTree = "<group>"; };
 		7DF397DC132794AD00A93676 /* yoster-32-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "yoster-32-hd.png"; path = "fonts/yoster-32-hd.png"; sourceTree = "<group>"; };
+		7DFA89C6134DC21000F6D742 /* world-2-breakable-shard-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "world-2-breakable-shard-hd.png"; path = "images/world-2-breakable-shard-hd.png"; sourceTree = "<group>"; };
+		7DFA89C7134DC21000F6D742 /* world-3-breakable-shard-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "world-3-breakable-shard-hd.png"; path = "images/world-3-breakable-shard-hd.png"; sourceTree = "<group>"; };
 		7DFACC8F130553300014000C /* peg-hit.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "peg-hit.caf"; path = "sounds/caf/peg-hit.caf"; sourceTree = "<group>"; };
 		7DFB8312132107F9003B587B /* level-select-change.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "level-select-change.caf"; path = "sounds/caf/level-select-change.caf"; sourceTree = "<group>"; };
 		DC6640020F83B3EA000B3E49 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
@@ -1464,29 +1468,35 @@
 		7D50A1F712BBF8EA0039A691 /* images */ = {
 			isa = PBXGroup;
 			children = (
-				7DE39A841333717C001DD4AA /* world-3-breakable-shard.png */,
-				7DE39A851333717C001DD4AA /* world-2-breakable-shard.png */,
 				7D2BD5F912F8A83E00D0DA53 /* buttons */,
-				7D93C0C0131FBB6E00D44DE5 /* background-0-hd.png */,
+				7D1FAF57130159AC0076BFFB /* level-connector.png */,
 				7D93C0C1131FBB6E00D44DE5 /* level-connector-hd.png */,
+				7DAE6EA712F96E150025901B /* level-icon.png */,
 				7D93C0C2131FBB6E00D44DE5 /* level-icon-hd.png */,
+				7D50A21812BBF9590039A691 /* logo.png */,
 				7D93C0C3131FBB6E00D44DE5 /* logo-hd.png */,
-				7D93C0C4131FBB6E00D44DE5 /* world-0-tileset-hd.png */,
+				7D93C08B131FB6B400D44DE5 /* world-1-breakable-shard.png */,
 				7D93C0C5131FBB6E00D44DE5 /* world-1-breakable-shard-hd.png */,
+				7DE39A851333717C001DD4AA /* world-2-breakable-shard.png */,
+				7DFA89C6134DC21000F6D742 /* world-2-breakable-shard-hd.png */,
+				7DE39A841333717C001DD4AA /* world-3-breakable-shard.png */,
+				7DFA89C7134DC21000F6D742 /* world-3-breakable-shard-hd.png */,
+				7D49FC6313199D670082FFCE /* world-4-breakable-shard.png */,
+				7D93C0C9131FBB6E00D44DE5 /* world-4-breakable-shard-hd.png */,
+				7D93C0C4131FBB6E00D44DE5 /* world-0-tileset-hd.png */,
 				7D93C0C6131FBB6E00D44DE5 /* world-1-tileset-hd.png */,
 				7D93C0C7131FBB6E00D44DE5 /* world-2-tileset-hd.png */,
 				7D93C0C8131FBB6E00D44DE5 /* world-3-tileset-hd.png */,
-				7D93C0C9131FBB6E00D44DE5 /* world-4-breakable-shard-hd.png */,
 				7D93C0CA131FBB6E00D44DE5 /* world-4-tileset-hd.png */,
 				7D93C092131FB71700D44DE5 /* world-0-tileset.png */,
 				7D93C093131FB71700D44DE5 /* world-1-tileset.png */,
 				7D93C094131FB71700D44DE5 /* world-2-tileset.png */,
 				7D93C095131FB71700D44DE5 /* world-3-tileset.png */,
 				7D93C096131FB71700D44DE5 /* world-4-tileset.png */,
-				7D93C08B131FB6B400D44DE5 /* world-1-breakable-shard.png */,
-				7D49FC6313199D670082FFCE /* world-4-breakable-shard.png */,
 				7D52A49012D367270046E86C /* title-background-hd.png */,
 				7D52A49112D367270046E86C /* title-background.png */,
+				7D50A21512BBF9590039A691 /* background-0.png */,
+				7D93C0C0131FBB6E00D44DE5 /* background-0-hd.png */,
 				7D50A1FD12BBF9590039A691 /* background-1-hd.png */,
 				7D50A1FE12BBF9590039A691 /* background-1.png */,
 				7D50A1FF12BBF9590039A691 /* background-2-hd.png */,
@@ -1495,12 +1505,8 @@
 				7D50A20212BBF9590039A691 /* background-3.png */,
 				7D50A20312BBF9590039A691 /* background-4-hd.png */,
 				7D50A20412BBF9590039A691 /* background-4.png */,
-				7D50A20512BBF9590039A691 /* ball-hd.png */,
 				7D50A20612BBF9590039A691 /* ball.png */,
-				7D50A21512BBF9590039A691 /* background-0.png */,
-				7D1FAF57130159AC0076BFFB /* level-connector.png */,
-				7DAE6EA712F96E150025901B /* level-icon.png */,
-				7D50A21812BBF9590039A691 /* logo.png */,
+				7D50A20512BBF9590039A691 /* ball-hd.png */,
 			);
 			name = images;
 			sourceTree = "<group>";
@@ -2254,6 +2260,8 @@
 				7DEFC2B5134732E100AF896B /* more-games-button.png in Resources */,
 				7DEFC2B6134732E100AF896B /* wide-back-button-selected.png in Resources */,
 				7DEFC2B7134732E100AF896B /* wide-back-button.png in Resources */,
+				7DFA89C8134DC21000F6D742 /* world-2-breakable-shard-hd.png in Resources */,
+				7DFA89C9134DC21000F6D742 /* world-3-breakable-shard-hd.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2521,7 +2529,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 3.0;
 				OTHER_CFLAGS = "-fvisibility=hidden";
 				PREBINDING = NO;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "5FF8A9D4-0CB5-4EDE-A92D-DDC506DDBDA6";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "C6C9F302-C77D-4A96-9CA8-506B8E207C22";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -2609,7 +2617,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 3.2;
 				OTHER_CFLAGS = "-fvisibility=hidden";
 				PREBINDING = NO;
-				PRODUCT_NAME = "Revolve Ball";
+				PRODUCT_NAME = RevolveBall;
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "63BB1B0B-9B3C-4A3F-A0E9-258A4CB634E6";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
