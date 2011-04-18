@@ -25,6 +25,7 @@
 
 - (void)backButtonAction:(id)sender;
 - (void)playButtonAction:(id)sender;
+- (void)leaderboardButtonAction:(id)sender;
 - (void)moveLevelSelectCursor:(int)destination;
 - (void)drawBridges;
 - (void)displayLevelInfo;

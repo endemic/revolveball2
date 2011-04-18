@@ -9,6 +9,7 @@
 #import "LevelSelectScene.h"
 #import "GameScene.h"
 #import "GameData.h"
+#import "GameCenterManager.h"
 
 #import "CocosDenshion.h"
 #import "SimpleAudioEngine.h"
@@ -75,8 +76,10 @@
 		
 		// Add "back" button
 		CCMenuItemImage *backButton = [CCMenuItemImage itemFromNormalImage:[NSString stringWithFormat:@"back-button%@.png", hdSuffix] selectedImage:[NSString stringWithFormat:@"back-button-selected%@.png", hdSuffix] target:self selector:@selector(backButtonAction:)];
-		CCMenu *backButtonMenu = [CCMenu menuWithItems:backButton, nil];
+		CCMenuItemImage *leaderboardButton = [CCMenuItemImage itemFromNormalImage:[NSString stringWithFormat:@"back-button%@.png", hdSuffix] selectedImage:[NSString stringWithFormat:@"back-button-selected%@.png", hdSuffix] target:self selector:@selector(leaderboardButtonAction:)];
+		CCMenu *backButtonMenu = [CCMenu menuWithItems:backButton, leaderboardButton, nil];
 		[backButtonMenu setPosition:ccp(backButton.contentSize.width / 1.5, windowSize.height - backButton.contentSize.height)];
+		[backButtonMenu alignItemsHorizontally];
 		[self addChild:backButtonMenu];
 		
 		// Add "play" button
@@ -214,6 +217,14 @@
 	
 	// Stop the BGM
 	[[SimpleAudioEngine sharedEngine] stopBackgroundMusic];
+}
+
+- (void)leaderboardButtonAction:(id)sender
+{
+	// Determine the currently selected level
+	
+	// Show leaderboard
+	[[GameCenterManager sharedGameCenterManager] showLeaderboardForCategory:@"com.ganbarugames.revolveball.1_1"];
 }
 
 - (void)moveLevelSelectCursor:(int)destination

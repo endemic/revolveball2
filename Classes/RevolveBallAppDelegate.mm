@@ -11,12 +11,10 @@
 #import "RevolveBallAppDelegate.h"
 #import "GameConfig.h"
 #import "TitleScene.h"
-#import "LevelSelectScene.h"
-#import "CrossPromoScene.h"
-#import "CreditsScene.h"
 #import "RootViewController.h"
 
 #import "Appirater.h"
+#import "GameCenterManager.h"
 
 @implementation RevolveBallAppDelegate
 
@@ -123,6 +121,12 @@
 	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
 	[defaults registerDefaults:[NSDictionary dictionaryWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"UserDefaults" ofType:@"plist"]]];
 	
+	// Load any serialized Game Center data
+	[GameCenterManager loadState];
+	
+	// Try to authenticate local player; API check is built in
+	[[GameCenterManager sharedGameCenterManager] authenticateLocalPlayer];
+	
 	// Run the intro Scene
 	[[CCDirector sharedDirector] runWithScene: [TitleScene node]];		
 }
@@ -152,6 +156,8 @@
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {
+	[GameCenterManager saveState];
+	
 	CCDirector *director = [CCDirector sharedDirector];
 	
 	[[director openGLView] removeFromSuperview];

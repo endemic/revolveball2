@@ -5,7 +5,6 @@
 //  Created by Nathan Demick on 10/14/10.
 //  Copyright 2010 Ganbaru Games. All rights reserved.
 //
-
 #import "TitleScene.h"
 #import "GameScene.h"
 #import "GameData.h"
@@ -14,6 +13,7 @@
 #import "SimpleAudioEngine.h"
 
 #import "Appirater.h"
+#import "GameCenterManager.h"
 
 @implementation TitleScene
 - (id)init

@@ -10,6 +10,8 @@
 #import "LevelSelectScene.h"
 #import "CreditsScene.h"
 #import "GameData.h"
+#import "GameCenterManager.h"
+
 #import "math.h"
 #import <vector>	// Easy data structure to store Box2D bodies
 
@@ -860,6 +862,9 @@
 		bestSavedTime = currentTime;	// for display below
 		//NSLog(@"Setting new best time for level %i as %@", currentLevelIndex + 1, [[[NSUserDefaults standardUserDefaults] arrayForKey:@"levelData"] objectAtIndex:currentLevelIndex]);
 	}
+	
+	// Send time to Game Center leaderboards
+	[[GameCenterManager sharedGameCenterManager] reportScore:currentTime forCategory:@"com.ganbarugames.revolveball.1_1"];
 	
 	// Get window size
 	CGSize windowSize = [CCDirector sharedDirector].winSize;

@@ -142,6 +142,7 @@
 		7D1129E4131BC07A00DC7727 /* level-complete.caf in Resources */ = {isa = PBXBuildFile; fileRef = 7D1129E3131BC07A00DC7727 /* level-complete.caf */; };
 		7D15DFD913143BD7003CF95B /* 3-9.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 7D15DFD613143BD7003CF95B /* 3-9.tmx */; };
 		7D15DFDA13143BD7003CF95B /* 3-10.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 7D15DFD713143BD7003CF95B /* 3-10.tmx */; };
+		7D1E4E4B1359A7AD004BDC31 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D1E4E151359A302004BDC31 /* GameKit.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		7D1FAF58130159AC0076BFFB /* level-connector.png in Resources */ = {isa = PBXBuildFile; fileRef = 7D1FAF57130159AC0076BFFB /* level-connector.png */; };
 		7D2BD5FF12F8A85000D0DA53 /* back-button-selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 7D2BD5FA12F8A85000D0DA53 /* back-button-selected.png */; };
 		7D2BD60012F8A85000D0DA53 /* back-button.png in Resources */ = {isa = PBXBuildFile; fileRef = 7D2BD5FB12F8A85000D0DA53 /* back-button.png */; };
@@ -287,6 +288,7 @@
 		7DCC4F591315242E00BF4962 /* 4-1.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 7DCC4F561315242E00BF4962 /* 4-1.tmx */; };
 		7DCC4F5A1315242E00BF4962 /* 4-2.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 7DCC4F571315242E00BF4962 /* 4-2.tmx */; };
 		7DCC4F5B1315242E00BF4962 /* 4-3.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 7DCC4F581315242E00BF4962 /* 4-3.tmx */; };
+		7DCD2408135AF7910011C0A8 /* GameCenterManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DCD2407135AF7910011C0A8 /* GameCenterManager.m */; };
 		7DE39A861333717C001DD4AA /* world-3-breakable-shard.png in Resources */ = {isa = PBXBuildFile; fileRef = 7DE39A841333717C001DD4AA /* world-3-breakable-shard.png */; };
 		7DE39A871333717C001DD4AA /* world-2-breakable-shard.png in Resources */ = {isa = PBXBuildFile; fileRef = 7DE39A851333717C001DD4AA /* world-2-breakable-shard.png */; };
 		7DE41D6012C30AA700F9B4DE /* 1-9.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 7DE41D5D12C30AA700F9B4DE /* 1-9.tmx */; };
@@ -655,6 +657,7 @@
 		7D1129E3131BC07A00DC7727 /* level-complete.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "level-complete.caf"; path = "sounds/caf/level-complete.caf"; sourceTree = "<group>"; };
 		7D15DFD613143BD7003CF95B /* 3-9.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = "3-9.tmx"; path = "maps/3-9.tmx"; sourceTree = "<group>"; };
 		7D15DFD713143BD7003CF95B /* 3-10.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = "3-10.tmx"; path = "maps/3-10.tmx"; sourceTree = "<group>"; };
+		7D1E4E151359A302004BDC31 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
 		7D1FAF57130159AC0076BFFB /* level-connector.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "level-connector.png"; path = "images/level-connector.png"; sourceTree = "<group>"; };
 		7D2BD5FA12F8A85000D0DA53 /* back-button-selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "back-button-selected.png"; path = "images/buttons/back-button-selected.png"; sourceTree = "<group>"; };
 		7D2BD5FB12F8A85000D0DA53 /* back-button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "back-button.png"; path = "images/buttons/back-button.png"; sourceTree = "<group>"; };
@@ -808,6 +811,8 @@
 		7DCC4F561315242E00BF4962 /* 4-1.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = "4-1.tmx"; path = "maps/4-1.tmx"; sourceTree = "<group>"; };
 		7DCC4F571315242E00BF4962 /* 4-2.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = "4-2.tmx"; path = "maps/4-2.tmx"; sourceTree = "<group>"; };
 		7DCC4F581315242E00BF4962 /* 4-3.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = "4-3.tmx"; path = "maps/4-3.tmx"; sourceTree = "<group>"; };
+		7DCD2406135AF7910011C0A8 /* GameCenterManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameCenterManager.h; sourceTree = "<group>"; };
+		7DCD2407135AF7910011C0A8 /* GameCenterManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameCenterManager.m; sourceTree = "<group>"; };
 		7DE39A841333717C001DD4AA /* world-3-breakable-shard.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "world-3-breakable-shard.png"; path = "images/world-3-breakable-shard.png"; sourceTree = "<group>"; };
 		7DE39A851333717C001DD4AA /* world-2-breakable-shard.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "world-2-breakable-shard.png"; path = "images/world-2-breakable-shard.png"; sourceTree = "<group>"; };
 		7DE41D5D12C30AA700F9B4DE /* 1-9.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = "1-9.tmx"; path = "maps/1-9.tmx"; sourceTree = "<group>"; };
@@ -1051,6 +1056,7 @@
 				506EDBA5102F4C9F00A389B3 /* AVFoundation.framework in Frameworks */,
 				506EE1A91030508200A389B3 /* libcocos2d libraries.a in Frameworks */,
 				7DA6B5D3132F7C4C005AF6A2 /* SystemConfiguration.framework in Frameworks */,
+				7D1E4E4B1359A7AD004BDC31 /* GameKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1118,6 +1124,7 @@
 				506EDB87102F4C4000A389B3 /* libz.dylib */,
 				506EDBA4102F4C9F00A389B3 /* AVFoundation.framework */,
 				7DA6B5D2132F7C4C005AF6A2 /* SystemConfiguration.framework */,
+				7D1E4E151359A302004BDC31 /* GameKit.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -1147,6 +1154,8 @@
 				7DC87560130DC6420080847F /* CrossPromoScene.mm */,
 				7DE8D7F41344895C004C8EC2 /* CreditsScene.h */,
 				7DE8D7F51344895C004C8EC2 /* CreditsScene.mm */,
+				7DCD2406135AF7910011C0A8 /* GameCenterManager.h */,
+				7DCD2407135AF7910011C0A8 /* GameCenterManager.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -2283,6 +2292,7 @@
 				7DC87561130DC6420080847F /* CrossPromoScene.mm in Sources */,
 				7DA6B5BB132F7898005AF6A2 /* Appirater.m in Sources */,
 				7DE8D7F61344895C004C8EC2 /* CreditsScene.mm in Sources */,
+				7DCD2408135AF7910011C0A8 /* GameCenterManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
