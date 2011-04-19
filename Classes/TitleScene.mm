@@ -40,23 +40,32 @@
 		if ([GameData sharedGameData].isTablet) hdSuffix = @"-hd";
 		else hdSuffix = @"";
 		
-		CCSprite *background = [CCSprite spriteWithFile:[NSString stringWithFormat:@"title-background%@.png", hdSuffix]];
+		CCSprite *background = [CCSprite spriteWithFile:[NSString stringWithFormat:@"background-0%@.png", hdSuffix]];
 		[background setPosition:ccp(windowSize.width / 2, windowSize.height / 2)];
 		[self addChild:background z:0];
 		
+		
+		CCSprite *logo = [CCSprite spriteWithFile:[NSString stringWithFormat:@"logo%@.png", hdSuffix]];
+		[logo setPosition:ccp(windowSize.width / 2, windowSize.height - logo.contentSize.height / 1.5)];
+		[self addChild:logo z:0];
+		
 		// Add button which takes us to game scene
 		CCMenuItem *startButton = [CCMenuItemImage itemFromNormalImage:[NSString stringWithFormat:@"start-button%@.png", hdSuffix] selectedImage:[NSString stringWithFormat:@"start-button-selected%@.png", hdSuffix] target:self selector:@selector(startGame:)];
-
 		CCMenu *titleMenu = [CCMenu menuWithItems:startButton, nil];
-		[titleMenu setPosition:ccp(windowSize.width / 2, windowSize.height / 10)];
+		[titleMenu setPosition:ccp(windowSize.width / 2, windowSize.height / 8)];
 		[self addChild:titleMenu z:1];
-
-		// Set audio mixer rate to lower level
-		[CDSoundEngine setMixerSampleRate:CD_SAMPLE_RATE_MID];
 		
+		// Add copyright text
+		CCLabelBMFont *copyright = [CCLabelBMFont labelWithString:@"(c)2011 Ganbaru Games" fntFile:[NSString stringWithFormat:@"munro-small-20%@.fnt", hdSuffix]];
+		[copyright setPosition:ccp(windowSize.width / 2, copyright.contentSize.height)];
+		[self addChild:copyright];
+				
 		[self preloadAudio];
 		
 		//[self performSelectorInBackground:@selector(preloadAudio) withObject:nil];
+		
+		// Try to authenticate local player; API check is built in
+		[[GameCenterManager sharedGameCenterManager] authenticateLocalPlayer];
 		
 		// If the player has completed the game, prompt them to rate the game
 		if ([[NSUserDefaults standardUserDefaults] boolForKey:@"completedGame"] == YES)
@@ -69,6 +78,9 @@
 {
 	// Info about running this method in background: http://stackoverflow.com/questions/2441856/iphone-sdk-leaking-memory-with-performselectorinbackground
 	//NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
+	
+	// Set audio mixer rate to lower level
+	[CDSoundEngine setMixerSampleRate:CD_SAMPLE_RATE_MID];
 	
 	// Preload some SFX
 	[[SimpleAudioEngine sharedEngine] preloadEffect:@"button-press.caf"];

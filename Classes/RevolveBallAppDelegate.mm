@@ -10,7 +10,7 @@
 
 #import "RevolveBallAppDelegate.h"
 #import "GameConfig.h"
-#import "TitleScene.h"
+#import "LogoScene.h"
 #import "RootViewController.h"
 
 #import "Appirater.h"
@@ -124,11 +124,8 @@
 	// Load any serialized Game Center data
 	[GameCenterManager loadState];
 	
-	// Try to authenticate local player; API check is built in
-	[[GameCenterManager sharedGameCenterManager] authenticateLocalPlayer];
-	
 	// Run the intro Scene
-	[[CCDirector sharedDirector] runWithScene: [TitleScene node]];		
+	[[CCDirector sharedDirector] runWithScene: [LogoScene scene]];
 }
 
 

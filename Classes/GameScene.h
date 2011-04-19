@@ -46,7 +46,10 @@
 	int countdownTime;
 	
 	// Determines whether or not user input is taken
-	bool levelComplete;
+	BOOL levelComplete;
+	
+	// Pretty self-explanatory
+	BOOL paused;
 	
 	// Base size of Box2D objects; doubles on iPad/iPhone 4 Retina Display
 	int ptmRatio;

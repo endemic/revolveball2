@@ -100,6 +100,7 @@
 		
 		// boolean for completing the level
 		levelComplete = NO;
+		paused = NO;
 		
 		// Enable touches/accelerometer
 		[self setIsTouchEnabled:YES];
@@ -119,6 +120,12 @@
 		[background setPosition:ccp(winSize.width / 2, winSize.height / 2)];
 		[background.texture setAliasTexParameters];
 		[self addChild:background z:0];
+		
+		// Set up pause button
+		CCMenuItem *pauseButton = [CCMenuItemImage itemFromNormalImage:[NSString stringWithFormat:@"pause-button%@.png", hdSuffix] selectedImage:[NSString stringWithFormat:@"pause-button%@.png", hdSuffix] target:self selector:@selector(pauseButtonAction:)];
+		CCMenu *pauseMenu = [CCMenu menuWithItems:pauseButton, nil];
+		[pauseMenu setPosition:ccp(pauseButton.contentSize.width / 1.5, winSize.height - pauseButton.contentSize.height / 1.5)];
+		[self addChild:pauseMenu z:2];
 		
 		// Create map obj and add to layer
 		map = [CCTMXTiledMap tiledMapWithTMXFile:[NSString stringWithFormat:@"%i-%i%@.tmx", [GameData sharedGameData].currentWorld, [GameData sharedGameData].currentLevel, hdSuffix]];
@@ -845,7 +852,8 @@
 	// Stop the BGM
 	[[SimpleAudioEngine sharedEngine] stopBackgroundMusic];
 	
-	int currentLevelIndex = (([GameData sharedGameData].currentWorld - 1) * 10) + [GameData sharedGameData].currentLevel - 1;
+	int currentWorldIndex = ([GameData sharedGameData].currentWorld - 1) * 10;
+	int currentLevelIndex = currentWorldIndex + [GameData sharedGameData].currentLevel - 1;
 	
 	// Get best time from user defaults
 	NSMutableArray *levelData = [NSMutableArray arrayWithArray:[[NSUserDefaults standardUserDefaults] arrayForKey:@"levelData"]];
@@ -860,11 +868,33 @@
 		[levelData replaceObjectAtIndex:currentLevelIndex withObject:d];
 		[[NSUserDefaults standardUserDefaults] setObject:levelData forKey:@"levelData"];
 		bestSavedTime = currentTime;	// for display below
-		//NSLog(@"Setting new best time for level %i as %@", currentLevelIndex + 1, [[[NSUserDefaults standardUserDefaults] arrayForKey:@"levelData"] objectAtIndex:currentLevelIndex]);
+		
+		int bestWorldTime = 0;
+		BOOL sendScore = YES;
+		// Determine if composite time for the entire world can be sent to Game Center
+		for (int i = currentWorldIndex, j = currentWorldIndex + 10; i < j; i++)
+		{
+			d = [levelData objectAtIndex:i];
+			if ([[d objectForKey:@"complete"] boolValue])
+				bestWorldTime += [[d objectForKey:@"bestTime"] intValue];
+			else
+			{
+				sendScore = NO;
+				break;
+			}
+		}
+		
+		if (sendScore)
+		{
+			// Determine the currently selected world
+			NSString *leaderboardCategory = [NSString stringWithFormat:@"com.ganbarugames.revolveball.world_%i", [GameData sharedGameData].currentWorld];
+			
+			// Send time to Game Center leaderboards
+			[[GameCenterManager sharedGameCenterManager] reportScore:bestWorldTime forCategory:leaderboardCategory];
+			
+			NSLog(@"Sending best world time of %i", bestWorldTime);
+		}
 	}
-	
-	// Send time to Game Center leaderboards
-	[[GameCenterManager sharedGameCenterManager] reportScore:currentTime forCategory:@"com.ganbarugames.revolveball.1_1"];
 	
 	// Get window size
 	CGSize windowSize = [CCDirector sharedDirector].winSize;
@@ -1288,6 +1318,26 @@
 	// Reload the same scene/level
 	CCTransitionRotoZoom *transition = [CCTransitionRotoZoom transitionWithDuration:1.0 scene:[LevelSelectScene node]];
 	[[CCDirector sharedDirector] replaceScene:transition];
+}
+
+- (void)pauseButtonAction:(id)sender
+{
+	if (paused)
+	{
+		// Schedule regular game loop
+		[self schedule:@selector(update:)];
+		
+		// Schedule timer method for 1 second intervals
+		[self schedule:@selector(timer:) interval:1];
+		paused = NO;
+	}
+	else 
+	{
+		// Unschedule the game loop & timer methods
+		[self unschedule:@selector(update:)];
+		[self unschedule:@selector(timer:)];
+		paused = YES;
+	}
 }
 
 /**

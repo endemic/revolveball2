@@ -221,10 +221,14 @@
 
 - (void)leaderboardButtonAction:(id)sender
 {
-	// Determine the currently selected level
+	// Play SFX
+	[[SimpleAudioEngine sharedEngine] playEffect:@"button-press.caf"];
+	
+	// Determine the currently selected world
+	NSString *leaderboardCategory = [NSString stringWithFormat:@"com.ganbarugames.revolveball.world_%i", [GameData sharedGameData].currentWorld];
 	
 	// Show leaderboard
-	[[GameCenterManager sharedGameCenterManager] showLeaderboardForCategory:@"com.ganbarugames.revolveball.1_1"];
+	[[GameCenterManager sharedGameCenterManager] showLeaderboardForCategory:leaderboardCategory];
 }
 
 - (void)moveLevelSelectCursor:(int)destination
