@@ -74,13 +74,17 @@
 		[background.texture setAliasTexParameters];
 		[self addChild:background z:0];
 		
-		// Add "back" button
+		// Add "back" and "leaderboard" buttons
 		CCMenuItemImage *backButton = [CCMenuItemImage itemFromNormalImage:[NSString stringWithFormat:@"back-button%@.png", hdSuffix] selectedImage:[NSString stringWithFormat:@"back-button-selected%@.png", hdSuffix] target:self selector:@selector(backButtonAction:)];
-		CCMenuItemImage *leaderboardButton = [CCMenuItemImage itemFromNormalImage:[NSString stringWithFormat:@"back-button%@.png", hdSuffix] selectedImage:[NSString stringWithFormat:@"back-button-selected%@.png", hdSuffix] target:self selector:@selector(leaderboardButtonAction:)];
+		CCMenuItemImage *leaderboardButton = [CCMenuItemImage itemFromNormalImage:[NSString stringWithFormat:@"leaderboards-button%@.png", hdSuffix] selectedImage:[NSString stringWithFormat:@"leaderboards-button-selected%@.png", hdSuffix] target:self selector:@selector(leaderboardButtonAction:)];
 		CCMenu *backButtonMenu = [CCMenu menuWithItems:backButton, leaderboardButton, nil];
-		[backButtonMenu setPosition:ccp(backButton.contentSize.width / 1.5, windowSize.height - backButton.contentSize.height)];
-		[backButtonMenu alignItemsHorizontally];
+		[backButtonMenu setPosition:ccp(windowSize.width / 2, windowSize.height - backButton.contentSize.height)];
+		[backButtonMenu alignItemsHorizontallyWithPadding:backButton.contentSize.width / 1.5];
 		[self addChild:backButtonMenu];
+		
+		// Hide the leaderboards button if no Game Center
+		if (![[GameCenterManager sharedGameCenterManager] hasGameCenter])
+			leaderboardButton.visible = NO;
 		
 		// Add "play" button
 		CCMenuItemImage *playButton = [CCMenuItemImage itemFromNormalImage:[NSString stringWithFormat:@"start-button%@.png", hdSuffix] selectedImage:[NSString stringWithFormat:@"start-button-selected%@.png", hdSuffix] target:self selector:@selector(playButtonAction:)];

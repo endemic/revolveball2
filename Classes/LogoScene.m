@@ -35,7 +35,7 @@
 		
 		// This string gets appended onto all image filenames based on whether the game is on iPad or not
 		NSString *hdSuffix;
-		if ([GameData sharedGameData].isTablet) hdSuffix = @"-hd";
+		if ([GameData sharedGameData].isTablet) hdSuffix = @"-Portrait";
 		else hdSuffix = @"";
 		
 		CCSprite *logo = [CCSprite spriteWithFile:[NSString stringWithFormat:@"Default%@.png", hdSuffix]];

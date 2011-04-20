@@ -1322,6 +1322,9 @@
 
 - (void)pauseButtonAction:(id)sender
 {
+	// Play SFX
+	[[SimpleAudioEngine sharedEngine] playEffect:@"button-press.caf"];
+	
 	if (paused)
 	{
 		// Schedule regular game loop
@@ -1337,6 +1340,8 @@
 		[self unschedule:@selector(update:)];
 		[self unschedule:@selector(timer:)];
 		paused = YES;
+		
+		// Show pause overlay
 	}
 }
 
