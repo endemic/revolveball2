@@ -50,6 +50,7 @@
 	
 	// Pretty self-explanatory
 	BOOL paused;
+	CCSprite *pauseOverlay;
 	
 	// Base size of Box2D objects; doubles on iPad/iPhone 4 Retina Display
 	int ptmRatio;

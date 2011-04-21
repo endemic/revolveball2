@@ -125,7 +125,24 @@
 		CCMenuItem *pauseButton = [CCMenuItemImage itemFromNormalImage:[NSString stringWithFormat:@"pause-button%@.png", hdSuffix] selectedImage:[NSString stringWithFormat:@"pause-button%@.png", hdSuffix] target:self selector:@selector(pauseButtonAction:)];
 		CCMenu *pauseMenu = [CCMenu menuWithItems:pauseButton, nil];
 		[pauseMenu setPosition:ccp(pauseButton.contentSize.width / 1.5, winSize.height - pauseButton.contentSize.height / 1.5)];
-		[self addChild:pauseMenu z:2];
+		
+		// Don't add the pause button if on the level select screen
+		if ([GameData sharedGameData].currentWorld != 0 && [GameData sharedGameData].currentLevel != 0)
+			[self addChild:pauseMenu z:4];
+		
+		// Create pause overlay
+		pauseOverlay = [CCSprite spriteWithFile:[NSString stringWithFormat:@"pause-overlay%@.png", hdSuffix]];
+		[pauseOverlay setPosition:ccp(winSize.width / 2, winSize.height + pauseOverlay.contentSize.height / 2)];
+		CCLabelBMFont *pauseText = [CCLabelBMFont labelWithString:@"PAUSED" fntFile:[NSString stringWithFormat:@"yoster-48%@.fnt", hdSuffix]];
+		[pauseText setPosition:ccp(pauseOverlay.contentSize.width / 2, pauseOverlay.contentSize.height / 1.5)];
+		[pauseOverlay addChild:pauseText];
+		CCMenuItem *pauseRetryButton = [CCMenuItemImage itemFromNormalImage:[NSString stringWithFormat:@"retry-button%@.png", hdSuffix] selectedImage:[NSString stringWithFormat:@"retry-button-selected%@.png", hdSuffix] target:self selector:@selector(retryButtonAction:)];
+		CCMenuItem *pauseQuitButton = [CCMenuItemImage itemFromNormalImage:[NSString stringWithFormat:@"quit-button%@.png", hdSuffix] selectedImage:[NSString stringWithFormat:@"quit-button-selected%@.png", hdSuffix] target:self selector:@selector(backButtonAction:)];
+		CCMenu *pauseOverlayMenu = [CCMenu menuWithItems:pauseRetryButton, pauseQuitButton, nil];
+		[pauseOverlayMenu alignItemsVertically];
+		[pauseOverlayMenu setPosition:ccp(pauseOverlay.contentSize.width / 2, pauseText.position.y - pauseText.contentSize.height * 2)];
+		[pauseOverlay addChild:pauseOverlayMenu];
+		[self addChild:pauseOverlay z:3];
 		
 		// Create map obj and add to layer
 		map = [CCTMXTiledMap tiledMapWithTMXFile:[NSString stringWithFormat:@"%i-%i%@.tmx", [GameData sharedGameData].currentWorld, [GameData sharedGameData].currentLevel, hdSuffix]];
@@ -1315,7 +1332,10 @@
 	// Play SFX
 	[[SimpleAudioEngine sharedEngine] playEffect:@"button-press.caf"];
 	
-	// Reload the same scene/level
+	// Stop the background music, if playing
+	[[SimpleAudioEngine sharedEngine] stopBackgroundMusic];
+	
+	// Load the level select screen
 	CCTransitionRotoZoom *transition = [CCTransitionRotoZoom transitionWithDuration:1.0 scene:[LevelSelectScene node]];
 	[[CCDirector sharedDirector] replaceScene:transition];
 }
@@ -1324,6 +1344,7 @@
 {
 	// Play SFX
 	[[SimpleAudioEngine sharedEngine] playEffect:@"button-press.caf"];
+	CGSize windowSize = [CCDirector sharedDirector].winSize;
 	
 	if (paused)
 	{
@@ -1333,6 +1354,10 @@
 		// Schedule timer method for 1 second intervals
 		[self schedule:@selector(timer:) interval:1];
 		paused = NO;
+		
+		// Hide pause overlay
+		id action = [CCEaseBounce actionWithAction:[CCMoveTo actionWithDuration:0.1 position:ccp(windowSize.width / 2, windowSize.height + pauseOverlay.contentSize.height / 2)]];
+		[pauseOverlay runAction:action];
 	}
 	else 
 	{
@@ -1342,6 +1367,8 @@
 		paused = YES;
 		
 		// Show pause overlay
+		id action = [CCEaseBounce actionWithAction:[CCMoveTo actionWithDuration:0.1 position:ccp(windowSize.width / 2, windowSize.height / 2)]];
+		[pauseOverlay runAction:action];
 	}
 }
 

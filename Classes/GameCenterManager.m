@@ -25,10 +25,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(GameCenterManager);
 		if ([self isGameCenterAPIAvailable])
 			hasGameCenter = YES;
 		else
-			hasGameCenter = NO;
-		
-		// If unsent scores array has length > 0, try to send scores here
-		
+			hasGameCenter = NO;		
 	}
 	return self;
 }
@@ -55,6 +52,25 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(GameCenterManager);
 			if (localPlayer.isAuthenticated)
 			{
 				// Perform additional tasks for the authenticated player
+				
+				// If unsent scores array has length > 0, try to send saved scores here
+				if ([unsentScores count] > 0)
+				{
+					for (int i = 0; i < [unsentScores count]; i++)
+					{
+						[[unsentScores objectAtIndex:i] reportScoreWithCompletionHandler:^(NSError *error) {
+							if (error != nil)
+							{
+								// If there's an error reporting the score (again!), leave the score in the array
+							}
+							else
+							{
+								// If success, remove that index
+								[unsentScores removeObjectAtIndex:i];
+							}
+						}];
+					}
+				}
 			}
 			else
 			{
@@ -76,7 +92,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(GameCenterManager);
 			if (error != nil)
 			{
 				// Handle reporting error here by adding object to a serializable array, to be sent again later
-				//[unsentScores addObject:scoreReporter];
+				[unsentScores addObject:scoreReporter];
 				
 				NSLog(@"Error sending score!");
 			}
