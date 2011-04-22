@@ -104,7 +104,7 @@
 		
 		// Enable touches/accelerometer
 		[self setIsTouchEnabled:YES];
-		//[self setIsAccelerometerEnabled:YES];		// Currently gravity is not set up to use accelerometer
+		[self setIsAccelerometerEnabled:YES];		// Currently gravity is not set up to use accelerometer
 		
 		// Get window size
 		CGSize winSize = [CCDirector sharedDirector].winSize;
@@ -124,7 +124,7 @@
 		// Set up pause button
 		CCMenuItem *pauseButton = [CCMenuItemImage itemFromNormalImage:[NSString stringWithFormat:@"pause-button%@.png", hdSuffix] selectedImage:[NSString stringWithFormat:@"pause-button%@.png", hdSuffix] target:self selector:@selector(pauseButtonAction:)];
 		CCMenu *pauseMenu = [CCMenu menuWithItems:pauseButton, nil];
-		[pauseMenu setPosition:ccp(pauseButton.contentSize.width / 1.5, winSize.height - pauseButton.contentSize.height / 1.5)];
+		[pauseMenu setPosition:ccp(pauseButton.contentSize.width, winSize.height - pauseButton.contentSize.height)];
 		
 		// Don't add the pause button if on the level select screen
 		if ([GameData sharedGameData].currentWorld != 0 && [GameData sharedGameData].currentLevel != 0)
@@ -142,7 +142,14 @@
 		[pauseOverlayMenu alignItemsVertically];
 		[pauseOverlayMenu setPosition:ccp(pauseOverlay.contentSize.width / 2, pauseText.position.y - pauseText.contentSize.height * 2)];
 		[pauseOverlay addChild:pauseOverlayMenu];
+		[pauseOverlay setVisible:NO];		// Hide initially
 		[self addChild:pauseOverlay z:3];
+		
+		// Create "this way up" icon
+		upIcon = [CCSprite spriteWithFile:[NSString stringWithFormat:@"this-way-up%@.png", hdSuffix]];
+		[upIcon setPosition:ccp(winSize.width / 2, winSize.height / 1.5)];
+		[upIcon setOpacity:0];
+		[self addChild:upIcon z:2];
 		
 		// Create map obj and add to layer
 		map = [CCTMXTiledMap tiledMapWithTMXFile:[NSString stringWithFormat:@"%i-%i%@.tmx", [GameData sharedGameData].currentWorld, [GameData sharedGameData].currentLevel, hdSuffix]];
@@ -1072,6 +1079,23 @@
 {
 	//b2Vec2 gravity(-acceleration.y * 15, acceleration.x * 15);
 	//world->SetGravity(gravity);
+	
+	// (1,0) or (-1,0) means the player is holding the device sideways
+	float tiltRatio = fabs(acceleration.x) - fabs(acceleration.y);
+	
+	if (tiltRatio > 0.3)
+	{
+		if (upIcon.opacity == 0)
+			[upIcon runAction:[CCFadeIn actionWithDuration:0.25]];
+	}
+	else
+	{
+		if (upIcon.opacity == 255)
+			[upIcon runAction:[CCFadeOut actionWithDuration:0.25]];
+	}
+
+	
+	NSLog(@"Accelerometer tilt ratio: %f", tiltRatio);
 }
 
 - (void)ccTouchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
@@ -1280,7 +1304,9 @@
 {
 	// Play SFX
 	[[SimpleAudioEngine sharedEngine] playEffect:@"button-press.caf"];
-
+	
+	[pauseOverlay setVisible:NO];
+	
 	// Reload the same scene/level
 	CCTransitionRotoZoom *transition = [CCTransitionRotoZoom transitionWithDuration:1.0 scene:[GameScene node]];
 	[[CCDirector sharedDirector] replaceScene:transition];
@@ -1290,6 +1316,8 @@
 {
 	// Play SFX
 	[[SimpleAudioEngine sharedEngine] playEffect:@"button-press.caf"];
+	
+	[pauseOverlay setVisible:NO];
 	
 	// Increment level counter
 	[GameData sharedGameData].currentLevel++;
@@ -1332,6 +1360,8 @@
 	// Play SFX
 	[[SimpleAudioEngine sharedEngine] playEffect:@"button-press.caf"];
 	
+	[pauseOverlay setVisible:NO];
+	
 	// Stop the background music, if playing
 	[[SimpleAudioEngine sharedEngine] stopBackgroundMusic];
 	
@@ -1367,6 +1397,7 @@
 		paused = YES;
 		
 		// Show pause overlay
+		[pauseOverlay setVisible:YES];
 		id action = [CCEaseBounce actionWithAction:[CCMoveTo actionWithDuration:0.1 position:ccp(windowSize.width / 2, windowSize.height / 2)]];
 		[pauseOverlay runAction:action];
 	}

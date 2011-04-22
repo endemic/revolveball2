@@ -52,6 +52,9 @@
 	BOOL paused;
 	CCSprite *pauseOverlay;
 	
+	// If player tilts device, show icon pointing correct orientation
+	CCSprite *upIcon;
+	
 	// Base size of Box2D objects; doubles on iPad/iPhone 4 Retina Display
 	int ptmRatio;
 }

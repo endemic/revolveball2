@@ -40,7 +40,7 @@
 		if ([GameData sharedGameData].isTablet) hdSuffix = @"-hd";
 		else hdSuffix = @"";
 		
-		CCSprite *background = [CCSprite spriteWithFile:[NSString stringWithFormat:@"background-0%@.png", hdSuffix]];
+		CCSprite *background = [CCSprite spriteWithFile:[NSString stringWithFormat:@"background-1%@.png", hdSuffix]];
 		[background setPosition:ccp(windowSize.width / 2, windowSize.height / 2)];
 		[self addChild:background z:0];
 		
