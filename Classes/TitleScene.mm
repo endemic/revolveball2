@@ -68,8 +68,8 @@
 		[[GameCenterManager sharedGameCenterManager] authenticateLocalPlayer];
 		
 		// If the player has completed the game, prompt them to rate the game
-		if ([[NSUserDefaults standardUserDefaults] boolForKey:@"completedGame"] == YES)
-			[Appirater userDidSignificantEvent:YES];
+//		if ([[NSUserDefaults standardUserDefaults] boolForKey:@"completedGame"] == YES)
+//			[Appirater userDidSignificantEvent:YES];
 	}
 	return self;
 }

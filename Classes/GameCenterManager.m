@@ -94,7 +94,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(GameCenterManager);
 				// Handle reporting error here by adding object to a serializable array, to be sent again later
 				[unsentScores addObject:scoreReporter];
 				
-				NSLog(@"Error sending score!");
+				//NSLog(@"Error sending score!");
 			}
 		}];
 	}

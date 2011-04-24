@@ -121,6 +121,12 @@
 	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
 	[defaults registerDefaults:[NSDictionary dictionaryWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"UserDefaults" ofType:@"plist"]]];
 	
+//	NSMutableArray *levelData = [NSMutableArray arrayWithArray:[[NSUserDefaults standardUserDefaults] arrayForKey:@"levelData"]];
+//	NSDictionary *d = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInt:999], @"bestTime", [NSNumber numberWithBool:NO], @"complete", nil];
+//	[levelData replaceObjectAtIndex:19 withObject:d];
+//	[[NSUserDefaults standardUserDefaults] setObject:levelData forKey:@"levelData"];
+//	[[NSUserDefaults standardUserDefaults] synchronize];
+	
 	// Load any serialized Game Center data
 	[GameCenterManager loadState];
 	

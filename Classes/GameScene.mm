@@ -11,6 +11,7 @@
 #import "CreditsScene.h"
 #import "GameData.h"
 #import "GameCenterManager.h"
+#import "Appirater.h"
 
 #import "math.h"
 #import <vector>	// Easy data structure to store Box2D bodies
@@ -59,8 +60,6 @@
 #define kForestLevelWarp 149
 #define kMountainLevelWarp 153
 #define kCaveLevelWarp 157
-
-#define COCOS2D_DEBUG 1
 
 @implementation GameScene
 - (id)init
@@ -124,7 +123,7 @@
 		// Set up pause button
 		CCMenuItem *pauseButton = [CCMenuItemImage itemFromNormalImage:[NSString stringWithFormat:@"pause-button%@.png", hdSuffix] selectedImage:[NSString stringWithFormat:@"pause-button%@.png", hdSuffix] target:self selector:@selector(pauseButtonAction:)];
 		CCMenu *pauseMenu = [CCMenu menuWithItems:pauseButton, nil];
-		[pauseMenu setPosition:ccp(pauseButton.contentSize.width, winSize.height - pauseButton.contentSize.height)];
+		[pauseMenu setPosition:ccp(pauseButton.contentSize.width / 1.5, winSize.height - pauseButton.contentSize.height / 1.5)];
 		
 		// Don't add the pause button if on the level select screen
 		if ([GameData sharedGameData].currentWorld != 0 && [GameData sharedGameData].currentLevel != 0)
@@ -155,6 +154,9 @@
 		map = [CCTMXTiledMap tiledMapWithTMXFile:[NSString stringWithFormat:@"%i-%i%@.tmx", [GameData sharedGameData].currentWorld, [GameData sharedGameData].currentLevel, hdSuffix]];
 		[map setPosition:ccp(winSize.width / 2, winSize.height / 2)];
 		[self addChild:map z:1];
+		
+		// Hide map until "countdown" method fires
+		[map setVisible:NO];
 		
 		// Set up timer
 		if ([map propertyNamed:@"time"])
@@ -413,14 +415,17 @@
 	if ([GameData sharedGameData].isTablet) hdSuffix = @"-hd";
 	else hdSuffix = @"";
 	
+	if (![map visible])
+		[map setVisible:YES];
+	
 	// If we're on the hub level
 	if ([GameData sharedGameData].currentWorld == 0 && [GameData sharedGameData].currentLevel == 0)
 	{
 		NSString *text;
 		if (countdownTime == 0)
-			text = @"Touch to rotate!";
-		else if (countdownTime == 1)
 			text = @"Select a world";
+		else if (countdownTime == 1)
+			text = @"Touch to rotate!";
 		else 
 			text = @"";
 		//text = [NSString stringWithFormat:@"%i", countdownTime];
@@ -722,7 +727,7 @@
 					[GameData sharedGameData].currentWorld = 1;
 					[GameData sharedGameData].currentLevel = 1;
 					
-					//map.visible = NO;
+					map.visible = NO;
 					
 					// Transition to level select scene
 					[[CCDirector sharedDirector] replaceScene:[CCTransitionRotoZoom transitionWithDuration:1.0 scene:[LevelSelectScene node]]];
@@ -739,7 +744,7 @@
 					[GameData sharedGameData].currentWorld = 2;
 					[GameData sharedGameData].currentLevel = 1;
 					
-					//map.visible = NO;
+					map.visible = NO;
 					
 					// Transition to level select scene
 					[[CCDirector sharedDirector] replaceScene:[CCTransitionRotoZoom transitionWithDuration:1.0 scene:[LevelSelectScene node]]];
@@ -756,7 +761,7 @@
 					[GameData sharedGameData].currentWorld = 3;
 					[GameData sharedGameData].currentLevel = 1;
 					
-					//map.visible = NO;
+					map.visible = NO;
 					
 					// Transition to level select scene
 					[[CCDirector sharedDirector] replaceScene:[CCTransitionRotoZoom transitionWithDuration:1.0 scene:[LevelSelectScene node]]];
@@ -773,7 +778,7 @@
 					[GameData sharedGameData].currentWorld = 4;
 					[GameData sharedGameData].currentLevel = 1;
 					
-					//map.visible = NO;
+					map.visible = NO;
 					
 					// Transition to level select scene
 					[[CCDirector sharedDirector] replaceScene:[CCTransitionRotoZoom transitionWithDuration:1.0 scene:[LevelSelectScene node]]];
@@ -888,10 +893,17 @@
 	int bestSavedTime = [[d objectForKey:@"bestTime"] intValue];
 	if (currentTime < bestSavedTime)
 	{
-		NSDictionary *d = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInt:currentTime], @"bestTime", [NSNumber numberWithBool:YES], @"complete", nil];
-		[levelData replaceObjectAtIndex:currentLevelIndex withObject:d];
-		[[NSUserDefaults standardUserDefaults] setObject:levelData forKey:@"levelData"];
 		bestSavedTime = currentTime;	// for display below
+		
+		// Create a new dictionary to store in the "levelData" array
+		NSDictionary *d = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInt:currentTime], @"bestTime", [NSNumber numberWithBool:YES], @"complete", nil];
+		
+		// levelData dictionary gets updated here w/ current time
+		[levelData replaceObjectAtIndex:currentLevelIndex withObject:d];
+		
+		// Sync with NSUserDefaults
+		[[NSUserDefaults standardUserDefaults] setObject:levelData forKey:@"levelData"];
+		[[NSUserDefaults standardUserDefaults] synchronize];
 		
 		int bestWorldTime = 0;
 		BOOL sendScore = YES;
@@ -903,6 +915,7 @@
 				bestWorldTime += [[d objectForKey:@"bestTime"] intValue];
 			else
 			{
+				// NSLog(@"Level %i not marked as complete", i + 1);
 				sendScore = NO;
 				break;
 			}
@@ -916,7 +929,7 @@
 			// Send time to Game Center leaderboards
 			[[GameCenterManager sharedGameCenterManager] reportScore:bestWorldTime forCategory:leaderboardCategory];
 			
-			NSLog(@"Sending best world time of %i", bestWorldTime);
+			// NSLog(@"Sending best world time of %i", bestWorldTime);
 		}
 	}
 	
@@ -956,6 +969,9 @@
 	[menu alignItemsVertically];
 	[menu setPosition:ccp(windowSize.width / 2, windowSize.height / 6)];
 	[self addChild:menu z:1];
+	
+	// Tell rating engine that a "significant event" occurred
+	[Appirater userDidSignificantEvent:YES];
 }
 
 - (void)loseGame
@@ -1094,8 +1110,7 @@
 			[upIcon runAction:[CCFadeOut actionWithDuration:0.25]];
 	}
 
-	
-	NSLog(@"Accelerometer tilt ratio: %f", tiltRatio);
+	//NSLog(@"Accelerometer tilt ratio: %f", tiltRatio);
 }
 
 - (void)ccTouchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
@@ -1306,6 +1321,7 @@
 	[[SimpleAudioEngine sharedEngine] playEffect:@"button-press.caf"];
 	
 	[pauseOverlay setVisible:NO];
+	[map setVisible:NO];
 	
 	// Reload the same scene/level
 	CCTransitionRotoZoom *transition = [CCTransitionRotoZoom transitionWithDuration:1.0 scene:[GameScene node]];
@@ -1318,6 +1334,7 @@
 	[[SimpleAudioEngine sharedEngine] playEffect:@"button-press.caf"];
 	
 	[pauseOverlay setVisible:NO];
+	[map setVisible:NO];
 	
 	// Increment level counter
 	[GameData sharedGameData].currentLevel++;
@@ -1361,6 +1378,7 @@
 	[[SimpleAudioEngine sharedEngine] playEffect:@"button-press.caf"];
 	
 	[pauseOverlay setVisible:NO];
+	[map setVisible:NO];
 	
 	// Stop the background music, if playing
 	[[SimpleAudioEngine sharedEngine] stopBackgroundMusic];
