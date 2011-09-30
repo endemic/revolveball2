@@ -7,9 +7,7 @@
 //
 
 #import "GameCenterManager.h"
-#import "SynthesizeSingleton.h"
 #import "cocos2d.h"
-
 
 @implementation GameCenterManager
 
@@ -21,7 +19,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(GameCenterManager);
 {
 	if ((self = [super init]))
 	{
-		// Initialize any variables here
+		// Initialize any class properties here
 		if ([self isGameCenterAPIAvailable])
 			hasGameCenter = YES;
 		else
@@ -30,6 +28,9 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(GameCenterManager);
 	return self;
 }
 
+/**
+ Check to see if installed OS supports Game Center
+ */
 - (BOOL)isGameCenterAPIAvailable
 {
 	// Check for presence of GKLocalPlayer class
@@ -43,6 +44,9 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(GameCenterManager);
 	return (localPlayerClassAvailable && osVersionSupported);
 }
 
+/**
+ Attempt to authenticate a Game Center user. Will automatically present a modal login window.
+ */
 - (void)authenticateLocalPlayer
 {
 	if (hasGameCenter)
@@ -51,60 +55,79 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(GameCenterManager);
 		[localPlayer authenticateWithCompletionHandler:^(NSError *error) {
 			if (localPlayer.isAuthenticated)
 			{
-				// Perform additional tasks for the authenticated player
+				/* Perform additional tasks for the authenticated player here */
 				
-				// If unsent scores array has length > 0, try to send saved scores here
+				// If unsent scores array has length > 0, try to send saved scores
 				if ([unsentScores count] > 0)
 				{
-					for (int i = 0; i < [unsentScores count]; i++)
+					// Create new array to help remove successfully sent scores
+					NSMutableArray *removedScores = [NSMutableArray array];
+					
+					for (GKScore *score in unsentScores)
 					{
-						[[unsentScores objectAtIndex:i] reportScoreWithCompletionHandler:^(NSError *error) {
+						[score reportScoreWithCompletionHandler:^(NSError *error) {
 							if (error != nil)
 							{
 								// If there's an error reporting the score (again!), leave the score in the array
 							}
 							else
 							{
-								// If success, remove that index
-								[unsentScores removeObjectAtIndex:i];
+								// If success, mark score for removal
+								[removedScores addObject:score];
 							}
 						}];
 					}
+					
+					// Remove successfully sent scores from stored array
+					[unsentScores removeObjectsInArray:removedScores];
 				}
 			}
 			else
 			{
-				// Disable Game Center
+				// Disable Game Center methods - player not authenticated
 				hasGameCenter = NO;
 			}
 		}];
 	}
 }
 
-- (void) reportScore:(int64_t)score forCategory:(NSString *)category
+/**
+ Send an integer score to Game Center for a particular category (set up category in iTunes Connect)
+ */
+- (void)reportScore:(int64_t)score forCategory:(NSString *)category
 {
+	// Only execute if OS supports Game Center & player is logged in
 	if (hasGameCenter)
 	{
+		// Create score object
 		GKScore *scoreReporter = [[[GKScore alloc] initWithCategory:category] autorelease];
+		
+		// Set the score value
 		scoreReporter.value = score;
 		
+		// Try to send
 		[scoreReporter reportScoreWithCompletionHandler:^(NSError *error) {
 			if (error != nil)
 			{
 				// Handle reporting error here by adding object to a serializable array, to be sent again later
 				[unsentScores addObject:scoreReporter];
-				
-				//NSLog(@"Error sending score!");
 			}
 		}];
 	}
 }
 
+/**
+ Show the "green felt" leaderboard view for a particular category
+ */
 - (void)showLeaderboardForCategory:(NSString *)category
 {
+	// Only execute if OS supports Game Center & player is logged in
 	if (hasGameCenter)
 	{
+		// Create leaderboard view w/ default Game Center style
 		GKLeaderboardViewController *leaderboardController = [[GKLeaderboardViewController alloc] init];
+		
+		// If view controller was successfully created...
 		if (leaderboardController != nil)
 		{
 			// Leaderboard config
@@ -124,10 +147,12 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(GameCenterManager);
 	}
 }
 
+/**
+ Since this singleton is the GKLeaderboardViewControlerDelegage, it intercepts this method and removes the view
+ */
 - (void)leaderboardViewControllerDidFinish:(GKLeaderboardViewController *)viewController
 {
 	[myViewController dismissModalViewControllerAnimated:YES];
-	//[myViewController.view.superview removeFromSuperview];
 	[myViewController release];
 }
 
@@ -138,20 +163,19 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(GameCenterManager);
 {
 	@synchronized([GameCenterManager class]) 
 	{
-		// just in case loadState is called before GameData inits
-		if(!sharedGameCenterManager)
+		// just in case loadState is called before GameCenterManager inits
+		if (!sharedGameCenterManager)
 			[GameCenterManager sharedGameCenterManager];
 		
 		NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
 		NSString *documentsDirectory = [paths objectAtIndex:0];
-		// NSString *file = [documentsDirectory stringByAppendingPathComponent:kSaveFileName];
 		NSString *file = [documentsDirectory stringByAppendingPathComponent:@"GameCenterManager.bin"];
 		Boolean saveFileExists = [[NSFileManager defaultManager] fileExistsAtPath:file];
 		
-		if(saveFileExists) 
+		if (saveFileExists) 
 		{
 			// don't need to set the result to anything here since we're just getting initwithCoder to be called.
-			// if you try to overwrite sharedGameData here, an assert will be thrown.
+			// if you try to overwrite sharedGameCenterManager here, an assert will be thrown.
 			[NSKeyedUnarchiver unarchiveObjectWithFile:file];
 		}
 	}
@@ -165,9 +189,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(GameCenterManager);
 		
 		NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
 		NSString *documentsDirectory = [paths objectAtIndex:0];
-		// NSString *saveFile = [documentsDirectory stringByAppendingPathComponent:kSaveFileName];
 		NSString *saveFile = [documentsDirectory stringByAppendingPathComponent:@"GameCenterManager.bin"];
-		
 		[NSKeyedArchiver archiveRootObject:state toFile:saveFile];
 	}
 }
@@ -177,7 +199,6 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(GameCenterManager);
 
 - (void)encodeWithCoder:(NSCoder *)coder
 {
-	// [coder encodeInt, encodeBool, encodeObject
 	[coder encodeBool:self.hasGameCenter forKey:@"hasGameCenter"];
 	[coder encodeObject:self.unsentScores forKey:@"unsentScores"];
 }
@@ -191,6 +212,5 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(GameCenterManager);
 	}
 	return self;
 }
-
 
 @end

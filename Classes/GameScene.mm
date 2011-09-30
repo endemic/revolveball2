@@ -146,7 +146,7 @@
 		
 		// Create "this way up" icon
 		upIcon = [CCSprite spriteWithFile:[NSString stringWithFormat:@"this-way-up%@.png", hdSuffix]];
-		[upIcon setPosition:ccp(winSize.width / 2, winSize.height / 1.5)];
+		[upIcon setPosition:ccp(winSize.width / 2, winSize.height / 1.3)];
 		[upIcon setOpacity:0];
 		[self addChild:upIcon z:2];
 		
@@ -1117,7 +1117,7 @@
 {
 	UITouch *touch = [touches anyObject];
 	
-	if (touch)
+	if (touch && !paused)
 	{		
 		// Get window size
 		CGSize winSize = [CCDirector sharedDirector].winSize;
@@ -1136,7 +1136,7 @@
 {
 	UITouch *touch = [touches anyObject];
 	
-	if (touch)
+	if (touch && !paused)
 	{
 		// Get window size
 		CGSize winSize = [CCDirector sharedDirector].winSize;
